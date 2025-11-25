@@ -1,0 +1,12 @@
+---
+number-sections: false
+numbered: false
+---
+
+# Prefacio {.unnumbered}
+
+Agradecimientos a los profesores y a los ayudantes 
+
+::: {=latex}
+\mainmatter
+:::

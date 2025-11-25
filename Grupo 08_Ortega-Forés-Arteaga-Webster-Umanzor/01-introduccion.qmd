@@ -1,0 +1,36 @@
+---
+title: "Introducción"
+numbered: true
+---
+
+#Resumen
+El presente estudio analiza los determinantes de la confianza en el Estado chileno utilizando datos de la encuesta LAPOP 2023. Mediante la construcción de un índice sumativo de confianza en los tres poderes del Estado (Ejecutivo, Legislativo y Judicial), se evalúa su relación con la edad, la perspectiva de interés de los políticos y la confianza en las Municipalidades. Los resultados indican que no existe una correlación significativa entre la edad y la confianza en el Estado, pero sí se evidencian correlaciones positivas moderadas y grandes con la perspectiva de interés de los políticos y la confianza en las municipalidades, respectivamente.
+
+En el presente trabajo  se analiza el concepto de confianza en el Estado de acuerdo a un índice promediado que tome en cuenta la confianza de los tres poderes del Estado (ejecutivo, legislativo y judicial) en orden de poder capturar las percepciones que la ciudadanía chilena tiene respecto a sus representantes. 
+
+El Estado se comprenderá como una organización social que administra y centraliza el poder soberanamente (Schaub, 2004) y que se compone de sus tres poderes. Montesquieu plantea que esta división surge con la función de evitar la centralización del poder y con ello la posibilidad de tiranía, lo que implica transgresión del derecho en su forma constitucional y civil (Fuentes, 2011). Así, es que la división de poderes surge con la función de garantizar ciertos marcos que limiten la acción política, lo que otorga confianza en el Estado.|
+
+En particular el Estado se compone del poder ejecutivo, en el cual se destaca la figura del presidente quien administra el Estado y tiene por objeto garantizar el orden y la seguridad pública. En segundo lugar el poder legislativo quien tramita los proyectos de ley y en tercer lugar el poder judicial quien tiene la facultad de aplicar los ordenamientos jurídicos del Estado. (Biblioteca del Congreso Nacional de Chile, s. f.).
+
+Según la OECD (2024) las democracias a nivel global presentan problemas sistemáticos que se traducen en polarización y tensiones, en Chile, particularmente, esto se traduce en una baja a la confianza en instituciones públicas; La baja en confianza institucional, si bien responde a una crisis generalizada globalmente, en Chile tiene las características de coincidir con grandes eventos sociopolíticos, de esta forma, se dan cosas como que el pico de confianza en 2015 coincide con la aprobación de una reforma electoral, mientras que los bajos niveles de confianza en 2020 siguieron a las protestas sociales de 2019 (OECD, 2024).
+
+La confianza en las instituciones como el gobierno, congreso y tribunales es generalmente baja, siendo el congreso la que posee menor confianza entre las 3 con un 8%; Esto contrasta con otra instituciones con mayor legitimidad como la PDI o carabineros, que se encuentran en el primero y el tercer puesto respectivamente de mayor confianza (CEP, 2025). Con esto se puede decir que la confianza en las instituciones gubernamentales está mayormente debilitada en cuanto estas refieren a los poderes del Estado.
+La baja en la confianza es un fenómeno altamente perjudicial, pues debilita el aparato público en tanto éste no tiene una real capacidad de representación de las personas. Esto, pues las personas tienen un menor incentivo en la participación institucionalizada, vuelve al aparato estatal más lento (Keefer y Scartascini, 2022), lo que en Chile se puede ver particularmente con las bajas electorales en elecciones no obligatorias. De la misma forma, la desconfianza afecta a la calidad de las políticas públicas en la manera que los ciudadanos no creen que estas serán eficientes o que ellos mismos se verán beneficiados, de la misma forma, así mismo, pierden la confianza en que sus necesidades son escuchadas y tomadas en cuenta a la hora de implementar las políticas (Keefer y Scartascini, 2022).
+En base a esto, definimos la confianza de acuerdo a la definición conceptual de Irarrázaval y Cruz (2023), que la caracteriza como la expectativa que el otro actuará acorde a las normas sociales, de manera honesta o al menos no perjudicial hacia el prójimo; de la misma forma, la confianza puede tener expectativas en la capacidad o en la integridad, ambas fundamentales para el entendimiento de la confianza.
+
+Se ha decidido entonces construir un índice sumativo para conocer la confianza en el Estado a partir de la confianza en cada poder, permitiendo mayor precisión en la medición, reconociendo las particularidades de cada poder. Se hace relevante ya que para el correcto funcionamiento de cada uno, se necesita exista confianza pertinente que permita su quehacer y ejercicio de soberanía.
+Los municipios y sus propias instituciones por otra parte, serán analizados como forma de gobierno local de vinculación territorial directa separada del gobierno central. Esto por su fenómeno político a nivel nacional en tanto podría establecerse una incidencia en la valoración de este tipo de organismos y sus capacidades en la confianza general del Estado en términos generalizados (Fuentes, 2018).
+
+El presente trabajo tiene como objetivo medir la relación que existe entre la confianza según poderes del Estado, con esto se esperan 4 grandes hipótesis: 
+
+Existe una relación entre confianza en el Estado y creencia en el interés del gobierno por la opinión pública
+(H0= no existe relación entre la confianza en el Estado y creencia en el interés del gobierno por la opinión pública)
+
+La confianza en el Estado es menor en población joven que en generaciones mayores. 
+(H0 = confianza en el Estado es igual o mayor en población joven que en generaciones mayores)
+
+Existe una relación proporcional entre la confianza en el Estado y la confianza en los organismos municipales y locales. 
+(H0= No existe una relación proporcional entre la confianza en el Estado y la confianza en los organismos municipales y locales).
+
+Existe una relación positiva entre la percepción en el interés del gobierno por la opinión pública (interés de los políticos) y la confianza en las municipalidades.  
+(H0= Existe una relación positiva entre la percepción en el interés del gobierno por la opinión pública (interés de los políticos) y la confianza en las municipalidades).

@@ -1,0 +1,97 @@
+---
+title: "Metodología"
+---
+
+## Datos
+
+Para la realización del trabajo, se utilizó la base de datos del **Laboratorio de Opinión Pública LAPOP 2023**. La encuesta fue aplicada entre junio y agosto de 2023 como forma de agregar a Chile al proyecto de “AmericasBarometer” el cual se actualiza de forma periódica. La muestra constó de 1653 personas adultas con habilidad para votar y se aplicó en diferentes regiones del país procurando tener datos desde el norte hasta el sur de Chile con grupos de 6 áreas urbanas y rurales (Vanderbilt University, 2023).
+
+```{r cargar-paquetes}
+#| echo: true
+
+options(scipen = 999)
+library("pacman")
+pacman::p_load(tidyverse,    
+               summarytools, 
+               sjmisc,       
+               sjPlot,       
+               haven,
+               readxl,
+               psych, 
+               stargazer,
+               ktnir,
+               kableExtra,
+               table1,
+               janitor, 
+               crosstable) 
+
+dataLAPOP <- read_dta("input/CHL_2023_LAPOP_AmericasBarometer_v1.0_w.dta")
+```
+
+## Variables
+
+A partir de la base de datos, se seleccionaron las variables de confianza en el congreso (B13), confianza en la corte suprema (B31) y confianza en el presidente (B21a) para generar un indice promediado que reflejase la confianza en el Estado.
+
+Para comparar esta indice también se seleccionaron las variables de edad (q2), "A los politicos les importa mi opinion/intereses" (eff1) y confianza en la municipalidad (b32). La variable de edad es de tipo razón, mientras que las otras dos son de tipo ordinal y asumen valores de (1-7) según el nivel de confianza (Poca confianza - Mucha confianza). Se renombraron las variables para facilitar la comprensión.
+
+Finalmente, se utilizo una eliminación *listwise* de casos perdidos. En la toma de esta decision se considero la simpleza de la función, junto con la reducción de casos despreciable que tuvo como resultado.
+
+```{r}
+data <- dataLAPOP %>%                       #Selección de Variables
+  select(b13, b21a, b31, b32, eff1, q2) %>%
+  na.omit() %>%
+  rename(
+    cCongreso = b13,            #Confianza en el Congreso
+    cPresid = b21a,             #Confianza en el Presidente
+    cCSup = b31,                #Confianza en la Corte Suprema
+    cMuni = b32,                #Confianza en la Municipalidad
+    intPol = eff1,              #Creencia en los intereses de los políticos
+    edad = q2)                   #Edad
+```
+
+Para la construcción del índice se utilizó la sección de confianza en las instituciones del cuestionario LAPOP, específicamente las preguntas ¿hasta qué punto tiene usted confianza en el congreso?, ¿hasta qué punto tiene usted confianza en el presidente?, ¿hasta qué punto tiene usted confianza en la Corte Suprema de Justicia? Las tres variables son de tipo likert y abarcan un rango del 1 al 7, en donde 1 es nada de confianza y 7 es mucha confianza. 
+
+Con la creación del índice se logra medir el concepto de **confianza en el Estado** de forma más completa que si se hubiera elegido solo una pregunta, pues de esta forma se abarcan 3 dimensiones del concepto de confianza.
+
+Se comparó el índice no ponderado, como variable dependiente, de tres variables independientes para ver su relación con distintos aspectos y opiniones.
+
+###Cohesión del indice: En base a los criterios de cohesión interna de los indices que señala Cronbach L.J. (1951), el índice muestra una alta consistencia interna, como lo demuestra un **alfa de Cronbach** de
+
+**𝛼 = \[0.73\] (𝑘 = \[3\])**.
+
+```{r}
+
+#| echo: true
+data$confEstAlpha <- data %>%
+select(cCSup, cPresid, cCongreso) #Crear indice Confianza en el Estado
+
+data$confEst <- data %>%
+  select(cCSup, cPresid, cCongreso) %>% #Creamos variable del indice
+  rowMeans(na.rm = TRUE)
+```
+
+```{r}
+alpha(data$confEstAlpha) #Revisar cohesión interna indice
+```
+
+##Estadísticos descriptivos de las variables dependiente e independientes.
+
+```{r resumen-datos}
+#| echo: false
+
+cMat <- data.frame(
+  confEst = data$confEst,
+  edad = data$edad,
+  intPol = data$intPol,
+  cMuni = data$cMuni
+  
+)
+
+psych::describe(cMat) %>%
+  kable() %>%
+  kable_styling(full_width = TRUE)  #Gráfico de decriptivos de la matriz
+```
+
+## Métodos
+
+Se seleccionaron para el análisis descriptivo tablas, gráficos y estadísticos descriptivos. En específico se utilizó un histograma y una nube de puntos para destacar informaciones relevan, los cuales fueron interpretados. Para el analisis bivariado se utilizó el coeficiente de correlación de **Pearson** ($r$), para la relación entre la variable dependiente y las 3 variables independientes, esto ya que la dependiente tiene caracter numerico y las independientes categorico, por lo cual corresponde ese tipo de correlacion. Se evaluó la significancia estadística (p-valor \< 0.05) y el tamaño y dirección del efecto siguiendo los criterios de Cohen (1988). Se utilizó Chi2 para asociacion de las variables categoricas percepción de interes de los politicos sobre la opinión publica con la confianza en las municipalidades.

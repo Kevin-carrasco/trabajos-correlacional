@@ -1,0 +1,34 @@
+---
+title: "Referencias"
+suppress-bibliography: false
+nocite: |
+  @*
+number-sections: false
+---
+
+::: {#refs}
+:::
+Biblioteca del Congreso Nacional de Chile. (s. f.). Portal de la Biblioteca del Congreso Nacional de Chile. Portal de la  Biblioteca del Congreso Nacional de Chile. https://www.bcn.cl/portal/
+
+CEP 2025. Estudio Nacional de opinión pública: Encuesta CEP 94. Centro de Estudios Públicos. Disponible en: https://www.cepchile.cl/encuesta/encuesta-cep-n-94-mayo-junio-2025-issp-orientaciones-laborales/ 
+Cohen, J. (1988). Statistical Power Analysis for the Behavioral Sciences (2nd ed.). Hillsdale, NJ: Erlbaum.
+
+Cronbach, L. J. (1951). Coefficient alpha and the internal structure of tests. Psychometrika, 16(3), 297-334.
+
+Fuentes, C. (2011). MONTESQUIEU: TEORÍA DE LA DISTRIBUCIÓN SOCIAL DEL PODER. Revista de Ciencia Política, 31(1), 47-61. https://doi.org/10.4067/s0718-090x2011000100003
+
+Fuentes, C. (2018). CONFIANZA EN EL GOBIERNO LOCAL Y CAPACIDADES INSTITUCIONALES DE LOS MUNICIPIOS CHILENOS: UN ANÁLISIS MULTINIVEL. Revista Iberoamericana de Estudios Municipales, (18), 91–120. https://doi.org/10.32457/riem.vi18.32
+
+	
+Irarrázaval, I., Cruz, F. (2023). Confianza institucional en Chile: un desafío para el desarrollo. Puntos de referencia, (682). https://static.cepchile.cl/uploads/cepchile/2023/12/pder682_-irarrazaval.pdf 
+
+Keefer, P., Scartascini, C. (2022). Confianza: la clave de la cohesión social y el crecimiento en América Latina y el Caribe. Banco Interamericano de Desarrollo. 
+
+LAPOP. (2023). AmericasBarometer 2023: Chile Technical Information. Vanderbilt University. 
+
+OECD (2024). Los determinantes de la confianza en las instituciones públicas de Chile. OECD Publishing.
+
+Schaub, J. (2004). Sobre el concepto de Estado. Historia Contemporánea, 28. https://doi.org/10.1387/hc.5007
+
+
+

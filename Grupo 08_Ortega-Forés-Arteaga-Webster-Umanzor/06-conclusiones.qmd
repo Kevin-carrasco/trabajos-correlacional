@@ -1,0 +1,10 @@
+---
+title: "Conclusiones"
+---
+El análisis realizado a partir de los datos LAPOP 2023 permite concluir que la confianza en el Estado chileno es, en promedio, baja (3.13 sobre 7). Contrario a lo que se suele estipular en el debate público sobre la "brecha generacional", este estudio **no encontró evidencia** de que la edad sea un determinante de la confianza en el Estado ($p > 0.05$); la desafección institucional afecta tanto a jóvenes como a mayores por igual; En cuanto a la prueba de Chi2, se puede observar una correlación estadísticamente significativa entre la percepción del interés del gobierno por la opinión pública y la confianza de los ciudadanos en las municipalidades.
+
+Por el contrario, las variables actitudinales mostraron un fuerte poder explicativo. Tanto el interés político como la confianza en las municipalidades mostraron correlaciones significativas y positivas. El hallazgo más relevante es la fuerte conexión entre la confianza local y nacional ($r = 0.51$), lo que sugiere que fortalecer la gestión y transparencia a nivel municipal podría ser una estrategia efectiva para recomponer la confianza en la estructura estatal general. También que mientras mayor interés hay por parte de los políticos mayor es el nivel de confianza en el estado, lo que puede ser evidencia útil para la promoción de políticas públicas orientadas a la participación y vinculación del estado y la sociedad.
+
+Como limitación, se señala que el diseño correlacional no permite establecer causalidad. Futuras investigaciones deberían abordar modelos de regresión múltiple para aislar el efecto de estas variables controlando por nivel socioeconómico o victimización delictiva. 
+
+
