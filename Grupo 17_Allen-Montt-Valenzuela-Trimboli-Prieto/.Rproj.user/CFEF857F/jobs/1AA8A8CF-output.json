@@ -1,0 +1,2 @@
+[1,"==> quarto preview references.qmd --to default --no-watch-inputs --no-browse\n\n"]
+[1,"ERROR: YAMLException: bad indentation of a mapping entry (C:\\Users\\Gianella Anelette\\Documents\\Simce_EC\\ReportesFACSO_plantillaQuarto-main\\_quarto.yml, 17:4)\n16:     - name:  Antonia Silva A.\n17:    - name: Florencia Trimboli\n      ~~\n18:     - name: Renata Prieto\n"]

@@ -1,0 +1,15 @@
+---
+title: "Referencias"
+suppress-bibliography: false
+nocite: |
+  @*
+number-sections: false
+---
+
+Agencia de Calidad de la Educación (2010). Factores asociados con el rendimiento escolar. Ministerio de Educación, Chile.
+https://archivos.agenciaeducacion.cl/Factores_Asociados_SIMCE_2010.pdf
+Agencia de Calidad de la Educación (2015). Factores asociados a resultados SIMCE e Indicadores de desarrollo personal social. Ministerio de Educación, Chile.
+https://archivos.agenciaeducacion.cl/Factores_asociados_Simce_e_Indicadores_desarrollo_personal_social_2014-.pdf
+Muñoz, G., et al. (2013). Segregación Educativa en el Sistema Chileno desde una perspectiva comparada. Estudios de Política Pública.
+https://centroestudios.mineduc.cl/wp-content/uploads/sites/100/2018/03/Cap%C3%ADtulo_-Segregaci%C3%B3n-Educativa-en-el-Sistema-Chileno-desde-una-perspectiva-comparada.pdf 
+
