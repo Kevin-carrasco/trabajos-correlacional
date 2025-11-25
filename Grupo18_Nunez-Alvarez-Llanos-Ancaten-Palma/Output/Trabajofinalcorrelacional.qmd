@@ -21,7 +21,7 @@ lang: es
 #| echo: false
 #| message: false
 #| warning: false
-load("C:/Users/Spider Build/Downloads/ELSOC_Long_2016_2023.RData")
+load("../Input/Base de datos ELSOC.RData")
 ```
 
 ```{r}
