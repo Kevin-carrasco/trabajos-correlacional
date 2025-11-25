@@ -1,0 +1,704 @@
+---
+title: "Trabajo final correlacional Satisfacción con la democracia"
+subtitle: "Estadística Correlacional 2025, Carrera de Sociología - Universidad de Chile"
+author: 
+  - Fernanda Barrios 
+  - Matilda Fuenzalida 
+  - Ambar Urbina
+  - Ignacio Muñoz 
+  - Josefa Ubilla 
+
+date: "2025-11-23"
+lang: es
+number-sections: true
+format: 
+  html: default
+toc: true
+toc-title: "Índice"
+toc-depth: 3
+code-fold: true
+
+header-includes: |
+  <style>
+    body {
+      margin: 2.54cm;  /* Márgenes estilo Google Docs */
+      text-align: justify; /* Justificación del texto */
+    }
+  </style>
+---
+
+```{r, echo=FALSE}
+  
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+
+#------------------------- 1. CARGAR LIBRERIAS -----------------------------
+
+library(pacman)
+pacman::p_load(tidyverse, # colección de paquetes para manipulación de datos
+               dplyr, # para manipular datos
+               haven, # para importar datos
+               car, # para recodificar datos
+               psych, # para analizar datos
+               sjmisc, # para analizar datos
+               sjPlot, # para tablas de contingencia
+               summarytools, # para descriptivos
+               sjlabelled, # para etiquetas
+               knitr, # Render y tablas
+               kableExtra, # Formateo tablas
+               stargazer, # Tablas
+               janitor, # Tablas y formateo
+               crosstable, # Tablas
+               table1 # Tablas
+)
+
+```
+
+```{r, echo=FALSE}
+load(url("https://dataverse.harvard.edu/api/access/datafile/10797987"))
+elsoc_2023 <- elsoc_long_2016_2023           
+rm(elsoc_long_2016_2023)
+```
+
+# Introducción
+
+Para esta investigación utilizaremos el Estudio Longitudinal Social de Chile (ELSOC) estudio único en Chile y América Latina, el cual encuesta anualmente a una muestra representativa de la población urbana en Chile a lo largo de una década, con el fin de evaluar cómo piensan, sienten y se comportan los chilenos en torno a un conjunto de temas referidos al conflicto y la cohesión social en el país. A través de los datos se buscará medir la percepción de la calidad de la democracia, que será entendida como la valoración subjetiva de las personas respecto al proceso de participación e influencia política en la ciudadanía.
+
+Durante los últimos años, Chile ha mostrado una notable desconexión con sus fuerzas políticas, esta desconexión llegó a su cúspide con el estallido social en octubre del 2019, pero ya venía revelándose desde hace tiempo a través de una baja participación electoral. Disi y Mardones (2019) apuntan a que la desafección tiene un efecto negativo tanto en la participación política convencional y no convencional, pero sobre todo en la primera, por lo que a mayor desconexión con la política del país, menor es la participación electoral. Es por esto que nos parece relevante analizar la legitimidad que los ciudadanos dan al sistema político Chileno, ya que su funcionamiento no se sostiene solo con que haya sido escogido por una mayoría sino también por la satisfacción de la ciudadanía, Sepulveda y Garrido (2022) plantean que la satisfacción con la democracia depende también de la confianza que la ciudadanía tenga en sus instituciones y que tan representados y escuchados se sientan por estas, esto es importante ya que como Riffo (2019) señala, quienes sienten insatisfacción con la democracia desconfían más en las instituciones ligadas a esta. Según Molina y Levine (2007) la calidad de la democracia debe ser medida a partir de cinco dimensiones conceptuales, decisión electoral, participación, respeto a la voluntad popular, responsabilidades y soberanía. ELSOC considera la medición operacional de la percepción de la calidad de la democracia en Chile, esto está incluido en el módulo C de la encuesta “Ciudadanía y democracia” que utiliza varios ítems, en su mayoría de tipo ordinal, buscando medir el nivel de acuerdo con cada pregunta, para luego abordar el nivel de confianza en distintas instituciones. La escala buscará medir cómo perciben los chilenos la calidad de la democracia, a partir de preguntas que apuntan a la confianza en los tres poderes del estado. Medir la calidad de la democracia y a su vez entender cómo los ciudadanos perciben la misma, resulta relevante ya que es determinante para el desarrollo de un país (Sanchez, Ganatios, 2011), tanto por la participación política como por la representatividad.
+
+El objetivo principal de este trabajo es analizar la relación que existe entre variables sociodemográficas (edad) y actitudinales (confianza en las poderes del Estado) con la percepción que existe de la calidad democrática en Chile, esperando que los hallazgos nos ayuden a comprender los efectos de la desconfianza en esta y como estos desafían la legitimidad del sistema político en Chile. Para cumplir con este objetivo, nuestras hipótesis son;
+
+-   H1 : A mayor edad, mayor será la satisfacción con el funcionamiento de la democracia.
+-   H2: Existe una relación entre la confianza en los tres poderes del estado y la satisfacción a la democracia.
+-   H3: A una menor edad, mayor será la confianza a los tres poderes del Estado.
+
+# Metodología
+
+La presente sección muestra el diseño metodológico utilizado para analizar la satisfacción con el funcionamiento de la democracia en Chile y su relación con la edad y la confianza en tres instituciones clave del Estado: Gobierno, Poder Judicial y Congreso Nacional. El estudio emplea datos del Estado Longitudinal Social de Chile (ELSOC), ola 7 (2023), correspondiente al módulo “Ciudadanía y Democracia”. Esta encuesta de panel es representativa de la población urbana entre 18 y 75 años, lo que permite observar cambios y continuidades en percepciones ciudadanas. Para este análisis se trabajó con los casos que presentan información completa en las variables seleccionadas, garantizando consistencia en los resultados.
+
+El estudio se centra en una variable dependiente (satisfacción con la democracia) y tres variables independientes relacionadas con la confianza institucional, además de la edad como variable continua complementaria. Todas las medidas pertenecen al módulo C del cuestionario, que evalúa percepciones subjetivas sobre el funcionamiento democratico. Los procedimientos estadísticos aplicados fueron seleccionados según el nivel de medición de cada variable, combinando métodos descriptivos, correlaciones y pruebas de asociación, con el fin de asegurar rigor analítico y coherencia en el contraste de las hipótesis planteadas.
+
+```{r, echo=FALSE}
+data.elsoc <- elsoc_2023 %>% filter(ola==7) %>%  # seleccionamos solo los casos de la ola 7 
+  select(saf_demo = c01, 
+         edad = edad_enc,
+         conf_gob = c05_01,
+         conf_jud = c05_05,
+         conf_cong = c05_07
+  )
+```
+
+```{r, echo=FALSE}
+#-------------------- 4. RECODIFICACION -----------------------------------------
+
+# ----- 4.1 Valores perdidos a NA------------------------------
+
+data.elsoc$saf_demo <- car::recode(data.elsoc$saf_demo, "c(-999,-888,-777,-666)=NA")
+data.elsoc$edad <- car::recode(data.elsoc$edad, "c(-999,-888,-777,-666)=NA")
+data.elsoc$conf_gob <- car::recode(data.elsoc$conf_gob, "c(-999,-888,-777,-666)=NA")
+data.elsoc$conf_jud <- car::recode(data.elsoc$conf_jud, "c(-999,-888,-777,-666)=NA")
+data.elsoc$conf_cong <- car::recode(data.elsoc$conf_cong, "c(-999,-888,-777,-666)=NA")
+
+
+# ----- 4.2 Volver a numerico ---------------------------------
+
+data.elsoc <- data.elsoc %>%
+  mutate(across(c(saf_demo, edad, conf_gob, conf_jud, conf_cong),
+                ~ as.numeric(as.character(.x))))
+
+# ----- 4.3 Tratamiento de casos: LISTWISE ------------------------------
+
+datos <- na.omit(data.elsoc[, 
+                            c("saf_demo", "conf_gob", "conf_jud", "conf_cong", "edad")])
+
+```
+
+## Variables
+
+La única variable dependiente es “satisfacción con la democracia” que pertenece al código c01 y fue renombrada como “saf_demo”. Corresponde a la pregunta “¿Cuán satisfecho o insatisfecho está usted con el funcionamiento de la democracia en Chile?, medida originalmente en una escala ordinal de 1= nada satisfecho a 5= muy satisfecho. Debido a la presencia de categorías con baja frecuencia en los valores superiores de la escala, se procedió a recodificar en tres niveles conceptualmente coherentes: Baja (1 - 2), Media (3), Alta (4 - 5). Esta recodificación permite obtener distribuciones más equilibradas y asegurar el cumplimiento de los supuestos métodos estadísticos empleados.
+
+Por otro lado, las tres variables independientes pertenecen al ítem C05, y son “confianza en el Estado” que corresponde al código c05_01 y fue renombrada como “conf_gob”, la segunda es “confianza en el poder judicial” que corresponde al código c05_05 y fue renombrada como “conf_jud”, y por último la variable “confianza en el congreso nacional” perteneciente al código c05_07 fue renombrada como “conf_cong”. En un principio estas utilizaban una escala donde 1 significa “Nada” y 5 significa “Mucho”, sin embargo al igual que con la variable dependiente la escala fue recodificada a tres niveles conceptuales, baja, media y alta confianza, con el fin de evitar celdas vacías y obtener distribuciones más estables para el análisis.
+
+Estas tres variables provienen del ítem C05: “Utilizando una escala donde 1 representa “Nada” y 5 “Mucho”, ¿Podría decirme cuánto confía usted en cada una de las siguientes instituciones?” Las escalas originales fueron recodificadas a los tres niveles conceptuales.
+
+La variable continua que registra la edad (edad_enc) declarada por los participantes en años cumplidos, presenta una distribución no normal y se relaciona con variables ordinales, su análisis se efectuó mediante estadísticos no paramétricos.
+
+Con el fin de asegurar la limpieza y una cohesión analitica de la base de datos, se aplicó un proceso previo al tratamiento donde los valores que son atípicos o de codificación especial (-888, -999, -777, -666) pasaron por la recodificación como valores perdidos (NA), posterior a esto se aplicó el método listwise, ya que el volumen original de 2726 observaciones, posibilita el asumir que el porcentaje de casos perdidos es considerablemente bajo, garantizando así que el proceso de eliminación de los casos incompletos no afectará de una manera significativa a la representatividad de la muestra. La principal ventaja de utilizar este método es tener la posibilidad de obtener y utilizar una base de datos que cuente con casos completos, lo que garantiza que cada correlación estadísticas se utiliza el mismo conjunto de datos, lo que permite mantener una buena coherencia y un profundo nivel de comparación entre los análisis que se realicen.
+
+```{r, echo=FALSE}
+# ---- 4.4 Recodificacion de variables --------
+
+#recodificacion para hacer el contrate de hipotesis categoricas 
+
+# Confianza en el gobierno
+datos$conf_gob_rec <- dplyr::case_when(
+  datos$conf_gob %in% c(1, 2) ~ "Baja",
+  datos$conf_gob == 3 ~ "Media",
+  datos$conf_gob %in% c(4, 5) ~ "Alta",
+  TRUE ~ NA_character_
+)
+
+# Confianza en el poder judicial
+datos$conf_jud_rec <- dplyr::case_when(
+  datos$conf_jud %in% c(1, 2) ~ "Baja",
+  datos$conf_jud == 3 ~ "Media",
+  datos$conf_jud %in% c(4, 5) ~ "Alta",
+  TRUE ~ NA_character_
+)
+
+# Confianza en el congreso
+datos$conf_cong_rec <- dplyr::case_when(
+  datos$conf_cong %in% c(1, 2) ~ "Baja",
+  datos$conf_cong == 3 ~ "Media",
+  datos$conf_cong %in% c(4, 5) ~ "Alta",
+  TRUE ~ NA_character_
+)
+
+# Satisfacción con la democracia
+datos$saf_demo_rec <- dplyr::case_when(
+  datos$saf_demo %in% c(1, 2) ~ "Baja",
+  datos$saf_demo == 3 ~ "Media",
+  datos$saf_demo %in% c(4, 5) ~ "Alta",
+  TRUE ~ NA_character_
+)
+
+```
+
+## Metodos
+
+La elección de los métodos estadísticos se basa en el nivel de medición de las variables, la distribución observada y los objetivos de contraste de hipótesis. El análisis se divide en métodos descriptivos, pruebas de hipótesis y estimación de tamaños de efecto.
+
+En el caso de la primera hipótesis: A mayor edad, mayor será la satisfacción con el funcionamiento de la democracia. Se optó por emplear el coeficiente de correlación Spearman, dado que ambas variables se comportan como ordinales y no presentan distribución normal. Este método no paramétrico permite evaluar asociaciones monotónicas y manejar empates en las categorías, por lo que resulta la opción más pertinente para este tipo de datos.
+
+Para la segunda hipótesis, que analiza la correlación entre la confianza de los tres poderes del Estado y la satisfacción con la democracia, fue necesario recodificar las variables de confianza en categorías (baja, media y alta), lo que permitió construir tablas de contingencia y aplicar la prueba de Chi - cuadrado de independencia, complementada con el coeficiente V de Cramer para estimar la magnitud del efecto y determinar la fuerza real de la asociación.
+
+Finalmente para la tercera hipótesis, que evalúa la relación entre la edad y la confianza de las instituciones, nuevamente se utilizó Spearman ya que tanto la edad como los niveles de confianza corresponden a escalas ordinales. Este método permite identificar si existe una tendencia monotónica entre ambas variables sin exigir normalidad ni linealidad. De este modo cada prueba estadística fue seleccionada en coherencia con las características de las variables y con los requerimientos analíticos del estudio, asegurando consistencia metodológica en el contraste de las hipótesis planteadas.
+
+En todas las hipótesis se reportó tamaño del efecto, siguiendo los criterios de Cohen: \<0.1: muy pequeño, 0.1 - 0.3: pequeño, 0.3 - 0.5: moderado, \>0.5: grande. Estos criterios permiten interpretar la relevancia substantiva de los hallazgos, más allá de su significancia estadística.
+
+```{r, echo=FALSE, warning=FALSE}
+# ------------------ 5. HIPOTESIS  ------------------------------------------------
+
+# ------ H1 --------------------------------------------------------------------
+# Contraste entre edad y saf_demo
+
+invisible(cor.test(datos$edad, datos$saf_demo, method = "spearman"))
+
+# ------ H2 --------------------------------------------------------------------
+# Contraste entre saf_demo y conf_gob , conf_jud , conf_cong 
+
+#------Tabla de contingencia---------- 
+invisible(sjPlot::sjtab(datos, saf_demo_rec, conf_gob_rec, conf_jud_rec, conf_cong_rec, show.row.prc = TRUE, show.col.prc = TRUE))
+
+#------ valores-----------------------------------------------------------------
+tab_gob <- table(datos$saf_demo_rec, datos$conf_gob_rec)
+tab_jud <- table(datos$saf_demo_rec, datos$conf_jud_rec)
+tab_cong <- table(datos$saf_demo_rec, datos$conf_cong_rec)
+#------ Chi cudrado ------------------------------------------------------------
+invisible(chisq.test(tab_gob))
+invisible(chisq.test(tab_jud))
+invisible(chisq.test(tab_cong))
+
+#------  H3 --------------------------------------------------------------------
+# Contraste entre edad y conf_gob , conf_jud , conf_cong
+
+invisible(cor.test(datos$edad, datos$conf_gob, method = "spearman"))
+invisible(cor.test(datos$edad, datos$conf_jud, method = "spearman"))
+invisible(cor.test(datos$edad, datos$conf_cong, method = "spearman"))
+```
+
+# Análisis
+
+## Análisis Descriptivos
+
+Para dar inicio al análisis del fenómeno que se pretende estudiar, se comenzará con un análisis univariado de las variables con respecto a estadíticos descriptivos y frecuencias.
+
+```{r, echo=FALSE}
+# Variables
+vars <- c("edad", "saf_demo", "conf_gob", "conf_jud", "conf_cong")
+
+# Tabla descriptiva
+tabla <- datos %>%
+  select(all_of(vars)) %>%
+  pivot_longer(cols = everything(), names_to = "variable", values_to = "valor") %>%
+  group_by(variable) %>%
+  summarise(
+    n = sum(!is.na(valor)),
+    minimo = min(valor, na.rm = TRUE),
+    maximo = max(valor, na.rm = TRUE),
+    media = round(mean(valor, na.rm = TRUE), 2),
+    mediana = median(valor, na.rm = TRUE),
+    sd = round(sd(valor, na.rm = TRUE), 2),
+    cv = round((sd / media) * 100, 2)
+  ) %>%
+  mutate(variable = case_when(
+    variable == "edad" ~ "Edad",
+    variable == "saf_demo" ~ "Satisfacción Democracia",
+    variable == "conf_gob" ~ "Confianza Gobierno",
+    variable == "conf_jud" ~ "Confianza Judicial",
+    variable == "conf_cong" ~ "Confianza Congreso"
+  ))
+
+# Mostrar tabla 
+tabla %>%
+  kbl(caption = "Tabla de estadísticos descriptivos por variable") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+                full_width = FALSE, 
+                position = "center") %>%
+  row_spec(0, bold = TRUE, color = "white", background = "#078")
+```
+
+A partir de los datos se puede analizar que el nivel de confianza al congreso, su mediana posee un valor de 1, ubicándose así en el valor más bajo, el CV que tiene un valor de 51.43 indicando alta dispersión relativa. La confianza en el gobierno y en el poder judicial muestran valores de medias de 2.11 y un 2.05, ambos con un CV que cercano al 50%, lo que muestra que hay una fuerte variabilidad entre las respuestas. La variable de edad posee un valor de 25.02 en su CV, lo que confirma una distribución de datos que es más homogénea. La satisfacción con la democracia, es baja con una media de 2.25 y un CV de 51.11, mostrando una dispersión importante respecto de las percepciones ciudadanas.
+
+**Gráfico 1.**
+
+```{r, echo=FALSE}
+#edad 
+ggplot(datos, aes(x = edad)) +
+  geom_histogram(binwidth = 5, fill = "#075", color = "white") +
+  labs(title = "Distribución de la Edad",
+       x = "Edad",
+       y = "Frecuencia") +
+  theme_minimal()
+```
+
+En el gráfico 1 de histograma muestra por un lado que hay una alta concentración de personas encuestadas que se encuentran en un rango entre los 40 y 60 años, lo que explica los valores de 48 de media y 49 de mediana que se reportaron en la tabla 1, y por otro lado la presencia de casos en edades más bajas respecto de la media y la mediana demuestra una dispersión de los datos que es importante, lo que explica también coherentemente el valor de 12 años en la desviación estándar. A modo de síntesis el gráfico no hace más que confirmar que si bien existe una distribución amplia de la edad pero que esta amplia distribución es también medianamente relativa, con una alta concentración en la tercera edad y sin notorias asimetrías. 
+
+**Grafico 2.**
+
+```{r, echo=FALSE}
+#Satifacción con la democracia 
+ggplot(datos, aes(x = saf_demo)) +
+  geom_bar(fill = "#A8E6CF") +
+  labs(title = "Frecuencia de Satisfacción con la Democracia",
+       x = "Niveles de Satisfacción",
+       y = "Frecuencia") +
+  theme_minimal()
+```
+
+Este gráfico muestra que la mayor frecuencia de respuestas se asocian al primer nivel de satisfacción con un total de 847 respuestas, seguido de los niveles 2 (267 respuestas) y 3 (647 respuestas). Esto muestra que la mayoría de los encuestados muestran una baja o moderada valoración de la democracia. Sin embargo los niveles 4  (263)  y 5 (104), mostrando frecuencias menores a los niveles anteriores. Esta distribución está en coherencia con las medias (2.25) y la mediana (2) las cuales muestran un nivel generalizado de baja satisfacción. Este gráfico muestra una inclinación general hacia la insatisfacción, a pesar de que hay una cierta variabilidad que busca revelar las diferencias entre las respuestas. 
+
+**Grafico 3.**
+
+```{r, echo=FALSE}
+#Confianza con el gobierno 
+ggplot(datos, aes(x = conf_gob)) +
+  geom_bar(fill = "#457B9D") +
+  labs(title = "Frecuencia de Confianza al gobierno",
+       x = "Nivel de Confianza",
+       y = "Frecuencia") +
+  theme_minimal()
+```
+
+El nivel 1 “nada de confianza" tiene una frecuencia con 1036, concentrando un 41% de la muestra. Seguido por el nivel 3; confianza moderada y el nivel 2; poca confianza, evidenciando que los valores de mayor frecuencia señalan una nula-moderada confianza al gobierno. Los niveles 3, 4 y 5 en conjunto suman 909 casos. Esto explica la fuerte concentración de datos que también coincide con la media y la mediana. Su desviación estándar de 1,14 demuestra una dispersión moderada, ya que a pesar de que los valores bajos tengan mayor frecuencia, el nivel 3 hace contrapeso al concentrar una alta cantidad de datos, alterando la media. Este gráfico nos indica que hay una baja confianza de parte de la ciudadanía en el gobierno.
+
+**Grafico 4.**
+
+```{r, echo=FALSE}
+#Confianza con el Poder Judicial 
+ggplot(datos, aes(x = conf_jud)) +
+  geom_bar(fill = "#1D3557") +
+  labs(title = "Frecuencia de Confianza al Poder Judicial",
+       x = "Nivel de Confianza",
+       y = "Frecuencia") +
+  theme_minimal()
+```
+
+El nivel 1 “nada de confianza” con un 39% de los datos, seguido por el nivel 2 y 3 los valores que más se repiten son aquellos que indican una confianza en el poder judicial baja o nula, concentrando entre los 3 niveles más bajos un 91,5% de los datos. La frecuencia de alta confianza es significativamente menor, lo cual coincide con la media (2,05) y la mediana (2), esto indica que la tendencia central es a la desconfianza. La desviación estándar de 1,02 indica una dispersión moderada, a pesar de que la mayoría de datos se agrupen en valores bajos, hay una variación en las respuestas, sobre todo con el nivel 3. Este gráfico refleja una baja confianza de parte de la ciudadanía en el poder judicial.
+
+**Grafico 5.**
+
+```{r, echo=FALSE}
+#Confianza al Congreso Nacional 
+ggplot(datos, aes(x = conf_jud)) +
+  geom_bar(fill = "#6B8E23") +
+  labs(title = "Frecuencia de Confianza al Congreso Nacional",
+       x = "Nivel de Confianza",
+       y = "Frecuencia") +
+  theme_minimal()
+
+```
+
+Nuevamente el nivel 1 muestra un alto porcentaje (52%) de los datos de la muestra, seguido por el nivel 2 los valores indican una baja confianza son los de mayor frecuencia. Los valores 3, 4 y 5 que señalan una confianza moderada-total tienen frecuencias bajas, las tres en conjunto suman 579 casos, lo que representa un 23% de la muestra. Esto explica la alta concentración de datos en el lado negativo de la tabla, ya que los dos niveles más bajos hay más del doble de los datos que acumulan el resto de niveles, por lo que, como señala la media (1,75) y la mediana (1) existe una evidente desconfianza en el Congreso Nacional. La desviación estándar de este análisis es la más baja de las tres instituciones analizadas, de los tres poderes del estado, el Congreso Nacional es la institución en la que menos confían las personas.
+
+## Análisis Bivariados
+
+En esta sección se presentan los análisis bivariados realizados para contrastar las tres hipótesis de investigación. Se consideran, por una parte la tabla resumen de correlaciones y asociaciones y por otra, los gráficos bivariados construidos para facilitar la interpretación sustantiva de los resultados. En todos los casos se reportan el nivel de significancia y el tamaño del efecto, de acuerdo con los criterios de Cohen.
+
+```{r, echo=FALSE}
+# --- 6.2 Analisis bivariados --------------------------------------------------
+
+# Tabla resumen de todas las correlaciones 
+resumen_cor <- data.frame(
+  Hipotesis = c(
+    "H1", 
+    "H2", "H2", "H2",
+    "H3", "H3", "H3"
+  ),
+  Variables = c(
+    "Edad vs Satisfacción con la democracia", 
+    "Satisfacción vs Confianza Gobierno", 
+    "Satisfacción vs Confianza Poder Judicial", 
+    "Satisfacción vs Confianza Congreso Nacional",
+    "Edad vs Gobierno", 
+    "Edad vs Poder Judicial", 
+    "Edad vs Congreso Nacional"
+  ),
+  Test = c(
+    "Spearman ρ",
+    "Chi-cuadrado / V de Cramer",
+    "Chi-cuadrado / V de Cramer",
+    "Chi-cuadrado / V de Cramer",
+    "Spearman ρ",
+    "Spearman ρ",
+    "Spearman ρ"
+  ),
+  Coeficiente = c(
+    "-0.04", 
+    "X²=570.82, V=0.336", 
+    "X²=155.35, V=0.200", 
+    "X²=165.54, V=0.210",
+    "-0.034", 
+    "0.025", 
+    "0.072"
+  ),
+  p_valor = c(
+    "0.04", 
+    "0.00000000022", 
+    "0.00000000022", 
+    "0.00000000022",
+    "0.0812", 
+    "0.2152", 
+    "0.0003"
+  )
+)
+#Tabla 
+resumen_cor %>%
+  kable(format = "html",
+        caption = "Resumen de correlaciones y asociaciones de las hipótesis") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+                full_width = TRUE,
+                position = "center") %>%
+  row_spec(0, bold = TRUE, color = "white", background = "#078")
+```
+
+### Análisis entre la correlación de las variables Satifacción a la democracia (saf_demo) y Edad
+
+```{r, echo=FALSE}
+#--------------Hipotesis 1 -------------------------------------
+
+#tabla 
+hip1_tab <- data.frame(
+  Estadístico = c("Rho - coeficiente", "p-valor"),
+  Valor = c(-0.04, 0.04)
+)
+
+kable(hip1_tab, format = "html", digits = 2) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"),
+                full_width = FALSE,
+                position = "center") %>%
+  add_header_above(c("Tabla de correlación: Edad y Satisfacción de la Democracia" = 2)) %>%
+  row_spec(0, bold = TRUE, color = "white", background = "#078")
+```
+
+La tabla muestra una correlación de Spearman muestra un coeficiente ρ = -0.04 con p = 0.04, lo que indica una asociación estadísticamente significativa pero extremadamente débil. Aunque el valor p indica significancia estadística, el coeficiente es tan cercano a cero que la relación carece de relevancia práctica. Esto implica que la edad no explica de manera sustantiva las diferencias en satisfacción democrática. En términos generales las variaciones entre personas jóvenes y mayores son mínimas y no conforman un patrón consistente, lo que se confirma posteriormente en los gráficos por grupos etarios. 
+
+**Gráfico H1.**
+
+```{r, echo=FALSE}
+#grafico
+# Crear variable de rangos de edad --> solo para fines esteticos del grafico 
+datos <- datos %>%
+  mutate(edad_rango = cut(
+    edad,
+    breaks = c(18, 29, 39, 59, 75),  
+    labels = c("Joven (18-29)", "Joven adulto (30-39)", "Adulto(40-59)", "Adulto mayor(60-75)"),
+    right = TRUE
+  ))
+
+# Crear tabla con porcentajes por grupo etario
+datos_pct <- datos %>% 
+  group_by(edad_rango, saf_demo_rec) %>% 
+  summarise(n = n(), .groups = "drop") %>%
+  group_by(edad_rango) %>% 
+  mutate(pct = n / sum(n) * 100)
+
+# Gráfico 
+ggplot(datos_pct, aes(x = edad_rango, y = pct, fill = saf_demo_rec)) +
+  geom_col(position = position_dodge(width = 0.9)) +
+  geom_text(aes(label = paste0(round(pct, 1), "%")),
+            position = position_dodge(width = 0.9),
+            vjust = -0.3,
+            size = 4) +
+  scale_fill_manual(values = c(
+    "Baja"  = "#075",
+    "Media" = "#A8E6CF",
+    "Alta"  = "#4575b4"
+  )) +
+  labs(x = "Grupo Etario",
+       y = "Porcentaje de satifación",
+       fill = "Satisfacción con la democracia") +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "bottom")
+
+```
+
+El gráfico 1 evidencia que la satisfacción baja predomina en todos los grupos etarios, desde jóvenes hasta adultos mayores. Aunque existe una ligera tendencia a mayor insatisfacción en los grupos de mayor edad, las diferencias entre tramos son mínimas y no configuran un patrón claro. La satisfacción media y alta se mantienen relativamente estables entre grupos, lo que coincide con el coeficiente de correlación casi nulo. Por último, el gráfico confirma que la edad no desempeña un rol relevante en la evaluación del funcionamiento democrático.
+
+### Análisis entre la correlación de las variables Satifacción a la democracia (saf_demo) y Confianza a los poderes del estado (conf_gob, conf_jub, conf_cong)
+
+```{r, echo=FALSE}
+#--------------Hipotesis 2 -------------------------------------
+
+# Tabla 2
+hip2_tab <- data.frame(
+  Variable = c("Confianza Gobierno", "Confianza Poder Judicial", "Confianza Congreso Nacional"),
+  X2 = c(570.82, 155.35, 165.54),
+  df = c(4, 4, 4),
+  `p-valor` = c("0.00000000000000022", "0.00000000000000022", "0.00000000000000022"),
+  `V de Cramer` = c(0.336, 0.200, 0.210)
+)
+
+hip2_tab %>%
+  kable(format = "html",
+        caption = "Tabla de Chi-cuadrado y V de Cramer: Asociación entre satisfacción con la democracia y confianza en los tres poderes del Estado") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+                full_width = TRUE,
+                position = "center") %>%
+  row_spec(0, bold = TRUE, color = "white", background = "#078")
+```
+
+Los resultados muestran una asociación significativa entre la confianza en los tres poderes del Estado y la satisfacción con la democracia. Las pruebas de Chi - Cuadrado indican que está relación existe en los tres casos y los valores de V de Cramer revelan que el efecto es moderado para el Gobierno (V= 0.336) y débil pero consistente para el Poder Judicial (V= 0.200) y el congreso Nacional (V= 0.210). Esto indica que la confianza institucional influye en la satisfacción democrática, siendo el Gobierno la institución más vinculada a esta evaluación. Los resultados respaldan la existencia de un vínculo claro entre ambas dimensiones.
+
+```{r, echo=FALSE}
+# Grafico 2 
+
+# Recodificación y orden
+datos$conf_gob_rec  <- factor(datos$conf_gob_rec,  levels = c("Baja","Media","Alta"))
+datos$conf_jud_rec  <- factor(datos$conf_jud_rec,  levels = c("Baja","Media","Alta"))
+datos$conf_cong_rec <- factor(datos$conf_cong_rec, levels = c("Baja","Media","Alta"))
+datos$saf_demo_rec  <- factor(datos$saf_demo_rec,  levels = c("Baja","Media","Alta"))
+
+datos_largo <- datos %>%
+  pivot_longer(
+    cols = c(conf_gob_rec, conf_jud_rec, conf_cong_rec),
+    names_to = "variable",
+    values_to = "confianza"
+  )
+
+datos_largo <- datos_largo %>%
+  mutate(
+    poder = case_when(
+      variable == "conf_gob_rec"  ~ "Gobierno",
+      variable == "conf_jud_rec"  ~ "Poder Judicial",
+      variable == "conf_cong_rec" ~ "Congreso Nacional"
+    )
+  )
+
+tabla_heat <- datos_largo %>%
+  count(confianza, saf_demo_rec, poder) %>%
+  group_by(poder) %>%
+  mutate(pct = n / sum(n) * 100)
+
+```
+
+**Gráfico H2.1: Correlacción entre Confianza al Gobierno y Satifacción a la democracia.**
+
+```{r, echo=FALSE}
+#Gobierno
+tabla_heat %>%
+  filter(poder == "Gobierno") %>%
+  ggplot(aes(x = confianza, y = saf_demo_rec, fill = pct)) +
+  geom_tile() +
+  geom_text(aes(label = paste0(round(pct,1),"%")), size = 5) +
+  scale_fill_gradient(low = "#e0f3f8", high = "#457b9d") +
+  labs(
+    x = "Nivel confianza",
+    y = "Nivel satisfacción",
+    fill = "%"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(plot.title = element_text(face="bold", hjust = 0.5))
+```
+
+El gráfico muestra un patrón de que quienes presentan baja confianza en el Gobierno concentran los niveles más altos de baja satisfacción con la democracia (47.7%) y a medida que la confianza aumenta hacia niveles medios y altos, las proporciones de satisfacción media y alta se incrementan levemente, aunque siguen siendo minoritarias. La celda “baja confianza - baja satisfacción” domina la distribución, lo que evidencia una relación positiva y significativa entre ambas variables. En conclusión el gráfico refuerza la asociación identificada en el análisis estadístico.
+
+**Grafico H2.2: Correlación entre la Confianza al Poder judicial y la Satifacción a la Democracia.**
+
+```{r, echo=FALSE}
+#Poder Judicial
+tabla_heat %>%
+  filter(poder == "Poder Judicial") %>%
+  ggplot(aes(x = confianza, y = saf_demo_rec, fill = pct)) +
+  geom_tile() +
+  geom_text(aes(label = paste0(round(pct,1),"%")), size = 5) +
+  scale_fill_gradient(low = "#74ADD1", high = "#1D3557") +
+  labs(
+    x = "Nivel confianza",
+    y = "Nivel satisfacción",
+    fill = "%"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(plot.title = element_text(face="bold", hjust = 0.5))
+```
+
+El gráfico muestra que las personas con baja confianza en el Poder Judicial concentran los niveles más altos de baja satisfacción con la democracia (44.4%). A medida que la confianza aumenta hacia niveles medios y altos, las proporciones de satisfacción también disminuyen considerablemente, lo cual evidencia un patrón claro de asociación positiva entre ambas variables. Aunque los porcentajes de satisfacción alta son bajos en todos los niveles, el gradiente del gráfico confirma que una menor confianza judicial se relaciona sistemáticamente con una menor satisfacción democrática.
+
+**Grafico H2.3: Correlación entre la Confianza al Congreso Nacional y la Satifacción a la Democracia.**
+
+```{r, echo=FALSE}
+#Congreso Nacional
+tabla_heat %>%
+  filter(poder == "Congreso Nacional") %>%
+  ggplot(aes(x = confianza, y = saf_demo_rec, fill = pct)) +
+  geom_tile() +
+  geom_text(aes(label = paste0(round(pct,1),"%")), size = 5) +
+  scale_fill_gradient(low = "#e6f5d0", high = "#6b8e23") +
+  labs(
+    x = "Nivel confianza",
+    y = "Nivel satisfacción",
+    fill = "%"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(plot.title = element_text(face="bold", hjust = 0.5))
+```
+
+El gráfico muestra un claro patrón que es que las personas con baja confianza en el Congreso concentran los niveles más altos de baja satisfacción con la democracia. A medida que aumenta la confianza hacia niveles medios y altos, las proporciones de satisfacción media y alta se incrementan, aunque en menor medida. La celda “baja confianza - baja satisfacción” presenta la mayor frecuencia, lo que evidencia la relación significativa encontrada en los análisis. El gráfico permite visualizar de forma simple el gradiente positivo entre ambas variables.
+
+En conclusión, los resultados evidencian un gradiente claro, es decir a mayor confianza institucional, mayor satisfacción con la democracia y con ellos la segunda hipótesis queda firmemente respaldada.
+
+### Análisis entre la correlación de las variables Confianza a los poderes del estado (conf_gob, conf_jub, conf_cong) y Edad
+
+```{r, echo=FALSE}
+#--------------Hipotesis 3 -------------------------------------
+
+hip3_tab <- data.frame(
+  Variable = c("Edad-Gobierno", "Edad-Poder Judicial", "Edad-Congreso Nacional"),
+  Rho = c(-0.035, -0.025, -0.072),
+  p_valor = c(0.0812, 0.2152, "0.0003")
+)
+# Tabla 
+hip3_tab %>%
+  kable(format = "html",
+        caption = "Tabla de correlaciones de Spearman: Relación entre edad y confianza en los tres poderes del Estado") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+                full_width = TRUE,
+                position = "center") %>%
+  row_spec(0, bold = TRUE, color = "white", background = "#078")
+
+```
+
+La tercera hipótesis plantea que a menor edad, mayor será la confianza en los tres poderes del Estado. Para contrastar se estimaron correlaciones de Spearman entre la edad y los niveles originales de confianza en cada institución. Las correlaciones obtenidas son -0.035 para la confianza en el Gobierno, 0.025 para la confianza en el Poder Judicial y 0.072 para la confianza en el Congreso Nacional. Solo esta última alcanza significancia estadística, sin embargo en los tres casos los valores se mantienen por debajo del umbral de 0.10, lo que indica que la relación es extremadamente débil.
+
+**Gráfico H3.1: Confianza en el Gobierno por Grupo Etario.** 
+
+```{r, echo=FALSE}
+#---------------------gobierno-------------------------
+datos_pct1 <- datos %>% 
+  group_by(edad_rango, conf_gob_rec) %>% 
+  summarise(n = n(), .groups = "drop") %>%
+  group_by(edad_rango) %>% 
+  mutate(pct = n / sum(n) * 100)
+
+# Grafico 
+ggplot(datos_pct1, aes(x = edad_rango, y = pct, fill = conf_gob_rec)) +
+  geom_col(position = position_dodge(width = 0.9)) +
+  geom_text(aes(label = paste0(round(pct, 1), "%")),
+            position = position_dodge(width = 0.9),
+            vjust = -0.3,
+            size = 4) +
+  scale_fill_manual(values = c(
+    "Baja"  = "#e0f3f8",
+    "Media" = "#457b9d",
+    "Alta"  = "#4575b4"
+  )) +
+  labs(x = "Grupo Etario",
+       y = "Porcentaje",
+       fill = "Nivel de confianza al Gobierno") +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "bottom")
+
+```
+El gráfico muestra que la baja confianza en el Gobierno predomina en todos los grupos etarios, con porcentajes que van desde 60% hasta cerca de 68% y la confianza media y alta se distribuyen de manera similar entre tramos etarios, sin diferencias claras. Aunque los adultos mayores presentan ligeramente más baja confianza, las variaciones son pequeñas. La estructura general del gráfico es homogénea, lo que coincide con la correlación muy débil observada en la tabla.
+
+**Gráfico H3.2: Confianza en el Poder Judicial por Grupo Etario.** 
+
+```{r, echo=FALSE}
+# ------------Poder Judicial-----------------------
+datos_pct2 <- datos %>% 
+  group_by(edad_rango, conf_jud_rec) %>% 
+  summarise(n = n(), .groups = "drop") %>%
+  group_by(edad_rango) %>% 
+  mutate(pct = n / sum(n) * 100)
+
+# Grafico 
+ggplot(datos_pct2, aes(x = edad_rango, y = pct, fill = conf_jud_rec)) +
+  geom_col(position = position_dodge(width = 0.9)) +
+  geom_text(aes(label = paste0(round(pct, 1), "%")),
+            position = position_dodge(width = 0.9),
+            vjust = -0.3,
+            size = 4) +
+  scale_fill_manual(values = c(
+    "Baja"  = "#74ADD1",
+    "Media" = "#1D3557",
+    "Alta"  = "#4575b4"
+  )) +
+  labs(x = "Grupo Etario",
+       y = "Porcentaje",
+       fill = "Nivel de confianza al Poder Judicial") +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "bottom")
+
+```
+En todos los grupos etarios predomina la baja confianza en el Poder Judicial, con niveles de confianza alta que no superan el 9%. Las diferencias entre cohortes son mínimas, ya que los porcentajes se mantienen relativamente estables entre jóvenes, adultos y adultos mayores. Lo cual refuerza la conclusión de que la edad no determina los niveles de confianza judicial y coincide con la correlación cercana a cero observada en los resultados estadísticos.
+
+**Gráfico H3.3: Confianza en el Congreso Nacional por Grupo Etario.** 
+
+```{r, echo=FALSE}
+# -------------------Congreso Nacional------------------------------------------
+datos_pct3 <- datos %>% 
+  group_by(edad_rango, conf_cong_rec) %>% 
+  summarise(n = n(), .groups = "drop") %>%
+  group_by(edad_rango) %>% 
+  mutate(pct = n / sum(n) * 100)
+# Grafico 
+ggplot(datos_pct3, aes(x = edad_rango, y = pct, fill = conf_cong_rec)) +
+  geom_col(position = position_dodge(width = 0.9)) +
+  geom_text(aes(label = paste0(round(pct, 1), "%")),
+            position = position_dodge(width = 0.9),
+            vjust = -0.3,
+            size = 4) +
+  scale_fill_manual(values = c(
+    "Baja"  = "#e6f5d0",
+    "Media" = "#6b8e23",
+    "Alta"  = "#078"
+  )) +
+  labs(x = "Grupo Etario",
+       y = "Porcentaje",
+       fill = "Nivel de confianza al Congreso Nacional") +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "bottom")
+```
+El gráfico evidencia un nivel de baja confianza muy alto en todos los grupos etarios, superando el 70% y llegando a más del 80% en adultos mayores. La confianza media y alta con minoritarias en todos los tramos. Aunque los niveles de desconfianza aumentan ligeramente con la edad, las diferencias no son suficientes para establecer un patrón claro. Estos resultados coinciden con la correlación muy débil encontrada, mostrando que la desconfianza es transversal a todas las edades. Por lo tanto la hipótesis tres se rechaza en términos prácticos, ya que la edad no parece explicar los niveles de confianza institucional.
+
+# Conlusión 
+
+A partir del presente estudio que tuvo como objetivo analizar la relación entre la percepción de la calidad de la democracia en Chile y las variables como la edad y confianza a los poderes del Estado, se puede concluir que en Chile a modo general existe una baja satisfacción y alta desconfianza en la democracia. A partir del análisis bivariado se puede concluir que, para la primera hipotesis según la correlación de Spearman la edad no define totalmente las diferencias en satisfacción democrática, demostrando que en todos los grupos etarios existe una baja satisfacción. Por otro lado, el resultado de Chi-Cuadrado de la segunda hipótesis muestra una asociación significativa entre la confianza en los tres poderes del Estado y la satisfacción con la democracia, principalmente en el caso del Gobierno. Finalmente, en la hipótesis que afirma que a menor edad mayor confianza en los tres poderes del estado, a través de la correlación de Spearman se puede afirmar que no existe una relación significativa. 
+
+Las principales limitaciones que presenta esta investigación corresponden, por un lado, a la recodificación de las variables a tres niveles, que inevitablemente significa la pérdida de información. Así mismo el uso del tratamiento “Listwise”, a pesar de que permite mantener un orden y coherencia para el análisis, se reduce el tamaño de la muestra y por lo tanto se pierde información. Mientras que por otro lado, a pesar de que el uso de la correlación de Spearman logra evidenciar si existe relación entre variables, no nos permite establecer causalidad. Para futuras investigaciones sería ideal poder analizar los datos de varias olas de la encuesta ELSOC, que permitirá identificar cambios o patrones en el tiempo, y así mismo se podría determinar de mejor manera la causalidad. Por otro lado, esto resultaría interesante para poder relacionar los datos con la coyuntura del país y en qué medida afectan, por ejemplo en el caso de estallido social o de la pandemia. 
+
+
+
+
+# Bibliografia 
+Disi Pavlic, R., & Mardones Arévalo, R. (2019). Chile 2010: la desafección política y su impacto en la participación política convencional y no convencional. *Revista Del CLAD Reforma Y Democracia, 73*. https://doi.org/10.69733/clad.ryd.n73.a177
+
+Sepúlveda-Rodríguez, I., & Garrido-Vergara, L. (2022). Satisfacción con la democracia y legitimidad en Chile. *Revista De Sociología, 37*(2), 1–15. https://doi.org/10.5354/0719-529X.2022.69099
+
+Riffo Galán, F. (2019). *¿Qué influye en la confianza en las instituciones? Evidencia empírica para el caso Chileno* [Seminario de Grado]. Universidad del Bío-Bío. http://repobib.ubiobio.cl/jspui/bitstream/123456789/3073/1/Riffo%20Gal%C3%A1n%2C%20Fabian.pdf
+
+Levine, D. H., & Molina, J. E. (2007). La calidad de la democracia en América Latina: una visión comparada. *América Latina Hoy, (46)*, 17–46. http://www.redalyc.org/articulo.oa?id=308004502
+
+Patrón Sánchez, F., & León Ganaba, L. E. (2011). Calidad de la democracia y percepción ciudadana en América Latina. Revista Mañongo Nº 35, VOL. XVIII, , https://www.servicio.bc.uc.edu.ve/postgrado/manongo35/art10.pdf
+
+Equipo ELSOC. (2023). *Manual metodológico ELSOC 2016-2022*. Centro de Estudios de Conflicto y Cohesión Social (COES). https://manual-metodologico-elsoc.netlify.app/manual-metodologico-elsoc.pdf
