@@ -1,0 +1,5 @@
+"0","#| include: false"
+"0","sjt.xtab(datos$edad_tramo_num, datos$R_decaimiento_pes_des,"
+"0","         show.row.prc = TRUE, #solo fila"
+"0","         show.col.prc=TRUE, #solo columna"
+"0","         show.summary = FALSE)"

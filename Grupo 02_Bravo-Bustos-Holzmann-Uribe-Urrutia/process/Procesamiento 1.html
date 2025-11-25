@@ -1,0 +1,1868 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Benjamin Bravo, Josefina Bustos, Sofia Holzmann, Kayla Uribe, Tamara Urrutia">
+
+<title>Brechas de género en Salud Mental en Chile: Un análisis bivariado con datos de ELSOC 2022</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Procesamiento 1_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Procesamiento 1_files/libs/quarto-html/quarto.js"></script>
+<script src="Procesamiento 1_files/libs/quarto-html/popper.min.js"></script>
+<script src="Procesamiento 1_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Procesamiento 1_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Procesamiento 1_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Procesamiento 1_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Procesamiento 1_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Procesamiento 1_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Procesamiento 1_files/libs/bootstrap/bootstrap-1bc8a17f135ab3d594c857e9f48e611b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="Procesamiento 1_files/libs/kePrint-0.0.1/kePrint.js"></script>
+
+<link href="Procesamiento 1_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">1</span> Introducción</a></li>
+  <li><a href="#metodología" id="toc-metodología" class="nav-link" data-scroll-target="#metodología"><span class="header-section-number">2</span> Metodología</a>
+  <ul class="collapse">
+  <li><a href="#datos" id="toc-datos" class="nav-link" data-scroll-target="#datos"><span class="header-section-number">2.1</span> Datos</a></li>
+  <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables"><span class="header-section-number">2.2</span> Variables</a></li>
+  <li><a href="#métodos" id="toc-métodos" class="nav-link" data-scroll-target="#métodos"><span class="header-section-number">2.3</span> Métodos</a></li>
+  </ul></li>
+  <li><a href="#análisis" id="toc-análisis" class="nav-link" data-scroll-target="#análisis"><span class="header-section-number">3</span> Análisis</a>
+  <ul class="collapse">
+  <li><a href="#análisis-descriptivo" id="toc-análisis-descriptivo" class="nav-link" data-scroll-target="#análisis-descriptivo"><span class="header-section-number">3.1</span> Análisis descriptivo</a>
+  <ul class="collapse">
+  <li><a href="#tablas-de-contingencia" id="toc-tablas-de-contingencia" class="nav-link" data-scroll-target="#tablas-de-contingencia"><span class="header-section-number">3.1.1</span> Tablas de contingencia</a></li>
+  <li><a href="#índice-de-salud-mental" id="toc-índice-de-salud-mental" class="nav-link" data-scroll-target="#índice-de-salud-mental"><span class="header-section-number">3.1.2</span> Índice de Salud Mental</a></li>
+  </ul></li>
+  <li><a href="#análisis-estadístico-bivariado" id="toc-análisis-estadístico-bivariado" class="nav-link" data-scroll-target="#análisis-estadístico-bivariado"><span class="header-section-number">3.2</span> Análisis Estadístico Bivariado</a>
+  <ul class="collapse">
+  <li><a href="#promedio-ism-por-tramos-específicos" id="toc-promedio-ism-por-tramos-específicos" class="nav-link" data-scroll-target="#promedio-ism-por-tramos-específicos"><span class="header-section-number">3.2.1</span> Promedio ISM por tramos específicos</a></li>
+  </ul></li>
+  <li><a href="#contraste-de-hipótesis-y-tamaños-de-efecto" id="toc-contraste-de-hipótesis-y-tamaños-de-efecto" class="nav-link" data-scroll-target="#contraste-de-hipótesis-y-tamaños-de-efecto"><span class="header-section-number">3.3</span> Contraste de Hipótesis y tamaños de efecto</a>
+  <ul class="collapse">
+  <li><a href="#hipótesis-1-direccional" id="toc-hipótesis-1-direccional" class="nav-link" data-scroll-target="#hipótesis-1-direccional"><span class="header-section-number">3.3.1</span> Hipótesis 1 (direccional)</a></li>
+  <li><a href="#hipótesis-2-direccional" id="toc-hipótesis-2-direccional" class="nav-link" data-scroll-target="#hipótesis-2-direccional"><span class="header-section-number">3.3.2</span> Hipótesis 2 (direccional)</a></li>
+  <li><a href="#hipótesis-3-no-direccional" id="toc-hipótesis-3-no-direccional" class="nav-link" data-scroll-target="#hipótesis-3-no-direccional"><span class="header-section-number">3.3.3</span> Hipótesis 3 (no direccional)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#conclusión" id="toc-conclusión" class="nav-link" data-scroll-target="#conclusión"><span class="header-section-number">4</span> Conclusión</a></li>
+  <li><a href="#bibliografía" id="toc-bibliografía" class="nav-link" data-scroll-target="#bibliografía"><span class="header-section-number">5</span> Bibliografía</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Brechas de género en Salud Mental en Chile: Un análisis bivariado con datos de ELSOC 2022</h1>
+<p class="subtitle lead">Estadística Correlacional 2025</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Autor/a</div>
+  <div class="quarto-title-meta-heading">Afiliación</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Benjamin Bravo, Josefina Bustos, Sofia Holzmann, Kayla Uribe, Tamara Urrutia </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            </p><ul>
+            <li>Profesor: Juan Carlos Castillo</li>
+            <li>Apoyo Docente: Kevin Carrasco</li>
+            <li>Ayudante: Isidora Valencia</li>
+            </ul>
+          <p></p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">23 de noviembre de 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introducción</h1>
+<p>La salud mental según la OMS (s.f.) es un derecho humano fundamental, es un estado de comodidad mental que abre paso a la afrontación cotidiana. Esta es primordial, ya que influye en aspectos a nivel personal, social y socioeconómico. Sin embargo, esto puede manifestarse distinto en hombres y mujeres, por ello es importante reflexionar sobre la existencia de desigualdades en este tópico. El género es relevante en temas de salud mental, puesto que no solo es distinta por factores biológicos, sino que también es desigual, principalmente por la prevalencia de ejes sociales que posicionan a mujeres y hombres en diferentes esferas, lo que afecta en gran medida la vida, el trabajo, la socialización y la salud (Cabezas, 2021).</p>
+<p>Por ende, este reporte abordará las brechas de género existentes en la salud mental en Chile utilizando la base de datos ELSOC. La existencia de brechas de género, es una problemática que fluctúa a lo largo del ciclo vital, donde también lo relevante de abordarlo desde el género es poder analizar las relaciones sociales que tienen hombres y mujeres, teniendo en cuenta que esto también define las desigualdades en el ámbito de la salud (Rohlfs et al., 2000)</p>
+<p>Bajo esta perspectiva, la problematización recae en esclarecer el comportamiento de esta brecha en el contexto chileno, determinando si existe variación tanto en género como en rango etario. El antecedente general es que las mujeres tienden a presentar una peor salud mental que los hombres, lo que se puede evidenciar en los últimos 20 años donde la brecha de género en la proporción de esperanza de vida sin síntomas depresivos alcanzó 10 puntos de diferencia (Moreno et al, 2024). En este contexto resulta crucial problematizar la interacción entre sexo y edad, y si configura resultados de mayor o menor brecha de género, ya que no es suficiente la diferencia general ya existente. La relevancia de este trabajo, recae sobre la necesidad de generar evidencia que permita una reflexión y posible acción pública. Por ende, es necesario concebir quién se afecta más, y en qué ciclo vital se generan estas brechas. De esta forma, el paso de un diagnóstico general a uno focalizado, permite identificar grupos de riesgo específicos que requieren atención prioritaria, puesto que es importante que la salud no quede ajena a la inequidad de género y que esta realidad se debe tomar en cuenta para el diseño de políticas públicas del área (Presno y Castañeda 2003).</p>
+<p>El objetivo es identificar diferencias de género respecto a salud mental a partir del sexo y edad. Por ende, nuestras hipótesis de investigación son; primero, las mujeres presentan peores indicadores de salud mental (valores más altos en ISM) en comparación a los hombres en el tercer tramo de edad (45-59); segundo, los hombres presentan mejores indicadores de salud mental en comparación a las mujeres, es decir, valores más bajos en ISM; y tercero, se espera que tanto mujeres como hombres pertenecientes al segundo tramo de edad (30-44), presenten indicadores similares y bajos de salud mental.</p>
+</section>
+<section id="metodología" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Metodología</h1>
+<section id="datos" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="datos"><span class="header-section-number">2.1</span> Datos</h2>
+<p>Para este trabajo, se utilizaron los datos del Estudio Longitudinal Social de Chile (ELSOC), una encuesta que evalúa “la manera cómo piensan, sienten y se comportan los chilenos en torno a un conjunto de temas referidos al conflicto y la cohesión social en el país” (COES, s.f.). Con una base de datos de 20.761 observaciones en total, se escoge la ola de 2022 obteniendo un tamaño muestral de 2.730 observaciones.</p>
+</section>
+<section id="variables" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="variables"><span class="header-section-number">2.2</span> Variables</h2>
+<p>Para comenzar, se seleccionan dos variables del módulo Sociodemográfica. La variable “m0_sexo”, renombrada a “sexo” en el procesamiento de datos, señala el sexo del entrevistado. Es una variable dicotómica donde 1 = hombre y 2 = mujer. En la variable recodificada “R_sexo”, 0 = hombre y 1 = mujer. Es esencial incluirla ya que para la variable dependiente se busca medir brechas de género en salud mental.</p>
+<p>La variable “m0_edad”, renombrada a “edad”, señala la edad del entrevistado. Se recodifica creando la variable “edad_tramo_num”. Se divide en 5 tramos etarios (“18-29”, “30-44”, “45-59”, “60-79” y “80+”) que son convertidos a numéricos (1 a 5). Su uso permite introducir el factor de edad a la asociación de género y salud mental.</p>
+<p>Luego, se seleccionan 3 variables del módulo Salud y Bienestar, que se utilizarán posteriormente para construir un Índice de Salud Mental (ISM). Primero, “s01”, renombrada a “satisfaccion_vida” mide la satisfacción vital mediante una escala Likert donde 1 = “totalmente insatisfecho” y 5 = “totalmente satisfecho”. Se recodifica creando la variable “R_satisfaccion_vida” para invertir valores a 1 = “totalmente satisfecho” y 5 = “totalmente insatisfecho” y así, mayor puntaje indique peor salud mental. También se convierten los valores [-999 y -888] a NA. Según Veenhoven (1994), esta variable es caracterizada como el nivel de evaluación subjetivo y personal respecto a su vida, es decir si a la persona le gusta la vida que lleva. La satisfacción con la vida es un indicador de calidad de vida, refiere a un estado mental, lo cual va de la mano con la salud mental, puesto que quienes están más a gusto con su vida “también comparten las características de buena salud mental y resistencia psicológica” (Veenhoven, 1994, p.14).</p>
+<p>Asimismo, en ELSOC hay una batería de preguntas sobre estado de ánimo para medir sintomatología depresiva, según frecuencia de sensación de síntomas en las últimas dos semanas. De ella, se escogen dos variables ordinales de tipo Likert con los valores 1 = “Nunca” y 5 = “Todos los días”. Se mantienen ya que miden la misma dirección de salud mental que la variable de satisfacción vital.</p>
+<p>Las variables escogidas son “s11_02” que mide la frecuencia en que se siente decaimiento, pesadez o desesperanza, y se renombra a “decaimiento_pes_des”; y “s11_04” que mide la frecuencia en que se siente cansancio o sensación de falta de energía, y es renombrada a “cansancio_falta_energia”. Para convertir los valores [-999, -888] a NA, se crean respectivamente “R_decaimiento_pes_des” y “R_cansancio_falta_energia”.</p>
+<p>El decaimiento, pesadez, cansancio y la falta de energía guardan estrecha relación con la fatiga emocional, que consiste en sentirse emocionalmente drenado y abrumado debido al estrés acumulado en distintas esferas de la vida, esto ocurre cuando los recursos emocionales se agotan, dejando al individuo incapaz de sobrellevar sus demandas emocionales (Gonçalves, 2025). Esto constituye un fenómeno bastante común, y sus principales síntomas pueden ser; estrés, insomnio, fatiga física (sentirse cansado y con falta de energía), dificultad para concentrarse, entre otros (Bupa Salud, s.f).</p>
+<p>Finalmente, se genera un Índice de Salud Mental “ISM” que contempla las variables “R_satisfacción_vida”, “R_decaimiento_pes_des” y “R_cansancio_falta_energia”, y pretende estimar puntajes de salud mental para asociarlo con las variables “R_sexo” y “edad_tramos_num”. Este índice indica que a mayor puntaje, peor salud mental.</p>
+<p>Las 6 variables creadas (recodificadas) se almacenan en la base de datos limpia y llamada “datos” que se utilizará para este reporte.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generar tabla con todos los descriptivos </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>descriptivos <span class="ot">&lt;-</span>datos <span class="sc">%&gt;%</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(R_sexo,edad_tramo_num,R_satisfaccion_vida, R_decaimiento_pes_des, R_cansancio_falta_energia)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>tab1<span class="ot">&lt;-</span>psych<span class="sc">::</span><span class="fu">describe</span>(descriptivos) <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>tab1</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-descriptivos" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-descriptivos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+vars
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+mean
+</th>
+<th style="text-align:right;">
+sd
+</th>
+<th style="text-align:right;">
+median
+</th>
+<th style="text-align:right;">
+trimmed
+</th>
+<th style="text-align:right;">
+mad
+</th>
+<th style="text-align:right;">
+min
+</th>
+<th style="text-align:right;">
+max
+</th>
+<th style="text-align:right;">
+range
+</th>
+<th style="text-align:right;">
+skew
+</th>
+<th style="text-align:right;">
+kurtosis
+</th>
+<th style="text-align:right;">
+se
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+R_sexo
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2730
+</td>
+<td style="text-align:right;">
+0.6384615
+</td>
+<td style="text-align:right;">
+0.4805341
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.6730769
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-0.5760708
+</td>
+<td style="text-align:right;">
+-1.6687533
+</td>
+<td style="text-align:right;">
+0.0091969
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+edad_tramo_num
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2730
+</td>
+<td style="text-align:right;">
+2.9205128
+</td>
+<td style="text-align:right;">
+0.9957313
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2.9858059
+</td>
+<td style="text-align:right;">
+1.4826
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+-0.2546803
+</td>
+<td style="text-align:right;">
+-0.8708093
+</td>
+<td style="text-align:right;">
+0.0190573
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R_satisfaccion_vida
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2728
+</td>
+<td style="text-align:right;">
+2.1330645
+</td>
+<td style="text-align:right;">
+0.7901803
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2.0663919
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0.8743884
+</td>
+<td style="text-align:right;">
+1.0683992
+</td>
+<td style="text-align:right;">
+0.0151288
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R_decaimiento_pes_des
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2728
+</td>
+<td style="text-align:right;">
+1.7815249
+</td>
+<td style="text-align:right;">
+0.9074901
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1.6181319
+</td>
+<td style="text-align:right;">
+1.4826
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1.4441954
+</td>
+<td style="text-align:right;">
+2.1907220
+</td>
+<td style="text-align:right;">
+0.0173748
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R_cansancio_falta_energia
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2728
+</td>
+<td style="text-align:right;">
+2.1033724
+</td>
+<td style="text-align:right;">
+1.0141733
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1.9661172
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1.0658931
+</td>
+<td style="text-align:right;">
+0.6949956
+</td>
+<td style="text-align:right;">
+0.0194174
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-descriptivos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Tabla: Resumen de descriptivos de todas las variables
+</figcaption>
+</figure>
+</div>
+</div>
+<p>La <a href="#fig-descriptivos" class="quarto-xref">figura&nbsp;1</a> muestra que existe una predominancia de mujeres en la muestra (63.8%) y una distribución equitativa en los tramos de edad. Sobre las variables del Índice, se evidencia una asimetría positiva, es decir tendencia a datos bajos en la muestra, donde satisfacción vida (mean = 2.13), decaimiento (mean = 1.78) y cansancio (mean = 2.1), lo que indica una concentración de la muestra en los valores bajos de salud mental.</p>
+</section>
+<section id="métodos" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="métodos"><span class="header-section-number">2.3</span> Métodos</h2>
+<p>En todos los casos, se calcula correlación punto-biserial y se interpreta el tamaño de efecto con los criterios de Cohen (1988).</p>
+<p>Para Hipótesis 1, se calcula correlación entre variables “R_sexo” e “ISM” en tramo de 45-59 años, para evaluar si mujeres presentan peores indicadores de salud mental.</p>
+<p>Para Hipótesis 2, se calcula correlación entre variables “R_sexo” e “ISM” en muestra completa, para determinar si hombres presentan mejores indicadores de salud mental que mujeres, a nivel general.</p>
+<p>Para Hipótesis 3, se calcula correlación entre variables “R_sexo” e “ISM” en tramo de 30-44 años, para evaluar si existen diferencias estadísticamente significativas en salud mental entre hombres y mujeres.</p>
+</section>
+</section>
+<section id="análisis" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Análisis</h1>
+<section id="análisis-descriptivo" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="análisis-descriptivo"><span class="header-section-number">3.1</span> Análisis descriptivo</h2>
+<section id="tablas-de-contingencia" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="tablas-de-contingencia"><span class="header-section-number">3.1.1</span> Tablas de contingencia</h3>
+<p>Se muestran las tablas de contingencia tan sólo para 3 cruces de variables.</p>
+<p><em>Distribución por sexo y edad</em>: En el primer cruce de variables, se observa que el 63.8% de las personas que contestaron la encuesta son mujeres, mientras que el 36.2% son hombres. Esto supone una desproporción importante para tener en cuenta al momento de analizar los resultados de este informe. Asimismo, se presenta como limitación de este.</p>
+<div class="cell">
+<div id="fig-contingencia-sexo-edad" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-contingencia-sexo-edad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table style="border-collapse:collapse; border:none;">
+<tbody><tr>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
+R_sexo
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal;" colspan="5">
+edad_tramo_num
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; font-weight:bolder; font-style:italic; border-bottom:1px solid; " rowspan="2">
+Total
+</th>
+</tr>
+<tr>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+1
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+2
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+3
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+4
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+5
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+0
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">99</span><br><span style="color:#333399;">10&nbsp;%</span><br><span style="color:#339933;">42.9&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">287</span><br><span style="color:#333399;">29.1&nbsp;%</span><br><span style="color:#339933;">39.2&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">265</span><br><span style="color:#333399;">26.8&nbsp;%</span><br><span style="color:#339933;">31.7&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">326</span><br><span style="color:#333399;">33&nbsp;%</span><br><span style="color:#339933;">36.8&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">10</span><br><span style="color:#333399;">1&nbsp;%</span><br><span style="color:#339933;">22.2&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">987</span><br><span style="color:#333399;">100&nbsp;%</span><br><span style="color:#339933;">36.2&nbsp;%</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+1
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">132</span><br><span style="color:#333399;">7.6&nbsp;%</span><br><span style="color:#339933;">57.1&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">445</span><br><span style="color:#333399;">25.5&nbsp;%</span><br><span style="color:#339933;">60.8&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">570</span><br><span style="color:#333399;">32.7&nbsp;%</span><br><span style="color:#339933;">68.3&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">561</span><br><span style="color:#333399;">32.2&nbsp;%</span><br><span style="color:#339933;">63.2&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">35</span><br><span style="color:#333399;">2&nbsp;%</span><br><span style="color:#339933;">77.8&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">1743</span><br><span style="color:#333399;">100&nbsp;%</span><br><span style="color:#339933;">63.8&nbsp;%</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">
+Total
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">231</span><br><span style="color:#333399;">8.5&nbsp;%</span><br><span style="color:#339933;">100&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">732</span><br><span style="color:#333399;">26.8&nbsp;%</span><br><span style="color:#339933;">100&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">835</span><br><span style="color:#333399;">30.6&nbsp;%</span><br><span style="color:#339933;">100&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">887</span><br><span style="color:#333399;">32.5&nbsp;%</span><br><span style="color:#339933;">100&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">45</span><br><span style="color:#333399;">1.6&nbsp;%</span><br><span style="color:#339933;">100&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">2730</span><br><span style="color:#333399;">100&nbsp;%</span><br><span style="color:#339933;">100&nbsp;%</span>
+</td>
+</tr>
+</tbody></table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-contingencia-sexo-edad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Tabla de contingencia: Sexo y Edad
+</figcaption>
+</figure>
+</div>
+</div>
+<p><strong>Salud mental por sexo</strong></p>
+<p><em>Satisfacción con la vida</em>: Ambos sexos presentan mayor frecuencia en el nivel 2, aunque las mujeres muestran menores niveles de satisfacción con la vida que los hombres.</p>
+<p><em>Decaimiento, pesadez o desesperanza</em>: Las mujeres presentan niveles más altos que los hombres en estos síntomas.</p>
+<div class="cell">
+<div id="fig-contingencia-sexo-decaimiento" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-contingencia-sexo-decaimiento-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table style="border-collapse:collapse; border:none;">
+<tbody><tr>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
+R_sexo
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal;" colspan="5">
+R_decaimiento_pes_des
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; font-weight:bolder; font-style:italic; border-bottom:1px solid; " rowspan="2">
+Total
+</th>
+</tr>
+<tr>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+1
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+2
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+3
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+4
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+5
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+0
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">557</span><br><span style="color:#333399;">56.5&nbsp;%</span><br><span style="color:#339933;">46.5&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">350</span><br><span style="color:#333399;">35.5&nbsp;%</span><br><span style="color:#339933;">30&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">42</span><br><span style="color:#333399;">4.3&nbsp;%</span><br><span style="color:#339933;">23.9&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">22</span><br><span style="color:#333399;">2.2&nbsp;%</span><br><span style="color:#339933;">16.2&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">15</span><br><span style="color:#333399;">1.5&nbsp;%</span><br><span style="color:#339933;">29.4&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">986</span><br><span style="color:#333399;">100&nbsp;%</span><br><span style="color:#339933;">36.1&nbsp;%</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+1
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">640</span><br><span style="color:#333399;">36.7&nbsp;%</span><br><span style="color:#339933;">53.5&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">818</span><br><span style="color:#333399;">47&nbsp;%</span><br><span style="color:#339933;">70&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">134</span><br><span style="color:#333399;">7.7&nbsp;%</span><br><span style="color:#339933;">76.1&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">114</span><br><span style="color:#333399;">6.5&nbsp;%</span><br><span style="color:#339933;">83.8&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">36</span><br><span style="color:#333399;">2.1&nbsp;%</span><br><span style="color:#339933;">70.6&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">1742</span><br><span style="color:#333399;">100&nbsp;%</span><br><span style="color:#339933;">63.9&nbsp;%</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">
+Total
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">1197</span><br><span style="color:#333399;">43.9&nbsp;%</span><br><span style="color:#339933;">100&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">1168</span><br><span style="color:#333399;">42.8&nbsp;%</span><br><span style="color:#339933;">100&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">176</span><br><span style="color:#333399;">6.5&nbsp;%</span><br><span style="color:#339933;">100&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">136</span><br><span style="color:#333399;">5&nbsp;%</span><br><span style="color:#339933;">100&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">51</span><br><span style="color:#333399;">1.9&nbsp;%</span><br><span style="color:#339933;">100&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">2728</span><br><span style="color:#333399;">100&nbsp;%</span><br><span style="color:#339933;">100&nbsp;%</span>
+</td>
+</tr>
+</tbody></table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-contingencia-sexo-decaimiento-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Tabla de contingencia: Sexo y Decaimiento, Pesadez o Desesperanza
+</figcaption>
+</figure>
+</div>
+</div>
+<p><em>Cansancio o falta de energía</em>: Aunque el nivel 2 predomina en ambos sexos, las mujeres reportan niveles más altos comparado con los hombres.</p>
+<p><strong>Patrones por edad</strong></p>
+<p><em>Satisfacción con la vida por tramo etario</em>: En todos los tramos de edad la satisfacción se concentra en el nivel 2, observándose que los tramos de edad 3 (45-59 años) y 4 (60-79 años) presentan los porcentajes más altos en los niveles 4 y 5 de satisfacción.</p>
+<p><em>Decaimiento, pesadez o desesperanza por tramo etario</em>: El tramo de edad 4 (60-79 años) concentra un mayor porcentaje de respuestas en los niveles más altos de decaimiento, pesadez o desesperanza en las últimas dos semanas.</p>
+<p><em>Cansancio o falta de energía por edad</em>: Si bien el nivel 2 predomina en todos los tramos etarios, el tramo 4 (60-79 años) contiene la mayor cantidad de respuestas en los niveles más altos de cansancio o falta de energía.</p>
+<p><strong>Relación entre indicadores de salud mental</strong></p>
+<p><em>Satisfacción con la vida y decaimiento</em>: Se observa que a mayor satisfacción con la vida hay menor frecuencia de sentimientos de decaimiento, pesadez o desesperanza, evidenciando una relación inverssa. Lo anterior ya que la mayoría de respuestas se encuentran en el nivel 2 de satisfacción con la vida, y el nivel 2 de decaimiento concentra la mayor cantidad de respuestas.</p>
+<div class="cell">
+<div id="fig-contingencia-satisfaccion-decaimiento" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-contingencia-satisfaccion-decaimiento-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table style="border-collapse:collapse; border:none;">
+<tbody><tr>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
+R_satisfaccion_vida
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal;" colspan="5">
+R_decaimiento_pes_des
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; font-weight:bolder; font-style:italic; border-bottom:1px solid; " rowspan="2">
+Total
+</th>
+</tr>
+<tr>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+1
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+2
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+3
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+4
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+5
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+1
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">283</span><br><span style="color:#333399;">61.5&nbsp;%</span><br><span style="color:#339933;">23.7&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">148</span><br><span style="color:#333399;">32.2&nbsp;%</span><br><span style="color:#339933;">12.7&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">14</span><br><span style="color:#333399;">3&nbsp;%</span><br><span style="color:#339933;">8&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">12</span><br><span style="color:#333399;">2.6&nbsp;%</span><br><span style="color:#339933;">8.8&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">3</span><br><span style="color:#333399;">0.7&nbsp;%</span><br><span style="color:#339933;">5.9&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">460</span><br><span style="color:#333399;">100&nbsp;%</span><br><span style="color:#339933;">16.9&nbsp;%</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+2
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">786</span><br><span style="color:#333399;">47.3&nbsp;%</span><br><span style="color:#339933;">65.7&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">714</span><br><span style="color:#333399;">42.9&nbsp;%</span><br><span style="color:#339933;">61.2&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">90</span><br><span style="color:#333399;">5.4&nbsp;%</span><br><span style="color:#339933;">51.1&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">57</span><br><span style="color:#333399;">3.4&nbsp;%</span><br><span style="color:#339933;">41.9&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">16</span><br><span style="color:#333399;">1&nbsp;%</span><br><span style="color:#339933;">31.4&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">1663</span><br><span style="color:#333399;">100&nbsp;%</span><br><span style="color:#339933;">61&nbsp;%</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+3
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">95</span><br><span style="color:#333399;">23.7&nbsp;%</span><br><span style="color:#339933;">7.9&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">221</span><br><span style="color:#333399;">55.1&nbsp;%</span><br><span style="color:#339933;">18.9&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">42</span><br><span style="color:#333399;">10.5&nbsp;%</span><br><span style="color:#339933;">23.9&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">32</span><br><span style="color:#333399;">8&nbsp;%</span><br><span style="color:#339933;">23.5&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">11</span><br><span style="color:#333399;">2.7&nbsp;%</span><br><span style="color:#339933;">21.6&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">401</span><br><span style="color:#333399;">100&nbsp;%</span><br><span style="color:#339933;">14.7&nbsp;%</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+4
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">30</span><br><span style="color:#333399;">16.1&nbsp;%</span><br><span style="color:#339933;">2.5&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">78</span><br><span style="color:#333399;">41.9&nbsp;%</span><br><span style="color:#339933;">6.7&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">28</span><br><span style="color:#333399;">15.1&nbsp;%</span><br><span style="color:#339933;">15.9&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">32</span><br><span style="color:#333399;">17.2&nbsp;%</span><br><span style="color:#339933;">23.5&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">18</span><br><span style="color:#333399;">9.7&nbsp;%</span><br><span style="color:#339933;">35.3&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">186</span><br><span style="color:#333399;">100&nbsp;%</span><br><span style="color:#339933;">6.8&nbsp;%</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+5
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2</span><br><span style="color:#333399;">12.5&nbsp;%</span><br><span style="color:#339933;">0.2&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">6</span><br><span style="color:#333399;">37.5&nbsp;%</span><br><span style="color:#339933;">0.5&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2</span><br><span style="color:#333399;">12.5&nbsp;%</span><br><span style="color:#339933;">1.1&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">3</span><br><span style="color:#333399;">18.8&nbsp;%</span><br><span style="color:#339933;">2.2&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">3</span><br><span style="color:#333399;">18.8&nbsp;%</span><br><span style="color:#339933;">5.9&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">16</span><br><span style="color:#333399;">100&nbsp;%</span><br><span style="color:#339933;">0.6&nbsp;%</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">
+Total
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">1196</span><br><span style="color:#333399;">43.9&nbsp;%</span><br><span style="color:#339933;">100&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">1167</span><br><span style="color:#333399;">42.8&nbsp;%</span><br><span style="color:#339933;">100&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">176</span><br><span style="color:#333399;">6.5&nbsp;%</span><br><span style="color:#339933;">100&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">136</span><br><span style="color:#333399;">5&nbsp;%</span><br><span style="color:#339933;">100&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">51</span><br><span style="color:#333399;">1.9&nbsp;%</span><br><span style="color:#339933;">100&nbsp;%</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">2726</span><br><span style="color:#333399;">100&nbsp;%</span><br><span style="color:#339933;">100&nbsp;%</span>
+</td>
+</tr>
+</tbody></table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-contingencia-satisfaccion-decaimiento-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Tabla de contingencia: Satisfacción con la Vida y Decaimiento, Pesadez o Desesperanza
+</figcaption>
+</figure>
+</div>
+</div>
+<p><em>Satisfacción vida y cansancio</em>: La mayoría de respuestas se concentran en el nivel 2 de satisfacción con la vida y la mayoría de respuestas de cansancio o falta de energía se concentran en el nivel 2, lo que se interpreta de manera que, a mayor satisfacción con la vida, menor cansancio o satisfacción de vida.</p>
+<p><em>Decaimiento y cansancio</em>: Por último, en este cruce se observa que el nivel 1 de decaimiento, pesadez o desesperanza concentra la mayor cantidad de respuestas y que el nivel 2 de cansancio o falta de energía concentra la mayor cantidad de respuestas, lo que se interpreta de manera que a menor sentimiento de decaimiento, pesadez o desesperanza, menor sentimiento de cansancio o falta de energía tendrá la persona. Se trata de una relación directa.</p>
+</section>
+<section id="índice-de-salud-mental" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="índice-de-salud-mental"><span class="header-section-number">3.1.2</span> Índice de Salud Mental</h3>
+<p>Como se presenta en la <a href="#fig-matriz-correlacion" class="quarto-xref">figura&nbsp;5</a>, la matriz de correlaciones entre las 3 variables de salud mental muestra que todas las correlaciones son positivas y estadísticamente significativas (*** = p&lt;0.001, equivalente a un nivel de confianza del 99.9%). Las correlaciones de “R_satisfacción_vida” individualmente con “R_decaimiento_pes_des” por una parte, y con “R_cansancio_falta_energia” por el otro, indican tamaños de efecto moderado y pequeño respectivamente, según los criterios de Cohen (1988). En cambio, la correlación entre estas dos últimas indica un tamaño de efecto grande según los mismos criterios. Para el manejo de valores missing se utiliza el método listwise que es el argumento por defecto ya que sus resultados comparados con pairwise fueron prácticamente idénticos, lo que indica que los missing no introducen sesgos significativos para las correlaciones.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matriz de correlación entre las 3 variables de salud mental</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>M_SM <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(R_satisfaccion_vida, R_decaimiento_pes_des, R_cansancio_falta_energia)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>     <span class="co"># Visualización amigable y tratamiento NA</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_corr</span>(M_SM,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">na.deletion =</span> <span class="st">"listwise"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">triangle =</span> <span class="st">"lower"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-matriz-correlacion" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-matriz-correlacion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table style="border-collapse:collapse; border:none;">
+<tbody><tr>
+<th style="font-style:italic; font-weight:normal; border-top:double black; border-bottom:1px solid black; padding:0.2cm;">
+&nbsp;
+</th>
+<th style="font-style:italic; font-weight:normal; border-top:double black; border-bottom:1px solid black; padding:0.2cm;">
+R_satisfaccion_vida
+</th>
+<th style="font-style:italic; font-weight:normal; border-top:double black; border-bottom:1px solid black; padding:0.2cm;">
+R_decaimiento_pes_des
+</th>
+<th style="font-style:italic; font-weight:normal; border-top:double black; border-bottom:1px solid black; padding:0.2cm;">
+R_cansancio_falta_energia
+</th>
+</tr>
+<tr>
+<td style="font-style:italic;">
+R_satisfaccion_vida
+</td>
+<td style="padding:0.2cm; text-align:center;">
+&nbsp;
+</td>
+<td style="padding:0.2cm; text-align:center;">
+&nbsp;
+</td>
+<td style="padding:0.2cm; text-align:center;">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td style="font-style:italic;">
+R_decaimiento_pes_des
+</td>
+<td style="padding:0.2cm; text-align:center;">
+0.325<span style="vertical-align:super;font-size:0.8em;">***</span>
+</td>
+<td style="padding:0.2cm; text-align:center;">
+&nbsp;
+</td>
+<td style="padding:0.2cm; text-align:center;">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td style="font-style:italic;">
+R_cansancio_falta_energia
+</td>
+<td style="padding:0.2cm; text-align:center;">
+0.283<span style="vertical-align:super;font-size:0.8em;">***</span>
+</td>
+<td style="padding:0.2cm; text-align:center;">
+0.651<span style="vertical-align:super;font-size:0.8em;">***</span>
+</td>
+<td style="padding:0.2cm; text-align:center;">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom:double black; border-top:1px solid black; font-style:italic; font-size:0.9em; text-align:right;">
+Computed correlation used pearson-method with listwise-deletion.
+</td>
+</tr>
+</tbody></table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-matriz-correlacion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Matriz de correlación entre las 3 variables de salud mental
+</figcaption>
+</figure>
+</div>
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>          <span class="do">## Correlaciones positivas y estadísticamente significativas (***), tamaños de efecto 2 correlaciones pequeños y 1 grande,  según criterios de cohen</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Consistencia interna: Alpha de cronbach </span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>alpha_SM <span class="ot">&lt;-</span> psych<span class="sc">::</span><span class="fu">alpha</span>(M_SM)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>alpha_SM<span class="sc">$</span>total<span class="sc">$</span>raw_alpha</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.691199</code></pre>
+</div>
+</div>
+<p>El alpha de cronbach (=0.691199) es superior al estándar de 0.6 en ciencias sociales y muy cercano a alcanzar el rango óptimo (&gt;0.7), por lo que se sostiene la consistencia interna aceptable. Entonces, se puede generar el índice.</p>
+<div class="cell">
+<div id="fig-descriptivos-ism" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-descriptivos-ism-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+var
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+NA.prc
+</th>
+<th style="text-align:right;">
+mean
+</th>
+<th style="text-align:right;">
+sd
+</th>
+<th style="text-align:left;">
+range
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+ISM
+</td>
+<td style="text-align:right;">
+2725
+</td>
+<td style="text-align:right;">
+0.1831502
+</td>
+<td style="text-align:right;">
+2.005749
+</td>
+<td style="text-align:right;">
+0.7142294
+</td>
+<td style="text-align:left;">
+4 (1-5)
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-descriptivos-ism-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Estadísticos descriptivos del Índice de Salud Mental (ISM)
+</figcaption>
+</figure>
+</div>
+</div>
+<p>Los descriptivos del ISM (<a href="#fig-descriptivos-ism" class="quarto-xref">figura&nbsp;6</a>) señalan que, con una muestra de 2.725 observaciones, el promedio de salud mental de la población muestral es de 2.01 (sd=0.71). Dado que el mínimo es 1 y el máximo es 5 (y la distribución cubre todo el rango posible) se deduce de la media que la población tiende a tener buena (o moderada) salud mental, considerando estas variables para medir la salud mental. Este dato es importante para considerar en el análisis del ISM promedio por género y tramo de edad, a continuación.</p>
+</section>
+</section>
+<section id="análisis-estadístico-bivariado" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="análisis-estadístico-bivariado"><span class="header-section-number">3.2</span> Análisis Estadístico Bivariado</h2>
+<section id="promedio-ism-por-tramos-específicos" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="promedio-ism-por-tramos-específicos"><span class="header-section-number">3.2.1</span> Promedio ISM por tramos específicos</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver ISM promedio por sexo dentro de cada tramo de edad</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>datos <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(edad_tramo_num, R_sexo) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">ISM_promedio =</span> <span class="fu">mean</span>(ISM, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-promedios-ism-sexo-edad" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-promedios-ism-sexo-edad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+edad_tramo_num
+</th>
+<th style="text-align:right;">
+R_sexo
+</th>
+<th style="text-align:right;">
+ISM_promedio
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2.047138
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2.199495
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.842044
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2.072072
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.780303
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2.122653
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.790388
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2.075595
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.833333
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2.400000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-promedios-ism-sexo-edad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Promedio del Índice de Salud Mental por sexo y tramo de edad
+</figcaption>
+</figure>
+</div>
+</div>
+<p>Considerando que el ISM promedio de toda la población es 2.01, tenemos un punto comparativo importante. La <a href="#fig-promedios-ism-sexo-edad" class="quarto-xref">figura&nbsp;7</a> muestra un patrón consistente en el ISM promedio por sexo segun cada ramo de edad, donde está clara la brecha de género. En todos los casos, las mujeres presentan peor salud mental que los hombres (valores más altos) además de estar siempre, sin importar la edad, por encima del promedio general de salud mental (2.07- 2.40). La situación opuesta ocurre para los hombres, quienes están siempre por debajo del promedio general (1.78-2.05). Asimismo, el ISM más alto para los hombres (2.05) ocurre en el primer tramo de edad, mientras que para las mujeres (2.4) corresponde al último tramo de edad. Además, la mayor brecha de género ocurre en el tramo 80+ con 0.57 puntos de diferencia, no obstante, ello podría deberse a que en la distribución muestral por edad, aquel tramo contiene solo 45 casos.</p>
+</section>
+</section>
+<section id="contraste-de-hipótesis-y-tamaños-de-efecto" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="contraste-de-hipótesis-y-tamaños-de-efecto"><span class="header-section-number">3.3</span> Contraste de Hipótesis y tamaños de efecto</h2>
+<section id="hipótesis-1-direccional" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="hipótesis-1-direccional"><span class="header-section-number">3.3.1</span> Hipótesis 1 (direccional)</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlación en tramo de edad 45-59</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>h1_data <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span> <span class="fu">filter</span>(edad_tramo_num <span class="sc">==</span> <span class="dv">3</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>cor_h1 <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(h1_data<span class="sc">$</span>R_sexo, h1_data<span class="sc">$</span>ISM, <span class="at">alternative =</span> <span class="st">"greater"</span>) <span class="co">#hipótesis de 1 cola</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Formatear resultados</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>resultados_h1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Correlación"</span> <span class="ot">=</span> <span class="fu">round</span>(cor_h1<span class="sc">$</span>estimate, <span class="dv">4</span>),</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"t"</span> <span class="ot">=</span> <span class="fu">round</span>(cor_h1<span class="sc">$</span>statistic, <span class="dv">4</span>),</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"p-value"</span> <span class="ot">=</span> <span class="st">"&lt; 0.001***"</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"df"</span> <span class="ot">=</span> cor_h1<span class="sc">$</span>parameter,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Método"</span> <span class="ot">=</span> <span class="st">"Pearson's product-moment correlation"</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Alternativa"</span> <span class="ot">=</span> <span class="st">"greater"</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"95% IC"</span> <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">"["</span>, <span class="fu">round</span>(cor_h1<span class="sc">$</span>conf.int[<span class="dv">1</span>], <span class="dv">2</span>), <span class="st">","</span>, </span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">round</span>(cor_h1<span class="sc">$</span>conf.int[<span class="dv">2</span>], <span class="dv">2</span>), <span class="st">"]"</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>resultados_h1</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Correlación      t    p.value  df                               Método
+cor      0.2266 6.7035 &lt; 0.001*** 830 Pearson's product-moment correlation
+    Alternativa  X95..IC
+cor     greater [0.17,1]</code></pre>
+</div>
+</div>
+<p>H0 = Mujeres 45-59 ≤ Hombres 45-59. Las mujeres pertenecientes al tercer tramo de edad (45-59) presentan mejores indicadores de salud mental o iguales (valores más bajos o iguales en ISM) en comparación a hombres del mismo rango etario.</p>
+<p>HA = Mujeres 45-59 &gt; Hombres 45-59. Las mujeres pertenecientes al tercer tramo de edad (45-59) presentan peores indicadores de salud mental (valores más altos en ISM) en comparación a los hombres del mismo rango etario.</p>
+<p>Al poner a prueba la hipótesis planteada y evidenciado en la <a href="#fig-ism-sexo-edad" class="quarto-xref">figura&nbsp;8</a> adjunta, se logra rechazar la hipótesis nula con un 99.9% de confianza gracias a que el valor p presenta un valor menor a 0,001 evidenciando que dicha relación no se cumple. Así mismo, existe evidencia a favor de la hipótesis alternativa puesto que la correlación muestra un tamaño de efecto pequeño positivo, indicando que va en la dirección planteada y que es estadísticamente significativa (r = 0.2266, p&lt;0.001***). Esto quiere decir que, las mujeres entre 45-59 años (n = 832) presentan una peor salud mental en relación a los hombres del mismo rango etario.</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grafico ISM por sexo y edad </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(edad_tramo_num, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"18-29"</span>, <span class="st">"30-44"</span>, <span class="st">"45-59"</span>, <span class="st">"60-79"</span>, <span class="st">"80+"</span>)), </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> ISM, </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">fill =</span> <span class="fu">factor</span>(R_sexo, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Hombre"</span>, <span class="st">"Mujer"</span>)))) <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#BCD2EE"</span>, <span class="st">"#9370DB"</span>)) <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución del ISM por Grupo de Edad y Sexo"</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Grupo de Edad"</span>, </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Índice de Salud Mental"</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Sexo"</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta ELSOC ola 2022."</span>) <span class="sc">+</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-ism-sexo-edad" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ism-sexo-edad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Procesamiento-1_files/figure-html/fig-ism-sexo-edad-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ism-sexo-edad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: Gráfico caja y bigote: Distribución del Índice de Salud Mental por sexo y grupos de edad
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="hipótesis-2-direccional" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="hipótesis-2-direccional"><span class="header-section-number">3.3.2</span> Hipótesis 2 (direccional)</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlación sexo e ISM</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>cor_h2 <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(datos<span class="sc">$</span>R_sexo, datos<span class="sc">$</span>ISM, <span class="at">alternative =</span> <span class="st">"greater"</span>) <span class="co">#hipótesis de 1 cola</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Formatear resultados</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>resultados_h2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Correlación"</span> <span class="ot">=</span> <span class="fu">round</span>(cor_h2<span class="sc">$</span>estimate, <span class="dv">4</span>),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"t"</span> <span class="ot">=</span> <span class="fu">round</span>(cor_h2<span class="sc">$</span>statistic, <span class="dv">4</span>),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"p-value"</span> <span class="ot">=</span> <span class="fu">ifelse</span>(cor_h2<span class="sc">$</span>p.value <span class="sc">&lt;</span> <span class="fl">0.001</span>, <span class="st">"&lt; 0.001***"</span>, <span class="fu">round</span>(cor_h2<span class="sc">$</span>p.value, <span class="dv">4</span>)),</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"df"</span> <span class="ot">=</span> cor_h2<span class="sc">$</span>parameter,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Método"</span> <span class="ot">=</span> <span class="st">"Pearson's product-moment correlation"</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Alternativa"</span> <span class="ot">=</span> <span class="st">"greater"</span>,</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"95% IC"</span> <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">"["</span>, <span class="fu">round</span>(cor_h2<span class="sc">$</span>conf.int[<span class="dv">1</span>], <span class="dv">2</span>), <span class="st">","</span>, </span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">round</span>(cor_h2<span class="sc">$</span>conf.int[<span class="dv">2</span>], <span class="dv">2</span>), <span class="st">"]"</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>resultados_h2</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Correlación      t    p.value   df                               Método
+cor      0.1864 9.9025 &lt; 0.001*** 2723 Pearson's product-moment correlation
+    Alternativa  X95..IC
+cor     greater [0.16,1]</code></pre>
+</div>
+</div>
+<p>H0 = Hombres ≥ Mujeres. Los hombres presentan peores o iguales indicadores de salud mental en comparación a las mujeres, es decir, valores más altos en ISM.</p>
+<p>HA = Hombres &lt; Mujeres. Los hombres presentan mejores indicadores de salud mental en comparación a las mujeres, es decir, valores más bajos en ISM.</p>
+<p>Al poner a prueba la hipótesis planteada, se rechaza la hipótesis nula con un 99.9% de confianza gracias a que el valor p presenta un valor menor a 0,001 evidenciando que dicha relación no se cumple. Asimismo, existe evidencia a favor de la hipótesis alternativa, puesto que hay una diferencia estadísticamente significativa (p&lt;0.001***) dentro del ISM, con una correlación positiva (r = 0.1864) entre el sexo y el nivel de salud mental que presentan las personas, con un tamaño de efecto pequeño según los crietrios de Cohen. Esto quiere decir que, tal como se observa en la <a href="#fig-ism-sexo" class="quarto-xref">figura&nbsp;9</a> los hombres presentan mejores indicadores de salud mental en comparación a las mujeres.</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(R_sexo), <span class="at">y =</span> ISM)) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"pink"</span>)) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución del Indice de Salud Mental en hombres y mujeres"</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Sexo (0=Hombre, 1=Mujer)"</span>, </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"ISM (Mayor valor = Peor salud mental)"</span>) <span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-ism-sexo" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ism-sexo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Procesamiento-1_files/figure-html/fig-ism-sexo-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ism-sexo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9: Gráfico caja y bigote: Distribución del Índice de Salud Mental por sexo
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="hipótesis-3-no-direccional" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="hipótesis-3-no-direccional"><span class="header-section-number">3.3.3</span> Hipótesis 3 (no direccional)</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlación en tramo de edad 30-44</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>h3_data <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span> <span class="fu">filter</span>(edad_tramo_num <span class="sc">==</span> <span class="dv">2</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>cor_h3 <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(h3_data<span class="sc">$</span>R_sexo, h3_data<span class="sc">$</span>ISM, <span class="at">alternative =</span> <span class="st">"two.sided"</span>) <span class="co">#hipótesis de 2 colas</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Formatear resultados</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>resultados_h3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Correlación"</span> <span class="ot">=</span> <span class="fu">round</span>(cor_h3<span class="sc">$</span>estimate, <span class="dv">4</span>),</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"t"</span> <span class="ot">=</span> <span class="fu">round</span>(cor_h3<span class="sc">$</span>statistic, <span class="dv">4</span>),</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"p-value"</span> <span class="ot">=</span> <span class="fu">ifelse</span>(cor_h3<span class="sc">$</span>p.value <span class="sc">&lt;</span> <span class="fl">0.001</span>, <span class="st">"&lt; 0.001***"</span>, <span class="fu">round</span>(cor_h3<span class="sc">$</span>p.value, <span class="dv">4</span>)),</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"df"</span> <span class="ot">=</span> cor_h3<span class="sc">$</span>parameter,</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Método"</span> <span class="ot">=</span> <span class="st">"Pearson's product-moment correlation"</span>,</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Alternativa"</span> <span class="ot">=</span> <span class="st">"two.sided"</span>,</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"95% IC"</span> <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">"["</span>, <span class="fu">round</span>(cor_h3<span class="sc">$</span>conf.int[<span class="dv">1</span>], <span class="dv">2</span>), <span class="st">","</span>, </span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">round</span>(cor_h3<span class="sc">$</span>conf.int[<span class="dv">2</span>], <span class="dv">2</span>), <span class="st">"]"</span>)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>resultados_h3</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Correlación      t    p.value  df                               Método
+cor      0.1613 4.4135 &lt; 0.001*** 729 Pearson's product-moment correlation
+    Alternativa     X95..IC
+cor   two.sided [0.09,0.23]</code></pre>
+</div>
+</div>
+<p>H0 = Mujeres 30-44 = Hombres 30-44. Tanto mujeres como hombres pertenecientes al segundo tramo de edad presentan indicadores iguales y altos en salud mental.</p>
+<p>HA = Mujeres 30-44 ≠ Hombres 30-44. Tanto mujeres como hombres pertenecientes al segundo tramo de edad (30-44) presentan indicadores similares y bajos en salud mental.</p>
+<p>Al poner a prueba la hipótesis planteada, se muestra una diferencia estadísticamente significativa, con un valor p menor a 0,001, siendo posible rechazar la hipótesis nula que postula indicadores iguales y altos en salud mental entre individuos de 30-44 años. Sin embargo, el tamaño de efecto de la correlación (r = 0.1613) es positivo pero pequeño, evidenciando que a nivel poblacional esta relación es muy pequeña. Por otro lado, en relación a los datos, las mujeres y hombres pertenecientes al segundo tramo de edad (30-44) presentan diferencias significativas entre ambos y específicamente en dicho tramo presentan una baja considerable de la salud mental, como puede verse en el gráfico adjunto.</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Heatmap para ISM respecto edad y sexo </span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Calcular medias por grupo </span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>heatmap_data <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(edad_tramo_num, R_sexo) <span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">media_ism =</span> <span class="fu">mean</span>(ISM, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a> <span class="at">.groups =</span> <span class="st">'drop'</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">grupo_edad =</span> <span class="fu">factor</span>(edad_tramo_num, </span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"18-29"</span>, <span class="st">"30-44"</span>, <span class="st">"45-59"</span>, <span class="st">"60-79"</span>, <span class="st">"80+"</span>)),</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">sexo =</span> <span class="fu">factor</span>(R_sexo, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Hombre"</span>, <span class="st">"Mujer"</span>))</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Generar Heatmap </span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(heatmap_data, <span class="fu">aes</span>(<span class="at">x =</span> grupo_edad, <span class="at">y =</span> sexo, <span class="at">fill =</span> media_ism)) <span class="sc">+</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(media_ism, <span class="dv">2</span>)), <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">"red"</span>, <span class="at">mid =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"blue"</span>, </span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>                       <span class="at">midpoint =</span> <span class="fu">mean</span>(heatmap_data<span class="sc">$</span>media_ism),</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>                       <span class="at">name =</span> <span class="st">"ISM (Media)"</span>) <span class="sc">+</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mapa de Calor: ISM Promedio por Edad y Sexo"</span>,</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Grupo de Edad"</span>, </span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Sexo"</span>,</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta ELSOC ola 2022."</span>) <span class="sc">+</span> </span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-heatmap-ism" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-heatmap-ism-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Procesamiento-1_files/figure-html/fig-heatmap-ism-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-heatmap-ism-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;10: Mapa de calor: ISM Promedio por edad y sexo
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="conclusión" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Conclusión</h1>
+<p>El presente trabajo tuvo por objetivo analizar las brechas de género en la salud mental en Chile, estudiando fluctuaciones en la brecha según rangos etarios a partir de los datos de la encuesta ELSOC. Los resultados muestran evidencia en que la salud mental es más baja en mujeres que en hombres dentro de todos los rangos etarios presentados, puesto que los indicadores del Indice creado muestran valores más altos (peor salud mental) para las mujeres. Aquello evidencia que la edad no es un factor determinante a la hora de analizar la salud mental en Chile.</p>
+<p>Este trabajo presenta limitaciones a la hora del análisis en materia de representatividad, ya que existe un desbalance de género en la muestra, donde las mujeres duplican la participación de hombres en esta encuesta. Esto en particular evidencia una gran diferencia en resultados a la hora de evaluar los niveles de salud mental, pero dicho resultado podría estar alterado por la gran cantidad de mujeres presentes siendo posible que no sea una diferencia real a nivel poblacional.</p>
+<p>Se debe tener en cuenta para futuros análisis respecto a esta temática, que es importante incorporar variables que expliquen por qué se producen estas diferencias, como por ejemplo: “horas dedicadas al trabajo doméstico” o “carga de cuidados”. En este sentido, sería un gran aporte realizar estudios longitudinales que permitan evidenciar cómo se comporta la salud mental en una misma población a lo largo del tiempo, y cómo transita dicha población en sus diferentes etapas del ciclo vital; de la juventud a la adultez, de la adultez a la tercera edad, etc…, verificando si dicha brecha corresponde al rango etario o a efectos generacionales.</p>
+</section>
+<section id="bibliografía" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Bibliografía</h1>
+<p>Beltrán, L. et al (2020). Medición del Bienestar Subjetivo y Condiciones de Vida en el contexto sociocultural de la contingencia por COVID en Veracruz, México. <em>Revista Electrónica de la Coordinación Universitaria de Observatorios de la Universidad Veracruzana</em>, (10) 94-103.<br>
+<a href="https://doi.org/10.25009/uvserva.v0i10.2727" class="uri">https://doi.org/10.25009/uvserva.v0i10.2727</a></p>
+<p>Bupa Global Latinoamérica (2025). ¿Cómo quitar la fatiga? Consejos de expertos en salud. <a href="https://www.bupasalud.com/salud/como-quitar-fatiga" class="uri">https://www.bupasalud.com/salud/como-quitar-fatiga</a></p>
+<p>Cabezas, A. (2021). <em>Desigualdades de género en salud: Análisis de su medicalización desde la perspectiva interseccional</em>. [Tesis de Doctorado, UPV/EHU]. <a href="https://addi.ehu.es/bitstream/handle/10810/54756/TESIS_CABEZAS_RODRIGUEZ_ANDREA.pdf?sequence=1&amp;isAllowed=y" class="uri">https://addi.ehu.es/bitstream/handle/10810/54756/TESIS_CABEZAS_RODRIGUEZ_ANDREA.pdf?sequence=1&amp;isAllowed=y</a></p>
+<p>COES (2023). <em>Radiografía del Cambio Social: Análisis de Resultados Longitudinales ELSOC 2016-2022</em>. Presentación de Resultados COES.</p>
+<p>Gonçalves, S. (2025). Understanding emotional fatigue: A systematic review of causes, consequences and coping strategies. <em>Enfermería Clínica (English Edition)</em>, 35(5), pp 1-19.</p>
+<p>Moreno, X., Monsalves, MJ, Rueda, S., Dagnino, P. y Borghero, F. (2024). Diferencias de género en la esperanza de vida sin síntomas depresivos en Chile entre 2003 y 2016. <em>Cambridge Prisms: Salud Mental Global</em>, 11, e16. <a href="https://doi:10.1017/gmh.2024.9" class="uri">https://doi:10.1017/gmh.2024.9</a></p>
+<p>Organización Mundial de la Salud. (s. f.). Salud mental. Recuperado de <a href="https://www.who.int/es/health-topics/mental-health" class="uri">https://www.who.int/es/health-topics/mental-health</a></p>
+<p>Presa-García, ME, García-Luque, A, Luis Callol-Sánchez, L, Abril-García, A, &amp; Muñoz-Lucas, MA. (2023). Influencia de la anhedonia en la evolución clínica del trastorno depresivo. <em>Sanidad Militar</em>, 79(2), 75-81.</p>
+<p>Presno Labrador, M. C., &amp; Castañeda Abascal, I. E. (2003). Enfoque de género en salud: Su importancia y aplicación en la APS. <em>Revista Cubana de Medicina General Integral</em>, 19(3). <a href="https://www.scielo.sld.cu/scielo.php?pid=S0864-21252003000300002&amp;script=sci_arttext&amp;tlng=pt" class="uri">https://www.scielo.sld.cu/scielo.php?pid=S0864-21252003000300002&amp;script=sci_arttext&amp;tlng=pt</a></p>
+<p>Rohlfs, I., Borrell, C., Anitua, C., Artazcoz, L., Colomer, C., Escribá, V., García-Calvente, M., Llacer, A., Mazarrasa, L., Pasarín, M. I., Peiró, R., &amp; Valls-Llobet, C. (2000). La importancia de la perspectiva de género en las encuestas de salud. <em>Gaceta Sanitaria</em>, 14(2), 146-155. <a href="https://doi.org/10.1016/S0213-9111(00)71448-8" class="uri">https://doi.org/10.1016/S0213-9111(00)71448-8</a></p>
+<p>Veenhoven, R. (1994) El estudio de la satisfacción con la vida. <em>Intervención Psicosocial</em>, (3), 87-116. <a href="https://personal.eur.nl/veenhoven/Pub1990s/94d-fulls.pdf" class="uri">https://personal.eur.nl/veenhoven/Pub1990s/94d-fulls.pdf</a></p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,6 @@
+"0","#| include: false"
+"0",""
+"0","sjt.xtab(datos$R_sexo, datos$R_satisfaccion_vida,"
+"0","         show.row.prc = TRUE, #solo fila"
+"0","         show.col.prc=TRUE, #solo columna"
+"0","         show.summary = FALSE)"
