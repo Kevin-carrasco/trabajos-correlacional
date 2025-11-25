@@ -1,0 +1,284 @@
+---
+title: "Resultados"
+---
+
+# Análisis
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+
+if (!exists("simce2")) {
+  simce2 <- readRDS("simce2.rds")
+}
+saveRDS(simce2, "simce2.rds")
+```
+
+# Análisis descriptivo
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+pacman::p_load(tidyverse, # Manipulacion datos
+               sjPlot, # Graficos y tablas
+               sjmisc, # Descriptivos
+               corrplot, # Correlaciones
+               psych, # Test estadísticos
+               kableExtra, # Tablas
+               rempsyc,
+               broom,
+               sjstats,
+               gginference)
+
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+library(readxl)
+
+simce <- read_excel("C:/Users/crist/Documents/TrabajodefEstadistica/resultadossimce6b2024.xlsx")
+rbd <- read_excel("C:/Users/crist/Documents/TrabajodefEstadistica/simce6b2024_rbd.xlsx")
+
+
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+simce2 <- simce %>%
+  left_join(
+    rbd %>%
+      select(cod_com_rbd, cod_rural_rbd) %>% 
+      distinct(), 
+    by = c("cod_com" = "cod_com_rbd")
+  )
+
+#codificar ------
+
+simce2 <- simce2 %>% 
+  rename(
+    comuna = nom_com,
+    provincia = nom_deprov,
+    prom_lenguaje = prom_lect6b_com,
+    ruralidad = cod_rural_rbd
+  )
+
+
+```
+
+## Tendencia central del SIMCE lenguaje.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+summary(simce2$prom_lenguaje)
+
+
+
+
+```
+
+El puntaje promedio comunal de Lenguaje presenta valores concentrados en torno a la media nacional, con una dispersión moderada entre las comunas.
+
+## Tendencia central del SIMCE matemáticas.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+summary(simce$prom_mate6b_com)
+
+```
+
+El puntaje promedio comunal de Matemática muestra una distribución concentrada en torno a valores medios, con una dispersión moderada entre comunas.
+
+## Grafico del rendimiento de la prueba
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+hist(simce2$prom_lenguaje,
+     xlab="Distribución del rendimiento simce en Lenguaje",
+     main="Puntaje promedio",
+     col="skyblue")
+
+```
+
+La inspección del histograma muestra una distribución relativamente simétrica, sin presencia de valores atípicos extremos, lo cual indica que el rendimiento comunal se distribuye de manera homogénea dentro de los rangos esperados por la evaluación SIMCE. Además, la muestra incluye comunas urbanas y rurales, lo que permite observar patrones territoriales amplios. 
+
+Al calcular el intervalo de confianza del 95% para la media comunal, se encuentra que esta estimación se mantiene dentro del rango esperado para la población evaluada, por lo que esta precisión estadística sirve como línea base para los análisis comparativos posteriores, y para evaluar la hipótesis 1, referida a las diferencias de rendimiento según tipo de territorio entre zonas urbanas y rurales.
+
+## División entre Rural y Urbano
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+
+simce2$ruralidad <- factor(
+  simce2$ruralidad,
+  levels = c(1,2),
+  labels = c("Urbana", "Rural")
+)
+
+tabla_rural <- table(simce2$ruralidad)
+
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+barplot(tabla_rural,
+        main="Distribución de comunas según ruralidad",
+        col=c("orange","darkolivegreen3"),
+        ylab="Frecuencia")
+```
+
+Este histograma, que clasifica los puntajes según ruralidad, muestra distribuciones similares entre ambos grupos, y que, si bien las zonas urbanas presentan una ligera concentración hacia puntajes algo superiores, la diferencia visual no sugiere una brecha estructural marcada. La dispersión en ambos casos es comparable, lo que metodológicamente implica que existen suficientes casos por categoría para aplicar una prueba t de diferencia de medias.
+
+Este comportamiento relativamente homogéneo indica que, de existir diferencias, estas deberían ser examinadas mediante análisis inferencial para determinar si son estadísticamente significativas.
+
+## Rendimiento Promedio según Ruralidad
+
+```{r}
+#| echo: false 
+#| warning: false 
+#| message: false
+
+
+
+t_urbana <- t.test(
+  simce2$prom_lenguaje[simce2$ruralidad == "Urbana"],
+  alternative = "two.sided",
+  conf.level = 0.95
+)
+
+t_rural <- t.test(
+  simce2$prom_lenguaje[simce2$ruralidad == "Rural"],
+  alternative = "two.sided",
+  conf.level = 0.95
+)
+
+test_rural_urb <- t.test(
+  prom_lenguaje ~ ruralidad,
+  data = simce2,
+  alternative = "two.sided",
+  conf.level = 0.95
+)
+
+stats_table <- tidy(test_rural_urb, conf.int = TRUE)
+
+```
+
+```{r}
+#| echo: false 
+#| warning: false 
+#| message: false
+
+nice_table(stats_table, broom = "t.test")
+
+```
+
+Los resultados de las pruebas t muestran que no hay diferencias estadísticamente significativas entre las puntuaciones medias en lengua en las zonas urbanas (M1 = 244,21) y las zonas rurales (M2 = 243,34). La diferencia entre las dos medias es de 0,87 unidades, la estadística t es de 0,89 y el valor p es de 0,372, lo que indica que esta diferencia no es lo suficientemente significativa como para considerarse significativa. El intervalo de confianza del 95 % para la diferencia entre las dos medias es \[-1,04, 2,78\], que incluye el cero. Esto indica que la diferencia observada es aleatoria y no refleja el efecto real del entorno rural. Por lo tanto, los datos estadísticos no respaldan la primera hipótesis, que afirma que los resultados del SIMCE en lengua difieren significativamente entre las zonas urbanas y rurales.
+
+## Rendimiento promedio por provincia
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+rend_prov <- simce2 %>%
+  group_by(provincia) %>%
+  summarise(
+    media = mean(prom_lenguaje, na.rm = TRUE),
+    sd = sd(prom_lenguaje, na.rm = TRUE),
+    n = n()
+  ) %>%
+  arrange(desc(media))
+
+
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+ggplot(rend_prov, aes(x = reorder(provincia, media), y = media)) +
+  geom_col(fill = "steelblue") +
+  coord_flip() +
+  labs(
+    title = "Rendimiento promedio en Lenguaje por provincia",
+    x = "Provincia",
+    y = "Puntaje promedio"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.y = element_text(size = 6)  # Tamaño del texto más pequeño
+  )
+```
+
+El gráfico por provincias revela un patrón territorial más claro, ya que la provincia "Oriente" destaca en la parte superior del ranking nacional, reuniendo comunas de altos ingresos como Las Condes, Providencia y Peñalolén; resultado que se puede considerar consistente con los antecedentes que vinculan capital socioeducativo con rendimiento académico.
+
+De igual forma, la diferencia aproximada de 25 puntos entre las provincias de mayor y menor rendimiento reflejan desigualdades educacionales de carácter estructural, cuyo patrón ofrece evidencia descriptiva importante para la hipótesis 2, que propone diferencias significativas entre territorios amplios –comunas o regiones–.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+prom_nacional <- mean(simce2$prom_lenguaje, na.rm = TRUE)
+
+# Diferencia respecto al promedio nacional
+simce2$dif_prom <- simce2$prom_lenguaje - prom_nacional
+
+# Tabla de contingencia: bajo el promedio X ruralidad
+tabla_dif <- table(
+  BajoPromedio = simce2$dif_prom < 0,
+  Ruralidad = simce2$ruralidad
+)
+
+# Convertir a data frame
+tabla_dif2 <- as.data.frame(tabla_dif)
+
+# Etiquetas bonitas para el gráfico
+tabla_dif2$BajoPromedio <- factor(
+  tabla_dif2$BajoPromedio,
+  levels = c(FALSE, TRUE),
+  labels = c("Sobre el promedio", "Bajo el promedio")
+)
+
+
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+ggplot(tabla_dif2, aes(x = Ruralidad, y = Freq, fill = BajoPromedio)) +
+  geom_col(position = "dodge") +
+  labs(
+    title = "Comunas sobre y bajo el promedio nacional según ruralidad",
+    x = "Ruralidad",
+    y = "Número de comunas",
+    fill = "Desempeño"
+  ) +
+  scale_fill_manual(values = c("Sobre el promedio" = "steelblue",
+                               "Bajo el promedio" = "tomato"))
+```
+
+El cruce de los histogramas entre desempeño (sobre o bajo el promedio) y tipo de territorio muestra una tendencia inicial: las comunas urbanas presentan una distribución más equilibrada, mientras que en las rurales predomina un mayor número de comunas bajo el promedio nacional. Lo cual en términos proporcionales significa que aproximadamente el 52% de las comunas rurales se ubican bajo el promedio, y que en las urbanas esta cifra alcanza cerca de un 48%; y si bien esta diferencia es leve, sugiere una posible ventaja educativa para zonas urbanas. No obstante, esta observación es inicialmente descriptiva y será evaluada en el apartado de análisis inferencial, donde se determinará la significancia estadística y la magnitud de esta asociación.

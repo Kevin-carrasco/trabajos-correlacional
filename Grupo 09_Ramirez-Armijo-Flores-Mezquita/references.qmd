@@ -1,0 +1,25 @@
+---
+title: "Referencias"
+suppress-bibliography: false
+nocite: |
+  @*
+number-sections: false
+---
+
+# Referencias
+
+Avarca-Oviedo, E., Victoriano-Villouta, E., Delgado-González, C., Cabbada-Bergez, N., & Leyton-Faúndez, C. (2025). Ambiente protegido y su relación con los resultados académicos en las pruebas SIMCE. *Revista Calidad en la Educación*, *62*, 284-307.
+
+Botella, M., & Ortiz, C. (2018). Efectos indeseados a partir de los resultados SIMCE en Chile. *Revista Educación, Política y Sociedad*, *3*(2), 27-44.
+
+Donoso, S., Arias, Ó., Cancino, V., Castro, M., Davis, G., & Benavides, N. (2011). *Acceso a la educación escolar y discriminación social y territorial en Chile: Análisis del problema* \[Documento de Trabajo\]. Instituto de Investigación y Desarrollo Educacional (IIDE), Universidad de Talca.
+
+Inzunza, J., & Campos, J. (2016). El SIMCE en Chile: Historia, problematización y resistencia. *XI Seminario Internacional de la Red Estrado: Movimientos Pedagógicos y Trabajo Docente en tiempos de estandarización*.
+
+Ministerio de Educación. (2017). *Estándares de Aprendizaje: Lectura 6° básico*. Ministerio de Educación (MINEDUC). <https://www.curriculumnacional.cl/614/articles-208046_recurso_pdf.pdf>
+
+Muñoz, C., & Muñoz, G. (2013). *Desigualdad territorial en el sistema escolar: la urgencia de una reforma estructural a la educación pública en Chile* (Serie Estudios Territoriales, Documento de Trabajo 8). Programa Cohesión Territorial para el Desarrollo. <https://www.rimisp.org/wp-content/files_mf/1371241737DOCUMENTODETRABAJO8_MUNOZ.pdf>
+
+Tabilo, M. (2008). *El derecho fundamental a la educación en Chile* \[Memoria de grado, Universidad de Chile\]. <https://repositorio.uchile.cl/bitstream/handle/2250/107860/El-derecho-fundamental-a-la-educacion-en-Chile.pdf?sequence=4&isAllowed=y>
+
+Webb, A., Canales, A., & Becerra, R. (2017). Capítulo IX: Las desigualdades invisibilizadas: población indígena y segregación escolar. En I. Irarrázaval, E. Piña, & M. Letelier (Eds.), *Propuestas para Chile* (pp. 279-305). Pontificia Universidad Católica de Chile. <https://politicaspublicas.uc.cl/web/content/uploads/2017/04/Libro-Propuestas-para-Chile-2016_con-portada-7.pdf#page=280>

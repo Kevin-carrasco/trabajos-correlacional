@@ -1,0 +1,43 @@
+---
+title: "Metodología"
+---
+
+# Metodología
+
+**Datos**
+
+Los datos utilizados en esta investigación se recabaron a partir de fuentes secundarias oficiales elaboradas por la Agencia de Calidad de la Educación –perteneciente al Ministerio de Educación de Chile \[MINEDUC\]–, y que corresponden a las bases de datos preliminares del sistema de medición estandarizada chileno. Específicamente, se hizo uso de los archivos del SIMCE 2024 de 6° año básico, cuya elección está justificada –bajo los Estándares de Aprendizaje de 6° básico (@mineduc2017estandares)– en que durante este nivel es posible constatar si el estudiantado ha alcanzado las habilidades de lectura crítica y comprensiva necesarias para afrontar la mayor complejidad curricular, además de identificar a tiempo posibles rezagos en la consolidación de la competencia lectora antes de la enseñanza media.
+
+La construcción del conjunto de datos final implicó un procedimiento de fusión de dos matrices de información distintas. La primera matriz procesada fue la Base de Datos Comunal (simce6b2024_comuna_preliminar.csv), que provee los promedios de rendimiento agregados por unidad administrativa en las asignaturas de Lenguaje y Matemática, además de la identificación geográfica de cada territorio. Posteriormente, se integró la Base de Datos por Establecimiento (simce6b2024_rbd_preliminar.csv), insumo necesario para extraer la clasificación rural/urbana para cada establecimiento, incluirla al nivel municipal, y así construir una medida territorial más precisa.
+
+La integración de estas fuentes permitió generar un dataset único que vincule resultados académicos con determinantes territoriales, cuya decisión de establecer la comuna como unidad de análisis –en lugar del estudiante individual o el establecimiento– se sustenta en la literatura especializada sobre segregación educativa en Chile, ya que autores como @munoz2013desigualdad plantean que la desigualdad no es un fenómeno aislado, sino que, se constituye como un componente estructural anclado al territorio. Por ende, el análisis a escala municipal se vuelve idóneo para visibilizar cómo el modelo de gestión descentralizado replica inequidades socioeconómicas, y también, para identificar aquellas zonas geográficas que requieren priorización en el diseño de políticas públicas.
+
+**Variables**
+
+Para responder al objetivo general de analizar las brechas territoriales, se seleccionó y operacionalizó las siguientes variables –una dependiente y tres independientes,  teniendo cada una su propia justificación teórica, operacionalización y tipo de medición–, clasificadas según su función en el modelo de análisis:
+
+-   **Variable Dependiente (VD):**
+
+    -   **Puntaje Promedio Comunal de Lenguaje:** Esta funciona como un indicador clave de brechas educativas, ya que permite observar desigualdades territoriales vinculadas a infraestructura, disponibilidad de recursos y condiciones del entorno escolar. Se operacionaliza a partir del promedio comunal reportado por el SIMCE 2024 y se mide como una variable continua, donde valores más elevados reflejan un mejor desempeño académico.
+
+-   **Variables Independientes (VI):**
+
+    -   **Ruralidad/Urbanidad:** Se entenderá como un factor central en el estudio de la desigualdad territorial, ya que distingue si los establecimientos se ubican en zonas urbanas o rurales, permitiendo observar cómo el territorio influye en la producción de desigualdades educativas, tal como señalan @donoso2011acceso: la ruralidad explica variaciones en los puntajes entre comunas. Se utilizará la codificación original (urbano = 1; rural = 2), y se medirá como una variable dicotómica, adecuada para análisis descriptivos y comparaciones de medias.
+
+    -   **Región:** Variable categórica que asigna cada municipio a una de las unidades administrativas de Chile, permitiendo analizar cómo las diferencias regionales influyen en la configuración y variación de los municipios. No requiere recodificación, pues no implica continuidad ni jerarquía entre categorías. Se operacionaliza mediante la clasificación regional oficial y se mide como una variable categórica nominal.
+
+    -   **Diferencia respecto al promedio nacional:** Permite identificar desigualdades territoriales al mostrar si cada unidad administrativa se ubica por encima o por debajo de la media del país. Se operacionaliza como la diferencia numérica entre el puntaje distrital y el promedio nacional, y se mide como una variable continua –lo que hace innecesaria cualquier recodificación–, además de facilitar el análisis comparativo entre distritos.
+
+    -   **Puntaje Promedio Comunal de Matemática:** Funciona como variable de control que permite identificar patrones de desigualdad entre áreas de aprendizaje, puesto que, municipios con bajo desempeño en Lenguaje suelen presentar resultados similares en Matemática. Su inclusión se sustenta teóricamente en la relación entre rendimiento académico, recursos educativos, entorno escolar y condiciones socioeconómicas. Se mide como una variable continua, no requiere recodificación, y es compatible con el coeficiente de correlación de Pearson.
+
+**Método**
+
+El análisis se dividirá en dos etapas: En primer lugar, se realizará un análisis descriptivo, que incluirá medidas de tendencia central y dispersión para las variables continuas –puntaje promedio comunal de Lenguaje; puntaje promedio comunal de Matemática; y la diferencia respecto del promedio nacional–. Mientras que para las variables categóricas –ruralidad/urbanidad y región–, se elaborarán tablas de frecuencia y gráficos que permitan caracterizar la distribución territorial de las comunas. Cuando se vuelva pertinente, especialmente en el caso de las variables continuas centrales de la investigación, se harán cálculos de Intervalos de Confianza al 95% con el fin de evaluar la precisión de las estimaciones descriptivas.
+
+En segundo lugar, se seguirá con el análisis inferencial, aplicando los métodos enseñados en clase para contrastar las hipótesis planteadas: 
+
+-   Para evaluar la primera hipótesis se utilizará una prueba t para muestras independientes, que permitirá determinar si existen diferencias estadísticamente significativas en el rendimiento promedio de Lenguaje entre comunas urbanas y rurales, considerando que ruralidad/urbanidad es una variable dicotómica y que el puntaje de Lenguaje es continuo. 
+
+-   En la hipótesis sobre desigualdades académicas estructurales, se hará uso del Coeficiente de Correlación de Pearson entre el puntaje promedio comunal de Lenguaje y el puntaje promedio comunal de Matemática, ya que ambas variables son continuas y presentan adecuada variabilidad. 
+
+-   Para examinar las diferencias regionales, se utilizarán tablas comparativas, estadísticos de resumen y gráficos de variación territorial, con el fin de identificar patrones relevantes entre regiones del país.

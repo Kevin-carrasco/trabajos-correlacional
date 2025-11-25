@@ -1,0 +1,32 @@
+---
+title: "Introducción"
+numbered: true
+---
+
+# Introducción {.unnumbered}
+
+Introducción:
+
+En Chile, la educación es un derecho fundamental al que todas las personas pueden acceder. Sin embargo, su ejercicio ha revelado profundas desigualdades sociales y territoriales presentes en el país. Como sostienen Inzunza y Campos (s.f.), la educación chilena continúa reflejando las brechas estructurales derivadas del modelo económico y político instaurado durante la dictadura, evidenciando que las desigualdades actuales no son solo pedagógicas, sino también históricas y estructurales.
+
+Dentro de este escenario, las mediciones estandarizadas han ocupado un rol central en la evaluación del sistema educativo. Entre ellas, el Sistema de Medición de la Calidad de la Educación (SIMCE) se ha consolidado como el principal instrumento utilizado para diagnosticar el rendimiento académico y visibilizar las desigualdades del sistema escolar chileno. En este sentido, Mora (s.f.) afirma que el SIMCE es el instrumento más relevante para medir el desempeño académico y detectar las brechas estructurales del sistema educativo nacional.
+
+El SIMCE fue creado en 1988 con el propósito de evaluar la calidad y el rendimiento del sistema educativo chileno, comparando los resultados obtenidos entre las distintas zonas del país. Aunque en un inicio se concibió como una herramienta técnica para el mejoramiento de la educación, su aplicación se ha transformado progresivamente en un mecanismo de alto impacto político, social y mediático, vinculado a incentivos y sanciones que refuerzan la competencia entre establecimientos y comunas. En este contexto, los resultados del SIMCE se convierten en un insumo clave para analizar las desigualdades territoriales, particularmente en la educación básica.
+
+Muñoz y Muñoz (2013) sostienen que “la desigualdad territorial en el sistema escolar chileno se expresa en la distribución desigual de oportunidades educativas, derivada de un modelo de gestión descentralizado que replica las inequidades socioeconómicas de los territorios” (p. 8). Esta afirmación refleja que las comunas con mayores recursos tienden a concentrar los mejores resultados en las pruebas SIMCE, mientras que aquellas con menores capacidades fiscales —principalmente rurales o periféricas— enfrentan desventajas estructurales tanto en infraestructura como en gestión educativa.
+
+Desde una perspectiva más reciente, Avarca-Oviedo et al. (2025) identifican que “un primer hallazgo destaca la asociación positiva entre el Índice de Ambiente Protegido con los resultados SIMCE en todas las asignaturas y niveles (...). Esto sugiere que un mayor nivel de ambiente protegido está relacionado con mejor rendimiento académico en las pruebas” (p. 297). Este resultado demuestra que el rendimiento escolar no depende exclusivamente del esfuerzo individual del estudiante, sino también de las condiciones materiales, emocionales y estructurales del entorno educativo. En la misma línea, Webb, Canales y Becerra (2016) sostienen que, para reducir las desigualdades educativas, es imprescindible reformar los mecanismos de asignación de recursos y replantear los sistemas de evaluación, favoreciendo criterios de equidad y pertinencia territorial.
+
+En este trabajo se analizarán las desigualdades territoriales en los resultados comunales del SIMCE de Lenguaje 6° básico (2024). La variable dependiente será el puntaje promedio comunal en Lenguaje, mientras que las variables independientes corresponderán a la condición rural/urbana de la comuna, la región del país, la diferencia comunal respecto del promedio nacional de Lenguaje y el rendimiento promedio comunal de Matemáticas, el cual ha sido incorporada para analizar la correlación entre desempeños académicos. Se incorporará el puntaje comunal de Matemáticas, esto con el fin de explorar la relación estructural entre desempeños académicos, ya que distintos estudios muestran que las brechas territoriales afectan simultáneamente múltiples áreas del aprendizaje.
+
+**Objetivo general:** Analizar cómo las desigualdades territoriales y académicas inciden en el rendimiento comunal en Lenguaje en Chile durante 2024, considerando diferencias entre territorios rurales y urbanos, entre regiones, y su relación con el rendimiento en Matemática.\*\*
+
+**Hipótesis:**
+
+1.  El rendimiento promedio comunal en Lenguaje varía significativamente entre comunas rurales y urbanas.\
+
+2.  Existen diferencias significativas en el rendimiento promedio de Lenguaje entre las regiones del país.\
+
+3.  Las comunas que presentan diferencias negativas respecto del promedio nacional en Lenguaje se concentran mayoritariamente en territorios rurales o en regiones con menor desarrollo educativo.
+
+4.  Existe una correlación positiva entre el rendimiento comunal en Lenguaje y Matemática, lo que refleja desigualdades académicas estructurales que atraviesan los territorios.

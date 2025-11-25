@@ -1,0 +1,318 @@
+---
+title: "Resultados estadístico bivariado"
+---
+
+# Interpretaciones estadístico Bivariado
+
+### Hipótesis 1: Diferencias de rendimiento entre zonas urbanas y rurales:
+
+```{r}
+#| label: Hipotesis
+#| echo: false
+#| message: false
+#| warning: false
+
+library(tidyverse)
+library(readxl)
+library(broom)
+library(rempsyc)
+
+library(tidyverse)
+library(readxl)
+
+# Cargar bases
+simce <- read_excel("C:/Users/crist/Documents/TrabajodefEstadistica/resultadossimce6b2024.xlsx")
+rbd   <- read_excel("C:/Users/crist/Documents/TrabajodefEstadistica/simce6b2024_rbd.xlsx")
+
+# Unir bases
+simce2 <- left_join(
+  simce,
+  rbd %>% select(cod_com_rbd, cod_rural_rbd),
+  by = c("cod_com" = "cod_com_rbd")
+)
+
+# Renombrar como usas en tus análisis
+simce2 <- simce2 %>% 
+  rename(
+    comuna = nom_com,
+    provincia = nom_deprov,
+    prom_lenguaje = prom_lect6b_com,
+    ruralidad = cod_rural_rbd
+  )
+
+# Convertir ruralidad a factor
+simce2$ruralidad <- factor(simce2$ruralidad,
+                           levels = c(1, 2),
+                           labels = c("Urbana", "Rural"))
+
+
+# Prueba t entre comunas urbanas y rurales
+test_rural_urb <- t.test(prom_lenguaje ~ ruralidad,
+                         data = simce2,
+                         alternative = "two.sided",
+                         conf.level = 0.95)
+
+# Tabla ordenada con broom
+t_urbana <- t.test(
+  simce2$prom_lenguaje[simce2$ruralidad == "Urbana"],
+  alternative = "two.sided",
+  conf.level = 0.95
+)
+
+t_rural <- t.test(
+  simce2$prom_lenguaje[simce2$ruralidad == "Rural"],
+  alternative = "two.sided",
+  conf.level = 0.95
+)
+
+test_rural_urb <- t.test(
+  prom_lenguaje ~ ruralidad,
+  data = simce2,
+  alternative = "two.sided",
+  conf.level = 0.95
+)
+
+stats_table <- tidy(test_rural_urb, conf.int = TRUE)
+
+
+```
+
+![](images/clipboard-2811941249.png)
+
+### Tamaño de Efecto
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(readxl)
+
+# Cargar bases
+simce <- read_excel("C:/Users/crist/Documents/TrabajodefEstadistica/resultadossimce6b2024.xlsx")
+rbd   <- read_excel("C:/Users/crist/Documents/TrabajodefEstadistica/simce6b2024_rbd.xlsx")
+
+# Unir bases
+simce2 <- left_join(
+  simce,
+  rbd %>% select(cod_com_rbd, cod_rural_rbd),
+  by = c("cod_com" = "cod_com_rbd")
+)
+
+# Renombrar como usas en tus análisis
+simce2 <- simce2 %>% 
+  rename(
+    comuna = nom_com,
+    provincia = nom_deprov,
+    prom_lenguaje = prom_lect6b_com,
+    ruralidad = cod_rural_rbd
+  )
+
+# Convertir ruralidad a factor
+simce2$ruralidad <- factor(simce2$ruralidad,
+                           levels = c(1, 2),
+                           labels = c("Urbana", "Rural"))
+
+library(effectsize)
+
+cohen_d <- cohens_d(prom_lenguaje ~ ruralidad, data = simce2)
+
+cohen_d
+```
+
+Para evaluar la hipótesis, se realizó una prueba t de muestras independientes, y cuyos resultados fueron los siguientes:
+
+-   Media comunas urbanas: 244.21**\
+    \
+    **
+
+-   Media comunas rurales: 243.34**\
+    \
+    **
+
+-   t(570.78) = 0.89, p = .372**\
+    \
+    **
+
+-   Diferencia promedio: 0.87 puntos**\
+    \
+    **
+
+-   Intervalo de confianza 95%: \[-1.04, 2.78\]**\
+    \
+    **
+
+Como el intervalo incluye 0, no se puede afirmar que exista una diferencia estadísticamente significativa; además, el tamaño del efecto mediante Cohen’s d = 0.07 (IC 95%: -0.09, 0.23) indica un efecto prácticamente nulo. Por lo que es posible concluir que **no se respalda la hipótesis 1** ya que las comunas urbanas y rurales presentan rendimientos estadísticamente indistinguibles.
+
+### Hipótesis 2: Diferencias entre regiones
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+tabla_region <- simce2 %>%
+  group_by(nom_reg) %>%
+  summarise(
+    n_comunas = n(),
+    media_lenguaje = mean(prom_lenguaje, na.rm = TRUE),
+    sd_lenguaje = sd(prom_lenguaje, na.rm = TRUE),
+    min_lenguaje = min(prom_lenguaje, na.rm = TRUE),
+    max_lenguaje = max(prom_lenguaje, na.rm = TRUE)
+  ) %>%
+  arrange(desc(media_lenguaje))
+
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+ggplot(tabla_region, aes(x = reorder(nom_reg, media_lenguaje), 
+                         y = media_lenguaje)) +
+  geom_col(fill = "steelblue") +
+  coord_flip() +
+  labs(
+    title = "Promedio del puntaje de Lenguaje por región",
+    x = "region",
+    y = "Puntaje promedio"
+  ) +
+  theme_minimal()
+```
+
+Aunque no se aplican pruebas inferenciales debido a la ausencia de técnicas paramétricas para más de dos grupos en este curso, el análisis descriptivo muestra diferencias claras entre regiones: Magallanes y Metropolitana destacan como las de mejor rendimiento; mientras que Arica y Parinacota, Atacama y Tarapacá exhiben los puntajes más bajos; y las brechas regionales alcanzan entre 25 y 30 puntos. Por lo que es posible concluir que **se respalda descriptivamente la hipótesis 2**, ya que las medias regionales no son homogéneas y existe un patrón territorial evidente.
+
+### Hipótesis 3: Asociación entre ruralidad y desempeño relativo:
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+prom_nacional <- mean(simce2$prom_lenguaje, na.rm = TRUE)
+
+simce2$BajoPromedio <- simce2$prom_lenguaje < prom_nacional
+
+simce2$BajoPromedio <- factor(
+  simce2$BajoPromedio,
+  levels = c(FALSE, TRUE),
+  labels = c("Sobre el promedio", "Bajo el promedio")
+)
+```
+
+```{r}
+#| label: aa
+#| echo: false
+#| message: false
+#| warning: false
+
+library(gtsummary)
+library(dplyr)
+library(kableExtra)
+
+tabla_hip3 <- table(
+  simce2$BajoPromedio,
+  simce2$ruralidad
+)
+
+tab_hip3 <- sjPlot::tab_xtab(
+  var.row = simce2$BajoPromedio,
+  var.col = simce2$ruralidad,
+  show.row.prc = TRUE,      # porcentaje por fila
+  show.col.prc = TRUE,      # porcentaje por columna
+  show.cell.prc = TRUE,     # porcentaje dentro de celda
+  show.summary = TRUE,      # incluye chi-cuadrado automáticamente
+  title = "Tabla de contingencia: Bajo/Sobre promedio según ruralidad",
+  digits = 2
+)
+
+tab_hip3
+```
+
+Se construyó una tabla de contingencia entre tipo de territorio –urbano/rural– y desempeño –sobre/bajo el promedio nacional–; y a pesar de que el patrón descriptivo refleja cierta asimetría, la prueba chi-cuadrado de independencia entregó los siguientes resultados:
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+chi_hip3 <- chisq.test(tabla_hip3) 
+chi_hip3
+```
+
+```{r}
+#| label: hipotesis 3
+#| echo: false
+#| message: false
+#| warning: false
+
+library(ggplot2)
+
+
+
+tabla_graf <- as.data.frame(tabla_hip3)
+colnames(tabla_graf) <- c("BajoPromedio", "Ruralidad", "Frecuencia")
+
+ggplot(tabla_graf,
+       aes(x = Ruralidad, y = Frecuencia, fill = BajoPromedio)) +
+  geom_col(position = "dodge") +
+  scale_fill_manual(values = c("steelblue", "tomato")) +
+  labs(
+    title = "Comunas sobre y bajo el promedio nacional según ruralidad",
+    x = "Ruralidad",
+    y = "Número de comunas",
+    fill = "Desempeño"
+  ) +
+  theme_minimal()
+```
+
+Dado que p \> .05, no se puede afirmar que exista una asociación estadísticamente significativa entre ambas variables; por lo que se puede concluir que **la** **hipótesis 3 no se respalda estadísticamente**, ya que, si bien existen diferencias descriptivas, estas no alcanzan a tener significancia estadística.
+
+### Hipotesis 4: Correlación entre rendimiento en Lenguaje y Matemática
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+# Correlación de Pearson entre Lenguaje y Matemática
+cor_test <- cor.test(simce2$prom_lenguaje,
+                     simce2$prom_mate6b_com,
+                     method = "pearson")
+
+cor_test
+```
+
+Se aplicó el Coeficiente de Correlación de Pearson, apropiado para variables continuas, teniendo como resultado lo siguiente: r = 0.904; IC 95% = \[0.8999, 0.9084\]; p \< 0.00000000000000022.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(ggplot2)
+
+ggplot(simce2, aes(x = prom_lenguaje, y = prom_mate6b_com)) +
+  geom_point(alpha = 0.6, color = "steelblue") +
+  geom_smooth(method = "lm", se = FALSE, color = "red") +
+  labs(
+    title = "Relación entre puntaje de Lenguaje y Matemática",
+    x = "Puntaje Lenguaje",
+    y = "Puntaje Matemática"
+  ) +
+  theme_minimal()
+```
+
+Es posible ver que en la dispersión de puntos se muestra una fuerte tendencia lineal ascendente, con valores agrupados en torno a la recta de regresión, lo que se trataría de una correlación positiva y muy fuerte, indicando que rendimientos altos en Lenguaje tienden a coincidir con rendimientos altos en Matemática, lo cual refleja que las brechas educativas son estructurales y afectan simultáneamente a múltiples áreas. Por lo que, es posible concluir que **la** **hipótesis 4 queda plenamente respaldada**, ya que la correlación es significativa y de alta magnitud.
+
+### Discusión de resultados:
+
+La evaluación de los datos permite contrastar las hipótesis iniciales y caracterizar los patrones de rendimiento académico comunal en Chile, ya que los resultados desestiman la existencia de diferencias estadísticas significativas entre zonas urbanas y rurales, lo que indica que la ruralidad –considerada como variable aislada– no constituye un determinante unívoco de las brechas de desempeño. Sin embargo, el análisis descriptivo sugiere que su incidencia podría estar mediada por la interacción con otros factores estructurales.
+
+No obstante, la prevalencia de disparidades –tanto a escala regional como provincial– puede apuntar hacia que las desigualdades territoriales responden a dinámicas más amplias, asociadas probablemente a la inversión educativa a lo largo de los años, la infraestructura disponible, y el perfil socioeconómico de los territorios. Esta complejidad es posible verla reforzada en la nula asociación directa entre ruralidad y desempeño relativo, lo cual se vió en la hipótesis 3, y que descarta explicaciones basadas solamente en la tipología comunal. 
+
+Igualmente, la sólida correlación visible entre los resultados de Lenguaje y Matemática corrobora la existencia de brechas estructurales transversales: el rendimiento académico aparece condicionado por variables territoriales que afectan al proceso educativo en su conjunto. 
+
+En síntesis, la evidencia sugiere que la desigualdad educativa opera mediante configuraciones territoriales más macro –y no exclusivamente por el carácter urbano o rural de la comuna–, hallazgo que sugiere profundizar en la articulación entre ruralidad, región y capital educativo.

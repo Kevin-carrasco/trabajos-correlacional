@@ -1,0 +1,21 @@
+---
+title: "Introducción"
+---
+
+## Introducción 
+
+En Chile, la Constitución de 1980 consagró la educación como un derecho fundamental que trasciende la etapa escolar, cuyo fin es potenciar las capacidades humanas para garantizar el pleno desarrollo personal (@tabilo2008derecho). Sin embargo, la concreción de este derecho enfrenta una problemática desde su concepción debido a la continuidad de profundas brechas –que no son meramente pedagógicas, sino que, históricas y estructurales–. La relevancia de esta investigación se sostiene en examinar lo planteado por @inzunza2016simce: Cómo el sistema educativo chileno continúa replicando inequidades derivadas del modelo político-económico –lo cual impide alcanzar la equidad territorial prometida–, por lo que a pesar de que el propósito inicial de este instrumento fuese evaluar calidad, su aplicación en la actualidad conlleva un alto impacto político, consolidando un sistema de incentivos que visibiliza las disparidades, las cuales según @munoz2013desigualdad “el sistema educacional chileno reproduce (...) y hace todavía muy poco por revertirlas” (p. 1). 
+
+Para abordar este fenómeno, es necesario demarcar los conceptos centrales que guiarán esta investigación. En primer lugar, se examinará el Sistema de Medición de la Calidad de la Educación \[SIMCE**\]**, entendido como una evaluación externa aplicada tanto en educación básica como en la media para medir el cumplimiento de las Bases Curriculares y los Estándares de Aprendizaje en asignaturas clave, cuyo propósito es informar sobre los niveles de aprendizaje alcanzados y, mediante estos resultados, promover el mejoramiento de la calidad educativa nacional @botella2018efectos. Y en segundo lugar, se abordará la desigualdad territorial, definida por @munoz2013desigualdad cómo "un conjunto de variables exógenas, que inciden en la provisión educacional de una determinada localidad" (@munoz2013desigualdad, p. 8)–estas variables exógenas son presentadas por los mismos autores como la población de una comuna y su grado de ruralidad, la desigualdad (o eficiencia) económica, tasas de desempleo juvenil o femenino, entre otras–.
+
+Dentro de los antecedentes encontrados sobre el fenómeno, autores como @donoso2011acceso plantean que la segregación educativa no depende solo del nivel socioeconómico individual, sino que, también de las desigualdades territoriales y la escala municipal, ya que el desarrollo desigual –especialmente en zonas rurales– provoca que estudiantes de igual condición social tengan oportunidades distintas según su ubicación, convirtiendo al territorio en un factor determinante de discriminación en el acceso a la calidad. En esta misma línea,  @avarca2025ambiente y @webb2017desigualdades plantean que la asociación positiva detectada entre el 'Índice de Ambiente Protegido' y el SIMCE demuestra que el rendimiento depende más de condiciones estructurales que del esfuerzo individual, lo que vuelve urgente reformar la asignación de recursos bajo criterios de equidad local. A partir de lo anterior, surge la siguiente pregunta de investigación: **¿De qué manera las variables territoriales configuran tanto el rendimiento comunal en el SIMCE de Lenguaje de 6° básico en 2024 como el desempeño en Matemática?**
+
+Para responder a esta interrogante, se utilizará el puntaje promedio en Lenguaje como variable dependiente, contrastándola con variables independientes como la condición rural/urbana y la región, entre otras que se desarrollarán en el apartado “variables”. El objetivo general es **analizar cómo las desigualdades territoriales y académicas determinan el rendimiento comunal**; y se plantean cuatro hipótesis: 
+
+1.  El rendimiento en Lenguaje varía significativamente a favor de zonas urbanas frente a rurales.
+
+2.  Existen diferencias significativas en el desempeño entre las distintas regiones.
+
+3.  Las comunas con brechas negativas respecto al promedio nacional se concentran mayoritariamente en territorios rurales o de menor desarrollo. 
+
+4.  Existe una correlación positiva entre el rendimiento comunal en Lenguaje y Matemática, reflejando desigualdades estructurales transversales.

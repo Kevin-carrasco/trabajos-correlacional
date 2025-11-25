@@ -1,0 +1,16 @@
+---
+number-sections: false
+numbered: false
+---
+
+# Presentación
+
+## Desigualdades regionales y académicas en el rendimiento comunal del SIMCE de Lenguaje 6° básico (2024) {.unnumbered}
+
+**Estudiantes:** Lucas Mezquita, Cristobal Ramirez., Jose Salvador Flores,, Gonzalo Armijo.
+
+**Profesor:** Juan Carlos Castillo.
+
+**Apoyo Docente:** Kevin Carrasco.
+
+**Ayudante:** Rodrigo Huerta

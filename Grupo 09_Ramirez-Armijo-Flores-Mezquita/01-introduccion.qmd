@@ -1,0 +1,12 @@
+---
+title: "Resumen"
+numbered: true
+---
+
+# Resumen {.unnumbered}
+
+**Resumen:** Esta investigación analiza la influencia de las desigualdades territoriales y académicas en el rendimiento comunal del SIMCE de Lenguaje de 6° básico del año 2024 en Chile. En un país donde la educación se consagra como un derecho fundamental, el estudio examina si el sistema educativo replica inequidades estructurales derivadas del modelo político-económico y la gestión descentralizada.
+
+La metodología utilizada fue de carácter cuantitativo, empleando fuentes secundarias oficiales de la Agencia de Calidad de la Educación. Se construyó un conjunto de datos a nivel comunal para evaluar si existe relación entre el puntaje promedio en Lenguaje y variables independientes como la condición de ruralidad/urbanidad, la región administrativa y el desempeño en Matemática. El análisis incluyó estadística descriptiva, pruebas t para muestras independientes y el coeficiente de correlación de Pearson.
+
+Los resultados refutan la hipótesis de que existe una brecha estadísticamente significativa en el rendimiento a favor de las zonas urbanas frente a las rurales, mostrando promedios indistinguibles entre ambos tipos de distribución territorial. Sin embargo, se evidenciaron diferencias descriptivas profundas a nivel regional y, de manera crítica, una correlación positiva muy fuerte (r = 0.90) entre los puntajes de Lenguaje y Matemática. Se concluye que las desigualdades educativas en Chile son estructurales y transversales, operando más allá de la dicotomía urbano-rural, lo que sugiere la necesidad de políticas públicas que aborden los contextos socioestructurales –en su diversidad–, en vez de realizar intervenciones aisladas.

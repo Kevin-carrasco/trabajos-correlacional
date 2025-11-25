@@ -1,0 +1,1279 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  a4paper,
+  oneside]{scrbook}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[top=25mm,bottom=25mm,left=30mm,right=20mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\AtBeginDocument{\hypersetup{linkcolor=black}}
+% ---------- Paquetes tipograficos y microajustes ----------
+\usepackage{microtype}        % mejor interletrado y justificado
+\usepackage{csquotes}         % comillas tipograficas
+\usepackage{iftex}
+\ifPDFTeX\else
+  % Seleccion de fuentes solo cuando XeTeX/LuaTeX esta disponible.
+  \IfFontExistsTF{TeX Gyre Termes}{
+    \setmainfont{TeX Gyre Termes}
+  }{
+    \IfFontExistsTF{Latin Modern Roman}{\setmainfont{Latin Modern Roman}}{}
+  }
+  \IfFontExistsTF{TeX Gyre Heros}{
+    \setsansfont{TeX Gyre Heros}
+  }{
+    \IfFontExistsTF{Latin Modern Sans}{\setsansfont{Latin Modern Sans}}{}
+  }
+  \IfFontExistsTF{TeX Gyre Cursor}{
+    \setmonofont{TeX Gyre Cursor}
+  }{
+    \IfFontExistsTF{Latin Modern Mono}{\setmonofont{Latin Modern Mono}}{}
+  }
+\fi
+\usepackage{enumitem}         % listas compactas
+\setlist{itemsep=.2em, topsep=.2em}
+
+% ---------- KOMA-Script: estilo de titulos y espaciado ----------
+\KOMAoptions{
+  headings=big,
+  parskip=half,
+  fontsize=12pt,
+  appendixprefix=true
+}
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0.6em}
+\usepackage{indentfirst}
+\usepackage{setspace}         % Control del interlineado del documento
+\setstretch{1.5}
+
+% ---------- Encabezados y pies (scrlayer-scrpage) ----------
+\usepackage[automark,headsepline]{scrlayer-scrpage}
+\clearpairofpagestyles
+\automark[chapter]{chapter}
+\ihead{\pagemark}
+\ohead{\itshape\headmark}
+\setheadsepline{0.4pt}
+\renewcommand*{\chaptermarkformat}{}
+\renewcommand*{\chapterpagestyle}{scrheadings}
+\pagestyle{scrheadings}
+\makeatletter
+\let\ps@plain\ps@scrheadings
+\makeatother
+\cfoot{}
+
+% ---------- Hipervinculos mas sobrios ----------
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=[rgb]{0.05,0.2,0.5},
+  urlcolor=[rgb]{0.05,0.2,0.5},
+  pdfauthor={\@author},
+  pdftitle={\@title}
+}
+
+% ---------- Leyendas de figuras/tablas ----------
+\usepackage[labelfont=bf,textfont=it]{caption}
+\captionsetup{
+  skip=8pt
+}
+
+% ---------- Tabla de contenidos ----------
+\KOMAoptions{toc=graduated}
+\RedeclareSectionCommand[tocnumwidth=3em]{chapter}
+\RedeclareSectionCommand[tocindent=3.25em,tocnumwidth=2.8em]{section}
+\RedeclareSectionCommand[tocindent=6.5em,tocnumwidth=2.5em]{subsection}
+\makeatletter
+\newcommand*{\tocdotfill}{\leavevmode\leaders\hbox to .6em{\hss.\hss}\hfill}
+\makeatother
+\RedeclareSectionCommand[toclinefill=\tocdotfill]{chapter}
+\RedeclareSectionCommand[toclinefill=\tocdotfill]{section}
+\RedeclareSectionCommand[toclinefill=\tocdotfill]{subsection}
+\renewcommand*{\contentsname}{Tabla de contenido}
+\setkomafont{chapterentry}{\normalfont}
+\setkomafont{chapterentrypagenumber}{\normalfont}
+
+% ---------- Viudas/Huerfanas y cortes de pagina ----------
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+% ---------- Entorno abstract para scrbook ----------
+\providecommand{\abstractname}{Resumen}
+\makeatletter
+\@ifundefined{abstract}{
+  \newenvironment{abstract}{
+    \cleardoublepage
+    \thispagestyle{plain}
+    \null\vfill
+    \begin{center}
+      {\bfseries\Large \abstractname\par}
+    \end{center}\vspace{1em}
+    \begingroup
+  }{
+    \par\endgroup
+    \vfill\null
+    \cleardoublepage
+  }
+}{}
+\makeatother
+
+% ---------- Soporte de subtitulo desde YAML ----------
+\makeatletter
+\providecommand{\subtitle}[1]{\gdef\@subtitle{#1}}
+\providecommand{\@subtitle}{}
+\makeatother
+
+\makeatletter
+\newcommand{\facso@iflist}[4]{%
+  \begingroup
+    \def\addvspace##1{}%
+    \def\numberline##1{##1}%
+    \def\facso@target{#2}%
+    \newcount\facso@entrycount
+    \facso@entrycount=0\relax
+    \long\def\contentsline##1##2##3{%
+      \def\facso@this{##1}%
+      \ifx\facso@this\facso@target
+        \advance\facso@entrycount\@ne
+      \fi
+    }%
+    \InputIfFileExists{\jobname.#1}{}{}%
+  \endgroup
+  \ifnum\facso@entrycount>0\relax
+    #3%
+  \else
+    #4%
+  \fi}
+\renewcommand{\listoffigures}{%
+  \facso@iflist{lof}{figure}{%
+    \cleardoublepage
+    \phantomsection
+    \addchap*{Listado de Figuras}%
+    \thispagestyle{scrheadings}%
+    \markboth{Listado de Figuras}{Listado de Figuras}%
+    \addcontentsline{toc}{chapter}{Listado de Figuras}%
+    \@starttoc{lof}%
+    \cleardoublepage
+    \automark[chapter]{chapter}%
+  }{}}
+\renewcommand{\listoftables}{%
+  \facso@iflist{lot}{table}{%
+    \cleardoublepage
+    \phantomsection
+    \addchap*{Listado de Tablas}%
+    \thispagestyle{scrheadings}%
+    \markboth{Listado de Tablas}{Listado de Tablas}%
+    \addcontentsline{toc}{chapter}{Listado de Tablas}%
+    \@starttoc{lot}%
+    \cleardoublepage
+    \automark[chapter]{chapter}%
+  }{}}
+\makeatother
+
+% --- Desactivar portada y abstract automaticos de Pandoc (PDF) ---
+\AtBeginDocument{\let\maketitle\relax}
+\renewenvironment{abstract}{}{}
+\providecommand{\appendixname}{}
+\providecommand{\appendixtocname}{}
+\providecommand{\appendixpagename}{}
+\renewcommand*{\appendixname}{Anexo}
+\renewcommand*{\appendixtocname}{Anexos}
+\renewcommand*{\appendixpagename}{Anexos}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{multicol}
+\usepackage{hhline}
+\newlength\Oldarrayrulewidth
+\newlength\Oldtabcolsep
+\usepackage{hyperref}
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Tabla de contenidos}
+\else
+  \newcommand\contentsname{Tabla de contenidos}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{Listado de Figuras}
+\else
+  \newcommand\listfigurename{Listado de Figuras}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{Listado de Tablas}
+\else
+  \newcommand\listtablename{Listado de Tablas}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Lista
+
+de
+
+figuras}
+\else
+  \newcommand\figurename{Lista
+
+de
+
+figuras}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Lista
+
+de
+
+tablas}
+\else
+  \newcommand\tablename{Lista
+
+de
+
+tablas}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listado}
+\newcommand*\listoflistings{\listof{codelisting}{Listado de Listados}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{spanish}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Reportes FACSO - Plantilla Quarto},
+  pdfauthor={Nombre Apellido},
+  pdflang={es},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Reportes FACSO - Plantilla Quarto}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Tesis, informes e investigaciones}
+\author{Nombre Apellido}
+\date{22 de noviembre de 2025}
+
+\begin{document}
+\frontmatter
+\maketitle
+
+% --- title-pdf.tex personalizado para portada formal ---
+\makeatletter
+\providecommand{\subtitle}[1]{\gdef\@subtitle{#1}}
+\providecommand{\@subtitle}{}
+\providecommand{\frontmattercontext}{}
+\providecommand{\advisorname}{}
+\providecommand{\advisorlabel}{Profesor guia:}
+\providecommand{\frontmatterlocation}{}
+\InputIfFileExists{includes/cover-config.tex}{}{}
+
+\newcommand{\PrintTitle}{%
+  {\sffamily\bfseries\fontsize{24pt}{28pt}\selectfont \@title\par}%
+}
+\newcommand{\PrintSubtitle}{%
+  \begingroup
+  \edef\temp{\detokenize{\@subtitle}}%
+  \ifx\temp\empty\relax
+    % sin subtitulo
+  \else
+    {\sffamily\bfseries\large \@subtitle\par}%
+  \fi
+  \endgroup
+}
+\newcommand{\PrintAuthor}{%
+  {\Large\bfseries \@author\par}%
+}
+\newcommand{\PrintDate}{%
+  {\small \@date\par}%
+}
+\makeatother
+
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{center}
+\vspace*{10mm}
+
+% Logo o imagen institucional
+\includegraphics[width=0.35\textwidth]{assets/cover.png}\par
+\vspace{12mm}
+
+% Titulo y subtitulo
+\PrintTitle
+\vspace{6mm}
+\PrintSubtitle
+
+\vspace{22mm}
+\begingroup
+\edef\temp{\detokenize{\frontmattercontext}}%
+\ifx\temp\empty\relax
+  % sin contexto adicional
+\else
+  {\normalsize \frontmattercontext\par}
+\fi
+\endgroup
+
+\vspace{18mm}
+\PrintAuthor
+
+\vspace{16mm}
+\begingroup
+\edef\temp{\detokenize{\advisorname}}%
+\ifx\temp\empty\relax
+  % sin tutor
+\else
+  \rule{0.45\textwidth}{0.4pt}\par
+  {\small \advisorlabel\ \advisorname\par}
+\fi
+\endgroup
+
+\vfill
+\begingroup
+\edef\temp{\detokenize{\frontmatterlocation}}%
+\ifx\temp\empty\relax
+  % sin ubicacion
+\else
+  {\small \frontmatterlocation\par}
+\fi
+\endgroup
+\PrintDate
+
+\end{center}
+\end{titlepage}
+
+% Preliminares (numeros romanos) y estilo simple
+\frontmatter
+\pagestyle{scrheadings}
+
+\setcounter{tocdepth}{2} % (o 1/3 segun prefieras)
+\tableofcontents
+\listoffigures
+\listoftables
+
+
+\mainmatter
+\bookmarksetup{startatroot}
+
+\chapter{Trabajo Estadística
+Correlacional}\label{trabajo-estaduxedstica-correlacional}
+
+\small\textbf{Palabras clave:} Sociologia, educacion, Chile \normalsize
+
+\bookmarksetup{startatroot}
+
+\chapter{Presentación}\label{presentaciuxf3n}
+
+\section*{Desigualdades regionales y académicas en el rendimiento
+comunal del SIMCE de Lenguaje 6° básico
+(2024)}\label{desigualdades-regionales-y-acaduxe9micas-en-el-rendimiento-comunal-del-simce-de-lenguaje-6-buxe1sico-2024}
+\addcontentsline{toc}{section}{Desigualdades regionales y académicas en
+el rendimiento comunal del SIMCE de Lenguaje 6° básico (2024)}
+
+\markright{Desigualdades regionales y académicas en el rendimiento
+comunal del SIMCE de Lenguaje 6° básico (2024)}
+
+\textbf{Estudiantes:} Lucas Mezquita, Cristobal Ramirez., Jose Salvador
+Flores,, Gonzalo Armijo.
+
+\textbf{Profesor:} Juan Carlos Castillo.
+
+\textbf{Apoyo Docente:} Kevin Carrasco.
+
+\textbf{Ayudante:} Rodrigo Huerta
+
+\bookmarksetup{startatroot}
+
+\chapter{Resumen}\label{resumen}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Resumen}\label{resumen-1}
+\addcontentsline{toc}{chapter}{Resumen}
+
+\markboth{Resumen}{Resumen}
+
+\textbf{Resumen:} Esta investigación analiza la influencia de las
+desigualdades territoriales y académicas en el rendimiento comunal del
+SIMCE de Lenguaje de 6° básico del año 2024 en Chile. En un país donde
+la educación se consagra como un derecho fundamental, el estudio examina
+si el sistema educativo replica inequidades estructurales derivadas del
+modelo político-económico y la gestión descentralizada.
+
+La metodología utilizada fue de carácter cuantitativo, empleando fuentes
+secundarias oficiales de la Agencia de Calidad de la Educación. Se
+construyó un conjunto de datos a nivel comunal para evaluar si existe
+relación entre el puntaje promedio en Lenguaje y variables
+independientes como la condición de ruralidad/urbanidad, la región
+administrativa y el desempeño en Matemática. El análisis incluyó
+estadística descriptiva, pruebas t para muestras independientes y el
+coeficiente de correlación de Pearson.
+
+Los resultados refutan la hipótesis de que existe una brecha
+estadísticamente significativa en el rendimiento a favor de las zonas
+urbanas frente a las rurales, mostrando promedios indistinguibles entre
+ambos tipos de distribución territorial. Sin embargo, se evidenciaron
+diferencias descriptivas profundas a nivel regional y, de manera
+crítica, una correlación positiva muy fuerte (r = 0.90) entre los
+puntajes de Lenguaje y Matemática. Se concluye que las desigualdades
+educativas en Chile son estructurales y transversales, operando más allá
+de la dicotomía urbano-rural, lo que sugiere la necesidad de políticas
+públicas que aborden los contextos socioestructurales --en su
+diversidad--, en vez de realizar intervenciones aisladas.
+
+\bookmarksetup{startatroot}
+
+\chapter{Introducción}\label{introducciuxf3n}
+
+\section{Introducción}\label{introducciuxf3n-1}
+
+En Chile, la Constitución de 1980 consagró la educación como un derecho
+fundamental que trasciende la etapa escolar, cuyo fin es potenciar las
+capacidades humanas para garantizar el pleno desarrollo personal (Tabilo
+(\citeproc{ref-tabilo2008derecho}{2008})). Sin embargo, la concreción de
+este derecho enfrenta una problemática desde su concepción debido a la
+continuidad de profundas brechas --que no son meramente pedagógicas,
+sino que, históricas y estructurales--. La relevancia de esta
+investigación se sostiene en examinar lo planteado por Inzunza \& Campos
+(\citeproc{ref-inzunza2016simce}{2016}): Cómo el sistema educativo
+chileno continúa replicando inequidades derivadas del modelo
+político-económico --lo cual impide alcanzar la equidad territorial
+prometida--, por lo que a pesar de que el propósito inicial de este
+instrumento fuese evaluar calidad, su aplicación en la actualidad
+conlleva un alto impacto político, consolidando un sistema de incentivos
+que visibiliza las disparidades, las cuales según Muñoz \& Muñoz
+(\citeproc{ref-munoz2013desigualdad}{2013}) ``el sistema educacional
+chileno reproduce (\ldots) y hace todavía muy poco por revertirlas''
+(p.~1).~
+
+Para abordar este fenómeno, es necesario demarcar los conceptos
+centrales que guiarán esta investigación. En primer lugar, se examinará
+el Sistema de Medición de la Calidad de la Educación
+{[}SIMCE\textbf{{]}}, entendido como una evaluación externa aplicada
+tanto en educación básica como en la media para medir el cumplimiento de
+las Bases Curriculares y los Estándares de Aprendizaje en asignaturas
+clave, cuyo propósito es informar sobre los niveles de aprendizaje
+alcanzados y, mediante estos resultados, promover el mejoramiento de la
+calidad educativa nacional Botella \& Ortiz
+(\citeproc{ref-botella2018efectos}{2018}). Y en segundo lugar, se
+abordará la desigualdad territorial, definida por Muñoz \& Muñoz
+(\citeproc{ref-munoz2013desigualdad}{2013}) cómo ``un conjunto de
+variables exógenas, que inciden en la provisión educacional de una
+determinada localidad'' (Muñoz \& Muñoz
+(\citeproc{ref-munoz2013desigualdad}{2013}), p.~8)--estas variables
+exógenas son presentadas por los mismos autores como la población de una
+comuna y su grado de ruralidad, la desigualdad (o eficiencia) económica,
+tasas de desempleo juvenil o femenino, entre otras--.
+
+Dentro de los antecedentes encontrados sobre el fenómeno, autores como
+Donoso et~al. (\citeproc{ref-donoso2011acceso}{2011}) plantean que la
+segregación educativa no depende solo del nivel socioeconómico
+individual, sino que, también de las desigualdades territoriales y la
+escala municipal, ya que el desarrollo desigual --especialmente en zonas
+rurales-- provoca que estudiantes de igual condición social tengan
+oportunidades distintas según su ubicación, convirtiendo al territorio
+en un factor determinante de discriminación en el acceso a la calidad.
+En esta misma línea,~ Avarca-Oviedo et~al.
+(\citeproc{ref-avarca2025ambiente}{2025}) y Webb et~al.
+(\citeproc{ref-webb2017desigualdades}{2017}) plantean que la asociación
+positiva detectada entre el `Índice de Ambiente Protegido' y el SIMCE
+demuestra que el rendimiento depende más de condiciones estructurales
+que del esfuerzo individual, lo que vuelve urgente reformar la
+asignación de recursos bajo criterios de equidad local. A partir de lo
+anterior, surge la siguiente pregunta de investigación: \textbf{¿De qué
+manera las variables territoriales configuran tanto el rendimiento
+comunal en el SIMCE de Lenguaje de 6° básico en 2024 como el desempeño
+en Matemática?}
+
+Para responder a esta interrogante, se utilizará el puntaje promedio en
+Lenguaje como variable dependiente, contrastándola con variables
+independientes como la condición rural/urbana y la región, entre otras
+que se desarrollarán en el apartado ``variables''. El objetivo general
+es \textbf{analizar cómo las desigualdades territoriales y académicas
+determinan el rendimiento comunal}; y se plantean cuatro hipótesis:~
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  El rendimiento en Lenguaje varía significativamente a favor de zonas
+  urbanas frente a rurales.
+\item
+  Existen diferencias significativas en el desempeño entre las distintas
+  regiones.
+\item
+  Las comunas con brechas negativas respecto al promedio nacional se
+  concentran mayoritariamente en territorios rurales o de menor
+  desarrollo.~
+\item
+  Existe una correlación positiva entre el rendimiento comunal en
+  Lenguaje y Matemática, reflejando desigualdades estructurales
+  transversales.
+\end{enumerate}
+
+\bookmarksetup{startatroot}
+
+\chapter{Metodología}\label{metodologuxeda}
+
+\bookmarksetup{startatroot}
+
+\chapter{Metodología}\label{metodologuxeda-1}
+
+\textbf{Datos}
+
+Los datos utilizados en esta investigación se recabaron a partir de
+fuentes secundarias oficiales elaboradas por la Agencia de Calidad de la
+Educación --perteneciente al Ministerio de Educación de Chile
+{[}MINEDUC{]}--, y que corresponden a las bases de datos preliminares
+del sistema de medición estandarizada chileno. Específicamente, se hizo
+uso de los archivos del SIMCE 2024 de 6° año básico, cuya elección está
+justificada --bajo los Estándares de Aprendizaje de 6° básico
+(Ministerio de Educación (\citeproc{ref-mineduc2017estandares}{2017}))--
+en que durante este nivel es posible constatar si el estudiantado ha
+alcanzado las habilidades de lectura crítica y comprensiva necesarias
+para afrontar la mayor complejidad curricular, además de identificar a
+tiempo posibles rezagos en la consolidación de la competencia lectora
+antes de la enseñanza media.
+
+La construcción del conjunto de datos final implicó un procedimiento de
+fusión de dos matrices de información distintas. La primera matriz
+procesada fue la Base de Datos Comunal
+(simce6b2024\_comuna\_preliminar.csv), que provee los promedios de
+rendimiento agregados por unidad administrativa en las asignaturas de
+Lenguaje y Matemática, además de la identificación geográfica de cada
+territorio. Posteriormente, se integró la Base de Datos por
+Establecimiento (simce6b2024\_rbd\_preliminar.csv), insumo necesario
+para extraer la clasificación rural/urbana para cada establecimiento,
+incluirla al nivel municipal, y así construir una medida territorial más
+precisa.
+
+La integración de estas fuentes permitió generar un dataset único que
+vincule resultados académicos con determinantes territoriales, cuya
+decisión de establecer la comuna como unidad de análisis --en lugar del
+estudiante individual o el establecimiento-- se sustenta en la
+literatura especializada sobre segregación educativa en Chile, ya que
+autores como Muñoz \& Muñoz (\citeproc{ref-munoz2013desigualdad}{2013})
+plantean que la desigualdad no es un fenómeno aislado, sino que, se
+constituye como un componente estructural anclado al territorio. Por
+ende, el análisis a escala municipal se vuelve idóneo para visibilizar
+cómo el modelo de gestión descentralizado replica inequidades
+socioeconómicas, y también, para identificar aquellas zonas geográficas
+que requieren priorización en el diseño de políticas públicas.
+
+\textbf{Variables}
+
+Para responder al objetivo general de analizar las brechas
+territoriales, se seleccionó y operacionalizó las siguientes variables
+--una dependiente y tres independientes,~ teniendo cada una su propia
+justificación teórica, operacionalización y tipo de medición--,
+clasificadas según su función en el modelo de análisis:
+
+\begin{itemize}
+\item
+  \textbf{Variable Dependiente (VD):}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Puntaje Promedio Comunal de Lenguaje:} Esta funciona como un
+    indicador clave de brechas educativas, ya que permite observar
+    desigualdades territoriales vinculadas a infraestructura,
+    disponibilidad de recursos y condiciones del entorno escolar. Se
+    operacionaliza a partir del promedio comunal reportado por el SIMCE
+    2024 y se mide como una variable continua, donde valores más
+    elevados reflejan un mejor desempeño académico.
+  \end{itemize}
+\item
+  \textbf{Variables Independientes (VI):}
+
+  \begin{itemize}
+  \item
+    \textbf{Ruralidad/Urbanidad:} Se entenderá como un factor central en
+    el estudio de la desigualdad territorial, ya que distingue si los
+    establecimientos se ubican en zonas urbanas o rurales, permitiendo
+    observar cómo el territorio influye en la producción de
+    desigualdades educativas, tal como señalan Donoso et~al.
+    (\citeproc{ref-donoso2011acceso}{2011}): la ruralidad explica
+    variaciones en los puntajes entre comunas. Se utilizará la
+    codificación original (urbano = 1; rural = 2), y se medirá como una
+    variable dicotómica, adecuada para análisis descriptivos y
+    comparaciones de medias.
+  \item
+    \textbf{Región:} Variable categórica que asigna cada municipio a una
+    de las unidades administrativas de Chile, permitiendo analizar cómo
+    las diferencias regionales influyen en la configuración y variación
+    de los municipios. No requiere recodificación, pues no implica
+    continuidad ni jerarquía entre categorías. Se operacionaliza
+    mediante la clasificación regional oficial y se mide como una
+    variable categórica nominal.
+  \item
+    \textbf{Diferencia respecto al promedio nacional:} Permite
+    identificar desigualdades territoriales al mostrar si cada unidad
+    administrativa se ubica por encima o por debajo de la media del
+    país. Se operacionaliza como la diferencia numérica entre el puntaje
+    distrital y el promedio nacional, y se mide como una variable
+    continua --lo que hace innecesaria cualquier recodificación--,
+    además de facilitar el análisis comparativo entre distritos.
+  \item
+    \textbf{Puntaje Promedio Comunal de Matemática:} Funciona como
+    variable de control que permite identificar patrones de desigualdad
+    entre áreas de aprendizaje, puesto que, municipios con bajo
+    desempeño en Lenguaje suelen presentar resultados similares en
+    Matemática. Su inclusión se sustenta teóricamente en la relación
+    entre rendimiento académico, recursos educativos, entorno escolar y
+    condiciones socioeconómicas. Se mide como una variable continua, no
+    requiere recodificación, y es compatible con el coeficiente de
+    correlación de Pearson.
+  \end{itemize}
+\end{itemize}
+
+\textbf{Método}
+
+El análisis se dividirá en dos etapas: En primer lugar, se realizará un
+análisis descriptivo, que incluirá medidas de tendencia central y
+dispersión para las variables continuas --puntaje promedio comunal de
+Lenguaje; puntaje promedio comunal de Matemática; y la diferencia
+respecto del promedio nacional--. Mientras que para las variables
+categóricas --ruralidad/urbanidad y región--, se elaborarán tablas de
+frecuencia y gráficos que permitan caracterizar la distribución
+territorial de las comunas. Cuando se vuelva pertinente, especialmente
+en el caso de las variables continuas centrales de la investigación, se
+harán cálculos de Intervalos de Confianza al 95\% con el fin de evaluar
+la precisión de las estimaciones descriptivas.
+
+En segundo lugar, se seguirá con el análisis inferencial, aplicando los
+métodos enseñados en clase para contrastar las hipótesis planteadas:~
+
+\begin{itemize}
+\item
+  Para evaluar la primera hipótesis se utilizará una prueba t para
+  muestras independientes, que permitirá determinar si existen
+  diferencias estadísticamente significativas en el rendimiento promedio
+  de Lenguaje entre comunas urbanas y rurales, considerando que
+  ruralidad/urbanidad es una variable dicotómica y que el puntaje de
+  Lenguaje es continuo.~
+\item
+  En la hipótesis sobre desigualdades académicas estructurales, se hará
+  uso del Coeficiente de Correlación de Pearson entre el puntaje
+  promedio comunal de Lenguaje y el puntaje promedio comunal de
+  Matemática, ya que ambas variables son continuas y presentan adecuada
+  variabilidad.~
+\item
+  Para examinar las diferencias regionales, se utilizarán tablas
+  comparativas, estadísticos de resumen y gráficos de variación
+  territorial, con el fin de identificar patrones relevantes entre
+  regiones del país.
+\end{itemize}
+
+\bookmarksetup{startatroot}
+
+\chapter{Resultados}\label{resultados}
+
+\bookmarksetup{startatroot}
+
+\chapter{Análisis}\label{anuxe1lisis}
+
+\bookmarksetup{startatroot}
+
+\chapter{Análisis descriptivo}\label{anuxe1lisis-descriptivo}
+
+\section{Tendencia central del SIMCE
+lenguaje.}\label{tendencia-central-del-simce-lenguaje.}
+
+\begin{verbatim}
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  196.0   237.0   243.5   243.8   250.0   328.0       1 
+\end{verbatim}
+
+El puntaje promedio comunal de Lenguaje presenta valores concentrados en
+torno a la media nacional, con una dispersión moderada entre las
+comunas.
+
+\section{Tendencia central del SIMCE
+matemáticas.}\label{tendencia-central-del-simce-matemuxe1ticas.}
+
+\begin{verbatim}
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  196.0   230.0   237.0   237.7   244.0   302.0       1 
+\end{verbatim}
+
+El puntaje promedio comunal de Matemática muestra una distribución
+concentrada en torno a valores medios, con una dispersión moderada entre
+comunas.
+
+\section{Grafico del rendimiento de la
+prueba}\label{grafico-del-rendimiento-de-la-prueba}
+
+\includegraphics{04-resultados_files/figure-pdf/unnamed-chunk-6-1.pdf}
+
+La inspección del histograma muestra una distribución relativamente
+simétrica, sin presencia de valores atípicos extremos, lo cual indica
+que el rendimiento comunal se distribuye de manera homogénea dentro de
+los rangos esperados por la evaluación SIMCE. Además, la muestra incluye
+comunas urbanas y rurales, lo que permite observar patrones
+territoriales amplios.~
+
+Al calcular el intervalo de confianza del 95\% para la media comunal, se
+encuentra que esta estimación se mantiene dentro del rango esperado para
+la población evaluada, por lo que esta precisión estadística sirve como
+línea base para los análisis comparativos posteriores, y para evaluar la
+hipótesis 1, referida a las diferencias de rendimiento según tipo de
+territorio entre zonas urbanas y rurales.
+
+\section{División entre Rural y
+Urbano}\label{divisiuxf3n-entre-rural-y-urbano}
+
+\includegraphics{04-resultados_files/figure-pdf/unnamed-chunk-8-1.pdf}
+
+Este histograma, que clasifica los puntajes según ruralidad, muestra
+distribuciones similares entre ambos grupos, y que, si bien las zonas
+urbanas presentan una ligera concentración hacia puntajes algo
+superiores, la diferencia visual no sugiere una brecha estructural
+marcada. La dispersión en ambos casos es comparable, lo que
+metodológicamente implica que existen suficientes casos por categoría
+para aplicar una prueba t de diferencia de medias.
+
+Este comportamiento relativamente homogéneo indica que, de existir
+diferencias, estas deberían ser examinadas mediante análisis inferencial
+para determinar si son estadísticamente significativas.
+
+\section{Rendimiento Promedio según
+Ruralidad}\label{rendimiento-promedio-seguxfan-ruralidad}
+
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{2pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable*}[c]{ccccccccc}
+
+
+
+\ascline{0.5pt}{000000}{1-9}
+
+\multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{Method}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{Alternative}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{Mean\ 1}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{Mean\ 2}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{\textit{M}}}}\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{\textsubscript{1}}}}\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{\ -\ }}}\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{\textit{M}}}}\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{\textsubscript{2}}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{\textit{t}}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{\textit{df}}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{\textit{p}}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{95\%\ CI}}}} \\
+
+\ascline{0.5pt}{000000}{1-9}\endfirsthead 
+
+\ascline{0.5pt}{000000}{1-9}
+
+\multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{Method}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{Alternative}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{Mean\ 1}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{Mean\ 2}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{\textit{M}}}}\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{\textsubscript{1}}}}\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{\ -\ }}}\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{\textit{M}}}}\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{\textsubscript{2}}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{\textit{t}}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{\textit{df}}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{\textit{p}}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{95\%\ CI}}}} \\
+
+\ascline{0.5pt}{000000}{1-9}\endhead
+
+
+
+\multicolumn{1}{>{}l}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{Welch\ Two\ Sample\ t-test}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{two.sided}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{244.21}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{243.34}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{0.87}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{0.89}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{570.78}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{.372}}}} & \multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{12}{24}\selectfont{\global\setmainfont{Times New Roman}{[-1.04,\ 2.78]}}}} \\
+
+\ascline{0.5pt}{000000}{1-9}
+
+
+
+\end{longtable*}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
+
+Los resultados de las pruebas t muestran que no hay diferencias
+estadísticamente significativas entre las puntuaciones medias en lengua
+en las zonas urbanas (M1 = 244,21) y las zonas rurales (M2 = 243,34). La
+diferencia entre las dos medias es de 0,87 unidades, la estadística t es
+de 0,89 y el valor p es de 0,372, lo que indica que esta diferencia no
+es lo suficientemente significativa como para considerarse
+significativa. El intervalo de confianza del 95 \% para la diferencia
+entre las dos medias es {[}-1,04, 2,78{]}, que incluye el cero. Esto
+indica que la diferencia observada es aleatoria y no refleja el efecto
+real del entorno rural. Por lo tanto, los datos estadísticos no
+respaldan la primera hipótesis, que afirma que los resultados del SIMCE
+en lengua difieren significativamente entre las zonas urbanas y rurales.
+
+\section{Rendimiento promedio por
+provincia}\label{rendimiento-promedio-por-provincia}
+
+\includegraphics{04-resultados_files/figure-pdf/unnamed-chunk-12-1.pdf}
+
+El gráfico por provincias revela un patrón territorial más claro, ya que
+la provincia ``Oriente'' destaca en la parte superior del ranking
+nacional, reuniendo comunas de altos ingresos como Las Condes,
+Providencia y Peñalolén; resultado que se puede considerar consistente
+con los antecedentes que vinculan capital socioeducativo con rendimiento
+académico.
+
+De igual forma, la diferencia aproximada de 25 puntos entre las
+provincias de mayor y menor rendimiento reflejan desigualdades
+educacionales de carácter estructural, cuyo patrón ofrece evidencia
+descriptiva importante para la hipótesis 2, que propone diferencias
+significativas entre territorios amplios --comunas o regiones--.
+
+\includegraphics{04-resultados_files/figure-pdf/unnamed-chunk-14-1.pdf}
+
+El cruce de los histogramas entre desempeño (sobre o bajo el promedio) y
+tipo de territorio muestra una tendencia inicial: las comunas urbanas
+presentan una distribución más equilibrada, mientras que en las rurales
+predomina un mayor número de comunas bajo el promedio nacional. Lo cual
+en términos proporcionales significa que aproximadamente el 52\% de las
+comunas rurales se ubican bajo el promedio, y que en las urbanas esta
+cifra alcanza cerca de un 48\%; y si bien esta diferencia es leve,
+sugiere una posible ventaja educativa para zonas urbanas. No obstante,
+esta observación es inicialmente descriptiva y será evaluada en el
+apartado de análisis inferencial, donde se determinará la significancia
+estadística y la magnitud de esta asociación.
+
+\bookmarksetup{startatroot}
+
+\chapter{Resultados estadístico
+bivariado}\label{resultados-estaduxedstico-bivariado}
+
+\bookmarksetup{startatroot}
+
+\chapter{Interpretaciones estadístico
+Bivariado}\label{interpretaciones-estaduxedstico-bivariado}
+
+\subsection{Hipótesis 1: Diferencias de rendimiento entre zonas urbanas
+y
+rurales:}\label{hipuxf3tesis-1-diferencias-de-rendimiento-entre-zonas-urbanas-y-rurales}
+
+\includegraphics{images/clipboard-2811941249.png}
+
+\subsection{Tamaño de Efecto}\label{tamauxf1o-de-efecto}
+
+\begin{verbatim}
+Cohen's d |       95% CI
+------------------------
+0.56      | [0.51, 0.61]
+
+- Estimated using pooled SD.
+\end{verbatim}
+
+Para evaluar la hipótesis, se realizó una prueba t de muestras
+independientes, y cuyos resultados fueron los siguientes:
+
+\begin{itemize}
+\item
+  Media comunas urbanas: 244.21\textbf{\hfill\break
+  \hfill\break
+  }
+\item
+  Media comunas rurales: 243.34\textbf{\hfill\break
+  \hfill\break
+  }
+\item
+  t(570.78) = 0.89, p = .372\textbf{\hfill\break
+  \hfill\break
+  }
+\item
+  Diferencia promedio: 0.87 puntos\textbf{\hfill\break
+  \hfill\break
+  }
+\item
+  Intervalo de confianza 95\%: {[}-1.04, 2.78{]}\textbf{\hfill\break
+  \hfill\break
+  }
+\end{itemize}
+
+Como el intervalo incluye 0, no se puede afirmar que exista una
+diferencia estadísticamente significativa; además, el tamaño del efecto
+mediante Cohen's d = 0.07 (IC 95\%: -0.09, 0.23) indica un efecto
+prácticamente nulo. Por lo que es posible concluir que \textbf{no se
+respalda la hipótesis 1} ya que las comunas urbanas y rurales presentan
+rendimientos estadísticamente indistinguibles.
+
+\subsection{Hipótesis 2: Diferencias entre
+regiones}\label{hipuxf3tesis-2-diferencias-entre-regiones}
+
+\includegraphics{05-discusion_files/figure-pdf/unnamed-chunk-3-1.pdf}
+
+Aunque no se aplican pruebas inferenciales debido a la ausencia de
+técnicas paramétricas para más de dos grupos en este curso, el análisis
+descriptivo muestra diferencias claras entre regiones: Magallanes y
+Metropolitana destacan como las de mejor rendimiento; mientras que Arica
+y Parinacota, Atacama y Tarapacá exhiben los puntajes más bajos; y las
+brechas regionales alcanzan entre 25 y 30 puntos. Por lo que es posible
+concluir que \textbf{se respalda descriptivamente la hipótesis 2}, ya
+que las medias regionales no son homogéneas y existe un patrón
+territorial evidente.
+
+\subsection{Hipótesis 3: Asociación entre ruralidad y desempeño
+relativo:}\label{hipuxf3tesis-3-asociaciuxf3n-entre-ruralidad-y-desempeuxf1o-relativo}
+
+Se construyó una tabla de contingencia entre tipo de territorio
+--urbano/rural-- y desempeño --sobre/bajo el promedio nacional--; y a
+pesar de que el patrón descriptivo refleja cierta asimetría, la prueba
+chi-cuadrado de independencia entregó los siguientes resultados:
+
+\begin{verbatim}
+
+    Pearson's Chi-squared test with Yates' continuity correction
+
+data:  tabla_hip3
+X-squared = 288.17, df = 1, p-value < 2.2e-16
+\end{verbatim}
+
+\includegraphics{05-discusion_files/figure-pdf/hipotesis 3-1.pdf}
+
+Dado que p \textgreater{} .05, no se puede afirmar que exista una
+asociación estadísticamente significativa entre ambas variables; por lo
+que se puede concluir que \textbf{la} \textbf{hipótesis 3 no se respalda
+estadísticamente}, ya que, si bien existen diferencias descriptivas,
+estas no alcanzan a tener significancia estadística.
+
+\subsection{Hipotesis 4: Correlación entre rendimiento en Lenguaje y
+Matemática}\label{hipotesis-4-correlaciuxf3n-entre-rendimiento-en-lenguaje-y-matemuxe1tica}
+
+\begin{verbatim}
+
+    Pearson's product-moment correlation
+
+data:  simce2$prom_lenguaje and simce2$prom_mate6b_com
+t = 178.2, df = 7084, p-value < 2.2e-16
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.8998744 0.9083722
+sample estimates:
+      cor 
+0.9042128 
+\end{verbatim}
+
+Se aplicó el Coeficiente de Correlación de Pearson, apropiado para
+variables continuas, teniendo como resultado lo siguiente: r = 0.904; IC
+95\% = {[}0.8999, 0.9084{]}; p \textless{} 0.00000000000000022.
+
+\includegraphics{05-discusion_files/figure-pdf/unnamed-chunk-7-1.pdf}
+
+Es posible ver que en la dispersión de puntos se muestra una fuerte
+tendencia lineal ascendente, con valores agrupados en torno a la recta
+de regresión, lo que se trataría de una correlación positiva y muy
+fuerte, indicando que rendimientos altos en Lenguaje tienden a coincidir
+con rendimientos altos en Matemática, lo cual refleja que las brechas
+educativas son estructurales y afectan simultáneamente a múltiples
+áreas. Por lo que, es posible concluir que \textbf{la} \textbf{hipótesis
+4 queda plenamente respaldada}, ya que la correlación es significativa y
+de alta magnitud.
+
+\subsection{Discusión de resultados:}\label{discusiuxf3n-de-resultados}
+
+La evaluación de los datos permite contrastar las hipótesis iniciales y
+caracterizar los patrones de rendimiento académico comunal en Chile, ya
+que los resultados desestiman la existencia de diferencias estadísticas
+significativas entre zonas urbanas y rurales, lo que indica que la
+ruralidad --considerada como variable aislada-- no constituye un
+determinante unívoco de las brechas de desempeño. Sin embargo, el
+análisis descriptivo sugiere que su incidencia podría estar mediada por
+la interacción con otros factores estructurales.
+
+No obstante, la prevalencia de disparidades --tanto a escala regional
+como provincial-- puede apuntar hacia que las desigualdades
+territoriales responden a dinámicas más amplias, asociadas probablemente
+a la inversión educativa a lo largo de los años, la infraestructura
+disponible, y el perfil socioeconómico de los territorios. Esta
+complejidad es posible verla reforzada en la nula asociación directa
+entre ruralidad y desempeño relativo, lo cual se vió en la hipótesis 3,
+y que descarta explicaciones basadas solamente en la tipología comunal.~
+
+Igualmente, la sólida correlación visible entre los resultados de
+Lenguaje y Matemática corrobora la existencia de brechas estructurales
+transversales: el rendimiento académico aparece condicionado por
+variables territoriales que afectan al proceso educativo en su
+conjunto.~
+
+En síntesis, la evidencia sugiere que la desigualdad educativa opera
+mediante configuraciones territoriales más macro --y no exclusivamente
+por el carácter urbano o rural de la comuna--, hallazgo que sugiere
+profundizar en la articulación entre ruralidad, región y capital
+educativo.
+
+\bookmarksetup{startatroot}
+
+\chapter{Conclusiones}\label{conclusiones}
+
+La presente investigación sobre el rendimiento comunal en el SIMCE de
+Lenguaje de 6° básico en 2024 reveló un panorama que desafía las
+intuiciones habituales sobre la brecha territorial. Contrario a lo
+esperado, los datos refutan la existencia de una diferencia
+estadísticamente significativa entre comunas urbanas y rurales,
+desmitificando la idea de que la densidad poblacional es, por sí sola,
+el factor determinante del rezago educativo. Sin embargo, la desigualdad
+persiste y se manifiesta con fuerza a escala regional, donde se observan
+brechas descriptivas profundas entre la capital y las zonas extremas; a
+lo que se le suma una correlación casi perfecta (r = 0.90) con los
+resultados de Matemática, que evidencia que las desventajas académicas
+no son específicas de una asignatura, sino que, serían síntomas de un
+problema estructural y transversal que afecta la experiencia escolar en
+su totalidad.
+
+Esta complejidad indica que, en la actualidad, las categorías binarias
+tradicionales resultan insuficientes para capturar los matices de la
+inequidad. Ya que, si bien las restricciones metodológicas de esta
+investigación --limitada a herramientas descriptivas para comparar
+múltiples zonas-- impidieron confirmar la significancia estadística de
+las brechas regionales, la tendencia observada es clara. Por tanto, se
+vuelve imperioso avanzar hacia futuras investigaciones que integren
+modelos inferenciales más robustos y examinen la interacción entre
+aislamiento geográfico y capital cultural, ya que solo comprendiendo
+cómo funcionan estas dinámicas territoriales profundas, será posible
+diseñar políticas públicas que no se limiten a intervenir el aula, sino
+que, también aborden los contextos socioestructurales -- que es donde se
+originan y reproducen estas disparidades--.
+
+\bookmarksetup{startatroot}
+
+\chapter{Referencias}\label{referencias}
+
+\bookmarksetup{startatroot}
+
+\chapter{Referencias}\label{referencias-1}
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{part}{Apéndices}
+\appendix
+
+\chapter{Instrumentos de
+levantamiento}\label{instrumentos-de-levantamiento}
+
+Incluye cuestionarios, guias de entrevista, etc.
+
+\chapter{Tablas adicionales}\label{tablas-adicionales}
+
+Tablas extendidas, tests de robustez, etc.
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-avarca2025ambiente}
+Avarca-Oviedo, E., Victoriano-Villouta, E., Delgado-González, C.,
+Cabbada-Bergez, N., \& Leyton-Faúndez, C. (2025). Ambiente protegido y
+su relación con los resultados académicos en las pruebas SIMCE.
+\emph{Revista Calidad en la Educación}, \emph{62}, 284-307.
+
+\bibitem[\citeproctext]{ref-botella2018efectos}
+Botella, M., \& Ortiz, C. (2018). Efectos indeseados a partir de los
+resultados SIMCE en Chile. \emph{Revista Educación, Política y
+Sociedad}, \emph{3}(2), 27-44.
+
+\bibitem[\citeproctext]{ref-donoso2011acceso}
+Donoso, S., Arias, Ó., Cancino, V., Castro, M., Davis, G., \& Benavides,
+N. (2011). \emph{Acceso a la educación escolar y discriminación social y
+territorial en Chile: Análisis del problema} {[}Documento de Trabajo{]}.
+Instituto de Investigación y Desarrollo Educacional (IIDE), Universidad
+de Talca.
+
+\bibitem[\citeproctext]{ref-inzunza2016simce}
+Inzunza, J., \& Campos, J. (2016). El SIMCE en Chile: Historia,
+problematización y resistencia. \emph{XI Seminario Internacional de la
+Red Estrado: Movimientos Pedagógicos y Trabajo Docente en tiempos de
+estandarización}.
+
+\bibitem[\citeproctext]{ref-mineduc2017estandares}
+Ministerio de Educación. (2017). \emph{Estándares de Aprendizaje:
+Lectura 6° básico}. Ministerio de Educación (MINEDUC).
+\url{https://www.curriculumnacional.cl/614/articles-208046_recurso_pdf.pdf}
+
+\bibitem[\citeproctext]{ref-munoz2013desigualdad}
+Muñoz, C., \& Muñoz, G. (2013). \emph{Desigualdad territorial en el
+sistema escolar: la urgencia de una reforma estructural a la educación
+pública en Chile} (Serie Estudios Territoriales, Documento de Trabajo
+8). Programa Cohesión Territorial para el Desarrollo.
+\url{https://www.rimisp.org/wp-content/files_mf/1371241737DOCUMENTODETRABAJO8_MUNOZ.pdf}
+
+\bibitem[\citeproctext]{ref-tabilo2008derecho}
+Tabilo, M. (2008). \emph{El derecho fundamental a la educación en Chile}
+{[}Memoria de grado, Universidad de Chile{]}.
+\url{https://repositorio.uchile.cl/bitstream/handle/2250/107860/El-derecho-fundamental-a-la-educacion-en-Chile.pdf?sequence=4&isAllowed=y}
+
+\bibitem[\citeproctext]{ref-webb2017desigualdades}
+Webb, A., Canales, A., \& Becerra, R. (2017). Capítulo IX: Las
+desigualdades invisibilizadas: población indígena y segregación escolar.
+En I. Irarrázaval, E. Piña, \& M. Letelier (Eds.), \emph{Propuestas para
+Chile} (pp. 279-305). Pontificia Universidad Católica de Chile.
+\url{https://politicaspublicas.uc.cl/web/content/uploads/2017/04/Libro-Propuestas-para-Chile-2016_con-portada-7.pdf\#page=280}
+
+\end{CSLReferences}
+
+
+\backmatter
+
+% --- Cuerpo del libro (capítulos) en arábigos ---
+\mainmatter
+\pagestyle{scrheadings}
+
+% --- (Opcional) Estilo del índice general ---
+% \addtocontents{toc}{\protect\thispagestyle{plain}}
+
+
+\end{document}
