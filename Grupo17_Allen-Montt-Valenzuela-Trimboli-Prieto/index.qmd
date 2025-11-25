@@ -1,0 +1,30 @@
+---
+title: "Desigualdad estructural y ambiente escolar: La influencia de la dependencia administrativa, el nivel socioeconómico y el clima de convivencia en el logro académico de establecimientos de educación media (2024)"
+#author: "Pia Ibáñez, Antonia Silva A. , Florencia Trimboli, Renata Prieto, Gianella Valenzuela"
+#date: "23 De Noviembre Del 2025"
+number-sections: false
+numbered: false
+format:
+  html:
+    title-block-style: none
+    toc: false
+  pdf:
+    title-block-style: none
+---
+
+::: {.content-visible when-format="pdf"}
+\small\textbf{Palabras clave:} Sociologia, educacion, Chile
+\normalsize
+:::
+
+::: {.content-visible when-format="html"}
+<style>
+nav#TOC { display: none !important; }
+div[data-when-format="pdf"] { display: none !important; }
+</style>
+<span class="keywords-line"><strong>Palabras clave:</strong> sociología, educación, Chile</span>
+:::
+
+# Abstract {.unnumbered}
+
+El presente estudio analiza la influencia de factores estructurales (dependencia administrativa y nivel socioeconómico) y factores internos (clima de convivencia escolar) en el rendimiento académico de estudiantes chilenos de educación media. Utilizando datos secundarios del SIMCE y los Indicadores de Desarrollo Personal y Social (IDPS) del año 2024, se construyó una muestra de 2.978 establecimientos educacionales. La metodología implementada fue de carácter cuantitativo y transversal, aplicando análisis descriptivos, bivariados y modelos de regresión lineal múltiple. Los resultados evidencian una profunda segregación del sistema, confirmada por una alta asociación entre dependencia y grupo socioeconómico (V de Cramer = 0.73). Asimismo, se observó que la dependencia administrativa explica una parte sustantiva del rendimiento, donde los colegios particulares pagados obtienen, en promedio, 56.2 puntos más que los municipales controlando por otras variables. No obstante, se confirmó que un clima de convivencia escolar positivo incide significativamente en la mejora de los puntajes, independientemente del contexto socioeconómico. Se concluye que, si bien las brechas estructurales son determinantes en la desigualdad educativa chilena, la gestión del clima escolar representa un factor pedagógico clave para potenciar los aprendizajes.
