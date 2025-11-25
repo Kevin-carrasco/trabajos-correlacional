@@ -1,0 +1,244 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Satisfacción con la vida y tiempo dedicado a compartir con cercanos.",
+    "section": "",
+    "text": "Palabras clave: sociología, educación, Chile\n\nAbstract\nEste estudio analiza la relación entre la satisfacción con la vida y el tiempo dedicado a compartir con familiares y amistades, utilizando datos de la II Encuesta Nacional sobre Uso del Tiempo (ENUT 2023). A partir de un diseño cuantitativo, correlacional y no experimental, se seleccionaron cuatro variables principales: satisfacción vital (BS1), tiempo de sociabilidad presencial (VS1), Sexo y Edad. El análisis descriptivo mostró una alta concentración de respuestas de satisfacción vital en los niveles “satisfecho” y “totalmente satisfecho”, así como diferencias de género en el tiempo destinado a actividades de ocio y socialización. El análisis bivariado incluyó pruebas t de Student y Welch, junto con coeficientes de correlación de Pearson, para contrastar tres hipótesis: diferencias por sexo, diferencias por edad y relación entre sociabilidad y satisfacción vital. Los resultados indican diferencias estadísticamente significativas entre hombres y mujeres en el tiempo dedicado a compartir, así como un mayor promedio de sociabilidad en personas menores de 25 años. Así mismo, se observa una correlación positiva pero débil entre el tiempo de interacción social y la satisfacción vital. Estos hallazgos sugieren que la sociabilidad presencial se asocia al bienestar subjetivo, aunque la magnitud del efecto es limitada.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Abstract</span>"
+    ]
+  },
+  {
+    "objectID": "00-prefacio.html",
+    "href": "00-prefacio.html",
+    "title": "Prefacio",
+    "section": "",
+    "text": "Agradecimientos opcionales, dedicatorias, notas sobre financiamiento, etc.",
+    "crumbs": [
+      "Prefacio"
+    ]
+  },
+  {
+    "objectID": "01-introduccion.html",
+    "href": "01-introduccion.html",
+    "title": "2  Introducción",
+    "section": "",
+    "text": "La satisfacción con la vida constituye uno de los componentes centrales del bienestar subjetivo y se ha consolidado como un indicador clave para comprender la calidad de vida en las sociedades contemporáneas (Diener et al., 2009). Este componente integra evaluaciones globales que las personas realizan sobre sus condiciones vitales y sobre el grado en que sus necesidades psicológicas, sociales y materiales se encuentran satisfechas. La literatura ha mostrado que la satisfacción vital se relaciona estrechamente con factores relacionales y afectivos, entre ellos la presencia de vínculos significativos, redes de apoyo y oportunidades de interacción social, elementos que contribuyen a la integración en la vida cotidiana y al afrontamiento emocional (Helliwell et al., 2020). En este marco, el tiempo dedicado a compartir con familias y amistades emerge como un elemento relevante para comprender el bienestar subjetivo. La sociabilidad presencial, entendida como interacción directa y significativa con otros, se ha asociado con mayores niveles de apoyo emocional, cohesión social y percepciones positivas sobre la vida. Diversos estudios han planteado que los entornos relacionales constituyen un factor determinante en la experiencia subjetiva del bienestar, al influir en cómo las personas interpretan su entorno, enfrentan dificultades y construyen sentido de pertenencia. En el contexto chileno, las relaciones sociales y el trato interpersonal se han reconocido como dimensiones centrales de la experiencia cotidiana y del bienestar, así como de la percepción subjetiva de la desigualdad (PNUD, 2017). Estas dinámicas no se distribuyen de manera homogénea en la población. Factores como el género y la edad inciden en la capacidad de las personas para acceder a actividades de sociabilidad y en el tiempo disponible para ello. La II Encuesta Nacional sobre Uso del Tiempo (ENUT) constituye una fuente pertinente para examinar estas diferencias, dado que permite caracterizar cómo las personas distribuyen su tiempo entre actividades remuneradas, no remuneradas y personales, visibilizando los distintos aportes que mujeres y hombres realizan al sostenimiento de sus hogares y de la sociedad en general (INE, s.f.). El informe más reciente señala que las mujeres presentan mayores cargas laborales y domésticas, lo que restringe sus oportunidades de tiempo libre mientras que los hombres tienden a destinar más horas a actividades de ocio y vida social (INE, 2023). En este estudio, el “tiempo social” se operacionaliza a partir del Módulo VS: Ocio y Vida Social del Cuestionario de Uso del Tiempo, específicamente mediante preguntas como la “VS1”, que consulta si la persona “¿Conversó o compartió con familiares, pareja o amistades durante su tiempo libre? Considere solo si lo hizo de manera presencial” (INE, 2023).\nEn este contexto, el objetivo de este trabajo es analizar la relación entre la satisfacción con la vida y el tiempo dedicado a compartir con familiares y amistades, considerando posibles variaciones según sexo y edad. A partir de esto, se formulan tres hipótesis que orientan el analisis descriptivo y bivariado realizado con datos de la II ENUT 2023: una hipótesis de diferencias según sexo, una hipótesis direccional según edad y una hipótesis correlacional que examina el vínculo entre sociabilidad presencial y satisfacción vital. Estas hipótesis permiten abordar de manera integrada cómo los patrones de uso del tiempo y las dinámicas sociales cotidianas se relacionan con el bienestar subjetivo en la población chilena.\nHipótesis de diferencias\nSe espera que exista una diferencia entre los promedio de horas dedicadas a compartir con familia y amigos entre hombres y mujeres. H0 (nula) no existen diferencias significativas entre los promedios de las horas dedicadas a compartir.\nHipótesis direccional\nRespecto a la edad y la cantidad de horas dedicada a compartir con familia y amigos, se espera que la media de tiempo destinada a compartir con familia y amigos sea mayor en jóvenes de 12 a 25 años que en adultos de 25 años o más. H0 (nula): No hay diferencias mayores en la diferencia de medias entre menores y mayores de 25 años.\nHipótesis correlacional\nSe espera que exista una correlación entre la cantidad de tiempo dedicada a compartir con familia y amigos y el sentimiento de bienestar general. H0 (nula): No existe una correlación significativa o directa entre la cantidad de tiempo dedicada a compartir con amigos y familia y el sentimiento de bienestar general.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introducción</span>"
+    ]
+  },
+  {
+    "objectID": "02-marco-teorico.html",
+    "href": "02-marco-teorico.html",
+    "title": "3  Antecedentes conceptuales y empíricos",
+    "section": "",
+    "text": "3.1 Marco conceptual\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at nulla a ligula volutpat dictum. Sed dictum hendrerit augue, vitae efficitur nisl hendrerit nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at nulla a ligula volutpat dictum. Sed dictum hendrerit augue, vitae efficitur nisl hendrerit nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at nulla a ligula volutpat dictum. Sed dictum hendrerit augue, vitae efficitur nisl hendrerit nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at nulla a ligula volutpat dictum. Sed dictum hendrerit augue, vitae efficitur nisl hendrerit nec.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at nulla a ligula volutpat dictum. Sed dictum hendrerit augue, vitae efficitur nisl hendrerit nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at nulla a ligula volutpat dictum. Sed dictum hendrerit augue, vitae efficitur nisl hendrerit nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at nulla a ligula volutpat dictum. Sed dictum hendrerit augue, vitae efficitur nisl hendrerit nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at nulla a ligula volutpat dictum. Sed dictum hendrerit augue, vitae efficitur nisl hendrerit nec.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at nulla a ligula volutpat dictum. Sed dictum hendrerit augue, vitae efficitur nisl hendrerit nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at nulla a ligula volutpat dictum. Sed dictum hendrerit augue, vitae efficitur nisl hendrerit nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at nulla a ligula volutpat dictum. Sed dictum hendrerit augue, vitae efficitur nisl hendrerit nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at nulla a ligula volutpat dictum. Sed dictum hendrerit augue, vitae efficitur nisl hendrerit nec.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Antecedentes conceptuales y empíricos</span>"
+    ]
+  },
+  {
+    "objectID": "02-marco-teorico.html#marco-conceptual",
+    "href": "02-marco-teorico.html#marco-conceptual",
+    "title": "3  Antecedentes conceptuales y empíricos",
+    "section": "",
+    "text": "3.1.1 Ejemplos APA 7\nSegún Desmond & Wilmers (2019), los patrones de segregación residencial configuran los límites de oportunidad urbana y permiten introducir la sintaxis de cita narrativa dentro del flujo del texto.\nLos matices culturales del gusto pueden reforzar desigualdades cuando se institucionalizan en jerarquías de prestigio académico (Bourdieu, 2012, p. 35), lo que ilustra la cita parentética con número de página.\nPara contrastar hallazgos se pueden reunir múltiples referencias en un mismo paréntesis analítico (Desmond & Wilmers, 2019; Xie, 2017), destacando cómo distintos diseños metodológicos convergen en un mecanismo causal compartido.\n\nLas aspiraciones colectivas se negocian constantemente en espacios cotidianos que traducen capital cultural en prácticas concretas, reescribiendo así el mapa de posibilidades percibidas por cada agente social en contextos urbanos desiguales. Este entramado simbólico orienta aspiraciones futuras y limita adaptaciones comunitarias. (Bourdieu, 2012, p. 87)",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Antecedentes conceptuales y empíricos</span>"
+    ]
+  },
+  {
+    "objectID": "02-marco-teorico.html#resumen-del-capítulo",
+    "href": "02-marco-teorico.html#resumen-del-capítulo",
+    "title": "3  Antecedentes conceptuales y empíricos",
+    "section": "3.2 Resumen del capítulo",
+    "text": "3.2 Resumen del capítulo\n\nEste capítulo ofreció una revisión breve de los conceptos fundamentales y estableció proposiciones para guiar el análisis empírico posterior.\n\n\n\n\n\n\n\nBourdieu, P. (2012). La distinción: Criterio y bases sociales del gusto. Taurus.\n\n\nDesmond, M., & Wilmers, N. (2019). The Racialized Geography of Housing. American Journal of Sociology.\n\n\nXie, Y. (2017). bookdown: Authoring Books and Technical Documents with R Markdown. Chapman; Hall/CRC.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Antecedentes conceptuales y empíricos</span>"
+    ]
+  },
+  {
+    "objectID": "03-metodologia.html",
+    "href": "03-metodologia.html",
+    "title": "4  Metodología",
+    "section": "",
+    "text": "4.1 Datos\nTexto de muestra para describir las fuentes de datos utilizadas.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Metodología</span>"
+    ]
+  },
+  {
+    "objectID": "03-metodologia.html#variables",
+    "href": "03-metodologia.html#variables",
+    "title": "4  Metodología",
+    "section": "4.2 Variables",
+    "text": "4.2 Variables\nDetalle de las variables incluidas en el análisis, así como escalas de medición.\nDescriptivos básicos\n\n\n\n\nEstadísticas descriptivas de las variables seleccionadas\n\n\n\n\n\n\n\nOverall\n(N=16565)\n\n\n\n\nfactor(sexo)\n\n\n\nHombre\n7160 (43.2%)\n\n\nMujer\n9405 (56.8%)\n\n\nbs1\n\n\n\nTotalmente insatisfecho\n158 (1.0%)\n\n\nInsatisfecho\n672 (4.1%)\n\n\nNi insatisfsfecho/a, ni satisfecho/a\n2278 (13.8%)\n\n\nSatisfecho\n8556 (51.7%)\n\n\nTotalmente satisfecho\n4901 (29.6%)\n\n\nvs1_total\n\n\n\nMean (SD)\n6.25 (5.36)\n\n\nMedian [Min, Max]\n5.00 [0.0333, 192]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Metodología</span>"
+    ]
+  },
+  {
+    "objectID": "03-metodologia.html#métodos",
+    "href": "03-metodologia.html#métodos",
+    "title": "4  Metodología",
+    "section": "4.3 Métodos",
+    "text": "4.3 Métodos\nBreve descripción de los procedimientos aplicados para procesar y analizar la información.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Metodología</span>"
+    ]
+  },
+  {
+    "objectID": "04-resultados.html",
+    "href": "04-resultados.html",
+    "title": "5  Análisis",
+    "section": "",
+    "text": "##Análisis Descriptivo\nSEXO\n\n\nHombre  Mujer \n  7160   9405 \n\n\nEDAD\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n   12.0    27.0    43.0    43.7    59.0   100.0 \n\n\n[1] 19.38195\n\n\nBS1\n\n\n             Totalmente insatisfecho                         Insatisfecho \n                                 158                                  672 \nNi insatisfsfecho/a, ni satisfecho/a                           Satisfecho \n                                2278                                 8556 \n               Totalmente satisfecho \n                                4901 \n\n\nVS1_TOTAL\n\n\n     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. \n  0.03333   3.00000   5.00000   6.25062   8.00000 192.00000 \n\n\n[1] 5.360587\n\n\n##Análisis Bivariado\nPromedio de horas dedicadas a estar con amigos y familia según sexo\n\n\n\n\n\nsexo\nObs.\nPromedio\nSD\n\n\n\n\nHombre\n7160\n6.129402\n4.917874\n\n\nMujer\n9405\n6.342910\n5.673037\n\n\n\n\n\nPromedio de horas dedicadas a estar con amigos y familia según tramo de edad\n\n\n\n\n\nedad_dummy_label\nObs.\nPromedio\nSD\n\n\n\n\n0\n3380\n6.579374\n5.074458\n\n\n1\n13185\n6.166348\n5.428490\n\n\n\n\n\nGráfico satisfacción con la vida y según sexo\n\n\n\n\n\n\n\n\n\nGráfico bs1 y vs1\n##Hipótesis de diferencias\n\n\n\n    Two Sample t-test\n\ndata:  vs1_total by sexo\nt = -2.5399, df = 16563, p-value = 0.0111\nalternative hypothesis: true difference in means between group Hombre and group Mujer is not equal to 0\n95 percent confidence interval:\n -0.37827894 -0.04873712\nsample estimates:\nmean in group Hombre  mean in group Mujer \n            6.129402             6.342910 \n\n\n\n\nMethodAlternativeMean 1Mean 2M1 - M2tdfp95% CITwo Sample t-testtwo.sided6.136.34-0.21-2.5416,563.011*[-0.38, -0.05]\n\n\nGráfico prueba t\n\n\n\n\n\n\n\n\n\n##Hipótesis direccional\n\n\n\n    Welch Two Sample t-test\n\ndata:  vs1_total by edad_dummy\nt = 4.1609, df = 5530.4, p-value = 0.00001609\nalternative hypothesis: true difference in means between group 0 and group 1 is greater than 0\n95 percent confidence interval:\n 0.2497232       Inf\nsample estimates:\nmean in group 0 mean in group 1 \n       6.579374        6.166348 \n\n\n\n\nMethodAlternativeMean 1Mean 2M1 - M2tdfp95% CIWelch Two Sample t-testgreater6.586.170.414.165,530.42&lt; .001***[0.25, Inf]\n\n\nGráfico prueba t\n##Hipótesis correlacional",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Análisis</span>"
+    ]
+  },
+  {
+    "objectID": "04-resultados.html#modelos",
+    "href": "04-resultados.html#modelos",
+    "title": "5  Resultados",
+    "section": "5.2 Modelos",
+    "text": "5.2 Modelos\nPresentacion de los resultados de los modelos propuestos, con interpretacion y conclusiones.\n\n\n\nResumen comparativo de modelos\n\n\nPredictor\nCoef.\nStd. Err.\nt-valor\np-valor\nSig.\nIC 95 %\n\n\n\n\nConstante\n37.227\n1.599\n23.28\n&lt;0.001\n***\n[33.957, 40.497]\n\n\nCapital social barrial\n-3.878\n0.633\n-6.13\n&lt;0.001\n***\n[-5.172, -2.584]\n\n\nPrecariedad laboral\n-0.032\n0.009\n-3.52\n0.001\n**\n[-0.050, -0.013]\n\n\nN\n32\n\n\n\n\n\n\n\nR^2\n0.827\n\n\n\n\n\n\n\nR^2 ajustado\n0.815",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Resultados</span>"
+    ]
+  },
+  {
+    "objectID": "05-discusion.html",
+    "href": "05-discusion.html",
+    "title": "6  Discusión",
+    "section": "",
+    "text": "Interpreta resultados, limitaciones y aportes.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Discusión</span>"
+    ]
+  },
+  {
+    "objectID": "06-conclusiones.html",
+    "href": "06-conclusiones.html",
+    "title": "7  Conclusiones",
+    "section": "",
+    "text": "Síntesis y proyecciones futuras.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusiones</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "Referencias",
+    "section": "",
+    "text": "Diener, E. (2009). Subjective well-being. In E. Diener (Ed.), The\nscience of well-being (pp. 11–58). American Psychological\nAssociation.\n\n\nHelliwell, J. F., Huang, H., & Wang, S. (2020). Social environments\nfor world happiness. In J. F. Helliwell, R. Layard, J. Sachs, &\nJ.-E. De Neve (Eds.), World happiness report 2020. Sustainable\nDevelopment Solutions Network. https://www.worldhappiness.report/ed/2020/social-environments-for-world-happiness/\n\n\nInstituto Nacional de Estadísticas. (2023a). Cuestionario de uso del\ntiempo: II encuesta nacional sobre uso del tiempo (ENUT). Instituto\nNacional de Estadísticas. https://www.ine.gob.cl/docs/default-source/uso-del-tiempo-tiempo-libre/formularios/ii-enut/cuestionario-de-uso-del-tiempo-ii-enut-2023.pdf?sfvrsn=8734c5f5_4\n\n\nInstituto Nacional de Estadísticas. (2023b). Informe de principales\nresultados: II encuesta nacional sobre uso del tiempo (ENUT)\n[Informe de principales resultados]. Instituto Nacional de Estadísticas.\nhttps://www.ine.gob.cl/docs/default-source/uso-del-tiempo-tiempo-libre/publicaciones-y-anuarios/ii-enut/informe-de-principales-resultados-ii-enut-2023.pdf?sfvrsn=ee33c12c_4\n\n\nInstituto Nacional de Estadísticas. (n.d.). Encuesta nacional sobre\nuso del tiempo (ENUT). https://www.ine.gob.cl/enut\n\n\nInstituto Nacional de Estadísticas de Chile. (2023). Documento\nmetodológico II ENUT 2023. Instituto Nacional de Estadísticas de\nChile.\n\n\nPrograma de las Naciones Unidas para el Desarrollo. (2017).\nDesiguales: Orígenes, cambios y desafíos de la brecha social en\nchile. PNUD. https://files.acquia.undp.org/public/migration/cl/undp_cl_pobreza-Libro-DESIGUALES-final.pdf",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Referencias</span>"
+    ]
+  },
+  {
+    "objectID": "apendices/A-encuestas.html",
+    "href": "apendices/A-encuestas.html",
+    "title": "Anexo A - Instrumentos de levantamiento",
+    "section": "",
+    "text": "Incluye cuestionarios, guias de entrevista, etc.",
+    "crumbs": [
+      "Apéndices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Instrumentos de levantamiento</span>"
+    ]
+  },
+  {
+    "objectID": "apendices/B-tablas.html",
+    "href": "apendices/B-tablas.html",
+    "title": "Anexo B - Tablas adicionales",
+    "section": "",
+    "text": "Tablas extendidas, tests de robustez, etc.",
+    "crumbs": [
+      "Apéndices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Tablas adicionales</span>"
+    ]
+  },
+  {
+    "objectID": "03-analisis.html",
+    "href": "03-analisis.html",
+    "title": "4  Análisis",
+    "section": "",
+    "text": "4.1 Análisis Descriptivo\nVariable Sexo\nHombre  Mujer \n  7158   9399\nAl analizar la variable “Sexo” , se observa una clara predominancia femenina, quienes siendo 9399, representan el 56,77% del total de los casos, superando a los hombres quienes, siendo un total de 7.158, conforman el 43,23% de lal muestra. Esta diferencia de 13,54% indica que, dentro del grupo de encuestados existe una tendencia marcada de feminización en la participación.\nVariable Edad\nMin. 1st Qu.  Median    Mean 3rd Qu.    Max. \n   12.0    27.0    43.0    43.7    59.0   100.0 \n\n\n[1] 19.38362\nEn lo que respecta a la variable “Edad”, y quitando los “NA” o casos perdidos, la tabla muestra la edad mínima y máxima de los encuestados, logrando vislumbrar una distribución simétrica entre la media y la mediana. Dado que se encuentran en los valores 43,0 y 43,7 respectivamente, sugiere que la muestra se encuentra equilibrada en individuos que rondan en la adultez media, indicando así que los resultados no muestran sesgos fuertes hacia los grupos extremos de las edades, ya sean más jóvenes o de mayor rango etario. En cuanto a la dispersión de los datos, la desviación estándar es de 19,38, revelando la existencia de una alta heterogeneidad etaria, indicando que la ENUT logra abarcar diferentes etapas para su estudio y resultados de mayor representatividad. También, al hacer el análisis de cuartiles se logra identificar que el 50% de la población se encuentra entre los 27 y 59 años de edad. Haciendo referencia a una población laboralmente activa y el primer cuartil indicando que el 25% de la muestra se encuentra entre los 12 a 27 años, permitiendo evidenciar que la encuesta abarca tanto adolescentes como jóvenes, cubriendo el ciclo vital de la encuesta, el cual busca abarcar desde una adolescencia temprana hasta individuos de edad o vejez avanzada (100 años). Todo esto con el fin de poder aportar un estudio que demuestre una representatividad efectiva.\nVariable BS1: Grado de Satisfacción con vida en general\nTotalmente insatisfecho                         Insatisfecho \n                                 158                                  672 \nNi insatisfsfecho/a, ni satisfecho/a                           Satisfecho \n                                2278                                 8551 \n               Totalmente satisfecho \n                                4898\nLa variable “BS1” mide el nivel de satisfacción de los participantes con respecto a su vida en general. Se logra observar que, de la totalidad del tamaño muestral, un total de 8.551 encuestados indica que se siente satisfecho con su vida, esto equivale a un 51,66% de la muestra. En el caso de los encuestados que afirman encontrarse totalmente satisfechos con su vida son un total de 4.898, conformando el 29,58% del total muestral. También se observa que un 5,01% de los encuestados afirman sentirse insatisfechos de manera parcial o total de su vida en general, esto equivale a la suma de los 158 y 672 encuestados que respondieron sentirse insatisfechos o totalmente insatisfechos. Esta diferencia refleja una marcada polarización positiva hacia los encuestados que se encuentran satisfechos con su vida, siendo la suma de los porcentajes de estos un 81.24% del total muestral. Estos resultados reflejan una baja dispersión de los datos hacia el extremo negativo (insatisfacción con la vida), dado que la concentración de los datos se encuentra en los dos niveles más altos de satisfacción.\nVariable VS1_total: Total de horas dedicadas a compartir con familiares, pareja o amigos a la semana.\nMin.   1st Qu.    Median      Mean   3rd Qu.      Max. \n  0.03333   3.00000   5.00000   6.19945   8.00000 112.00000 \n\n\n[1] 4.782255\nPara finalizar, al analizar la variable “VS1_total”, la cual hace referencia al tiempo libre dedicado durante la semana por los individuos encuestados, da cuenta de una asimetría positiva en la distribución de los datos, indicando que la norma, en este caso, es dedicar poco tiempo a la semana a tiempos de sociabilización y recreación, pero la existencia de un grupo minoritario que le dedica un tiempo excesivo a estas actividades hace que la cola de la muestra se extienda hacia la derecha. El promedio dedicado a este tipo de actividades es de 6,20 horas semanales, siendo esta cifra superior a la mediana, la cual tiene un valor de 5,00 horas semanales. Aquí se distinguen dos grupos; la tendencia que se encuentra en horas moderadas dedicadas a actividades de recreación (entre 40 a 45 minutos diarios en una semana) y otro grupo minoritario que le dedica cantidades excesivamente altas de tiempo semanalmente a estas actividades, de esta manera elevando el valor del promedio. Con respecto a la dispersión, se observa que el 50% dedica entre 3,00 a 8,00 horas de actividades de ocio y/o recreación. Esto sugiere la existencia de un patrón homogéneo de socialización, el cual hace referencia que este grupo mayoritario dedica poco o muy poco tiempo en la semana a dichas actividades de tiempo libre, esto probablemente restringido por otro tipo de cargas, ya sea laborales o de cuidado. Contrario a los casos extremos, los cuales dedican 112 horas semanales a estas actividades, es decir, 16 horas diarias aproximadamente quienes, se asume, cumplen con un perfil de individuos con alta disponibilidad, esto pudiéndose dar por diferentes razones. Respecto a la desviación estándar, esta se encuentra en un valor de 4,78, siendo proporcionalmente alta respecto a la media y permitiendo evaluar la existencia de diferentes tiempos de ocio. Esto refleja la diversidad de estilos de vida de los encuestados por la ENUT.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Análisis</span>"
+    ]
+  },
+  {
+    "objectID": "03-analisis.html#análisis-bivariado",
+    "href": "03-analisis.html#análisis-bivariado",
+    "title": "4  Análisis",
+    "section": "4.2 Análisis Bivariado",
+    "text": "4.2 Análisis Bivariado\nEsta sección presenta los análisis bivariados realizados para comprobar las hipótesis de la investigación. Al realizar este análisis se consideró la estimación de coeficientes de correlación y medidas de asociación para variables, de esta manera se realizaron pruebas de hipótesis estadísticas y también se consideró el tamaño del efecto en función del nivel de medición de las variables. Por último, se establece un nivel de significancia de p &lt; .05 para todas las pruebas.\n\n4.2.1 Hipótesis de diferencias\nFrente a la siguiente hipótesis: “Se espera que exista una diferencia entre los promedios de horas dedicadas a compartir con familia y amigos entre hombres y mujeres.” Y su respectiva Hipótesis Nula (H0): “No existen diferencias significativas entre los promedios de las horas dedicadas a compartir con familia y amigos entre hombres y mujeres.” es necesario analizar las diferencias en horas dedicadas a compartir con familia y amigos según sexo. Para este procedimiento se utiliza como variable dependiente numérica “horas de compartir” y como independiente dicotómica “sexo”, para posteriormente realizar una prueba de t de Student para verificar la hipótesis. La prueba t de Student de dos colas arrojó un valor t = -2.24 con 16,555 DF (grados de libertad), resultando en un valor p = .025*. Puesto que p &lt; .05, rechazándose la hipótesis nula (H0) (Ver Tabla 1). Esto concluye que existe una diferencia estadísticamente significativa en el promedio de horas dedicadas a compartir entre hombres y mujeres, respaldando la hipótesis de investigación. Luego, el intervalo de confianza del 95% para la diferencia de medias fue de [-0.32, -0.02], confirmando el contraste.\n\n\nMethodAlternativeMean 1Mean 2M1 - M2tdfp95% CITwo Sample t-testtwo.sided6.106.27-0.17-2.2416,555.025*[-0.32, -0.02]\n\n\nGráfico prueba t\n\n\n\n\n\n\n\n\n\nGráfico\n\n\n\n\n\n\n\n\n\n\n\n4.2.2 Hipótesis direccional\nRespecto a la hipótesis direccional: “Se espera que la media de tiempo destinada a compartir con familia y amigos sea mayor en jóvenes de 0 a 25 años que en adultos de 25 años o más”, y su hipótesis nula (H0): “No hay diferencias mayores en la media de horas dedicadas a compartir con familia y amigos entre menores y mayores de 25 años”. Para el procedimiento se relacionaron las variables “horas de compartir” y la variable dicotómica “edad recodificada”. En este caso se empleó una prueba t de Welch unilateral, acorde a la direccionalidad establecida. Los resultados (ver Gráfico 2) arrojaron un valor t = 4.59 con 5,476.64 DF (grados de libertad) y un valor p &lt; .001*** (Ver tabla 2). Debido a que p &lt; .05 y considerando que la prueba fue direccional o “greater”, se rechaza la hipótesis nula (H0). Esto indica que la media de horas destinadas a compartir es significativamente mayor en el grupo más joven, lo que respalda la hipótesis direccional planteada. El intervalo de confianza del 95% para la diferencia de medias fue de [0.26, Inf], respaldando así la direccionalidad esperada.\n\n\nMethodAlternativeMean 1Mean 2M1 - M2tdfp95% CIWelch Two Sample t-testgreater6.536.120.414.595,476.64&lt; .001***[0.26, Inf]\n\n\nGráfico prueba t\n\n\n\n\n\n\n\n\n\nGráfico\n\n\n\n\n\n\n\n\n\n\n\n4.2.3 Hipótesis correlacional\nFinalmente, para analizar la hipótesis: “Se espera que exista una correlación entre la cantidad de tiempo dedicada a compartir con familia y amigos y el sentimiento de bienestar general”, junto con su hipótesis nula (H0): “No existe una correlación significativa o directa entre la cantidad de tiempo dedicada a compartir con amigos y familia y el sentimiento de bienestar general”. Se analizó la relación entre dos variables numéricas mediante un coeficiente de correlación de Pearson. El diagrama de dispersión (ver Gráfico 3) permite visualizar la distribución de los datos, evidenciando una tendencia levemente ascendente que sugiere una correlación débil.\nEl coeficiente de Pearson fue r = 0.04. Aunque este valor representa una relación muy débil, el análisis arrojó un valor t = 4.69 con 16,555 grados de libertad y un valor p &lt; .001***. Dado que p &lt; .05, se rechaza la hipótesis nula (H0), concluyendo que existe una correlación positiva y estadísticamente significativa entre la cantidad de tiempo dedicado a compartir y el bienestar general.\nNo obstante, el tamaño del efecto es mínimo, ya que un valor r = 0.04 refleja que la relación entre las variables es mínima y que prácticamente no comparten variabilidad. Esto sugiere que, si hay un mayor tiempo de interacción social, se asocia con un leve aumento del bienestar subjetivo; pero la magnitud de esta asociación es reducida en la población analizada.\n\n\nestimatetpdfMethodAlternative95% CI0.044.69&lt; .001***16,555Pearson's product-moment correlationtwo.sided[0.02, 0.05]\n\n\n\n\n\n\n\n\n\n\n\nLa discusión de los resultados permite confirmar las tres hipótesis planteadas, mostrando dinámicas relevantes en el uso del tiempo social. Primero, se evidencian diferencias significativas por género, sugiriendo que el sexo influye en los patrones de socialización, aunque la brecha promedio no es amplia. Segundo, la edad se torna el factor determinante: los jóvenes dedican significativamente más tiempo a compartir que los adultos, esto debido a las limitaciones asociadas a la vida laboral adulta. Finalmente, aunque se observa una relación positiva entre el tiempo dedicado a compartir y el bienestar, la correlación es muy débil, indicando que la satisfacción vital es un fenómeno multidimensional y que el tiempo de ocio explica sólo una fracción mínima de dicha variabilidad.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Análisis</span>"
+    ]
+  },
+  {
+    "objectID": "02-metodologia.html",
+    "href": "02-metodologia.html",
+    "title": "3  Metodología",
+    "section": "",
+    "text": "3.1 Datos\nLa presente investigación se fundamenta en la base de datos de II Encuesta Nacional sobre Uso del Tiempo (II ENUT), estudio proporcionado por el Instituto Nacional de Estadísticas de Chile (INE). La II ENUT es definida como un “estudio socioeconómico, basado en una encuesta probabilística por muestreo aplicado a hogares, que busca recopilar datos sobre el tiempo que las personas dedican a diversas actividades dentro de un período determinado” (Instituto Nacional de Estadísticas de Chile [INE], 2023, p. 8). Tiene una cobertura geográfica que representa la zona urbana del país. Su público objetivo corresponde a toda persona de 12 años o más que cumpla con las capacidades físicas y mentales para responder la encuesta. La base de datos cuenta con un total de 48.020 observaciones y 1.089 variables, pero para este análisis sólo fueron seleccionadas siete variables.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Metodología</span>"
+    ]
+  },
+  {
+    "objectID": "02-metodologia.html#variables",
+    "href": "02-metodologia.html#variables",
+    "title": "3  Metodología",
+    "section": "3.2 Variables",
+    "text": "3.2 Variables\nSe seleccionaron 7 variables de un total de 1.089 las que corresponden a sexo, bs1,vs1_p_ds, vs1_t_ds, vs1_p_fds, vs1_t_fds y edad. Las variables vs1_p_ds y vs1_p_fds corresponden a variables dicotómicas que responden a si la persona pasó o no tiempo con familia, pareja o amigos en días de semana y fin de semana respectivamente, a las que se les asigna un 0 si la persona responde que no y un 1 si responde que sí. De esta forma, se eliminarán a quienes tengan asignado un 0 en esta variable. Posteriormente, las variables vs1_t_ds y vs1_t_fds, que corresponden a variables de razón y responden a la cantidad de horas que las personas dedican a compartir con familia, pareja o amigos durante la semana y el fin de semana respectivamente, se recodifican en una nueva variable que suma ambos valores, la variable recodificada se llamará vs1_total. De manera que las principales variables que se utilizarán para los análisis corresponden a sexo, edad, bs1 y vs1_total. La primera variable seleccionada corresponde a “sexo” la cual es de caracter categórica y de escala nominal. Tal como indica su nombre indica el sexo de los encuestados, los que corresponden a 1. Hombre y 2.Mujer. La variable es dicotómica y en el documento de R es tratada con as.factor. Esta variable se utilizará para el contraste de la hipótesis de diferencias. La segunda variable seleccionada es “edad” la cual es de razón y se mide de forma continua, esta corresponde a la cantidad de años que tiene cada encuestado. La variable es tratada en el proyecto de R como as.numeric y para el posterior análisis será recodificada en la variable edad_dummy, la que tratará a los casos menores de 25 años como 0 y a los mayores de 25 como 1, esto para verificar la hipótesis direccional y las posibles diferencias generacionales en el tiempo de ocio social entre jóvenes y adultos. La tercera variable seleccionada es “bs1” la que se encuentra dentro del módulo “Bienestar Subjetivo” en una sección con el enunciado “En una escala de 1 a 5, donde 1 es totalmente insatisfecho(a) y 5 es totalmente satisfecho(a), ¿qué tan satisfecho(a) se siente con respecto a…? Correspondiendo la variable seleccionada a “Su vida en general”. La variable es de tipo ordinal, utiliza una Escala de Likert de 5 puntos y mide el nivel de satisfacción general con la vida del encuestado. La variable es tratada con as.factor en el documento de R y se utilizará para la prueba de hipótesis correlacional. Finalmente la variable “vs1_total” la cual corresponde a una recodificación de las variables vs1_t_ds y vs1_t_fds. Dentro del cuestionario la variable se encuentra en módulo “VS: Ocio y Vida Social” y corresponde a ¿Conversó o compartió con familiares, pareja o amistades durante su tiempo libre? Considere solo si lo hizo de manera presencial”. Dentro de la misma pregunta se da la opción de responder las horas correspondientes a día de semana y las de día de fin de semana. La variable es continua, de razón y se responde en horas y minutos (hh:mm). La variable será utilizada para la prueba de las hipótesis de diferencia de medias, direccional y correlacional.\nDescriptivos básicos\n\n\n\n\nEstadísticas descriptivas de las variables seleccionadas\n\n\n\n\n\n\n\nOverall\n(N=16557)\n\n\n\n\nfactor(sexo)\n\n\n\nHombre\n7158 (43.2%)\n\n\nMujer\n9399 (56.8%)\n\n\nbs1\n\n\n\nTotalmente insatisfecho\n158 (1.0%)\n\n\nInsatisfecho\n672 (4.1%)\n\n\nNi insatisfsfecho/a, ni satisfecho/a\n2278 (13.8%)\n\n\nSatisfecho\n8551 (51.6%)\n\n\nTotalmente satisfecho\n4898 (29.6%)\n\n\nvs1_total\n\n\n\nMean (SD)\n6.20 (4.78)\n\n\nMedian [Min, Max]\n5.00 [0.0333, 112]",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Metodología</span>"
+    ]
+  },
+  {
+    "objectID": "02-metodologia.html#métodos",
+    "href": "02-metodologia.html#métodos",
+    "title": "3  Metodología",
+    "section": "3.3 Métodos",
+    "text": "3.3 Métodos\nRespecto a las pruebas de hipótesis, se realizan las pruebas estadísticas correspondientes para respaldar o refutar la hipótesis alternativa. Para el caso de la hipótesis de diferencia de medias se utiliza la prueba t de student en las variables sexo y vs1_total, luego los resultados son sintetizados en una tabla donde se presenta el método utilizado, las medias de cada variable, los grados de libertad, el valor p de significancia estadística y los intervalos de confianza; Posteriormente se ve la distribución y el contraste de los valores t crítico y t empírico en un gráfico de dos colas, para posteriormente sintetizar la información en un gráfico general. Para la hipótesis de direccionalidad se realiza la prueba t de Welch con las variables edad y vs1_total y, al igual que para la hipótesis anterior, se sintetizan los resultados en una tabla, se presenta el gráfico de una cola para el contraste de valores t y se realiza un gráfico de síntesis general. Finalmente, para la hipótesis de correlacionalidad se realiza una prueba de correlación con Pearson para las variables bs1 y vs1_total, debido a que una variable es ordinal mientras que la otra es de razón. Los resultados son sintetizados en una tabla y se realiza un gráfico de dispersión para visualizar la correlación entre variables.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Metodología</span>"
+    ]
+  },
+  {
+    "objectID": "04-conclusiones.html",
+    "href": "04-conclusiones.html",
+    "title": "5  Conclusiones",
+    "section": "",
+    "text": "El presente estudio analizó la relación entre la satisfacción con la vida y el tiempo dedicado a compartir con familiares y amistades, integrando diferencias por sexo y edad a partir de datos de la II Encuesta Nacional sobre Uso del Tiempo (ENUT 2023). Los hallazgos permiten observar patrones consistentes respecto a las hipótesis planteadas.\nEn primer lugar, los resultados evidenciaron diferencias significativas entre hombres y mujeres en las horas destinadas a actividades de sociabilidad presencial. lo que respalda la hipótesis de diferencias. Este resultado se vincula con las brechas persistentes en la organización del tiempo, donde las mujeres pueden presentar mayores cargas laborales y domésticas que limitan sus oportunidades de tiempo libre.\nEn segundo lugar, la hipótesis direccional también fue confirmada, dado que las personas menores de 25 años presentan, en promedio, un mayo tiempo destinado a compartir en comparación con quienes tienen 25 años o más. Este patrón coincide con tendencias sociodemográficas en que los jóvenes cuentan con mayor disponibilidad de horario y estilos de vida asociados a mayores niveles de interacción social.\nFinalmente, en tercer lugar, se identificó una correlación positiva y significativa entre el tiempo dedicado a compartir y la satisfacción con la vida. Sin embargo, el tamaño del efecto fue débil (r = 0.04), lo que sugiere que, si bien la sociabilidad presencial contribuye al bienestar subjetivo, existen otros factores más influyentes que también podrían explicar la variación en la satisfacción vital.\nEntre las principales limitaciones del estudio se encuentra el carácter transversal de la ENUT, que impide establecer causalidad entre las variables. Así mismo, la medición autodeclarada puede incorporar sesgos de recuerdo y sub o sobreestimación del tiempo reportado. A futuro, sería pertinente estimar modelos multivariados que, aprovechando otras variables ya disponibles en la ENUT, como nivel socioeconómico, tipo de ocupación, cargas de cuidado y composición del hogar, permitan analizar de manera conjunta cómo estas dimensiones se articulan la satisfacción con la vida y el tiempo de sociabilidad.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Conclusiones</span>"
+    ]
+  },
+  {
+    "objectID": "02-metodologia.html#datos-1",
+    "href": "02-metodologia.html#datos-1",
+    "title": "3  Metodología",
+    "section": "3.3 Datos",
+    "text": "3.3 Datos\nTexto de muestra para describir las fuentes de datos utilizadas.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Metodología</span>"
+    ]
+  },
+  {
+    "objectID": "02-metodologia.html#variables-1",
+    "href": "02-metodologia.html#variables-1",
+    "title": "3  Metodología",
+    "section": "3.4 Variables",
+    "text": "3.4 Variables\nDetalle de las variables incluidas en el análisis, así como escalas de medición.\nDescriptivos básicos\nquarto-executable-code-5450563D\n#| echo: false\n#| warning: false\n#| tbl-cap: \"Estadísticas descriptivas de las variables seleccionadas\"\n#| tbl-label: tbl-estadisticas-variables\n\n\ntable1::table1(~ factor(sexo) + bs1 + vs1_total, data = datos)\n\n\n\n## Métodos\n\nBreve descripción de los procedimientos aplicados para procesar y analizar la información.\n\n\n\n:::",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Metodología</span>"
+    ]
+  }
+]
