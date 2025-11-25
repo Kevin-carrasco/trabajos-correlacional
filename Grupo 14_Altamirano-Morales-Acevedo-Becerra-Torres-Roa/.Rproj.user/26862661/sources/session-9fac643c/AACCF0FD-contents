@@ -1,0 +1,52 @@
+pacman::p_load(
+  haven,
+  dplyr,
+  tidyverse,
+  broom)
+
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+
+LAPOP <- read_dta("input/data/Chile LAPOP 2019 v1.0_W.dta")
+
+#Procesar nueva base de datos
+
+proc_LAPOP<-LAPOP %>%
+  dplyr::select(l1, sex, etid, q10new)
+
+proc_LAPOP <- proc_LAPOP %>% rename(Orientación_política = l1, 
+                                    Género = sex,
+                                    Etnicidad = etid, 
+                                    Ingresos_familiares = q10new)
+
+proc_LAPOP <- proc_LAPOP %>%
+  mutate(Orientación_política = car::recode(Orientación_política,
+                                            "-999:-666 = NA",
+                                            as.numeric = TRUE))
+
+proc_LAPOP <- proc_LAPOP %>%
+  mutate(Género = car::recode(Género,
+                              "-999:-666 = NA",
+                              as.factor = TRUE))
+
+proc_LAPOP <- proc_LAPOP %>%
+  mutate(Etnicidad = car::recode(Etnicidad,
+                                 "-999:-666 = NA",
+                                 as.factor = TRUE))
+
+proc_LAPOP <- proc_LAPOP %>%
+  mutate(Ingresos_familiares = car::recode(Ingresos_familiares,
+                                           "-999:-666 = NA",
+                                           as.factor = TRUE))
+
+proc_LAPOP <- na.omit(proc_LAPOP)
+
+proc_LAPOP$Orientación_política <- as.numeric(proc_LAPOP$Orientación_política)
+proc_LAPOP$Género <- as.numeric(proc_LAPOP$Género)
+proc_LAPOP$Etnicidad <- as.numeric(proc_LAPOP$Etnicidad)
+proc_LAPOP$Ingresos_familiares <- as.numeric(proc_LAPOP$Ingresos_familiares)
+
+
+save(proc_LAPOP, file = "proc_LAPOP.RData")
+
+

@@ -1,0 +1,3 @@
+"0","sjPlot::tab_df("
+"0","  as.data.frame(sjmisc::frq(proc_LAPOP$Orientación_política))"
+"0",")"

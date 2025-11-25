@@ -1,0 +1,127 @@
+pacman::p_load(tidyverse, 
+               car,
+               haven,
+               sjPlot,
+               sjmisc, 
+               kableExtra, 
+               psych,
+               janitor,
+               skimr,
+               corrplot,
+               ggmosaic,
+               ggplot2,
+               summarytools,
+               broom,
+               gmodels,
+               rempsyc,
+               Rmisc)
+
+options(scipen = 999)
+load("output/proc_LAPOP.RData")
+
+####Analisis
+
+##Orientación politica
+
+proc_LAPOP$Orientación_política <- as.numeric(as.character(proc_LAPOP$Orientación_política))
+
+ggplot(proc_LAPOP, aes(x = Orientación_política)) +
+  geom_histogram(
+    bins = 10,
+    color = "black",
+    fill = "darkred"
+  ) +
+  labs(
+    title = "Histograma de Orientación Política",
+    x = "Orientación política (1 = Izquierda, 10 = Derecha)",
+    y = "Frecuencia",
+    caption = "Fuente: Elaboración propia en base a LAPOP"
+  ) +
+  theme_minimal()
+
+##Género
+
+ggplot(proc_LAPOP, aes(x = factor(Género, levels = c(1,2), labels = c("Hombre", "Mujer")))) +
+  geom_bar(fill = "darkred", color = "black") +
+  labs(
+    title = "Frecuencia de Género",
+    x = "Género",
+    y = "Frecuencia",
+    caption = "Fuente: Elaboración propia en base a LAPOP"
+  ) +
+  theme_minimal()
+
+##Ingresos Familiares
+
+ggplot(proc_LAPOP, aes(x = Ingresos_familiares)) +
+  geom_bar(fill = "darkred", color = "black") +
+  scale_x_discrete(
+    labels = c(
+      "0" = "Ningún ingreso",
+      "1" = "Menos de 125.000 pesos",
+      "2" = "125.001 - 190.000 pesos",
+      "3" = "190.001 - 225.000 pesos",
+      "4" = "225.001 - 255.000 pesos",
+      "5" = "255.001 - 300.000 pesos",
+      "6" = "300.001 - 335.000 pesos",
+      "7" = "335.001 - 375.000 pesos",
+      "8" = "375.001 - 420.000 pesos",
+      "9" = "420.001 - 470.000 pesos",
+      "10" = "470.001 - 525.000 pesos",
+      "11" = "525.001 - 600.000 pesos",
+      "12" = "600.001 - 690.000 pesos",
+      "13" = "690.001 - 830.000 pesos",
+      "14" = "830.001 - 1.000.000 pesos",
+      "15" = "1.000.001 - 1.500.000 pesos",
+      "16" = "Más de 1.500.000 pesos"
+    )
+  ) +
+  labs(
+    title = "Frecuencia de Ingresos Familiares",
+    x = "Ingresos familiares",
+    y = "Frecuencia",
+    caption = "Fuente: Elaboración propia en base a LAPOP"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 6)
+  )
+
+##Etnicidad
+
+ggplot(proc_LAPOP, aes(x = Etnicidad)) +
+  geom_bar(fill = "darkred", color = "black") +
+  scale_x_discrete(
+    labels = c(
+      "1" = "No minoría",
+      "2" = "No minoría",
+      "3" = "Minoría",
+      "4" = "Minoría",
+      "5" = "Minoría",
+      "7" = "Minoría"
+    )
+  ) +
+  labs(
+    title = "Frecuencia de minorías étnicas",
+    x = "Etnicidad (minorización)",
+    y = "Frecuencia",
+    caption = "Fuente: Elaboración propia en base a LAPOP"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(size = 10))
+
+##Estadísticos descriptivos
+
+variables <- c("Orientación_política", "Género", "Etnicidad",
+               "Ingresos_familiares")
+
+proc_LAPOP %>%
+  select(all_of(vars)) %>%
+  dplyr::rename(`Ingresos familiares` = Ingresos_familiares) %>%
+  psych::describe() %>%
+  kable() %>%
+  kable_styling(full_width = TRUE)
+
+##Estadistica bivariada
+
+

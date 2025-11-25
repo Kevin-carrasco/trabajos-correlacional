@@ -1,0 +1,50 @@
+pacman::p_load(tidyverse, 
+               car,
+               haven,
+               sjPlot,
+               sjmisc, 
+               kableExtra, 
+               psych,
+               janitor,
+               skimr,
+               corrplot,
+               ggmosaic,
+               ggplot2,
+               summarytools,
+               broom,
+               gmodels,
+               rempsyc,
+               Rmisc)
+# Cargar los paquetes específicos para las funciones que utilizaremos
+library(psych)
+library(tidyverse)
+options(scipen = 999)
+# Cargar paquetes esenciales
+library(psych) 
+library(tidyverse) 
+library(sjPlot) # Necesario para generar las tablas limpias
+
+# PASO 0: CREACIÓN DE ETNICIDAD DICOTÓMICA Y ASIGNACIÓN DE FACTOR
+proc_LAPOP <- proc_LAPOP %>%
+  mutate(
+    # Recodificación: Agrupa los códigos de minoría vs. no minoría
+    Etnicidad_Dicotomica = case_when(
+      Etnicidad == 1 | Etnicidad == 2 ~ "No_minoría", 
+      Etnicidad == 3 | Etnicidad == 4 | Etnicidad == 5 | Etnicidad == 7 ~ "Minoría", 
+      TRUE ~ NA_character_ 
+    ),
+    Etnicidad_Dicotomica = factor(Etnicidad_Dicotomica)
+  )
+## 1. H1: Orientación ~ Género (Prueba t de Student clásica)
+# PRUEBA T CLÁSICA
+t.test(Orientación_política ~ Género, data = proc_LAPOP, var.equal = TRUE)
+
+# TAMAÑO DEL EFECTO
+cohen.d(Orientación_política ~ Género, data = proc_LAPOP)
+## 2. H2: Orientación ~ Etnicidad Dicotómica (Prueba t de Student clásica)
+# PRUEBA T CLÁSICA
+t.test(Orientación_política ~ Etnicidad_Dicotomica, data = proc_LAPOP, var.equal = TRUE)
+
+# TAMAÑO DEL EFECTO
+cohen.d(Orientación_política ~ Etnicidad_Dicotomica, data = proc_LAPOP)
+

@@ -1,0 +1,8 @@
+"0","vars <- c(""Orientación_política"", ""Género"", ""Etnicidad"", ""Ingresos_familiares"")"
+"0",""
+"0","proc_LAPOP %>%"
+"0","  select(all_of(vars)) %>%"
+"0","  dplyr::rename(`Ingresos familiares` = Ingresos_familiares) %>%"
+"0","  psych::describe() %>%"
+"0","  kable() %>%"
+"0","  kable_styling(full_width = TRUE)"

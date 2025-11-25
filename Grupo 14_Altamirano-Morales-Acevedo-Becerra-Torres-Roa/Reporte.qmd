@@ -1,0 +1,592 @@
+---
+title: "Etnia, ingresos familiares y género en la incidencia de orientación política en el territorio chileno."
+subtitle: "Estadística Correlacional 2025, Carrera de Sociología, Universidad de Chile"
+author: 
+  - Tamara Roa
+  - Gabriela Acevedo
+  - Fernanda Catalina Becerra
+  - Sofia Altamirano
+  - Javiera Morales
+  - José Tomás Torres
+
+date: "11-23-2025"
+lang: es
+format:
+  html:
+    df-print: paged
+    number-sections: false
+
+header-includes: |
+  <style>
+    body {
+      text-align: justify;
+    }
+  </style>
+editor: source
+---
+
+```{r librerias, echo=FALSE, warning=FALSE, message=FALSE, collapse=TRUE}
+library(pacman)
+pacman::p_load(tidyverse, 
+               sjPlot,
+               confintr,  
+               gginference,
+               rempsyc,    
+               broom,      
+               sjmisc,       
+               knitr,
+               kableExtra,
+               t_table)            
+
+options(scipen = 999) 
+rm(list = ls()) 
+```
+
+```{r, echo=FALSE}
+#| warning: false
+#| message: false
+
+#Base de datos procesada
+
+load("output/proc_LAPOP.RData")
+
+```
+
+# Introducción
+
+La orientación política es objeto de frecuente estudio y análisis en las ciencias sociales, debido a que la opinión de los ciudadanos respecto de la democracia y su posicionamiento ideológico tiene un valor central para comprender el comportamiento electoral, el apoyo a políticas públicas y las dinámicas de representación. En este sentido, entendemos la orientación política como la autoubicación ideológica en una escala de izquierda-derecha, lo que permite identificar patrones de apoyo o rechazo a determinadas agendas políticas (CEPAL, 2016). En este trabajo analizamos esta variable utilizando como fuente la encuesta Latin American Public Opinion Project (LAPOP) del año 2019 y su relación con tres características sociodemográficas: género, ingresos familiares y etnicidad.
+
+Estudios recientes muestran que las desigualdades económicas, de género y etnicidad no solo afectan las oportunidades materiales de los individuos, sino también su percepción de justicia distributiva, su participación política y su identificación ideológica (World Bank, 2021; Inter-American Development Bank, 2018). En el caso de género, investigaciones sobre participación política evidencian que las brechas no se explican únicamente por roles culturales, sino también por la interacción entre género y desigualdad socioeconómica, generando experiencias diferenciales frente al sistema político (Pérez Verdugo, 2021). Asimismo, la literatura sobre desigualdad económica señala que esta puede generar polarización y moldear las preferencias ideológicas de los ciudadanos (Stewart, Plotkin & McCarty, 2021).
+
+Consideramos también relevante incorporar la dimensión étnica. Diversos estudios muestran que las poblaciones indígenas y afrodescendientes en América Latina experimentan condiciones históricas de desventaja social y económica, lo que influye en su relación con el Estado y en sus actitudes políticas (CEPAL, 2016; Telles, Wade & Flores, 2022). Estas desigualdades, además, se entrecruzan con las brechas de género e ingresos, lo que puede repercutir en orientaciones políticas diferenciadas.
+
+El presente trabajo tiene como objetivo examinar si las características sociodemográficas, género, ingresos familiares y etnicidad se relacionan significativamente con la orientación política declarada por los encuestados en la encuesta LAPOP 2019. A partir de la literatura revisada, proponemos las siguientes hipótesis: H₁: Existe una diferencia significativa en la orientación política (l1) según el género (sex). H2: Existe una diferencia significativa entre orientación política y etnicidad. H3: Existe una diferencia significativa en el género e ingresos familiares.. Estas hipótesis serán contrastadas mediante análisis estadísticos descriptivos y bivariados.
+
+# Metodología
+
+## Datos
+
+El presente estudio se enmarca dentro de una investigación cuantitativa, adoptando un diseño no experimental y de corte transversal. Este enfoque metodológico es idóneo para analizar la relación, la distribución y la caracterización de las variables sociodemográficas (Género, Etnicidad, Ingresos Familiares) en función de la autoubicación ideológica (Orientación Política) en un momento específico, sin manipular las variables ni establecer relaciones causales directas a lo largo del tiempo.
+
+El objetivo principal de esta sección es detallar el proceso de recopilación, el procesamiento y la técnicas de análisis de los datos que permiten abortar los objetivos de la investigación y fundamentar los resultados presentados en el reporte.
+
+Los datos utilizados para este análisis son de naturaleza secundaria, provenientes de una fuente de información de carácter masivo (Encuesta). Para el presente estudio, se trabajó con un subconjunto de datos que incluyó un total de 1.137 casos válidos (N=1.137). Este tamaño muestral corresponde a aquellas observaciones que contaron con datos completos para la totalidad de las variables consideradas, asegurando la consistencia y validez en los análisis estadísticos correlacionales y descriptivos.
+
+## Variables
+
+Se consideraron cuatro variables clave para la investigación, una de las cuales actúa como variables dependiente; la Orientación Política, y tres como variables independientes de carácter sociodemográfico: Género, Ingresos Familiares y Eticidad. La operacionalización y la distribución de frecuencias de cada una se detalla a continuación.
+
+**Orientación política (Variable dependiente):\
+**Esta variable fue medida en una escala ordinal que se extiende desde 1 (Extrema Izquierda) hasta 10 (Extrema Derecha). La distribución de frecuencias de esta variable muestra la tendencia ideológica de la muestra, siendo fundamental para los análisis posteriores.
+
+*Tabla de frecuencia orientación política*
+
+```{r}
+sjPlot::tab_df(
+  as.data.frame(sjmisc::frq(proc_LAPOP$Orientación_política))
+)
+```
+
+La distribución de la orientación política revela una clara concentración de la muestra en la posición central o moderada del espectro ideológico. La categoría 5 agrupa a la mayor cantidad de encuestados, con 360 casos, lo que representa el 31,66% del total. Si se agrupan las categorías de 1 a 4 (Izquierda) se obtiene un 35,36% de la muestra, mientras que las categorías de 6 a 10 (Derecha) suman un 32,99% ( 11.35 + 7,65 + 5,63 + 1,76 + 6,6). Este patrón sugiere una distribución tripartita relativamente equilibrada, pero con un peso significativo en el centro.
+
+**Género:\
+**El género, en el marco de este trabajo y basandonos en la base de datos utilizada, se define como una variable nominal dicotómica.
+
+*Tabla de frecuencia de Género*
+
+```{r, echo=FALSE}
+sjPlot::tab_df(
+  as.data.frame(sjmisc::frq(proc_LAPOP$Género))
+)
+```
+
+La muestra se encuentra casi perfectamente balanceada en términos de Género. La categoría 1 (Femenino) representa el 50,92% (N=579) y la categoría 2 (Masculino) representa el 49.08% (N=558). Este equilibrio minimiza el riesgo de sesgo en los análisis que involucren esta variable.
+
+**Ingresos Familiares:**\
+Los Ingresos Familiares representan una variable ordinal con un amplio rango, desde 0 hasta 16, lo que permite capturar una diversidad de situaciones socioeconómicas.
+
+*Tabla de frecuencia de Ingresos familiares*
+
+```{r, echo=FALSE}
+sjPlot::tab_df(
+  as.data.frame(sjmisc::frq(proc_LAPOP$Ingresos_familiares))
+)
+
+```
+
+La distribución de los Ingresos Familiares es amplia y dispersa, sin una clara moda en los extremos. Las categorías con mayor frecuencia son 5(N=100, 8,8%), 8 (N=93, 8,18%), y 13 (N=91, 8%), indicando que la variabilidad es favorable para detectar posibles diferencias en la Orientación política asociadas al nivel socioeconómico.
+
+**Etnicidad:\
+**La variable original de Etnicidad, medida en una escala nominal en múltiples categorías, fue recodificada para simplificar el análisis y permitir su uso en modelos estadísticos con mayor poder interpretativo. La distribución de la variable original se presenta a continuación.
+
+*Tabla de frecuencia de Etnicidad*
+
+```{r, echo=FALSE}
+
+sjPlot::tab_df(
+  as.data.frame(sjmisc::frq(proc_LAPOP$Etnicidad))
+)
+```
+
+Para crear un variable dicotómica nominal, se procedió a agrupar las categorías originales de la siguiente manera:
+
+-   Categoría “No minoría”: Se mantuvo la categoría original con la mayor frecuencia (categoría 1), asumiéndola como el grupo de referencia o mayoritario.
+
+-   Categoría “Minoría”: Se agruparon el resto de las categorías (2, 3, 4, 5 y 7) en una única nueva categoría que representa a los grupos étnicos minoritarios.
+
+*Tabla de frecuencia Etnicidad transformada*
+
+```{r, echo=FALSE}
+# Crear variable dicotómica
+proc_LAPOP <- proc_LAPOP %>%
+  mutate(
+    Etnicidad_dicot = case_when(
+      Etnicidad %in% c(1,2) ~ "No minoría",
+      Etnicidad %in% c(3,4,5,7) ~ "Minoría",
+      TRUE ~ NA_character_
+    )
+  )
+
+# Tabla de frecuencia
+sjPlot::tab_df(
+  as.data.frame(sjmisc::frq(proc_LAPOP$Etnicidad_dicot))
+)
+```
+
+La creación de una variable dicotómica busca simplificar la complejidad de la variable original y poner foco en la dicotomía entre el grupo mayoritario y el conjunto de minorías. Esto es especialmente útil en los modelos de regresión, donde el efecto de pertenecer a una minoría étnica, en comparación con el grupo de referencia, puede ser evaluado de forma directa y robusta. La nueva distribución indica que la muestra se compone de un 47.14% de individuos en la categoría No Minoría y un 52,86% en la categoría Minoría, logrando una distribución que permite una comparación estadísticamente significativa entre ambos grupos.
+
+## Métodos
+
+Para cumplir con los objetivos del estudio, el análisis de datos se realizó en dos etapas principales:
+
+**Estadística Descriptiva:** En esta primera etapa, se emplearon medidas de frecuencia absoluta (N) y frecuencia relativa (porcentajes válidos, valid.prc) para describir y caracterizar la muestra en cada una de las variables. Esto incluyó la presentación de las tablas de frecuencia detalladas previamente, que permitieron identificar la distribución, la moda y el nivel de dispersión en las variables, siendo esencial para comprender la composición de la muestra en términos de orientación política, género, ingresos familiares y etnicidad.
+
+**Estadística correlacional e inferencial:** La segunda etapa se centró en la exploración y la medición de la asociación entre las variables sociodemográficas (independientes) y la orientación política (dependiente). Dado que la variable dependiente es ordinal y las variables independientes son una mezcla de nominales (dicotómicas) y ordinales, las técnicas de análisis se basaron en los siguientes métodos:
+
+**Tablas de contingencia y Prueba chi (Chi-cuadrado):** Se utilizaron para examinar la asociación entre las variables nominales/dicotómicas (Género, Etnicidad transformada) y la Orientación Política (o una versión recodificada de esta). El chi\^2 permite determinar si existe una dependencia estadística significativa entre las distribuciones de las variables.
+
+**Análisis de Correlación:** Se empleó la Correlación de Spearman (rho) para medir el grado y la dirección de la asociación monótona entre las variables ordinales Orientación Política e Ingresos Familiares), dado que es la medida apropiada para variables que no cumplen el supuesto de normalidad y son de escala ordinal.
+
+**Modelos de Regresión (Regresión Logística u Ordinal):** Para estimar el peso predictivo y la influencia independiente de las variables sociodemográficas en la Orientación Política, se pudo emplear un Modelo de Regresión Logística Ordinal. Esta técnica es ideal para variables dependientes ordinales, permitiendo interpretar la probabilidad de ubicarse en niveles superiores de la escala de orientación política (por ejemplo, hacia la derecha) en función de las categorías de Género, Etnicidad e Ingresos Familiares, controlando el efecto de todas las variables simultáneamente.
+
+El umbral de significancia estadística se estableció en 0,05 para todas las pruebas inferenciales, de acuerdo con las prácticas estándar en las ciencias sociales.
+
+# Análisis
+
+## Análisis descriptivo
+
+**Estadísticos Descriptivos**
+
+```{r, echo=FALSE}
+proc_LAPOP <- proc_LAPOP %>%
+  mutate(
+    Género = factor(Género, labels = c("Hombre", "Mujer")),
+    Etnicidad_dicot = factor(
+      ifelse(Etnicidad %in% c(1,2), "No Minoría", "Minoría")
+    )
+  )
+
+table1::table1(
+  ~ Género + Orientación_política + Etnicidad_dicot + Ingresos_familiares,
+  data = proc_LAPOP,
+  caption = "Tabla descriptiva de las variables del estudio"
+)
+```
+
+
+```{r, echo=FALSE}
+vars <- c("Orientación_política", "Género", "Etnicidad", "Ingresos_familiares")
+
+proc_LAPOP %>%
+  select(all_of(vars)) %>%
+  dplyr::rename(`Ingresos familiares` = Ingresos_familiares) %>%
+  psych::describe() %>%
+  kable() %>%
+  kable_styling(full_width = TRUE)
+```
+
+En estas tablas se observan los principales estadísticos descriptivos de las 3 variables categóricas (Ingresos familiares, Género y Etnicidad) y la variable cuantitativa (Orientación política) en los 1137 casos revisados. En Orientación política se observa un promedio de 5,005 y la mediana 5, lo que indica que la muestra está casi perfectamente centrada, con una desviación estándar de 2,30, el Error Estándar, es de 0,06, lo cual es muy bajo e indica que esta estimación central es precisa y representativa de la población. En Género, la cual es una variable dicotómica, es decir, solo tiene dos posibles valores, (1= hombre, 2= mujer), la media está en 1,49 lo que indica que la muestra está casi perfectamente equilibrada. Etnicidad es una variable categórica con 6 grupos distintos, la media es de 1,79 y la mediana 2, lo que sugiere que los valores más bajos (1 y 2) están más representados, así lo indica la Asimetría= 2,06 , lo cual señala que las categorías 1 y 2 concentran la gran mayoría de la muestra, el Error Estándar= 0,03 es pequeño en relación a la Desviación estándar= 4,39, lo que valida la precisión de la media de ingresos reportada. Por último en relación a los Ingresos Familiares, está en una escala del 0 al 16, es decir, 16 posibles valores, donde el promedio es de 8,80 y una mediana de 8,84, es decir, casi idénticas. El bajo Error estándar= 0.13 indica una alta precisión de la estimación del promedio.
+
+```{r, echo=FALSE}
+proc_LAPOP$Orientación_política <- as.numeric(as.character(proc_LAPOP$Orientación_política))
+
+ggplot(proc_LAPOP, aes(x = Orientación_política)) +
+  geom_histogram(
+    bins = 10,
+    color = "black",
+    fill = "darkred"
+  ) +
+  labs(
+    title = "Histograma de Orientación Política",
+    x = "Orientación política (1 = Izquierda, 10 = Derecha)",
+    y = "Frecuencia",
+    caption = "Fuente: Elaboración propia en base a LAPOP"
+  ) +
+  theme_minimal()
+```
+
+El histograma anterior representa la frecuencia empírica de cada evento, este revela una distribución con una marcada tendencia central, la categoría con la frecuencia más alta se encuentra en el centro, específicamente en el valor 5, es decir, actúa como Moda de la distribución. La distribución es aproximadamente simétrica y muestra una participación significativa en los extremos de la escala, es decir, en la Extrema Izquierda (1.0) y la Extrema Derecha (10.0). Este patrón sugiere que, aunque la mayoría de los encuestados se sitúa en el centro del espectro, existe también un bloque de votantes ideológicamente polarizados.
+
+```{r, echo=FALSE}
+ggplot(proc_LAPOP, aes(x = factor(Género, levels = c(1,2), labels = c("Hombre", "Mujer")))) +
+  geom_bar(fill = "darkred", color = "black") +
+  labs(
+    title = "Frecuencia de Género",
+    x = "Género",
+    y = "Frecuencia",
+    caption = "Fuente: Elaboración propia en base a LAPOP"
+  ) +
+  theme_minimal()
+
+```
+
+En este histograma de frecuencias de Ingresos Familiares, representado por gráficos de barras. El gráfico confirma la Asimetría señalada en la primera tabla de -0,08, pues las frecuencias en la mitad izquierda (0-8) son generalmente similares a las de la mitad derecha (9-16). Respecto a las medidas de tendencia central la distribución es multimodal (tiene varios picos), con una frecuencia máxima alrededor del valor 5 (casi 100 casos). Sin embargo, hay otros picos significativos alrededor de 3 8 13 y 14 La simetría general confirma que la Media (8.80) y la Mediana (8.84) son buenos indicadores del centro de la riqueza en la muestra. La distribución se extiende de manera uniforme en torno a este valor, lo que indica una amplia heterogeneidad en los niveles de riqueza de los hogares encuestados.
+
+```{r, echo=FALSE}
+
+ggplot(proc_LAPOP, aes(x = Ingresos_familiares)) +
+  geom_bar(fill = "darkred", color = "black") +
+  scale_x_discrete(
+    labels = c(
+      "0" = "Ningún ingreso",
+      "1" = "Menos de 125.000 pesos",
+      "2" = "125.001 - 190.000 pesos",
+      "3" = "190.001 - 225.000 pesos",
+      "4" = "225.001 - 255.000 pesos",
+      "5" = "255.001 - 300.000 pesos",
+      "6" = "300.001 - 335.000 pesos",
+      "7" = "335.001 - 375.000 pesos",
+      "8" = "375.001 - 420.000 pesos",
+      "9" = "420.001 - 470.000 pesos",
+      "10" = "470.001 - 525.000 pesos",
+      "11" = "525.001 - 600.000 pesos",
+      "12" = "600.001 - 690.000 pesos",
+      "13" = "690.001 - 830.000 pesos",
+      "14" = "830.001 - 1.000.000 pesos",
+      "15" = "1.000.001 - 1.500.000 pesos",
+      "16" = "Más de 1.500.000 pesos"
+    )
+  ) +
+  labs(
+    title = "Frecuencia de Ingresos Familiares",
+    x = "Ingresos familiares",
+    y = "Frecuencia",
+    caption = "Fuente: Elaboración propia en base a LAPOP"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 6)
+  )
+
+```
+
+Este gráfico de barras ilustra la distribución de la muestra entre las dos categorías de la variable Género, codificadas como: 1=hombre y 2=mujer. Respecto a la distribución el gráfico muestra que la frecuencia de las categorías es casi idéntica, esto confirma la información que obtuvimos en la tabla descriptiva respecto a la media=1,49.
+
+```{r, echo=FALSE}
+ggplot(
+  proc_LAPOP %>% 
+    mutate(Etnicidad2 = case_when(
+      Etnicidad %in% c(1, 2) ~ "No minoría",
+      Etnicidad %in% c(3, 4, 5, 7) ~ "Minoría",
+      TRUE ~ NA_character_
+    ))
+) +
+  geom_bar(aes(x = Etnicidad2), fill = "darkred", color = "black") +
+  labs(
+    title = "Frecuencia de minorías étnicas",
+    x = "Etnicidad (minorización)",
+    y = "Frecuencia",
+    caption = "Fuente: Elaboración propia en base a LAPOP"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(size = 10))
+
+```
+
+Respecto a la etnicidad es importante mencionar que esta variable fue recodificada, ya que la variable original incluía 6 categorías y fue convertida en una variable dicotómica. A modo de análisis la categoría “No minoría” es la dominante con 970 casos aproximadamente o un 85% de la muestra. Este fuerte sesgo en la distribución de la etnicidad es un factor clave que debe ser considerado al interpretar los resultados de la relación entre Etnicidad y Orientación Política.
+
+## Análisis estadístico bivariado
+
+**Tabla 1: Estadísticos según género**
+
+```{r, echo=FALSE}
+proc_LAPOP$Orientación_política <- as.numeric(proc_LAPOP$Orientación_política)
+
+proc_LAPOP %>%
+  group_by(Género) %>%
+  summarise(
+    n = n(),
+    Media = round(mean(Orientación_política, na.rm = TRUE), 2),
+    Mediana = round(median(Orientación_política, na.rm = TRUE), 2),
+    `Desv. Estándar` = round(sd(Orientación_política, na.rm = TRUE), 2),
+    Mínimo = min(Orientación_política, na.rm = TRUE),
+    Máximo = max(Orientación_política, na.rm = TRUE)
+  ) %>%
+  rename(
+    `N` = n,
+    `Categoría` = Género
+  ) %>%
+  kable(
+    caption = "Tabla 1: Estadísticos según género",
+    col.names = c("Género", "N", "Media", "Mediana", "Desv. Estándar", "Mínimo", "Máximo")
+  )
+
+```
+
+**Tabla 2: Prueba T de Student y tamaño de efecto (H1)**
+
+```{r, echo=FALSE}
+
+t_res <- t.test(Orientación_política ~ Género, data = proc_LAPOP)
+
+stats <- proc_LAPOP %>%
+  group_by(Género) %>%
+  summarise(
+    media = mean(Orientación_política, na.rm = TRUE),
+    sd = sd(Orientación_política, na.rm = TRUE),
+    n = n()
+  )
+
+m_h <- stats$media[stats$Género == "Hombre"]
+m_m <- stats$media[stats$Género == "Mujer"]
+sd_h <- stats$sd[stats$Género == "Hombre"]
+sd_m <- stats$sd[stats$Género == "Mujer"]
+n_h <- stats$n[stats$Género == "Hombre"]
+n_m <- stats$n[stats$Género == "Mujer"]
+
+sd_pooled <- sqrt(((n_h - 1)*sd_h^2 + (n_m - 1)*sd_m^2) / (n_h + n_m - 2))
+d_value <- (m_h - m_m) / sd_pooled
+
+magnitud <- case_when(
+  abs(d_value) < .20 ~ "Muy pequeño",
+  abs(d_value) < .50 ~ "Pequeño",
+  abs(d_value) < .80 ~ "Mediano",
+  TRUE ~ "Grande"
+)
+
+tabla_t <- tibble(
+  Estadístico = c(
+    "t (Student)",
+    "gl",
+    "p-valor",
+    "Media (H vs M)",
+    "Diferencia significativa",
+    "Cohen's d",
+    "Magnitud del efecto"
+  ),
+  Resultado = c(
+    round(t_res$statistic, 2),
+    round(t_res$parameter, 0),
+    round(t_res$p.value, 4),
+    paste0(round(m_h,2), " vs ", round(m_m,2)),
+    ifelse(t_res$p.value < 0.05, "Sí", "No"),
+    round(d_value, 2),
+    magnitud
+  )
+)
+
+knitr::kable(
+  tabla_t,
+  caption = "Tabla: Prueba T y tamaño de efecto según Género"
+)
+```
+
+**Tabla 3: Estadísticos según Etnicidad Dicotómica**
+
+```{r, echo=FALSE}
+
+tabla_etnia <- proc_LAPOP %>%
+  group_by(Etnicidad_dicot) %>%
+  summarise(
+    Media = round(mean(Orientación_política, na.rm = TRUE), 2),
+    Mediana = round(median(Orientación_política, na.rm = TRUE), 2),
+    `Desv. Estándar` = round(sd(Orientación_política, na.rm = TRUE), 2),
+    Mínimo = min(Orientación_política, na.rm = TRUE),
+    Máximo = max(Orientación_política, na.rm = TRUE),
+    n = n()
+  ) %>%
+  # Reordenar columnas para que quede bonito
+  select(Etnicidad_dicot, n, Media, Mediana, `Desv. Estándar`, Mínimo, Máximo) %>%
+  rename(Grupo = Etnicidad_dicot)
+
+tabla_etnia_final <- tabla_etnia %>%
+  tidyr::pivot_longer(
+    cols = c(Media, Mediana, `Desv. Estándar`, Mínimo, Máximo),
+    names_to = "Estadística",
+    values_to = "Valor"
+  ) %>%
+  tidyr::pivot_wider(
+    names_from = Grupo,
+    values_from = Valor
+  ) %>%
+  # Añadir N al nombre de cada grupo
+  rename(
+    `Minoría (n=154)` = `Minoría`,
+    `No minoría (n=983)` = `No Minoría`
+  )
+
+kable(
+  tabla_etnia_final,
+  caption = "Tabla 3: Estadísticos según Etnicidad Dicotómica"
+)
+
+```
+
+**Tabla 4: Prueba T de Student y tamaño de efecto (H2)**
+
+```{r, echo=FALSE}
+
+
+t_etnia <- t.test(Orientación_política ~ Etnicidad_dicot, data = proc_LAPOP)
+
+
+stats_etnia <- proc_LAPOP %>%
+  group_by(Etnicidad_dicot) %>%
+  summarise(
+    media = mean(Orientación_política, na.rm = TRUE),
+    sd = sd(Orientación_política, na.rm = TRUE),
+    n = n()
+  )
+
+
+m_min <- stats_etnia$media[stats_etnia$Etnicidad_dicot == "Minoría"]
+m_no  <- stats_etnia$media[stats_etnia$Etnicidad_dicot == "No Minoría"]
+
+sd_min <- stats_etnia$sd[stats_etnia$Etnicidad_dicot == "Minoría"]
+sd_no  <- stats_etnia$sd[stats_etnia$Etnicidad_dicot == "No Minoría"]
+
+n_min <- stats_etnia$n[stats_etnia$Etnicidad_dicot == "Minoría"]
+n_no  <- stats_etnia$n[stats_etnia$Etnicidad_dicot == "No Minoría"]
+
+
+sd_pooled <- sqrt(((n_min - 1)*sd_min^2 + (n_no - 1)*sd_no^2) /
+                    (n_min + n_no - 2))
+
+
+d_value <- (m_min - m_no) / sd_pooled
+d_value_round <- round(d_value, 2)
+
+
+magnitud <- case_when(
+  abs(d_value) < 0.20 ~ "Muy pequeño",
+  abs(d_value) < 0.50 ~ "Pequeño",
+  abs(d_value) < 0.80 ~ "Mediano",
+  TRUE ~ "Grande"
+)
+
+tabla_t_etnia <- tibble(
+  Estadístico = c(
+    "t (Student)",
+    "gl",
+    "p-valor",
+    "Media (Minoría vs No Minoría)",
+    "Diferencia significativa",
+    "Cohen's d",
+    "Magnitud del efecto"
+  ),
+  Resultado = c(
+    round(t_etnia$statistic, 2),
+    round(t_etnia$parameter, 0),
+    round(t_etnia$p.value, 4),
+    paste0(round(m_min,2), " vs ", round(m_no,2)),
+    ifelse(t_etnia$p.value < 0.05, "Sí", "No"),
+    d_value_round,
+    magnitud
+  )
+)
+
+kable(
+  tabla_t_etnia,
+  caption = "Tabla: Prueba T y tamaño de efecto según Etnicidad Dicotómica"
+)
+```
+
+La tabla 3 presenta los estadísticos descriptivos de la orientación política según etnicidad dicotómica, mostrando que las medias entre personas pertenecientes a grupo Minoría 4.94 y no minoria 5.032 son muy similares, lo que anticipa la ausencia de diferencias relevantes entre ambos grupos, ya que ambos se centran en el centro de la escala ideológica. Esta impresión descriptiva confirma que que los resultados de la tabla 4, donde la prueba t de student arroja valor p de 0.712, muy por encima del nivel de significancia de 0.05, indicando que no existen diferencias estadísticamente significativas en la autoubicación ideológica según etnicidad. Por lo que, el tamaño del efecto es nulo, con un Cohen de 0.03, lo que refuerza que cualquier diferencia observada en los promedios carece de relevancia sustantiva. Finalmente, se muestra que la etnicidad no influye en la orientación política dentro de esta muestra, entonces se rechaza la H2.
+
+**Tabla 5: Contingencia Género e Ingresos**
+
+```{r, echo=FALSE}
+sjt.xtab(
+  var.row = proc_LAPOP$Género,
+  var.col = proc_LAPOP$Ingresos_familiares,
+  show.row.prc = TRUE,     # Porcentajes por fila
+  show.col.prc = FALSE,    # No mostrar % columna
+  show.cell.prc = FALSE,   # No mostrar % celda
+  encoding = "UTF-8",
+  title = "Tabla 5: Contingencia Género e Ingresos"
+)
+```
+
+Esta tabla de contingencia o tabla cruzada permite contrastar la h3 de diferencia entre género e ingresos familiares. Esta tabla muestra las frecuencias por encima de los porcentajes para cada nivel de ingresos de hombres (n=579) y mujeres (n=558). La tabla revela que los patrones de porcentajes no son tan distintos, ambos grupos tienen una alta concentración en el rango medio (alrededor de 5 a 9) y en el rango alto (12 a 16). Esto sugiere que no existe una diferencia marcada en la distribución de la riqueza relativa por género, aunque sí se observan diferencias marcadas en los extremos: Las Mujeres muestran una concentración significativamente mayor que los Hombres en los niveles más bajos de riqueza relativa (especialmente en los niveles 1, 2 y 3), mientras que los Hombres muestran una concentración de casos mayor en los niveles más altos del índice (especialmente en los niveles 14 y 16). Estos resultados sugieren que existe una brecha de riqueza relativa entre géneros, donde las mujeres están sobrerrepresentadas en la parte inferior de la distribución y los hombres en la parte superior.
+
+**Tabla 6: Chi cuadrado y medidas de asociación (H3)**
+
+```{r, echo=FALSE}
+
+tabla <- table(proc_LAPOP$Género, proc_LAPOP$Ingresos_familiares)
+
+chi <- chisq.test(tabla)
+
+chi_val    <- chi$statistic
+gl_val     <- chi$parameter
+p_val      <- chi$p.value
+
+cont_coeff <- sqrt(chi_val / (chi_val + sum(tabla)))
+
+
+k <- min(nrow(tabla), ncol(tabla)) - 1
+cramer_v <- sqrt(chi_val / (sum(tabla) * k))
+
+interpretacion <- case_when(
+  cramer_v < 0.10 ~ "Asociación muy débil",
+  cramer_v < 0.20 ~ "Asociación débil",
+  cramer_v < 0.30 ~ "Asociación moderada",
+  TRUE ~ "Asociación fuerte"
+)
+
+sig <- ifelse(p_val < 0.05, "significativa", "no significativa")
+
+tabla_chi <- tibble(
+  Estadístico = c(
+    "Chi-cuadrado (Pearson)",
+    "gl",
+    "p-valor",
+    "Contingency Coefficient",
+    "Cramer's V",
+    "Interpretación"
+  ),
+  Valor = c(
+    round(chi_val, 3),
+    as.integer(gl_val),
+    round(p_val, 5),
+    round(cont_coeff, 3),
+    round(cramer_v, 3),
+    paste(interpretacion, ", pero", sig)
+  )
+)
+
+kable(
+  tabla_chi,
+  caption = "Tabla 6: Chi-cuadrado y medidas de asociación (H₃)"
+)
+```
+
+La tabla 6 muestra que la prueba de Chi cuadrado para controlar la hipótesis 3. Existe una diferencia significativa entre género e ingresos familiares, el resultado principal es que la asociación estadísticamente significativamente, ya que el valor p es 0.00019, siendo considerablemente menor que el umbral de alpha=0.05, lo que nos lleva a ampliar la hipótesis de que existe una dependencia estadística entre la distribución de género y los ingresos familiares. Sin embargo, la magnitud de esta asociación es débil, como lo indican las medidas de tamaño del efecto. En resumen, el género está relacionado de manera no aleatoria con la distribución de los ingresos familiares en la muestra, pero el género por sí mismo sólo explica una pequeña parte de la variabilidad total observada en los ingresos.
+
+# Conclusiones
+
+El análisis bivariado reveló que la Orientación política promedio es independiente del Género y la Etnicidad. Las pruebas T de Student indicaron que las diferencias mínimas observadas en las medias políticas entre hombres y mujeres (p=0.43) y entre minorías y no minorías (p=0.712) no son estadísticamente significativas. En ambos casos, el tamaño del efecto (Cohen's d) fue trivial, sugiriendo que estos factores sociodemográficos no son predictores relevantes de la posición ideológica central en la población estudiada. En contraste, la hipótesis sobre la Riqueza Relativa (Índice WEALTH) fue la única confirmada. La prueba Chi-cuadrado arrojó una asociación estadísticamente significativa entre Género e Ingresos Familiares (p=0.00019). Aunque el tamaño del efecto (Cramer's V=0.197) es débil, este hallazgo confirma la existencia de una brecha de riqueza, donde los hombres se concentran desproporcionadamente en los niveles más altos y las mujeres en los niveles más bajos de la distribución de riqueza relativa. Una limitación clave del estudio fue la baja variabilidad de la Orientación Política en las medias grupales, lo que dificulta la detección de diferencias. Además, la recodificación dicotómica de Etnicidad y el fuerte desequilibrio entre el grupo Minoría y No Minoría pudo haber afectado el poder estadístico.
+
+# Bibliografía
+
+CEPAL. (2016). La matriz de la desigualdad social en América Latina. Comisión Económica para América Latina y el Caribe. https://repositorio.cepal.org/server/api/core/bitstreams/c52907b3-a3dc-4866-8f4c-c19491c2b83a/content
+
+Inter-American Development Bank. (2018). New Century, Old Disparities: Gender and Ethnic Earnings Gaps in Latin America and the Caribbean. BID. https://publications.iadb.org/publications/english/document/New-century-Old-Disparities-Gender-and-Ethnic-Earnings-Gaps-in-Latin-America-and-The-Caribbean.pdf
+
+Pérez Verdugo, C. (2021). Género y participación política en Chile \[Memoria de título, Universidad de Chile\]. Repositorio UChile. https://repositorio.uchile.cl/bitstream/handle/2250/182157/Constanza%20P%C3%A9rez%20Verdugo.pdf?sequence=1&isAllowed=y
+
+Stewart, A. J., Plotkin, J. B., & McCarty, N. (2021). Inequality, identity, and partisanship: How redistribution can stem the tide of mass polarization. Proceedings of the National Academy of Sciences. https://arxiv.org/pdf/2103.14619.pdf
+
+Telles, E., Wade, P., & Flores, R. (2022). Racial and ethnic inequality in Latin America. LSE Latin America and Caribbean Centre. https://eprints.lse.ac.uk/120677/1/LACIR_WP_113.pdf
+
+World Bank. (2021). Are fairness perceptions shaped by income inequality? Evidence from Latin America. World Bank Group. https://thedocs.worldbank.org/en/doc/050334bac09c2058754559a9915d7a16-0050022021/original/Are-Fairness-Perceptions-Shaped-by-Income-Inequality.pdf
