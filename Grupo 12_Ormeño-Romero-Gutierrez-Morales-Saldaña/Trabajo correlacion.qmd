@@ -1,0 +1,619 @@
+---
+title: "Trabajo correlación final"
+author: 
+- "Bernardita Ormeño"
+- "Santiago Romero"
+- "Juan Gutiérrez García"
+- "Orlando Morales"
+- "Sebastian Saldaña"
+format:
+  html:
+    embed-resources: true
+---
+
+# \*\*Determinantes sociodemograficos del tiempo dedicado al trabajo no remunerado: Sexo, edad, ingreso y nivel educacional\*\*
+
+\*\*Resumen\*\* : Este estudio explora la relación entre el tiempo dedicado al trabajo no remunerado y cuatro factores clave: sexo, edad, ingreso y nivel educacional, enfocado en desigualdades de género y diferencias en la distribución de las tareas domésticas y de cuidado. Los análisis estadísticos permiten observar que las mujeres, las personas con menor nivel educacional y aquellos con menores ingresos dedican más horas al trabajo no remunerado, lo que evidencia cómo estas variables se asocian con la distribución desigual del trabajo doméstico y refuerzan las desigualdades estructurales en la organización social del cuidado.
+
+**Introducción** El presente trabajo aborda el trabajo no remunerado y sus determinantes sociodemográficos, lo que permitirá comprender quién lo realiza, bajo qué condiciones y con qué implicaciones. Esto revela una dimensión oculta pero estructural del funcionamiento económico actual. Entendemos el trabajo no remunerado como el conjunto de labores realizadas en los ámbitos doméstico y comunitario, tal como explica la Fundación SOL (Barriga et al., 2020), este tipo de trabajo incluye actividades como cocinar, limpiar, cuidar a personas dependientes y realizar tareas voluntarias. Aunque resultan esenciales para sostener la vida cotidiana y posibilitar el trabajo remunerado, son labores históricamente naturalizadas como responsabilidades femeninas y se realizan sin reconocimiento social ni compensación económica. En consecuencia, configuran una “red invisible de cuidados” que atraviesa tanto el espacio privado como el público. La relevancia del estudio del TNR radica en que constituye la base que posibilita la reproducción cotidiana de la fuerza laboral y, con ello, del propio sistema económico. Sin embargo, su exclusión de los sistemas de contabilidad nacional ha contribuido a invisibilizar su aporte y a reforzar jerarquías que consideran “no económico” aquello que sostiene la vida (Waring, 1990). Esta omisión no solo distorsiona indicadores como el PIB, sino que dificulta comprender cómo las desigualdades sociales estructuran la distribución del tiempo dedicado a estas tareas. A pesar de su importancia, el trabajo no remunerado continúa distribuyéndose de manera profundamente desigual, concentrándose principalmente en mujeres y en grupos con menor acceso a recursos. Esta desigualdad en la carga de cuidados se relaciona tanto con factores culturales como con condiciones económicas y estructurales que limitan la capacidad de ciertos grupos para externalizar o redistribuir estas tareas. Sin embargo, aún falta comprender con mayor precisión cómo diversos factores sociodemográficos inciden en el tiempo dedicado al trabajo no remunerado, especialmente en contextos donde las brechas de género y clase siguen siendo persistentes. Por ello, surge el problema de investigación: ¿qué características sociodemográficas explican las diferencias en el tiempo destinado al trabajo no remunerado y de qué manera estas desigualdades se relacionan entre sí? Comprender este patrón es clave para dimensionar las bases de la desigualdad de género y la distribución social del cuidado.
+
+**Conceptos Clave**
+
+Los conceptos claves a trabajar serán el trabajo no remunerado, el sexo, la edad, el ingreso y el nivel educacional, con el fin de comprender cómo estos factores estructuran la distribución del trabajo doméstico y de cuidado. El trabajo no remunerado se entiende como el conjunto de actividades domésticas y de cuidado realizadas sin pago, fundamentales para la reproducción de la vida (Vega, 2007). Su feminización histórica hace que el sexo sea una variable central: organismos internacionales como la OECD (2025) han mostrado consistentemente que las mujeres dedican muchas más horas que los hombres al trabajo doméstico, e incluso millones de ellas quedan fuera del mercado laboral por responsabilidades de cuidado no remunerado. La edad influye porque el peso del cuidado cambia a lo largo del ciclo vital, aumentando en etapas de crianza o cuidado de dependientes, tal como lo evidencia la CEPAL (s.f.) en sus análisis sobre uso del tiempo. Por su parte, el ingreso determina la capacidad de externalizar tareas domésticas mediante servicios pagados, lo que genera desigualdades en quién asume efectivamente el trabajo no remunerado. Finalmente, el nivel educacional se relaciona tanto con las oportunidades laborales como con normas culturales de organización del hogar, influyendo en cómo se negocia o distribuye el trabajo doméstico.
+
+**objetivo general e hipótesis**
+
+Esta investigación tiene como objetivo general analizar los factores que inciden en la participación laboral y en la distribución del tiempo dentro de los hogares.
+
+1. Se plantea la hipótesis de que las horas de trabajo no remunerado están asociadas al sexo, considerando que estas tareas continúan recayendo mayoritariamente en las mujeres.
+
+2. Se plantea la hipótesis de que las horas de trabajo no remunerado están vinculadas al nivel educacional, de modo que diferencias en educación pueden influir en la distribución y carga de las tareas domésticas.
+
+3. Se plantea la hipótesis de que las horas de trabajo no remunerado están relacionadas con el quintil de ingresos, dado que los recursos económicos condicionan la posibilidad de externalizar labores domésticas.
+
+4. Se plantea que las horas de trabajo no remunerado se relacionan con la edad, de manera que las personas en edades con mayores responsabilidades de cuidado —como la crianza de hijos o el cuidado de personas dependientes— dedican más tiempo a estas labores.
+
+5. Se plantea la hipótesis de que el sexo está relacionado con el quintil de ingresos, dado que las mujeres realizan más trabajo no remunerado y esto podría limitar su presencia en los niveles de ingreso más altos.
+
+**metodología** 
+
+Para el presente análisis se utilizaron datos provenientes de la Encuesta de Bienestar Social (EBS) 2023. La base de datos original fue sometida a un proceso de depuración y limpieza, gestionando casos perdidos y valores no válidos. Específicamente, se aplicó un criterio de eliminación por lits (listwise) para excluir observaciones con códigos de no respuesta( cómo -77, -88, -99) o en variables de interés. La muestra final que utilizamos quedó conformada por N = 10,104 casos válidos, garantizando consistencia para los análisis descriptivos e inferenciales. Todo el procesamiento de datos se realizó utilizando el software estadístico Rstudio.
+
+```{r}
+pacman::p_load(tidyverse, # Manipulacion datos
+               sjPlot, # Graficos y tablas
+               sjmisc, # Descriptivos
+               corrplot, # Correlaciones
+               psych,
+               dyplr, # Test estadísticos
+               kableExtra,
+               haven,
+               broom,
+               haven,
+               forcats,
+               ggpubr,
+               gginference,
+               rempsyc,
+               flextable,
+               ggplot2)
+
+
+Base_de_datos_EBS_2023 <- read_sav("C:/Users/sebag/OneDrive/Escritorio/Trabajo Correlación FINAL/Base de datos EBS 2023.SAV")
+
+options(scipen = 999)
+base_de_datos <- Base_de_datos_EBS_2023
+
+names(Base_de_datos_EBS_2023)
+#recodificar variables
+
+Base_recodificada <- Base_de_datos_EBS_2023 %>% select( 
+  tnr,
+  sg01,
+  tramoebs2,
+  qaut_casen,
+  educ_recat_casen
+  )
+
+Base_recodificada %>% mutate(
+  across(everything(), ~ na_if(., -99)),
+  across(everything(), ~ na_if(., -88)),
+  across(everything(), ~ na_if(., -89)),
+ )
+
+#calcular porcentaje na con la recodificación
+porcentaje_na_real <- sapply(Base_recodificada, function(X) sum(is.na(X)) / length(X) * 100)
+print(porcentaje_na_real)
+
+
+```
+
+**tabla 1 lista de variables**
+
+
+| Variable | Tipo | Rol | Categorías / Rango |
+|:---|:---|:---|:---|
+| **Tiempo No Remunerado** | Cuantitativa (Continua) | Dependiente | 0 a 18 horas |
+| **Sexo** | Categórica (Nominal) | Independiente | 1. Hombre, 2. Mujer |
+| **Tramos de Edad** | Categórica (Ordinal) | Independiente | 18-29, 30-44, 45-59, 60-79, 80+ |
+| **Nivel Educacional** | Categórica (Ordinal) | Independiente | Básica, Media, Superior |
+| **Quintil de Ingreso** | Categórica (Ordinal) | Independiente | I (Bajo) a V (Alto) |
+
+: Tabla 1. Operacionalización de Variables
+
+**Casos perdidos*
+Después de seleccionar las variables, se realizó una limpieza de la base de datos. Los valores perdidos fueron recodificados como NA, y para calcular las correlaciones se utilizó el método listwise. Este enfoque permitió minimizar la pérdida de información causada por la considerable cantidad de datos faltantes en algunas variables. Adicionalmente, se realizó un control de consistencia lógica en la variable dependiente (Tiempo de trabajo no remunerado). Se detectaron valores extremos que resultaban inverosímiles para un reporte diario/habitual (superior a 24 horas y llegando hasta 60 horas), los cuales distorsionan las medidas de tendencia central y dispersión. Para corregir esto y asegurar la robustez de los análisis, se aplicó un filtro de exclusión, conservando únicamente los casos con reportes de hasta 18 horas, poniendo un tope prudente para el trabajo no remunerado.
+Tras este proceso de filtración, la muestra analítica final quedó conformada por N = 10,285 casos válidos, lo que representa una base sólida y representativa para los análisis posteriores.
+
+
+```{r}
+#convertir codigos en NA
+Base_preparada <- Base_recodificada %>% mutate(
+  across(everything(), ~ na_if(., -99)), #no responde
+  across(everything(), ~ na_if(., -88)), #no sabe
+  across(everything(), ~ na_if(., -89)) #no aplica
+)
+
+porcentaje_na_final <- sapply(Base_preparada, function(x) sum(is.na(x)) / length(x) * 100)
+print(porcentaje_na_final)
+                            
+
+#cambio de nombres en variables
+Base_final <- Base_preparada %>% rename( 
+  Tiempo_no_renumerado = tnr,
+  Sexo = sg01,
+  Edad_tramos = tramoebs2,
+  Quintil_ingreso = qaut_casen,
+  Nivel_educacional = educ_recat_casen
+  )
+
+#quitar NA listwise
+Base_final_final <- na.omit(Base_final)
+
+names(Base_final_final)
+
+rm(
+  Base_de_datos_EBS_2023,
+  Base_preparada,
+  Base_recodificada,
+  conteo_na,
+  porcentaje_na
+)
+#porcentaje final de NA
+porcentaje_final <- sapply(Base_final_final, function(x) sum(is.na(x)) / length(x) * 100)
+print(porcentaje_final)
+
+Base_final_final <- Base_final_final %>% 
+  mutate( Nivel_educacional = na_if(Nivel_educacional, -77.)) %>% 
+  drop_na(Nivel_educacional)
+
+
+#cambiar minutos a horas variable de trabajo no remunerado 
+
+Base_final_final <- Base_final_final %>% 
+  mutate(
+    tiempo_no_renumerado_horas = Tiempo_no_renumerado / 60 )
+
+
+#limite en horas de trabajo no renumerado 
+
+# dejamos fuera los casos insólitos (> 18 horas)
+
+Base_final_final <- Base_final_final %>%
+  filter(tiempo_no_renumerado_horas <= 18)
+
+print("Nuevo resumen de la variable TNR:")
+summary(Base_final_final$tiempo_no_renumerado_horas)
+
+print(paste("La nueva base de datos cuenta con", nrow(Base_final_final), "observaciones."))
+
+```
+
+**redocodificación de variables**
+```{r}
+#preparacion analisis /// RECODIFICACIÓN VARIABLES
+
+Base_final_final <- Base_final_final %>%
+  mutate(
+    #EDAD TRAMOS
+    # (haven factor para categorizar
+    Edad_tramos = haven::as_factor(Edad_tramos),
+    Edad_tramos = fct_relevel(Edad_tramos,
+                              "1. 18 a 29 años", 
+                              "2. 30 a 44 años", 
+                              "3. 45 a 59 años", 
+                              "4. 60 A 79 años", 
+                              "5. 80 años o más"),
+    
+    # QUINTIL INGRESO 
+    
+    Quintil_ingreso = haven::as_factor(Quintil_ingreso),
+    Quintil_ingreso = fct_relevel(Quintil_ingreso,
+                                  "1. I", "2. II", "3. III", "4. IV", "5. V"),
+    
+    #  SEXO 
+    Sexo = haven::as_factor(Sexo),
+    Sexo = fct_relevel(Sexo, "1. Hombre", "2. Mujer")
+  )
+
+
+#categorizar Nivel eduacional
+
+Base_final_final <- Base_final_final %>% 
+  mutate(
+    Nivel_educacional = haven::as_factor(Nivel_educacional),
+    Nivel_educacional = fct_relevel(Nivel_educacional, 
+                                    "1. Educación básica",
+                                    "2. Educación media",
+                                    "3. Educación superior"
+                                    )
+  )
+
+#verifico 
+glimpse(Base_final_final)
+```
+
+**variables**
+
+Las variables seleccionadas para esta investigación se dividen en dependiente e independientes, operacionalizadas de la siguiente manera:
+Variable dependiente:
+Tiempo de trabajo no remunerado: variable cuantitativa continua que mide la cantidad de horas dedicadas a labores domésticas y de cuidado sin remuneración.
+Variable independientes:
+Sexo: variable cualitativa nominal dicótomica (1= Hombre, 2 = Mujer).
+Tramos de edad: Variable cualitativa ordinal la cual fue recodificada en 6 categorias etarias (18-29, 30–44, 45,69, 60-79, 80+ años) para capturar las etapas del ciclo vital.
+Nivel educacional: variable cualitativa ordinal que agrupa el nivel de instrucción alcanzado (Básica, Media, Superior)
+Quintil de ingreso: variable cualitativa ordinal que clasifica los hogares en 5 tramos según su ingreso autónomo per cápita (I a V).
+
+
+**Método de Análisis**
+
+El plan de análisis se estructuró en dos fases principales, utilizando el software estadístico Rstudio:
+Análisis descriptivo: Se caracterizó la muestra mediante medidas de tendencia central (media, mediana) y dispersión (desviación estándar, rango) para todas las variables. se incluyó una tabla descriptiva para visualizar la distribución de todas las variables
+Análisis inferencial Bivariado: para poner a prueba las hipótesis de investigación, se seleccionaron las pruebas estadísticas según el nivel de medición de las variables involucradas. 
+Prueba de T de student: utilizada para evaluar la brecha de género (hiótesis 1) comparando las medias de tiempo no remunerado entre hombres y mujeres.
+Coeficiente de correlación de Spearman: Empleado para analizar la relación entre el tiempo no remunerado y las variables ordinales (Nivel educacional, Quintil de ingresos y tramos de edad), permitiendo identificar tendencias regulares (Hipotesis 2, 3 y 4).
+Prueba de Chi-Cuadrado de Pearson y V de Cramer: Aplicadas para examinar la asociación y la fuerza de la relacion entre dos variables categoricas: el Sexo y el Quintil de Ingreso (Hipótesis 5), con el fin de explorar los fenómenos de distribución desigual del ingreso según genero. 
+
+**tabla descriptiva**
+
+```{r}
+
+tabla_descriptivos <- Base_final_final %>%
+  select(Sexo, Edad_tramos, Quintil_ingreso, Nivel_educacional, tiempo_no_renumerado_horas) %>%
+  sjmisc::descr(show = c("label", "range", "mean", "sd", "NA.prc", "n")) %>%
+  as.data.frame()
+
+# tabla
+tabla_plot <- ggtexttable(
+  tabla_descriptivos,
+  rows = NULL, 
+  theme = ttheme("light")
+)
+
+# Mostrar tabla como un gráfico
+print(tabla_plot)
+
+
+```
+
+**Análisis tabla descriptiva**
+Esta tabla presenta los descriptivos básicos de las variables incluidas en el análisis (n = 10.104 casos válidos en todas las variables, sin datos perdidos). 
+En la variable Sexo, codificada en dos categorías, el promedio o mean (1.61) indica que la muestra está levemente sobrerrepresentada por la categoría 2 (aproximadamente un 62% del total), mientras que la categoría 1 corresponde un 38% restante, con una desviación estándar o sd de 0.48 consistente en una variable dicotómica. 
+En Edad_tramos (1-5), el promedio es 2.71 y la desviación estándar es de 1.15 muestran que las personas se concentran en los tramos etarios intermedios, con menor presencia en los tramos más jóvenes y más viejos. 
+Lo mismo se puede observar en el Quintil_ingreso (1-5), el promedio es 2.70 con una desviación estándar de 1.32 sugiriendo que la mayoría de la muestra pertenece a los quintiles bajos y medios, más que a los de mayor ingreso.
+En la variable Nivel_educacional (1-3) presenta un promedio de 2.11 lo que indica predominio de niveles educativos medios, aunque con cierta dispersión hacia niveles bajos y no tan altos (sd = 0,74). 
+Finalizando con tiempo_no_remunerado_horas mostrando un promedio de 3.80 horas y una desviación estándar de 3.03 con un rango entre 0 - 18 horas. Sugiriendo que, en promedio, las personas destinan cerca de cuatro horas al trabajo no remunerado, pero con una variabilidad importante entre los casos (desde quienes no realizan este tipo de trabajo hasta quienes poseen cargas muy altas)
+
+
+
+
+**Análisis Descriptivo**
+Relación entre tiempo de trabajo no remunerado (tiempo_no_remunerado_horas) y Sexo
+
+
+H₀: cor(TNR, Sexo) = 0
+H₁: cor(TNR, Sexo) ≠ 0
+
+
+**Primera correlación**
+
+```{r}
+print("Resultado T-Test (Sexo vs TNR):")
+t.test(tiempo_no_renumerado_horas ~ Sexo, 
+       data = Base_final_final, 
+       var.equal = FALSE)
+
+```
+
+A partir de la prueba t para muestras independientes entre hombres y mujeres, se observó una diferencia significativa en el tiempo de trabajo no remunerado. En promedio, los hombres declaran 2,61 horas diarias, mientras que las mujeres reportan cerca de 4,54 horas. Esta diferencia de casi dos horas diarias es estadísticamente significativa (t = −35.38, gl = 9892.4, p < 0.05), por lo que, con un nivel de confianza de al menos 95%, se rechaza la hipótesis nula de igualdad de medias y se confirma la existencia de una relación entre sexo y carga de trabajo no remunerado.
+El hecho de que el promedio sea mayor en las mujeres indica que ellas asumen una mayor parte de las tareas domésticas y de cuidado no remuneradas en comparación con los hombres. Este patrón es consistente con estudios sobre división sexual del trabajo, que muestran que, aun cuando las mujeres se incorporan al mercado laboral, siguen realizando la mayor proporción del trabajo no remunerado dentro de los hogares, lo que evidencia una desigualdad estructural en la organización del tiempo y puede tener efectos en su bienestar.
+
+**figura uno**
+
+```{r}
+
+#grafico primera correlacion
+datos_resumen <- Base_final_final %>%
+  group_by(Sexo) %>%
+  summarise(
+    Media_Horas = mean(tiempo_no_renumerado_horas, na.rm = TRUE),
+    Error_Estandar = sd(tiempo_no_renumerado_horas, na.rm = TRUE) / sqrt(n()) 
+  )
+
+# gráfico
+ggplot(datos_resumen, aes(x = Sexo, y = Media_Horas, fill = Sexo)) +
+  # Barras que representan el promedio
+  geom_col(width = 0.6, alpha = 0.8) + 
+  geom_errorbar(aes(ymin = Media_Horas - Error_Estandar, 
+                    ymax = Media_Horas + Error_Estandar), 
+                width = 0.2, size = 1) +
+
+  geom_text(aes(label = round(Media_Horas, 1)), 
+            vjust = -1.5, size = 5, fontface = "bold") +
+  
+  scale_y_continuous(limits = c(0, max(datos_resumen$Media_Horas) + 1)) +
+  scale_fill_manual(values = c("1. Hombre" = "#FD8D3C", "2. Mujer" = "#31A354")) +
+  
+  labs(title = "Diferencia de Medias: Trabajo No Remunerado por Sexo",
+       subtitle = "Visualización de los resultados del T-Test (Media + Error Estándar)",
+       y = "Promedio de Horas (TNR)",
+       x = "Sexo") +
+  theme_minimal()
+
+```
+
+La Figura 1 se observa la diferencia de medias encontradas en la prueba t. Los hombres registran en promedio unas 2,6 horas de trabajo no remunerado, mientras que las mujeres alcanzan cerca de 4,5 horas, reforzando la evidencia de una mayor carga de trabajo doméstico y de cuidados en las mujeres. 
+
+
+**2. Relación entre tiempo de trabajo no remunerado y nivel educacional**
+H₀: cor(tiempo_no_remunerado_horas, nivel_educacional) = 0
+H₁: cor(tiempo_no_remunerado_horas, nivel_educacional) ≠ 0
+
+```{r}
+# TNR vs. Nivel Educacional
+print("Correlación Spearman (Educación vs TNR):")
+cor.test(as.numeric(Base_final_final$Nivel_educacional), 
+         Base_final_final$tiempo_no_renumerado_horas, 
+         method = "spearman")
+
+```
+
+A partir del cálculo de la correlación de Spearman entre el nivel educacional y el tiempo de trabajo no remunerado, se observó una asociación positiva de magnitud muy pequeña (ρ = 0.041), pero estadísticamente significativa (p = 0.00003678 < 0.05). Este resultado permite rechazar la hipótesis nula de ausencia de relación con un nivel de confianza de al menos 95%. Se confirma que existe una asociación entre las variables, aunque su intensidad es débil.
+El coeficiente positivo (ρ = 0.041 > 0) indica que, a medida que aumenta el nivel educacional, el tiempo dedicado al trabajo no remunerado tiende a incrementarse levemente. Sin embargo, dado que la magnitud de la correlación es bastante baja, el efecto del nivel educacional sobre la carga de trabajo no remunerado es limitado en términos sustantivos. Esto sugiere que otros factores, como el género y la posición socioeconómica, probablemente tienen un peso mucho mayor en la distribución y carga de las tareas domésticas.
+
+**figura 2**
+
+```{r}
+#GRAFICO TNR / NIVEL EDUACIONAL 
+
+# calculo de media y error estandar 
+datos_resumen_educ <- Base_final_final %>%
+  group_by(Nivel_educacional) %>%
+  summarise(
+    Media_Horas = mean(tiempo_no_renumerado_horas, na.rm = TRUE),
+    Error_Estandar = sd(tiempo_no_renumerado_horas, na.rm = TRUE) / sqrt(n())
+  )
+
+# grafico de puntos y lineas
+ggplot(datos_resumen_educ, aes(x = Nivel_educacional, y = Media_Horas, group = 1)) +
+  
+  geom_line(color = "#E31A1C", size = 1) +
+  
+  geom_point(size = 3, color = "#E31A1C") +
+  
+  geom_errorbar(aes(ymin = Media_Horas - Error_Estandar, 
+                    ymax = Media_Horas + Error_Estandar), 
+                width = 0.2, color = "black") +
+  
+  geom_text(aes(label = round(Media_Horas, 1)), 
+            vjust = -1.5, size = 3.5) +
+  
+  labs(title = "Tendencia del Tiempo No Remunerado por Nivel Educacional",
+       subtitle = "Relación entre Educación y promedio de horas de TNR",
+       y = "Promedio de Horas (TNR)",
+       x = "Nivel Educacional") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) 
+```
+
+
+**Análisis figura 2**
+La Figura 2 muestra la tendencia del tiempo de trabajo no remunerado según el nivel educacional. Se observa que, en promedio, quienes tienen Educación básica realizan alrededor de 3,4 horas diarias de trabajo no remunerado, mientras que este promedio aumenta aproximadamente 3,9 horas entre quienes tiene Educación media y se mantiene en un nivel muy similar en el grupo de Educación superior.
+La pendiente positiva de la línea indica que el tiempo de trabajo remunerado tiende a aumentar levemente a medida que sube el nivel educacional, lo que es coherente con el coeficiente de Spearman obtenido (ρ = 0,041). Sin embargo, las diferencias entre grupos son pequeñas o nulas. Fortaleciendo la idea de que otros factores parecen más determinantes en la distribución de tareas del trabajo doméstico no remunerado. 
+
+
+**3.Relación entre tiempo de trabajo no remunerado y quintil de ingresos**
+H₀: cor(tiempo_no_remunerado_horas, quintil_ingreso) = 0
+H₁: cor(tiempo_no_remunerado_horas, quintil_ingreso) ≠ 0
+
+```{r}
+print("Correlación Spearman (Ingreso vs TNR):")
+cor.test(as.numeric(Base_final_final$Quintil_ingreso), 
+         Base_final_final$tiempo_no_renumerado_horas, 
+         method = "spearman")
+
+```
+
+A partir del cálculo de la correlación de Spearman entre el quintil de ingresos y el tiempo de trabajo no remunerado, se observó una asociación negativa de magnitud pequeña (ρ = −0.045), pero estadísticamente significativa (p = 0.0000049 < 0.05). Este resultado permite rechazar la hipótesis nula de ausencia de relación con un nivel de confianza de 95% y que confirma que existe una relación entre ambas variables, aunque con una intensidad débil.
+El coeficiente negativo (ρ < 0) indica que, en promedio, a medida que aumenta el quintil de ingresos, el tiempo dedicado al trabajo no remunerado tiende a disminuir levemente. Esto sugiere que, si bien los recursos económicos pueden facilitar la externalización de ciertas tareas domésticas, no se explica por sí solo las diferencias en el uso del tiempo.
+
+**figura 3**
+
+```{r}
+#grafico corerlacion 3 tnr ingresos
+
+datos_resumen_ingreso <- Base_final_final %>%
+  group_by(Quintil_ingreso) %>%
+  summarise(
+    Media_Horas = mean(tiempo_no_renumerado_horas, na.rm = TRUE),
+    Error_Estandar = sd(tiempo_no_renumerado_horas, na.rm = TRUE) / sqrt(n())
+  )
+
+ggplot(datos_resumen_ingreso, aes(x = Quintil_ingreso, y = Media_Horas, group = 1)) +
+  
+  # linea de tendencia
+  geom_line(color = "#542788", size = 1) + 
+  
+  geom_point(size = 3, color = "#542788") +
+  geom_errorbar(aes(ymin = Media_Horas - Error_Estandar, 
+                    ymax = Media_Horas + Error_Estandar), 
+                width = 0.2, color = "black") +
+  
+  geom_text(aes(label = round(Media_Horas, 1)), 
+            vjust = -1.5, size = 3.5) +
+  
+  labs(title = "Tendencia de TNR según Nivel Socioeconómico",
+       subtitle = "Visualización de la Correlación de Spearman (Medias por Quintil)",
+       y = "Promedio de Horas (TNR)",
+       x = "Quintil de Ingreso") +
+  
+  theme_minimal() +
+  scale_y_continuous(expand = expansion(mult = c(0.1, 0.2)))
+
+```
+
+**4.Trabajo no remunerado / Tramos de edad**
+H₀: cor(Edad_tramos, tiempo_no_remunerado_horas) = 0
+H₁: cor(Edad_tramos, tiempo_no_remunerados_horas) ≠ 0
+
+```{r}
+print("Correlación Spearman (Edad vs TNR):")
+cor.test(as.numeric(Base_final_final$Edad_tramos), 
+         Base_final_final$tiempo_no_renumerado_horas, 
+         method = "spearman")
+
+```
+
+A partir del cálculo de la correlación de Spearman entre Trabajo no remunerado y Tramos de edad, se observó una asociación negativa de magnitud insignificante (ρ = -0.017), que no es estadísticamente significativa (p = 0.090).
+Este resultado no permite rechazar la hipótesis nula de no asociación con un nivel de confianza del 95%, por lo que no se confirma la existencia de una relación significativa entre estas variables.
+
+
+**Figura 4**
+
+```{r}
+#grafico tnr tramos de ead
+
+# resumen de datos con media y error estandar
+datos_resumen_edad <- Base_final_final %>%
+  group_by(Edad_tramos) %>%
+  summarise(
+    Media_Horas = mean(tiempo_no_renumerado_horas, na.rm = TRUE),
+    Error_Estandar = sd(tiempo_no_renumerado_horas, na.rm = TRUE) / sqrt(n())
+  )
+
+# Grafico
+ggplot(datos_resumen_edad, aes(x = Edad_tramos, y = Media_Horas, group = 1)) +
+  
+  geom_line(color = "#2C7FB8", size = 1) + 
+  
+  geom_point(size = 3, color = "#2C7FB8") +
+  
+  geom_errorbar(aes(ymin = Media_Horas - Error_Estandar, 
+                    ymax = Media_Horas + Error_Estandar), 
+                width = 0.2, color = "black") +
+  
+  geom_text(aes(label = round(Media_Horas, 1)), 
+            vjust = -1.5, size = 3.5) +
+  
+  labs(title = "Tendencia del TNR a lo largo del Ciclo Vital",
+       subtitle = "Correlación de Spearman: Medias por Tramo de Edad",
+       y = "Promedio de Horas (TNR)",
+       x = "Tramo de Edad") +
+  
+  theme_minimal() +
+  
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  
+  scale_y_continuous(expand = expansion(mult = c(0.1, 0.2)))
+
+
+```
+
+
+La Figura 4 muestra la relación del promedio de horas de trabajo no remunerado (TNR) y el tramo de edad, se puede ver en el gráfico el promedio de horas no remuneradas alcanza su punto más alto en el tramo de 30 a 44 años con 4.4, el promedio de horas disminuye en los demás tramos de edad, bajando a 4 en el tramo de 45 a 59 años, 3.6 en el tramo de 60 a 75 años y llegando a su punto más bajo en el tramo de 80 años o más. Tras ver los datos se puede observar que no existe una relación ascendente o descendente entre las horas de trabajo no remuneradas y el tramo de edad por lo que no existe una relación significativa entre los datos. 
+Observando los datos bajo la correlación de Spearman se refuerza que no existe una correlación significativa entre los datos de horas de trabajo no remunerado y el tramo de edad. Al analizar los datos se ve que el tramo de 30 a 44 años tiene el mayor promedio de horas de trabajo no remunerado en comparación con los demás tramos, esto confirma la hipótesis nula de que a mayor edad no hay mayor cuidado de otros por lo que no hay más horas de trabajo no remunerado. 
+
+**5. Asociación entre sexo y quintil de ingresos**
+H₀: V_cramer(sexo, quintil_ingreso) = 0
+H₁: V_cramer(sexo, quintil_ingreso) ≠ 0
+
+```{r}
+Tabla_Cruzada <- Base_final_final %>%
+  count(Quintil_ingreso, Sexo) %>%
+  group_by(Sexo) %>%
+  mutate(Porcentaje = round(n / sum(n) * 100, 1)) %>%
+  pivot_wider(names_from = Sexo, values_from = c(n, Porcentaje), names_glue = "{Sexo}_{.value}") %>%
+  select(Quintil_ingreso, `1. Hombre_n`, `1. Hombre_Porcentaje`, `2. Mujer_n`, `2. Mujer_Porcentaje`) %>%
+  rename(
+    "Quintil" = Quintil_ingreso,
+    "Hombres (N)" = `1. Hombre_n`, "Hombres (%)" = `1. Hombre_Porcentaje`,
+    "Mujeres (N)" = `2. Mujer_n`, "Mujeres (%)" = `2. Mujer_Porcentaje`
+  )
+
+# Mostrar Tabla
+kable(Tabla_Cruzada, caption = "Tabla 2. Distribución de Ingresos por Sexo")
+
+```
+Al analizar la tabla se puede observar que los quintiles que contienen el mayor porcentaje de distribución de ingreso para ambos sexos son los quintiles I y II, el quintil II es el que contiene el mayor porcentaje  de distribución en los hombres  con 21.7% y el quintil I es el que contiene el mayor porcentaje para las mujeres con 26%. En la tabla también se puede observar que en las mujeres el porcentaje de ingreso está distribuido entre los quintiles I y II siendo ambas respectivamente un 26% y un 25.7%, esto es a diferencia de los hombres que tienen una distribución más ordenada, siendo quintil I: 20.3%; quintil II: 21.7%; quintil III: 21.4%; y quintil IV: 20.5%.
+
+**Chi-Cuadrado tabla cruzada**
+
+```{r}
+#asociación chi cuadrado para ver si hay correlación
+
+# Tabla de contingencia cruda para el calculo ya que con la anterior dio errores
+
+tabla_base <- table(Base_final_final$Quintil_ingreso, Base_final_final$Sexo)
+
+# Chicuadrado
+test_chi <- chisq.test(tabla_base)
+
+# resultados de la prueba
+print("--- Resultado Chi-Cuadrado ---")
+print(test_chi)
+```
+
+El test chi-cuadrado arroja un valor de X² = 159.51, con 4 grados de libertad y un p-value < 0.00000000000000022, lo que indica una asociación estadísticamente significativa entre las variables de la tabla cruzada.
+Dado que el p-value es extremadamente bajo, se rechaza la hipótesis de independencia y se concluye que las categorías de ambas variables no se distribuyen de manera aleatoria, existiendo una relación entre ellas.
+Pese a que la prueba solo detecta la existencia de la asociación y no su dirección, el tamaño del estadístico X² sugiere que las diferencias observadas entre las categorías son notorias, es decir, algunas combinaciones de categorías ocurren mucho más o menos de lo esperado si las variables fueran independientes.
+En términos sustantivos, el resultado implica que las diferencias entre los grupos comparados no pueden explicarse por azar, por lo que es necesario examinar la tabla para identificar qué categorías contribuyen más al efecto. Esto refuerza la importancia de seguir analizando cómo se distribuyen las personas entre los distintos niveles de ambas variables.
+
+**V de Cramer**
+
+```{r}
+#  calculamos V de Cramer
+v_cramer <- sqrt(test_chi$statistic / sum(tabla_base))
+
+print(paste("V de Cramer:", round(v_cramer, 3)))
+
+```
+
+El coeficiente de V de Cramer obtenido es V = 0.126. Dado que este indicador toma valores entre 0 y 1 indicando una relación débil entre sexo y quintil de ingreso. 
+Esto significa que, aunque Chi-cuadrado mostró que las diferencias en la distribución de los quintiles de ingresos según sexo no son productos del azar (asociación estadísticamente significativa), la intensidad del vínculo de este es baja. Es decir, el sexo se relaciona con el nivel de ingreso, pero solo explica una pequeña parte de las diferencias observadas, debido a que hay otros factores estructurales (educación, inserción laboral, ocupación) que probablemente tienen un aporte significativo a la desigualdad de ingresos
+
+**Gráfico  de distribución de quintiles de ingreso según sexo**
+
+```{r}
+#grafico 
+
+ggplot(Base_final_final, aes(x = Sexo, fill = Quintil_ingreso)) +
+
+  geom_bar(position = "fill", width = 0.6) +
+  
+  labs(title = "Distribución de Quintiles de Ingreso según Sexo",
+       subtitle = "Asociación entre variables categóricas (Chi-Cuadrado)",
+       y = "Proporción (%)",
+       x = "Sexo",
+       fill = "Quintil") +
+  
+  scale_y_continuous(labels = scales::percent) +
+  
+  theme_minimal() +
+  scale_fill_brewer(palette = "Purples")
+
+```
+El gráfico muestra que la distribución de los quintiles de ingreso varía según el sexo. Aunque las diferencias no son muy marcadas, se observa que los hombres tienen una presencia ligeramente mayor en los quintiles altos, mientras que las mujeres se concentran un poco más en los quintiles bajos. Esto refleja una desigualdad moderada en la estructura de ingresos entre hombres y mujeres, coherente con la asociación significativa encontrada en la prueba Chi-cuadrado.
+
+
+**Conclusiones**
+
+El presente estudio analizó la relación entre el tiempo dedicado al trabajo no remunerado (TNR) y diversos factores sociodemográficos, incluyendo sexo, nivel educacional, quintil de ingresos y edad. En conjunto, los resultados mostraron variables significativamente asociadas con el TNR, aunque la magnitud de dichas relaciones tienden a ser moderada o baja, evidenciando patrones consistentes pero no extremos de desigualdad en la distribución del trabajo doméstico.
+El hallazgo más relevante corresponde a la marcada brecha de género: las mujeres dedican, en promedio, casi dos horas más de TNR que los hombres, lo que confirma la persistencia de una división sexual del trabajo que carga desproporcionadamente a las mujeres con labores domésticas y de cuidado. Alineándose a estudios previos que documentan feminización del TNR y distribución desigual del tiempo en los hogares.
+Asimismo, el ingreso mostró una relación negativa con el TNR: los quintiles más bajos dedican más tiempo a estas tareas, aunque la diferencia entre extremos es moderada. Esta tendencia sugiere que los recursos económicos influyen en la posibilidad de externalizar o redistribuir responsabilidades domésticas. Por su parte, el nivel educacional presentó una asociación significativa pero de magnitud muy baja, indicando que las brechas educativas no modifican sustantivamente la carga de trabajo no remunerado.
+En contraste, la edad no mostró una relación significativa con el TNR, lo que sugiere que las cargas de cuidado no siguen un patrón lineal a lo largo del ciclo vital, sino que responden a dinámicas familiares más específicas.
+Respecto a la relación entre sexo e ingreso, el análisis mostró una asociación significativa pero débil, reflejando que, aunque el género influye en la posición económica, esta desigualdad está mediada por otros factores estructurales como ocupación, educación y condiciones laborales.
+Finalmente, aunque los efectos observados son en su mayoría bajos, el estudio confirma la importancia de seguir analizando el TNR como un componente central de las desigualdades de género y clase. Futuros estudios podrían profundizar incorporando más variables y enfoques que permitan comprender mejor estas dinámicas.
+
+**Bibliografía**
+
+Barriga, F., Durán, G., Sáez, B., & Sato, A. (2020). No es amor, es trabajo no pagado: Un análisis del trabajo de las mujeres en el Chile actual. Estudios de la Fundación SOL.
+https://fundacionsol.cl/cl_luzit_herramientas/static/wp-content/uploads/2020/03/No-es-amor-es-trabajo-no-pagado-2020.pdf 
+
+Comisión Económica para América Latina y el Caribe (CEPAL). (s.f.). Tiempo dedicado al trabajo doméstico y de cuidado no remunerado [Indicador]. Observatorio de Igualdad de Género de América Latina y el Caribe. https://oig.cepal.org/es/indicadores?id=2287 
+
+Grupo de Trabajo para la elaboración de una guía metodológica sobre mediciones de uso del tiempo en América Latina y el Caribe. (2022). Guía metodológica sobre las mediciones de uso del tiempo en América Latina y el Caribe (LC/CEA.11/17). Santiago: Comisión Económica para América Latina y el Caribe (CEPAL). https://repositorio.cepal.org/server/api/core/bitstreams/f69e5027-c677-42ab-87cc-1efff01f5b53/content
+
+OECD. (2025). Gender gaps in paid and unpaid work persist. OECD Publishing.
+https://www.oecd.org/en/publications/gender-gaps-in-paid-and-unpaid-work-persist_25a6c5dc-en.html
+
+Vega Montiel, A. (2007). Por la visibilidad de las amas de casa: rompiendo la invisibilidad del trabajo doméstico. Política y Cultura, (28), 173‑193. http://www.scielo.org.mx/scielo.php?script=sci_arttext&pid=S018877422007000200008&lng=es&tlng=es
+
+Waring, M. (1990). Si las mujeres contaran: Una nueva economía feminista (ed. en rústica). Harper Collins Publishers. https://www.roiw.org/1992/237.pdf?utm_source 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
