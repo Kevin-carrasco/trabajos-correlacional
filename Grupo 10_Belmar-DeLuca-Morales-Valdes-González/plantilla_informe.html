@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Benjamín Belmar, Renato De Luca, Tomás González, Renato Morales, Nicolás Valdés">
+
+<title>Trabajo final Correlacional</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="plantilla_informe_files/libs/clipboard/clipboard.min.js"></script>
+<script src="plantilla_informe_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="plantilla_informe_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="plantilla_informe_files/libs/quarto-html/popper.min.js"></script>
+<script src="plantilla_informe_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="plantilla_informe_files/libs/quarto-html/anchor.min.js"></script>
+<link href="plantilla_informe_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="plantilla_informe_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="plantilla_informe_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="plantilla_informe_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="plantilla_informe_files/libs/bootstrap/bootstrap-bb462d781dde1847d9e3ccf7736099dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Trabajo final Correlacional</h1>
+<p class="subtitle lead">Estadística Correlacional 2025</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Benjamín Belmar, Renato De Luca, Tomás González, Renato Morales, Nicolás Valdés </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">23 de noviembre de 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level1">
+<h1><strong>Introducción</strong></h1>
+<p>Durante las presentes elecciones presidenciales, la seguridad ha sido un punto central de discusión, surgiendo diversas propuestas desde las candidaturas para solucionar una situación interpretada como crisis de inseguridad nacional. Un subtema importante dentro de este debate es el narcotráfico, definido por la ONU (s.f.) como el “comercio ilícito mundial que incluye el cultivo, la fabricación, la distribución y la venta de sustancias que están sujetas a leyes que prohíben drogas”. Este fenómeno ha permeado incluso otros ámbitos de la sociedad, como los poderes político y judicial, y el control territorial (Rose-Ackerman &amp; Palifka, 2016; Feldmann &amp; Luna, 2022).</p>
+<p>Por otra parte, la percepción que las personas tienen respecto a un fenómeno como el narcotráfico, constituye un fenómeno en sí, afectando al tejido social. Así, la percepción de presencia de narcotráfico en una zona puede contribuir a una percepción de inseguridad para quienes habitan allí, debilitando los lazos sociales de la comunidad (Kessler, 2009). Asimismo, la falta de cohesión social facilita la proliferación de delitos, como el narcotráfico, que aprovechan el vacío social para permear en la comunidad (Tocornal et al., 2014). Por ende, estudiar la percepción de la presencia de tráfico de drogas en el área de residencia de las personas es un fenómeno relevante para la sociología, correspondiendo al concepto central del presente trabajo.</p>
+<p>Por otro lado, Frühling y Gallardo (2012), y Osuna y Medina (2019), destacan cuatro factores socioestructurales relacionados con este fenómeno.</p>
+<p>La urbanidad, porque el narcotráfico se presenta con mayor acentuación en zonas más urbanas dada la mayor gama de desigualdades socioeconómicas, necesidades y posibilidades de intercambio (Silveira, Firmino y Cavalcanti, 2023) Así, distinguir área urbana y rural permite caracterizar las dinámicas sociales que moldean la percepción de las personas sobre los fenómenos relacionados a la seguridad y al narcotráfico en particular.</p>
+<p>El segundo, educación, se relaciona directamente con el nivel socioeconómico de una persona, pudiendo servir a su vez para caracterizar socioeconómicamente al entorno en el que habita e identificar posibles situaciones de inseguridad y vulnerabilidad frente a fenómenos como el narcotráfico (Gallardo-Terán, 2014).</p>
+<p>Asimismo, el narcotráfico afecta directa e indirectamente a la salud de las personas, tanto individualmente, mediante el consumo de sustancias, como a nivel social, al incidir en las dinámicas de una comunidad determinada (ODSA, 2015) La incapacidad de costear la compra de medicinas para tratamientos médicos se relaciona con el tráfico de sustancias, pues algunas personas compran medicación a narcotraficantes, o bien, trafican para obtener ingresos que les permitan costear sus tratamientos (Arias, Leighton y Severich, 2025).</p>
+<p>Finalmente, en términos generales mayores ingresos se relacionan con un mejor posicionamiento socioeconómico y una menor incidencia del narcotráfico en su vida diaria (Martins, Santos, y Pillon, 2008; Enamorado et al., 2016).</p>
+<p>Por ende, en relación al fenómeno central, percepción de narcotráfico en área de residencia, las hipótesis de este informe, respectivamente son:</p>
+<ol type="1">
+<li><p>Existe una relación directa con la urbanización de áreas.</p></li>
+<li><p>Existe una relación inversa con un mayor nivel educacional.</p></li>
+<li><p>Existe una relación directa con las dificultades para acceder a medicamentos por su costo.</p></li>
+<li><p>Existe una relación inversa con los ingresos.</p></li>
+</ol>
+<pre class="{r}"><code>
+
+
+if (!require("pacman")) install.packages("pacman")
+if (!require("BiocManager")) install.packages("BiocManager")
+pacman::p_load(tidyverse,    # conjunto de paquetes, contiene dplyr y ggplot2
+               haven,        # Leer archivo dta
+               dplyr,        # para sintaxis
+               ggplot2,
+               kable,
+               kableExtra,
+               knitr,        # Render y tablas
+               stargazer,    # Tablas
+               janitor,      # Tablas y formateo
+               crosstable,   # Tablas
+               table1,       # Tablas
+               gt,
+               Publish,      # para IC
+               summarytools, # para descriptivos
+               sjmisc,       # para descriptivos
+               sjPlot,       # para tablas
+               corrplot,     # Correlaciones
+               rstatix,      # Test estadísticos
+               psych,        # para  alfa de cronbach
+               labelled,     # Para labels
+               broom,        # Tablas
+               gginference,  # Visualizacion 
+               rempsyc,      # Reporte
+               flextable,    # nice table
+               scales,
+               sjstats,
+               ltm,
+               ggpubr,       # Gráficos
+               ggmosaic, reshape2,rcompanion, lsr)     # Gráficos
+
+options(scipen = 999)        # para desactivar notacion cientifica
+rm(list = ls())              # para limpiar el entorno de trabajo (Elimina todos los objetos)
+
+
+# cargar base y crear subset-----------
+casen &lt;- read_sav("input/casen22.sav")
+
+casen2022_subset &lt;- casen %&gt;% 
+  dplyr::select(
+    v36c, 
+    area, 
+    e6a_no_asiste, 
+    e6a_asiste, 
+    y1, 
+    s19e
+  ) %&gt;%
+  mutate(
+    nivel_educ = coalesce(e6a_asiste, e6a_no_asiste)
+  ) %&gt;%
+  rename(
+    freq_traf_drog = v36c,
+    area_tipo      = area,
+    ingresos       = y1,
+    acc_med        = s19e
+  ) %&gt;%
+  dplyr::select(-e6a_no_asiste, -e6a_asiste)
+
+rm(casen)
+
+
+</code></pre>
+<pre class="{r}"><code>proc_casen_subset &lt;- casen2022_subset %&gt;%
+  
+  
+  mutate(across(everything(), haven::zap_labels)) %&gt;%
+  
+
+  mutate(across(everything(), ~ suppressWarnings(as.numeric(.x)))) %&gt;%
+  
+
+  mutate(across(
+    everything(),
+    ~ replace(.x, .x %in% c(-99, -88, -77, -66, -55, -44), NA)
+  )) %&gt;%
+  drop_na()
+</code></pre>
+<p>#<strong>Metodología</strong></p>
+<p>##Datos</p>
+<pre class="{r}"><code># recodificaciones
+proc_casen_subset &lt;- proc_casen_subset %&gt;%
+  
+  mutate(
+    area_reco = case_when(
+      area_tipo == 1 ~ "Urbana",
+      area_tipo == 2 ~ "Rural",
+      TRUE ~ NA_character_
+    ),
+    freq_traf = case_when(
+      freq_traf_drog == 1       ~ "No",
+      freq_traf_drog %in% 2:4   ~ "Sí",
+      TRUE                       ~ NA_character_
+    ),
+    freq_traf_numeric = case_when(
+      freq_traf_drog == 1       ~ 0,
+      freq_traf_drog %in% 2:4   ~ 1,
+      TRUE                       ~ NA_real_
+    ),
+    nivel_educ_reco = case_when(
+      nivel_educ == 2  ~ "Sala cuna",
+      nivel_educ == 3  ~ "Jardín Infantil",
+      nivel_educ == 4  ~ "Prekínder / Kínder",
+      nivel_educ == 5  ~ "Educación Especial",
+      nivel_educ == 6  ~ "Primaria o preparatoria (Sistema Antiguo)",
+      nivel_educ == 7  ~ "Educación Básica",
+      nivel_educ == 8  ~ "Humanidades (Sistema Antiguo)",
+      nivel_educ == 9  ~ "Educación Media Científico-Humanista",
+      nivel_educ == 10 ~ "Técnica, Comercial, Industrial o Normalista (Sistema Antiguo)",
+      nivel_educ == 11 ~ "Educación Media Técnica Profesional",
+      nivel_educ == 12 ~ "Técnico Nivel Superior",
+      nivel_educ == 13 ~ "Profesional",
+      nivel_educ == 14 ~ "Magíster",
+      nivel_educ == 15 ~ "Doctorado",
+      TRUE ~ NA_character_
+    ),
+    acceso_meds_reco = case_when(
+      acc_med == 1 ~ "Sí",
+      acc_med == 2 ~ "No",
+      TRUE ~ NA_character_
+    ),
+    acc_med = case_when(
+      acc_med == 1 ~ 1,
+      acc_med == 2 ~ 0,
+      TRUE ~ NA_real_
+    )
+  ) %&gt;%
+  
+  #Conversión a factores 
+  mutate(
+    area_reco = factor(area_reco, levels = c("Urbana", "Rural"), ordered = TRUE),
+    freq_traf = factor(freq_traf, levels = c("No", "Sí")),
+    nivel_educ_reco = factor(nivel_educ_reco, 
+                             levels = c(
+                               "Sala cuna",
+                               "Jardín Infantil",
+                               "Prekínder / Kínder",
+                               "Educación Especial",
+                               "Primaria o preparatoria (Sistema Antiguo)",
+                               "Educación Básica",
+                               "Humanidades (Sistema Antiguo)",
+                               "Educación Media Científico-Humanista",
+                               "Técnica, Comercial, Industrial o Normalista (Sistema Antiguo)",
+                               "Educación Media Técnica Profesional",
+                               "Técnico Nivel Superior",
+                               "Profesional",
+                               "Magíster",
+                               "Doctorado"
+                             ), ordered = TRUE),
+    acceso_meds_reco = factor(acceso_meds_reco, levels = c("Sí","No"), ordered = TRUE)
+  )
+
+
+
+
+</code></pre>
+<pre class="{r}"><code>
+knitr::opts_chunk$set(echo = FALSE)
+
+#tabla de frecuencias
+freq_area &lt;- proc_casen_subset %&gt;%
+  filter(!is.na(area_reco)) %&gt;%
+  count(area_reco) %&gt;%
+  mutate(percent = round(100 * n / sum(n), 2))
+
+freq_traf &lt;- proc_casen_subset %&gt;%
+  filter(!is.na(freq_traf)) %&gt;%
+  count(freq_traf) %&gt;%
+  mutate(percent = round(100 * n / sum(n), 2))
+
+freq_nivel_educ &lt;- proc_casen_subset %&gt;%
+  filter(!is.na(nivel_educ_reco)) %&gt;%
+  count(nivel_educ_reco) %&gt;%
+  mutate(percent = round(100 * n / sum(n), 2))
+
+freq_acc_med &lt;- proc_casen_subset %&gt;%
+  filter(!is.na(acceso_meds_reco)) %&gt;%
+  count(acceso_meds_reco) %&gt;%
+  mutate(percent = round(100 * n / sum(n), 2))</code></pre>
+<p>Para estudiar la percepción de la presencia de tráfico de drogas en el área de residencia de las personas y su correlación con los factores socioestructurales señalados, se optó por usar únicamente datos de la Encuesta de Caracterización Socioeconómica Nacional (CASEN) de 2022. Se realizó esta decisión para mantener homogeneidad en la base de datos, con el fin de asegurar que todas las variables fueran medidas bajo el mismo marco de referencia. Aclarado lo anterior, esta encuesta se realizó de manera presencial en 72.056 hogares, 70.751 viviendas y 202.231 personas a lo largo de 16 regiones en Chile (entre noviembre de 2022 y febrero de 2023). Se empleó un muestreo probabilístico estratificado y multietápico, y, además, se utilizó un nuevo marco muestral derivado del Censo 2017 para garantizar la representatividad nacional. ##Variables El eje de este estudio es la única variable dependiente “Presencia observada de tráfico de drogas” (v36c), perteneciente al módulo V de la encuesta, dicha variable categórica es utilizada para analizar la ocurrencia de hechos delictivos en el área de residencia en el último mes. Considera la frecuencia percibida en la vía pública por parte de los encuestados en sus áreas de residencia, donde “1” es nunca, “2” pocas veces, “3” Muchas veces, “4” Siempre. También se optó por hacer una recodificación de la variable, volviéndola dicotómica, donde “0” es no presencia y “1” si presencia, renombrando como freq_trafic. La primera se usará para la creación de gráficos, mientras que la segunda se empleara para análisis estadísticos.</p>
+<pre class="{r}"><code>#| echo: false
+#| warning: false
+#| label: tbl-kable
+freq_traf %&gt;% kbl(col.names = c("Categoría","Frecuencia","Porcentaje (%)"),
+                  caption = "Frecuencia Tráfico de Drogas") %&gt;% kable_classic(full_width = FALSE, html_font = "Times New Roman")</code></pre>
+<p>Por otro lado, se optó por usar 4 variables independientes. La primera de ellas es el “Último nivel educacional alcanzado” (nivel_educ), perteneciente al módulo E de la encuesta. Siendo esta una variable categórica que corresponde al último nivel educacional alcanzado por la persona encuestada. Corresponde a la operacionalización del factor educativo. Para el presente trabajo se fusionaron las variables “e6a_asiste” y “e6a_no_asiste” utilizando R, siendo recodificadas bajo la nueva variable de “nivel_educ”, donde se le asignan palabras a los números (2-15) de la siguiente manera: “1” Nunca asistió, “2” Sala cuna, “3” Jardín Infantil (Medio menor y Medio mayor) “4” Prekínder / Kínder (Transición menor y Transición Mayor), “5” Educación Especial (Diferencial), “6” Primaria o Preparatoria (Sistema antiguo), “7” Educación Básica, “8” Humanidades (Sistema Antiguo), “9” Educación Media Científico-Humanista, “10” Técnica, Comercial, Industrial o Normalista (Sistema Antiguo), “11” Educación Media Técnica Profesional, “12” Técnico Nivel Superior (Carreras 1 a 3 años), “13” Profesional (Carreras 4 o más años), “14” Magíster o maestría, y “15” Doctorado.</p>
+<pre class="{r} editor:visual}"><code>#| echo: false
+#| warning: false
+
+freq_nivel_educ %&gt;% kbl(col.names = c("Categoría","Frecuencia","Porcentaje (%)"),
+                        caption = "Nivel Educacional") %&gt;% kable_classic(full_width = FALSE, html_font = "Times New Roman")
+</code></pre>
+<p>La segunda variable independiente seleccionada es “área” (área), utilizada para la clasificación del domicilio, perteneciente al módulo “Hoja de Ruta”, esta variable dicotómica categórica, tiene como propósito distinguir el área de residencia del encuestado entre urbana o rural, donde “1” es urbana y “2” es rural.</p>
+<p>La siguiente variable es “Acceso a Medicamentos” (s19e). La presente variable categórica, perteneciente al módulo S (Salud), corresponde a la pregunta si el encuestado ha experimentado problemas en la entrega de medicamentos o al acceso a ellos por su costo. Se optó por usar un esquema binario, donde “1” es si y “0” es no, renombrando como acceso_meds_reco. Corresponde a la operacionalización del factor vulnerabilidad social. La última variable dependiente corresponde a “Ingresos” (y1). Esta variable categórica extraída del módulo Y (Ingresos), se refiere al sueldo o salario líquido en pesos del último mes del encuestado incluyéndose diversos descuentos por planilla, pero excluyendo los descuentos legales pertinentes y los pagos de horas extras u otras bonificaciones. Corresponde a la operacionalización del factor económico.</p>
+<pre class="{r}"><code>#| echo: false
+#| warning: false
+freq_area %&gt;% kbl(col.names = c("Categoría","Frecuencia","Porcentaje (%)"),
+                  caption = "Tipo de Área") %&gt;% kable_classic(full_width = FALSE, html_font = "Times New Roman")</code></pre>
+<p>La siguiente variable es “Acceso a Medicamentos” (s19e). La presente variable categórica, perteneciente al módulo S (Salud), corresponde a la pregunta si el encuestado ha experimentado problemas en la entrega de medicamentos o al acceso a ellos por su costo. Se optó por usar un esquema binario, donde “1” es si y “0” es no, renombrando como acceso_meds_reco. Corresponde a la operacionalización del factor vulnerabilidad social. La última variable dependiente corresponde a “Ingresos” (y1). Esta variable categórica extraída del módulo Y (Ingresos), se refiere al sueldo o salario líquido en pesos del último mes del encuestado incluyéndose diversos descuentos por planilla, pero excluyendo los descuentos legales pertinentes y los pagos de horas extras u otras bonificaciones. Corresponde a la operacionalización del factor económico.</p>
+<pre class="{r}"><code>#| echo: false
+#| warning: false
+freq_acc_med %&gt;% kbl(col.names = c("Categoría","Frecuencia","Porcentaje (%)"),
+                     caption = "Acceso a Medicamentos") %&gt;% kable_classic(full_width = FALSE, html_font = "Times New Roman")</code></pre>
+<p>La última variable dependiente corresponde a “Ingresos” (y1 - Mes pasado. Sueldo o salario líquido en su trabajo principal). De tipó numérica, de razón y continua, extraída del módulo Y (Ingresos), captura el sueldo o salario líquido en pesos del encuestado en el mes pasado incluyéndose diversos descuentos por planilla, pero excluyendo los descuentos legales pertinentes y los pagos de horas extras u otras bonificaciones. Corresponde a la operacionalización del factor económico.</p>
+<pre class="{r}"><code>#| echo: false
+#| warning: false
+desc_ingresos &lt;- psych::describe(proc_casen_subset$ingresos)
+
+tabla_ingresos &lt;- desc_ingresos[, c("n", "min", "max", "mean", "sd", "median")]
+tabla_ingresos$cv &lt;- tabla_ingresos$sd / tabla_ingresos$mean
+
+tabla_ingresos &lt;- as_tibble(tabla_ingresos)
+
+kbl(
+  tabla_ingresos,
+  col.names = c(
+    "Tamaño muestral",
+    "Mínimo",
+    "Máximo",
+    "Media",
+    "Desv. estándar",
+    "Mediana",
+    "Coef. variación"
+  ),
+  caption = "Tabla de Descriptivo Ingresos"
+) %&gt;%
+  kable_classic(full_width = FALSE, html_font = "Times New Roman")
+</code></pre>
+<p>#<strong>Métodos</strong></p>
+<p>Para el análisis correlacional y el contraste de hipótesis, se utilizaron métodos estadísticos específicos según la naturaleza de las variables involucradas, con el objetivo de evaluar asociaciones, diferencias de medias y correlaciones entre variables.</p>
+<p>Para el contraste de la H1 (existe una relación directa entre presencia observada de tráfico de drogas y urbanización de áreas), se aplica una análisis de chi-cuadrado, que permite evaluar la independencia entre variables dicotómicas. A partir de esta prueba, se calcula también el v de cramer, la cual cuantifica la magnitud de la asociación entre variables.</p>
+<p>Para el contraste de la H2 (existe una relación inversa entre la presencia observada de tráfico de drogas y un mayor nivel educacional), se aplica una correlación de Spearman, adecuada para variables ordinales o no normalmente distribuidas.</p>
+<p>Finalmente, para el contraste de la H3 (existe una relación directa la presencia observada de tráfico de drogas y las dificultades para acceder a medicamentos por sus costos), también se aplica una&nbsp; prueba de chi-cuadrado, permitiendo evaluar la independencia entre variables dicotómicas. A partir de esta prueba, se calcula también el v de cramer, la cual cuantifica la magnitud de la asociación entre variables.</p>
+<p>Para el contraste de hipótesis de la H4 (existe una relación inversa entre la presencia observada de tráfico de drogas y los ingresos), se aplica una correlación de tipo punto biserial, adecuado para estudiar la relación entre una variable continua y una variable dicotómica. Este análisis permite calcular la fuerza y dirección de la asociación entre las variables. Adicionalmente, se realiza la prueba t de Student, con el fin de comparar la media de ingresos entre los grupos definidos por la variable dicotómica.</p>
+<p>#<strong>Análisis</strong></p>
+<p><strong>Tráfico de Drogas.</strong></p>
+<p>Respecto a la variable “Presencia observada de tráfico de drogas” (freq_traf) se observa que para la categoría “no” la frecuencia fue de 5415 casos, representando un 63, 4% del total. De manera opuesta, para la categoría “si” la frecuencia fue de 3126 casos, representando un 36,6% del total. Esto quiere decir que existe una mayor proporción de encuestados que no ha presenciado tráfico de drogas en su área de residencia.</p>
+<pre class="{r}"><code>#| echo: false
+#| warning: false
+freq_traf %&gt;% kbl(col.names = c("Categoría","Frecuencia","Porcentaje (%)"),
+                  caption = "Frecuencia Tráfico de Drogas") %&gt;% kable_classic(full_width = FALSE, html_font = "Times New Roman")</code></pre>
+<p><strong>Último nivel educacional.</strong></p>
+<p>Respecto a la variable “Último nivel educacional alcanzado” (nivel_educ_reco), se observa que las categorías con más frecuencia son pertinentemente: Educación Media Científico-Humanista teniendo 2284 casos (26,84%), Educación Profesional teniendo 2272 casos (26,70%) y Educacion Tecnico Nivel Superior teniendo 1295 casos (15,20%), Educación Básica teniendo 1061 casos (12,47%) y Educacion Media Tecnica Profesional con 1033 casos (12,14%). En total estos 5 niveles suman un 93,35% del total de casos. Representando los 6 niveles restantes el 6,65% faltante.</p>
+<pre class="{r}"><code>#| echo: false
+#| warning: false
+freq_nivel_educ %&gt;% kbl(col.names = c("Categoría","Frecuencia","Porcentaje (%)"),
+                        caption = "Nivel Educacional") %&gt;% kable_classic(full_width = FALSE, html_font = "Times New Roman")
+</code></pre>
+<p><strong>Tipo de área.</strong></p>
+<p>Respecto a la variable de área (area_tipo), presenta una frecuencia de 7410 casos correspondientes a encuestados que declaran vivir en áreas urbanas, representando un 86,76% del total; mientras que para los casos correspondientes a encuestados que declaran vivir áreas rurales, se presenta una frecuencia de 1131 casos, lo que representa un 13,23% del total. Esto quiere decir que existe una mayor proporción de personas encuestadas que residen en áreas urbanas.</p>
+<pre class="{r}"><code>#| echo: false
+#| warning: false
+freq_area %&gt;% kbl(col.names = c("Categoría","Frecuencia","Porcentaje (%)"),
+                  caption = "Tipo de Área") %&gt;% kable_classic(full_width = FALSE, html_font = "Times New Roman")</code></pre>
+<p><strong>Acceso a medicamentos.</strong></p>
+<p>Respecto a la variable de “Problemas el acceso a medicamentos” (acceso_meds_reco),&nbsp; para la categoría “si” correspondiendo a personas que afirman tener dificultades para acceder a medicamentos la frecuencia fue de 878 casos, representando un 10,28% del total. De manera opuesta para la categoría “no” correspondiente a personas que respondieron no tener dificultades para acceder a medicamentos la frecuencia fue de 7663 casos, lo que representa un 89,72% del total. Esto quiere decir que existe una mayor proporción de encuestados que afirma no tener dificultades para acceder a medicamentos por razones económicas</p>
+<pre class="{r}"><code>#| echo: false
+#| warning: false
+freq_acc_med %&gt;% kbl(col.names = c("Categoría","Frecuencia","Porcentaje (%)"),
+                     caption = "Acceso a Medicamentos") %&gt;% kable_classic(full_width = FALSE, html_font = "Times New Roman")</code></pre>
+<p><strong>Ingresos.</strong></p>
+<p>Respecto a la variable Ingresos (ingresos) se puede mencionar una media de $689.756 pesos y una mediana de $494.000 pesos. Los datos presentan una alta heterogeneidad, esto se evidencia en una desviación estándar de 672.058 pesos y un coeficiente de variación del 97%, con una máxima de ingresos de $11.000.000.</p>
+<pre class="{r}"><code>#| echo: false
+#| warning: false
+desc_ingresos &lt;- psych::describe(proc_casen_subset$ingresos)
+
+tabla_ingresos &lt;- desc_ingresos[, c("n", "min", "max", "mean", "sd", "median")]
+tabla_ingresos$cv &lt;- tabla_ingresos$sd / tabla_ingresos$mean
+
+tabla_ingresos &lt;- as_tibble(tabla_ingresos)
+
+kbl(
+  tabla_ingresos,
+  col.names = c(
+    "Tamaño muestral",
+    "Mínimo",
+    "Máximo",
+    "Media",
+    "Desv. estándar",
+    "Mediana",
+    "Coef. variación"
+  ),
+  caption = "Tabla de Descriptivo Ingresos"
+) %&gt;%
+  kable_classic(full_width = FALSE, html_font = "Times New Roman")
+</code></pre>
+<p><strong>3.2</strong> <strong>Análisis estadístico bivariado</strong>:&nbsp;</p>
+<p><strong>Percepción de presencia de tráfico de drogas y Último nivel educativo.</strong></p>
+<p>Respecto al análisis bivariado entre la variable de “Presencia observada de tráfico de drogas” (freq_traf) y “Último nivel educativo alcanzado”(nivel_educ_reco) se puede destacar principalmente que en la categoría “si”, correspondiente a encuestados que han presenciado tráfico de drogas en su área de residencia, los niveles educativos cuyas frecuencias más se repiten son pertinentemente: Educación Media Científico-Humanista con una frecuencia de 962 (30,86%), Educacion Profesional con una frecuencia de 690 (22,14%), Educación Técnico Nivel Superior con una frecuencia de 483 (15,50%), Educacion Media Tecnica Profesional con una frecuencia de 452 (14,50%) y Educación Básica con una frecuencia de 355 (11,39%). En conjunto estas suman un&nbsp; 94,39% del total de la categoría “si”.&nbsp;&nbsp;&nbsp;</p>
+<p>Por otro lado para la categoría “no”, correspondiente a encuestados que no han presenciado tráfico de drogas en su área de residencia, los niveles educativos cuyas frecuencias más se repiten son pertinentemente: Educación Profesional con una frecuencia de 1582 (29,34%), Educación Media Científico-Humanista con una frecuencia de 1322 (24,52%), Educación Técnico Nivel superior con una frecuencia de 810 (15,02%), Educacion Basica con una frecuencia de 706 (13,09%) y Educación Media Técnica Profesional con una frecuencia de 581 (10,78%). En conjunto estas suman un 92,75% del total.</p>
+<p>Aunque cabe destacar que como se mencionó anteriormente la categoría “no” tiene una frecuencia total más alta cuando realizamos un contraste entre ambas.</p>
+<pre class="{r}"><code>#| echo: false
+#| warning: false
+cor.test(proc_casen_subset$nivel_educ,
+         proc_casen_subset$freq_traf_numeric,
+         method = "spearman")
+</code></pre>
+<p><strong>Área y Nivel Educacional.</strong></p>
+<p>Respecto al análisis bivariado entre la variable de área (area) y “Último nivel educativo alcanzado” (nivel_educ) se puede destacar principalmente que en las zonas urbanas existe una mayor proporción de encuestados cuyo último nivel educativo alcanzado fue el de educación Profesional y Magíster. Mientras que en las zonas rurales existe una mayor proporción de encuestados cuyo último nivel educativo alcanzado fue Primaria o Preparatoria (sistema antiguo). No se presentan grandes diferencias en base a área de residencia en los demás niveles educacionales.</p>
+<pre class="{r}"><code>#| echo: false
+#| warning: false
+tabla_traf_area &lt;- table(
+  proc_casen_subset$freq_traf_numeric,
+  proc_casen_subset$area_tipo
+)
+
+chisq_test &lt;- chisq.test(tabla_traf_area)
+chisq_test
+
+
+phi_value &lt;- cramersV(tabla_traf_area)
+
+phi_value</code></pre>
+<p><strong>Matriz de Correlaciones.</strong></p>
+<p>Según los resultados de la matriz obtenidos a través del método de correlación de Pearson, se puede observar como las correlaciones de ingresos y nivel educacional con la percepción de narcotráfico son ambas negativas (-0,127 y –0,079), lo cual puede revelar como personas que reciben un menor ingreso y/o tienen un menor nivel educativo, tienen una mayor percepción de tráfico de drogas en su áreas de residencia. En cuanto a la correlación entre&nbsp; tipo de área y percepción de narcotráfico se presenta igualmente como negativa (-0,180), lo cual significa que las personas que residen en áreas urbanas tienden a percibir más actividad de tráfico de drogas que las personas de áreas rurales. La correlación entre acceso a medicamentos y percepción de tráfico de drogas es positiva (0.061), lo que significa que las personas que afirman tener acceso a medicamentos perciben más actividad de tráfico de drogas que las que afirman no tenerlo.</p>
+<p>Igualmente otra de las correlaciones que llaman la atención es, por ejemplo, la correlación entre nivel educativo e ingresos, la cual es positiva moderada (0,426), lo cual muestra cómo las personas con un mayor nivel educativo reciben ingresos mayores.&nbsp;</p>
+<pre class="{r}"><code>#| echo: false
+#| warning: false
+
+vars_cor &lt;- proc_casen_subset %&gt;% 
+  dplyr::select(where(is.numeric))
+
+library(sjPlot)
+sjPlot::tab_corr(vars_cor, triangle = "lower")</code></pre>
+<p><strong>Interpretación de Hipótesis.</strong></p>
+<p>h1) La hipótesis alternativa plantea que una correlación negativa y débil entre las variables de área y de presencia observada de tráfico de drogas. En el cruce de la variable área tipo y freq_traf_numeric se realiza un test de chi cuadrado lo cual indica una asociación estadísticamente significativa entre el tipo de área y la presencia de tráfico de drogas (χ² = 321.23, p &lt; 2.2e-16). Sin embargo, el tamaño de efecto es reducido (φ = 0.194), lo que sugiere que la magnitud de la asociación es débil. Con estos resultados, es posible rechazar la hipótesis nula de independencia y aceptar la hipótesis alternativa, concluyendo que si existe asociación entre el tipo de área y la presencia de tráfico de drogas en la muestra.</p>
+<pre class="{r}"><code>#| echo: false
+#| warning: false
+tabla_traf_area &lt;- table(
+  proc_casen_subset$freq_traf_numeric,
+  proc_casen_subset$area_tipo
+)
+
+chisq_test &lt;- chisq.test(tabla_traf_area)
+chisq_test
+
+
+phi_value &lt;- cramersV(tabla_traf_area)
+
+phi_value
+</code></pre>
+<p>h2) La hipótesis alternativa plantea que existe una correlación negativa y fuerte entre el último nivel educacional alcanzado y la presencia de tráfico de drogas. El análisis mediante la correlación de Spearman arroja un rho de&nbsp; = –0.075 con un valor p altamente significativo (p = 2.5e-12). Esto indica que si existe una relación estadísticamente significativa entre ambas variables, pero su magnitud es débil según los criterios de Cohen (&lt; ±0.1= Muy pequeño). Por lo tanto, los datos permiten rechazar la hipótesis nula (que sostiene que no existe asociación), pero no permiten aceptar la hipótesis alternativa, ya que la relación observada es negativa pero débil, y no fuerte como se esperaba.</p>
+<pre class="{r}"><code>#| echo: false
+#| warning: false
+cor.test(proc_casen_subset$nivel_educ,
+         proc_casen_subset$freq_traf_numeric,
+         method = "spearman")
+</code></pre>
+<p>h3) La hipótesis alternativa plantea que existe una correlación entre negativa y fuerte entre el acceso a medicamentos y la presencia de tráfico de drogas. Los resultados muestran una asociación significativa según la prueba&nbsp; χ² = 29.28, con su&nbsp; p &lt; 0.0000001, lo que indica que existe dependencia entre ambas variables, negando la hipótesis nula. Sin embargo el valor de la V de Cramer = 0.0589, lo que revela que la relación es débil. En este sentido, la evidencia no respalda nuestra hipótesis alternativa.</p>
+<pre class="{r}"><code>#| echo: false
+#| warning: false
+
+chisq.test(table(proc_casen_subset$freq_traf_numeric,
+                 proc_casen_subset$acc_med))
+
+cramerV(table(proc_casen_subset$freq_traf_numeric,
+              proc_casen_subset$acc_med))</code></pre>
+<p>h4) La hipótesis alternativa plantea que existe una correlación negativa y fuerte entre el nivel de ingresos y la presencia de tráfico de drogas. Los resultados muestran una correlación punto biserial de r = 0.1208, lo que representa una relación débil y positiva, mostrando que no se cumple lo esperado por la hipótesis alternativa. La prueba t de Student confirma que existen diferencias significativas en los ingresos medios entre quienes reportan tráfico y quienes no (p &lt; 2.2e-16), siendo mayores los ingresos en el grupo sin tráfico. Si bien esta diferencia es estadísticamente significativa, su magnitud es reducida, provocando probables incidencias con el valor de la correlación.</p>
+<pre class="{r}"><code>#| echo: false
+#| warning: false
+
+biserial_traf &lt;- biserial.cor(
+  proc_casen_subset$ingresos,
+  proc_casen_subset$freq_traf_numeric,  # Variable numérica 0/1
+  use = "complete.obs"
+)
+print(paste("Biserial ingresos-tráfico:", round(biserial_traf, 4)))
+t_test_traf &lt;- t.test(ingresos ~ freq_traf_numeric, data = proc_casen_subset)
+print(t_test_traf)</code></pre>
+</section>
+<section id="conclusiones" class="level1">
+<h1>Conclusiones</h1>
+<p>En conclusión, el presente trabajo tuvo como finalidad el encontrar y analizar las relaciones entre distintos factores socioestructurales con la percepción de presencia de tráfico de drogas en Chile, mediante el uso de los datos obtenidos en la encuesta CASEN 2022.</p>
+<p>En el sentido, respecto a los planteamientos de las de las hipótesis de la investigación hechos en la sección inicial, los principales hallazgos del trabajo refieren a haber podido constatar de manera significativa la relación entre el área urbanizada y la percepción de tráfico de drogas, en donde se valida la hipótesis (h1) de una relación directa entre ambas. Sin embargo, aún cuando para las hipótesis (h2) y (h3) se hallaron correlaciones que van acorde a lo planteado originalmente, estas no son lo suficientemente significativas para poder concluir con seguridad que exista una relación entre las variables. En el caso de la hipótesis (h4), no hubo evidencia suficiente para rechazar la hipótesis nula, por lo que se debe buscar otro enfoque si se quiere encontrar alguna relación entre acceso a la salud y la percepción de narcotráfico.</p>
+<p>Para futuros proyectos que se enmarquen en el mismo área de interés, sería importante sugerir un análisis basado en indicadores multidimensionales, ya sea en pobreza, vivienda, o seguridad, las cuales podrían brindar una mayor perspectiva sobre cuáles son los sectores de la población más expuestos a situaciones ligadas al narcotráfico. En este sentido, un contraste entre estos indicadores y estadísticas oficiales del crimen, particularmente aquellas asociadas al tráfico de drogas, a nivel regional o comunal sería un gran aporte para dilucidar las relaciones entre las condiciones socioestructurales y el fenómeno del narcotráfico en Chile.</p>
+</section>
+<section id="bibliografía" class="level1">
+<h1>Bibliografía</h1>
+<pre><code>Arias, C., Leighton, G., y Severich, E. (2025). Salud y delincuencia. Una estrecha relación entre dos mundos distintos. Revista Confluencia, 8. &lt;https://doi.org/10.52611/confluencia.2025.1381&gt;
+
+E. Feldmann, A., &amp; Luna, J. P. (2022). Gobernanza Criminal y la&nbsp; Crisis de los Estados&nbsp; Latinoamericanos&nbsp; Contemporáneo. Annual Review Of Sociology. &lt;https://www.annualreviews.org/content/journals/10.1146/annurev-soc-101221-021836&gt;
+
+Enamorado, T., López-Calva, L.,&nbsp; Rodríguez-Castelán, C., y Winkler H. (2016). Income Inequality and Violent Crime: Evidence from Mexico’s Drug War. Journal of Development Economics, 120. &lt;https://doi.org/10.1596/24872&gt;&nbsp;
+
+Frühling, H., &amp; Gallardo, R. (2012). PROGRAMAS DE SEGURIDAD DIRIGIDOS A BARRIOS EN LA EXPERIENCIA CHILENA RECIENTE. Revista Invi. &lt;https://www.scielo.cl/scielo.php?script=sci_arttext&amp;pid=S0718-83582012000100005&gt;
+
+Gallardo-Terán, R. (2014). Desorden, victimización y temor: Estudio exploratorio sobre la relación entre la percepción de desorden y delito en Chile. Revista Criminalidad. &lt;http://www.scielo.org.co/scielo.php?script=sci_arttext&amp;pid=S1794-31082014000300003&gt;
+
+Kessler, G. (2009). El sentimiento de inseguridad: Sociologia del temor al delito.
+
+Martins M, Santos M., y Pillon S. (2008). Low-income families' perceptions on the use of drugs by one of their members. Revista Latino-americana de Enfermagem. 16(2), 293-8. &lt;https://doi.org/10.1590/S0104-11692008000200019&gt;
+
+Observatorio de la Deuda Social Argentina \[ODSA\]. (2015). Aumento del tráfico de drogas en los barrios, problemas de adicciones severas en las familias y poblaciones en riesgo. &lt;https://repositorio.uca.edu.ar/bitstream/123456789/8294/1/aumento-trafico-drogas-barrios-adicciones.pdf&gt;&nbsp;
+
+Organización de las Naciones Unidas. (s.f.). Tráfico de drogas. &lt;https://www.un.org/ruleoflaw/es/thematic-areas/transnational-threats/drug-trafficking/&gt;&nbsp;
+
+Osuna, F. y Medina, J. (2018). Deterioro social y participación en el tráfico de drogas en el estado de Sonora. Frontera Norte, 31, 1-22. [https://doi.org/10.33679/rfn.v1i1.197](https://doi.org/10.33679/rfn.v1i1.1976)
+
+Rose-Ackerman, S., &amp; J. Palifka, B. (2016). Corruption and Government: Causes, Consequences, and Reform. &lt;https://doi.org/10.1017/CBO9781139962933&gt;
+
+Silveira, R., Firmino, D., y Cavalcanti, F. (2023). The spatial association between drugs and urban violence: an analysis for the Metropolitan Region of Recife, Brazil. Spatial Economic Analysis, 18(4), 486–506. &lt;https://doi.org/10.1080/17421772.2023.2186474&gt;
+
+Tocornal, X., Tapia, R., &amp; Carvajal, Y. (2014). Delincuencia y violencia en entornos residenciales de Santiago de Chile. Revista Geografía Norte Grande. &lt;https://www.scielo.cl/scielo.php?script=sci_arttext&amp;pid=S0718-34022014000100007&gt;&nbsp;&nbsp;</code></pre>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

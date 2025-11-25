@@ -1,0 +1,515 @@
+---
+title: "Trabajo final Correlacional"
+subtitle: "Estadística Correlacional 2025"
+author: "Benjamín Belmar, Renato De Luca, Tomás González, Renato Morales, Nicolás Valdés"
+date: "2025-11-23"
+lang: es
+format: html
+editor: visual
+markdown:      
+  wrap: sentence 
+  themes: cosmos
+  self-contained: true
+---
+
+# **Introducción**
+
+Durante las presentes elecciones presidenciales, la seguridad ha sido un punto central de discusión, surgiendo diversas propuestas desde las candidaturas para solucionar una situación interpretada como crisis de inseguridad nacional. Un subtema importante dentro de este debate es el narcotráfico, definido por la ONU (s.f.) como el “comercio ilícito mundial que incluye el cultivo, la fabricación, la distribución y la venta de sustancias que están sujetas a leyes que prohíben drogas”. Este fenómeno ha permeado incluso otros ámbitos de la sociedad, como los poderes político y judicial, y el control territorial (Rose-Ackerman & Palifka, 2016; Feldmann & Luna, 2022).
+
+Por otra parte, la percepción que las personas tienen respecto a un fenómeno como el narcotráfico, constituye un fenómeno en sí, afectando al tejido social. Así, la percepción de presencia de narcotráfico en una zona puede contribuir a una percepción de inseguridad para quienes habitan allí, debilitando los lazos sociales de la comunidad (Kessler, 2009). Asimismo, la falta de cohesión social facilita la proliferación de delitos, como el narcotráfico, que aprovechan el vacío social para permear en la comunidad (Tocornal et al., 2014). Por ende, estudiar la percepción de la presencia de tráfico de drogas en el área de residencia de las personas es un fenómeno relevante para la sociología, correspondiendo al concepto central del presente trabajo.
+
+Por otro lado, Frühling y Gallardo (2012), y Osuna y Medina (2019), destacan cuatro factores socioestructurales relacionados con este fenómeno.
+
+La urbanidad, porque el narcotráfico se presenta con mayor acentuación en zonas más urbanas dada la mayor gama de desigualdades socioeconómicas, necesidades y posibilidades de intercambio (Silveira, Firmino y Cavalcanti, 2023) Así, distinguir área urbana y rural permite caracterizar las dinámicas sociales que moldean la percepción de las personas sobre los fenómenos relacionados a la seguridad y al narcotráfico en particular.
+
+El segundo, educación, se relaciona directamente con el nivel socioeconómico de una persona, pudiendo servir a su vez para caracterizar socioeconómicamente al entorno en el que habita e identificar posibles situaciones de inseguridad y vulnerabilidad frente a fenómenos como el narcotráfico (Gallardo-Terán, 2014).
+
+Asimismo, el narcotráfico afecta directa e indirectamente a la salud de las personas, tanto individualmente, mediante el consumo de sustancias, como a nivel social, al incidir en las dinámicas de una comunidad determinada (ODSA, 2015) La incapacidad de costear la compra de medicinas para tratamientos médicos se relaciona con el tráfico de sustancias, pues algunas personas compran medicación a narcotraficantes, o bien, trafican para obtener ingresos que les permitan costear sus tratamientos (Arias, Leighton y Severich, 2025).
+
+Finalmente, en términos generales mayores ingresos se relacionan con un mejor posicionamiento socioeconómico y una menor incidencia del narcotráfico en su vida diaria (Martins, Santos, y Pillon, 2008; Enamorado et al., 2016).
+
+Por ende, en relación al fenómeno central, percepción de narcotráfico en área de residencia, las hipótesis de este informe, respectivamente son:
+
+1.  Existe una relación directa con la urbanización de áreas.
+
+2.  Existe una relación inversa con un mayor nivel educacional.
+
+3.  Existe una relación directa con las dificultades para acceder a medicamentos por su costo.
+
+4.  Existe una relación inversa con los ingresos.
+
+```{r}
+
+
+
+if (!require("pacman")) install.packages("pacman")
+if (!require("BiocManager")) install.packages("BiocManager")
+pacman::p_load(tidyverse,    # conjunto de paquetes, contiene dplyr y ggplot2
+               haven,        # Leer archivo dta
+               dplyr,        # para sintaxis
+               ggplot2,
+               kable,
+               kableExtra,
+               knitr,        # Render y tablas
+               stargazer,    # Tablas
+               janitor,      # Tablas y formateo
+               crosstable,   # Tablas
+               table1,       # Tablas
+               gt,
+               Publish,      # para IC
+               summarytools, # para descriptivos
+               sjmisc,       # para descriptivos
+               sjPlot,       # para tablas
+               corrplot,     # Correlaciones
+               rstatix,      # Test estadísticos
+               psych,        # para  alfa de cronbach
+               labelled,     # Para labels
+               broom,        # Tablas
+               gginference,  # Visualizacion 
+               rempsyc,      # Reporte
+               flextable,    # nice table
+               scales,
+               sjstats,
+               ltm,
+               ggpubr,       # Gráficos
+               ggmosaic, reshape2,rcompanion, lsr)     # Gráficos
+
+options(scipen = 999)        # para desactivar notacion cientifica
+rm(list = ls())              # para limpiar el entorno de trabajo (Elimina todos los objetos)
+
+
+# cargar base y crear subset-----------
+casen <- read_sav("input/casen22.sav")
+
+casen2022_subset <- casen %>% 
+  dplyr::select(
+    v36c, 
+    area, 
+    e6a_no_asiste, 
+    e6a_asiste, 
+    y1, 
+    s19e
+  ) %>%
+  mutate(
+    nivel_educ = coalesce(e6a_asiste, e6a_no_asiste)
+  ) %>%
+  rename(
+    freq_traf_drog = v36c,
+    area_tipo      = area,
+    ingresos       = y1,
+    acc_med        = s19e
+  ) %>%
+  dplyr::select(-e6a_no_asiste, -e6a_asiste)
+
+rm(casen)
+
+
+
+```
+
+```{r}
+proc_casen_subset <- casen2022_subset %>%
+  
+  
+  mutate(across(everything(), haven::zap_labels)) %>%
+  
+
+  mutate(across(everything(), ~ suppressWarnings(as.numeric(.x)))) %>%
+  
+
+  mutate(across(
+    everything(),
+    ~ replace(.x, .x %in% c(-99, -88, -77, -66, -55, -44), NA)
+  )) %>%
+  drop_na()
+
+```
+
+\#**Metodología**
+
+##Datos
+
+```{r}
+# recodificaciones
+proc_casen_subset <- proc_casen_subset %>%
+  
+  mutate(
+    area_reco = case_when(
+      area_tipo == 1 ~ "Urbana",
+      area_tipo == 2 ~ "Rural",
+      TRUE ~ NA_character_
+    ),
+    freq_traf = case_when(
+      freq_traf_drog == 1       ~ "No",
+      freq_traf_drog %in% 2:4   ~ "Sí",
+      TRUE                       ~ NA_character_
+    ),
+    freq_traf_numeric = case_when(
+      freq_traf_drog == 1       ~ 0,
+      freq_traf_drog %in% 2:4   ~ 1,
+      TRUE                       ~ NA_real_
+    ),
+    nivel_educ_reco = case_when(
+      nivel_educ == 2  ~ "Sala cuna",
+      nivel_educ == 3  ~ "Jardín Infantil",
+      nivel_educ == 4  ~ "Prekínder / Kínder",
+      nivel_educ == 5  ~ "Educación Especial",
+      nivel_educ == 6  ~ "Primaria o preparatoria (Sistema Antiguo)",
+      nivel_educ == 7  ~ "Educación Básica",
+      nivel_educ == 8  ~ "Humanidades (Sistema Antiguo)",
+      nivel_educ == 9  ~ "Educación Media Científico-Humanista",
+      nivel_educ == 10 ~ "Técnica, Comercial, Industrial o Normalista (Sistema Antiguo)",
+      nivel_educ == 11 ~ "Educación Media Técnica Profesional",
+      nivel_educ == 12 ~ "Técnico Nivel Superior",
+      nivel_educ == 13 ~ "Profesional",
+      nivel_educ == 14 ~ "Magíster",
+      nivel_educ == 15 ~ "Doctorado",
+      TRUE ~ NA_character_
+    ),
+    acceso_meds_reco = case_when(
+      acc_med == 1 ~ "Sí",
+      acc_med == 2 ~ "No",
+      TRUE ~ NA_character_
+    ),
+    acc_med = case_when(
+      acc_med == 1 ~ 1,
+      acc_med == 2 ~ 0,
+      TRUE ~ NA_real_
+    )
+  ) %>%
+  
+  #Conversión a factores 
+  mutate(
+    area_reco = factor(area_reco, levels = c("Urbana", "Rural"), ordered = TRUE),
+    freq_traf = factor(freq_traf, levels = c("No", "Sí")),
+    nivel_educ_reco = factor(nivel_educ_reco, 
+                             levels = c(
+                               "Sala cuna",
+                               "Jardín Infantil",
+                               "Prekínder / Kínder",
+                               "Educación Especial",
+                               "Primaria o preparatoria (Sistema Antiguo)",
+                               "Educación Básica",
+                               "Humanidades (Sistema Antiguo)",
+                               "Educación Media Científico-Humanista",
+                               "Técnica, Comercial, Industrial o Normalista (Sistema Antiguo)",
+                               "Educación Media Técnica Profesional",
+                               "Técnico Nivel Superior",
+                               "Profesional",
+                               "Magíster",
+                               "Doctorado"
+                             ), ordered = TRUE),
+    acceso_meds_reco = factor(acceso_meds_reco, levels = c("Sí","No"), ordered = TRUE)
+  )
+
+
+
+
+
+```
+
+```{r}
+
+knitr::opts_chunk$set(echo = FALSE)
+
+#tabla de frecuencias
+freq_area <- proc_casen_subset %>%
+  filter(!is.na(area_reco)) %>%
+  count(area_reco) %>%
+  mutate(percent = round(100 * n / sum(n), 2))
+
+freq_traf <- proc_casen_subset %>%
+  filter(!is.na(freq_traf)) %>%
+  count(freq_traf) %>%
+  mutate(percent = round(100 * n / sum(n), 2))
+
+freq_nivel_educ <- proc_casen_subset %>%
+  filter(!is.na(nivel_educ_reco)) %>%
+  count(nivel_educ_reco) %>%
+  mutate(percent = round(100 * n / sum(n), 2))
+
+freq_acc_med <- proc_casen_subset %>%
+  filter(!is.na(acceso_meds_reco)) %>%
+  count(acceso_meds_reco) %>%
+  mutate(percent = round(100 * n / sum(n), 2))
+```
+
+Para estudiar la percepción de la presencia de tráfico de drogas en el área de residencia de las personas y su correlación con los factores socioestructurales señalados, se optó por usar únicamente datos de la Encuesta de Caracterización Socioeconómica Nacional (CASEN) de 2022. Se realizó esta decisión para mantener homogeneidad en la base de datos, con el fin de asegurar que todas las variables fueran medidas bajo el mismo marco de referencia. Aclarado lo anterior, esta encuesta se realizó de manera presencial en 72.056 hogares, 70.751 viviendas y 202.231 personas a lo largo de 16 regiones en Chile (entre noviembre de 2022 y febrero de 2023). Se empleó un muestreo probabilístico estratificado y multietápico, y, además, se utilizó un nuevo marco muestral derivado del Censo 2017 para garantizar la representatividad nacional. ##Variables El eje de este estudio es la única variable dependiente “Presencia observada de tráfico de drogas” (v36c), perteneciente al módulo V de la encuesta, dicha variable categórica es utilizada para analizar la ocurrencia de hechos delictivos en el área de residencia en el último mes. Considera la frecuencia percibida en la vía pública por parte de los encuestados en sus áreas de residencia, donde “1” es nunca, “2” pocas veces, “3” Muchas veces, “4” Siempre. También se optó por hacer una recodificación de la variable, volviéndola dicotómica, donde “0” es no presencia y “1” si presencia, renombrando como freq_trafic. La primera se usará para la creación de gráficos, mientras que la segunda se empleara para análisis estadísticos.
+
+```{r}
+#| label: tbl-kable
+freq_traf %>% kbl(col.names = c("Categoría","Frecuencia","Porcentaje (%)"),
+                  caption = "Frecuencia Tráfico de Drogas") %>% kable_classic(full_width = FALSE, html_font = "Times New Roman")
+```
+
+Por otro lado, se optó por usar 4 variables independientes. La primera de ellas es el “Último nivel educacional alcanzado” (nivel_educ), perteneciente al módulo E de la encuesta. Siendo esta una variable categórica que corresponde al último nivel educacional alcanzado por la persona encuestada. Corresponde a la operacionalización del factor educativo. Para el presente trabajo se fusionaron las variables “e6a_asiste” y “e6a_no_asiste” utilizando R, siendo recodificadas bajo la nueva variable de “nivel_educ”, donde se le asignan palabras a los números (2-15) de la siguiente manera: “1” Nunca asistió, “2” Sala cuna, “3” Jardín Infantil (Medio menor y Medio mayor) “4” Prekínder / Kínder (Transición menor y Transición Mayor), “5” Educación Especial (Diferencial), “6” Primaria o Preparatoria (Sistema antiguo), “7” Educación Básica, “8” Humanidades (Sistema Antiguo), “9” Educación Media Científico-Humanista, “10” Técnica, Comercial, Industrial o Normalista (Sistema Antiguo), “11” Educación Media Técnica Profesional, “12” Técnico Nivel Superior (Carreras 1 a 3 años), “13” Profesional (Carreras 4 o más años), “14” Magíster o maestría, y “15” Doctorado.
+
+```{r} editor:visual}
+
+freq_nivel_educ %>% kbl(col.names = c("Categoría","Frecuencia","Porcentaje (%)"),
+                        caption = "Nivel Educacional") %>% kable_classic(full_width = FALSE, html_font = "Times New Roman")
+
+```
+
+La segunda variable independiente seleccionada es “área” (área), utilizada para la clasificación del domicilio, perteneciente al módulo “Hoja de Ruta”, esta variable dicotómica categórica, tiene como propósito distinguir el área de residencia del encuestado entre urbana o rural, donde “1” es urbana y “2” es rural.
+
+La siguiente variable es “Acceso a Medicamentos” (s19e). La presente variable categórica, perteneciente al módulo S (Salud), corresponde a la pregunta si el encuestado ha experimentado problemas en la entrega de medicamentos o al acceso a ellos por su costo. Se optó por usar un esquema binario, donde “1” es si y “0” es no, renombrando como acceso_meds_reco. Corresponde a la operacionalización del factor vulnerabilidad social. La última variable dependiente corresponde a “Ingresos” (y1). Esta variable categórica extraída del módulo Y (Ingresos), se refiere al sueldo o salario líquido en pesos del último mes del encuestado incluyéndose diversos descuentos por planilla, pero excluyendo los descuentos legales pertinentes y los pagos de horas extras u otras bonificaciones. Corresponde a la operacionalización del factor económico.
+
+```{r}
+
+freq_area %>% kbl(col.names = c("Categoría","Frecuencia","Porcentaje (%)"),
+                  caption = "Tipo de Área") %>% kable_classic(full_width = FALSE, html_font = "Times New Roman")
+```
+
+La siguiente variable es “Acceso a Medicamentos” (s19e). La presente variable categórica, perteneciente al módulo S (Salud), corresponde a la pregunta si el encuestado ha experimentado problemas en la entrega de medicamentos o al acceso a ellos por su costo. Se optó por usar un esquema binario, donde “1” es si y “0” es no, renombrando como acceso_meds_reco. Corresponde a la operacionalización del factor vulnerabilidad social. La última variable dependiente corresponde a “Ingresos” (y1). Esta variable categórica extraída del módulo Y (Ingresos), se refiere al sueldo o salario líquido en pesos del último mes del encuestado incluyéndose diversos descuentos por planilla, pero excluyendo los descuentos legales pertinentes y los pagos de horas extras u otras bonificaciones. Corresponde a la operacionalización del factor económico.
+
+```{r}
+freq_acc_med %>% kbl(col.names = c("Categoría","Frecuencia","Porcentaje (%)"),
+                     caption = "Acceso a Medicamentos") %>% kable_classic(full_width = FALSE, html_font = "Times New Roman")
+```
+
+La última variable dependiente corresponde a “Ingresos” (y1 - Mes pasado. Sueldo o salario líquido en su trabajo principal). De tipó numérica, de razón y continua, extraída del módulo Y (Ingresos), captura el sueldo o salario líquido en pesos del encuestado en el mes pasado incluyéndose diversos descuentos por planilla, pero excluyendo los descuentos legales pertinentes y los pagos de horas extras u otras bonificaciones. Corresponde a la operacionalización del factor económico.
+
+```{r}
+desc_ingresos <- psych::describe(proc_casen_subset$ingresos)
+
+tabla_ingresos <- desc_ingresos[, c("n", "min", "max", "mean", "sd", "median")]
+tabla_ingresos$cv <- tabla_ingresos$sd / tabla_ingresos$mean
+
+tabla_ingresos <- as_tibble(tabla_ingresos)
+
+kbl(
+  tabla_ingresos,
+  col.names = c(
+    "Tamaño muestral",
+    "Mínimo",
+    "Máximo",
+    "Media",
+    "Desv. estándar",
+    "Mediana",
+    "Coef. variación"
+  ),
+  caption = "Tabla de Descriptivo Ingresos"
+) %>%
+  kable_classic(full_width = FALSE, html_font = "Times New Roman")
+
+```
+
+\#**Métodos**
+
+Para el análisis correlacional y el contraste de hipótesis, se utilizaron métodos estadísticos específicos según la naturaleza de las variables involucradas, con el objetivo de evaluar asociaciones, diferencias de medias y correlaciones entre variables.
+
+Para el contraste de la H1 (existe una relación directa entre presencia observada de tráfico de drogas y urbanización de áreas), se aplica una análisis de chi-cuadrado, que permite evaluar la independencia entre variables dicotómicas. A partir de esta prueba, se calcula también el v de cramer, la cual cuantifica la magnitud de la asociación entre variables.
+
+Para el contraste de la H2 (existe una relación inversa entre la presencia observada de tráfico de drogas y un mayor nivel educacional), se aplica una correlación de Spearman, adecuada para variables ordinales o no normalmente distribuidas.
+
+Finalmente, para el contraste de la H3 (existe una relación directa la presencia observada de tráfico de drogas y las dificultades para acceder a medicamentos por sus costos), también se aplica una  prueba de chi-cuadrado, permitiendo evaluar la independencia entre variables dicotómicas. A partir de esta prueba, se calcula también el v de cramer, la cual cuantifica la magnitud de la asociación entre variables.
+
+Para el contraste de hipótesis de la H4 (existe una relación inversa entre la presencia observada de tráfico de drogas y los ingresos), se aplica una correlación de tipo punto biserial, adecuado para estudiar la relación entre una variable continua y una variable dicotómica. Este análisis permite calcular la fuerza y dirección de la asociación entre las variables. Adicionalmente, se realiza la prueba t de Student, con el fin de comparar la media de ingresos entre los grupos definidos por la variable dicotómica.
+
+\#**Análisis**
+
+**Tráfico de Drogas.**
+
+Respecto a la variable “Presencia observada de tráfico de drogas” (freq_traf) se observa que para la categoría “no” la frecuencia fue de 5415 casos, representando un 63, 4% del total. De manera opuesta, para la categoría “si” la frecuencia fue de 3126 casos, representando un 36,6% del total. Esto quiere decir que existe una mayor proporción de encuestados que no ha presenciado tráfico de drogas en su área de residencia.
+
+```{r}
+freq_traf %>% kbl(col.names = c("Categoría","Frecuencia","Porcentaje (%)"),
+                  caption = "Frecuencia Tráfico de Drogas") %>% kable_classic(full_width = FALSE, html_font = "Times New Roman")
+```
+
+**Último nivel educacional.**
+
+Respecto a la variable “Último nivel educacional alcanzado” (nivel_educ_reco), se observa que las categorías con más frecuencia son pertinentemente: Educación Media Científico-Humanista teniendo 2284 casos (26,84%), Educación Profesional teniendo 2272 casos (26,70%) y Educacion Tecnico Nivel Superior teniendo 1295 casos (15,20%), Educación Básica teniendo 1061 casos (12,47%) y Educacion Media Tecnica Profesional con 1033 casos (12,14%). En total estos 5 niveles suman un 93,35% del total de casos. Representando los 6 niveles restantes el 6,65% faltante.
+
+```{r}
+freq_nivel_educ %>% kbl(col.names = c("Categoría","Frecuencia","Porcentaje (%)"),
+                        caption = "Nivel Educacional") %>% kable_classic(full_width = FALSE, html_font = "Times New Roman")
+
+```
+
+**Tipo de área.**
+
+Respecto a la variable de área (area_tipo), presenta una frecuencia de 7410 casos correspondientes a encuestados que declaran vivir en áreas urbanas, representando un 86,76% del total; mientras que para los casos correspondientes a encuestados que declaran vivir áreas rurales, se presenta una frecuencia de 1131 casos, lo que representa un 13,23% del total. Esto quiere decir que existe una mayor proporción de personas encuestadas que residen en áreas urbanas.
+
+```{r}
+freq_area %>% kbl(col.names = c("Categoría","Frecuencia","Porcentaje (%)"),
+                  caption = "Tipo de Área") %>% kable_classic(full_width = FALSE, html_font = "Times New Roman")
+```
+
+**Acceso a medicamentos.**
+
+Respecto a la variable de “Problemas el acceso a medicamentos” (acceso_meds_reco),  para la categoría “si” correspondiendo a personas que afirman tener dificultades para acceder a medicamentos la frecuencia fue de 878 casos, representando un 10,28% del total. De manera opuesta para la categoría “no” correspondiente a personas que respondieron no tener dificultades para acceder a medicamentos la frecuencia fue de 7663 casos, lo que representa un 89,72% del total. Esto quiere decir que existe una mayor proporción de encuestados que afirma no tener dificultades para acceder a medicamentos por razones económicas
+
+```{r}
+freq_acc_med %>% kbl(col.names = c("Categoría","Frecuencia","Porcentaje (%)"),
+                     caption = "Acceso a Medicamentos") %>% kable_classic(full_width = FALSE, html_font = "Times New Roman")
+```
+
+**Ingresos.**
+
+Respecto a la variable Ingresos (ingresos) se puede mencionar una media de \$689.756 pesos y una mediana de \$494.000 pesos. Los datos presentan una alta heterogeneidad, esto se evidencia en una desviación estándar de 672.058 pesos y un coeficiente de variación del 97%, con una máxima de ingresos de \$11.000.000.
+
+```{r}
+desc_ingresos <- psych::describe(proc_casen_subset$ingresos)
+
+tabla_ingresos <- desc_ingresos[, c("n", "min", "max", "mean", "sd", "median")]
+tabla_ingresos$cv <- tabla_ingresos$sd / tabla_ingresos$mean
+
+tabla_ingresos <- as_tibble(tabla_ingresos)
+
+kbl(
+  tabla_ingresos,
+  col.names = c(
+    "Tamaño muestral",
+    "Mínimo",
+    "Máximo",
+    "Media",
+    "Desv. estándar",
+    "Mediana",
+    "Coef. variación"
+  ),
+  caption = "Tabla de Descriptivo Ingresos"
+) %>%
+  kable_classic(full_width = FALSE, html_font = "Times New Roman")
+
+```
+
+**3.2** **Análisis estadístico bivariado**: 
+
+**Percepción de presencia de tráfico de drogas y Último nivel educativo.**
+
+Respecto al análisis bivariado entre la variable de “Presencia observada de tráfico de drogas” (freq_traf) y “Último nivel educativo alcanzado”(nivel_educ_reco) se puede destacar principalmente que en la categoría “si”, correspondiente a encuestados que han presenciado tráfico de drogas en su área de residencia, los niveles educativos cuyas frecuencias más se repiten son pertinentemente: Educación Media Científico-Humanista con una frecuencia de 962 (30,86%), Educacion Profesional con una frecuencia de 690 (22,14%), Educación Técnico Nivel Superior con una frecuencia de 483 (15,50%), Educacion Media Tecnica Profesional con una frecuencia de 452 (14,50%) y Educación Básica con una frecuencia de 355 (11,39%). En conjunto estas suman un  94,39% del total de la categoría “si”.   
+
+Por otro lado para la categoría “no”, correspondiente a encuestados que no han presenciado tráfico de drogas en su área de residencia, los niveles educativos cuyas frecuencias más se repiten son pertinentemente: Educación Profesional con una frecuencia de 1582 (29,34%), Educación Media Científico-Humanista con una frecuencia de 1322 (24,52%), Educación Técnico Nivel superior con una frecuencia de 810 (15,02%), Educacion Basica con una frecuencia de 706 (13,09%) y Educación Media Técnica Profesional con una frecuencia de 581 (10,78%). En conjunto estas suman un 92,75% del total.
+
+Aunque cabe destacar que como se mencionó anteriormente la categoría “no” tiene una frecuencia total más alta cuando realizamos un contraste entre ambas.
+
+```{r}
+
+cor.test(proc_casen_subset$nivel_educ,
+         proc_casen_subset$freq_traf_numeric,
+         method = "spearman")
+
+```
+
+**Área y Nivel Educacional.**
+
+Respecto al análisis bivariado entre la variable de área (area) y “Último nivel educativo alcanzado” (nivel_educ) se puede destacar principalmente que en las zonas urbanas existe una mayor proporción de encuestados cuyo último nivel educativo alcanzado fue el de educación Profesional y Magíster. Mientras que en las zonas rurales existe una mayor proporción de encuestados cuyo último nivel educativo alcanzado fue Primaria o Preparatoria (sistema antiguo). No se presentan grandes diferencias en base a área de residencia en los demás niveles educacionales.
+
+```{r}
+tabla_traf_area <- table(
+  proc_casen_subset$freq_traf_numeric,
+  proc_casen_subset$area_tipo
+)
+
+chisq_test <- chisq.test(tabla_traf_area)
+chisq_test
+
+
+phi_value <- cramersV(tabla_traf_area)
+
+phi_value
+```
+
+**Matriz de Correlaciones.**
+
+Según los resultados de la matriz obtenidos a través del método de correlación de Pearson, se puede observar como las correlaciones de ingresos y nivel educacional con la percepción de narcotráfico son ambas negativas (-0,127 y –0,079), lo cual puede revelar como personas que reciben un menor ingreso y/o tienen un menor nivel educativo, tienen una mayor percepción de tráfico de drogas en su áreas de residencia. En cuanto a la correlación entre  tipo de área y percepción de narcotráfico se presenta igualmente como negativa (-0,180), lo cual significa que las personas que residen en áreas urbanas tienden a percibir más actividad de tráfico de drogas que las personas de áreas rurales. La correlación entre acceso a medicamentos y percepción de tráfico de drogas es positiva (0.061), lo que significa que las personas que afirman tener acceso a medicamentos perciben más actividad de tráfico de drogas que las que afirman no tenerlo.
+
+Igualmente otra de las correlaciones que llaman la atención es, por ejemplo, la correlación entre nivel educativo e ingresos, la cual es positiva moderada (0,426), lo cual muestra cómo las personas con un mayor nivel educativo reciben ingresos mayores. 
+
+```{r}
+vars_cor <- proc_casen_subset %>% 
+  dplyr::select(where(is.numeric))
+
+library(sjPlot)
+sjPlot::tab_corr(vars_cor, triangle = "lower")
+```
+
+**Interpretación de Hipótesis.**
+
+h1) La hipótesis alternativa plantea que una correlación negativa y débil entre las variables de área y de presencia observada de tráfico de drogas. En el cruce de la variable área tipo y freq_traf_numeric se realiza un test de chi cuadrado lo cual indica una asociación estadísticamente significativa entre el tipo de área y la presencia de tráfico de drogas (χ² = 321.23, p \< 2.2e-16). Sin embargo, el tamaño de efecto es reducido (φ = 0.194), lo que sugiere que la magnitud de la asociación es débil. Con estos resultados, es posible rechazar la hipótesis nula de independencia y aceptar la hipótesis alternativa, concluyendo que si existe asociación entre el tipo de área y la presencia de tráfico de drogas en la muestra.
+
+```{r}
+tabla_traf_area <- table(
+  proc_casen_subset$freq_traf_numeric,
+  proc_casen_subset$area_tipo
+)
+
+chisq_test <- chisq.test(tabla_traf_area)
+chisq_test
+
+
+phi_value <- cramersV(tabla_traf_area)
+
+phi_value
+
+```
+
+h2) La hipótesis alternativa plantea que existe una correlación negativa y fuerte entre el último nivel educacional alcanzado y la presencia de tráfico de drogas. El análisis mediante la correlación de Spearman arroja un rho de  = –0.075 con un valor p altamente significativo (p = 2.5e-12). Esto indica que si existe una relación estadísticamente significativa entre ambas variables, pero su magnitud es débil según los criterios de Cohen (\< ±0.1= Muy pequeño). Por lo tanto, los datos permiten rechazar la hipótesis nula (que sostiene que no existe asociación), pero no permiten aceptar la hipótesis alternativa, ya que la relación observada es negativa pero débil, y no fuerte como se esperaba.
+
+```{r}
+cor.test(proc_casen_subset$nivel_educ,
+         proc_casen_subset$freq_traf_numeric,
+         method = "spearman")
+
+```
+
+h3) La hipótesis alternativa plantea que existe una correlación entre negativa y fuerte entre el acceso a medicamentos y la presencia de tráfico de drogas. Los resultados muestran una asociación significativa según la prueba  χ² = 29.28, con su  p \< 0.0000001, lo que indica que existe dependencia entre ambas variables, negando la hipótesis nula. Sin embargo el valor de la V de Cramer = 0.0589, lo que revela que la relación es débil. En este sentido, la evidencia no respalda nuestra hipótesis alternativa.
+
+```{r}
+chisq.test(table(proc_casen_subset$freq_traf_numeric,
+                 proc_casen_subset$acc_med))
+
+cramerV(table(proc_casen_subset$freq_traf_numeric,
+              proc_casen_subset$acc_med))
+```
+
+h4) La hipótesis alternativa plantea que existe una correlación negativa y fuerte entre el nivel de ingresos y la presencia de tráfico de drogas. Los resultados muestran una correlación punto biserial de r = 0.1208, lo que representa una relación débil y positiva, mostrando que no se cumple lo esperado por la hipótesis alternativa. La prueba t de Student confirma que existen diferencias significativas en los ingresos medios entre quienes reportan tráfico y quienes no (p \< 2.2e-16), siendo mayores los ingresos en el grupo sin tráfico. Si bien esta diferencia es estadísticamente significativa, su magnitud es reducida, provocando probables incidencias con el valor de la correlación.
+
+```{r}
+biserial_traf <- biserial.cor(
+  proc_casen_subset$ingresos,
+  proc_casen_subset$freq_traf_numeric,  # Variable numérica 0/1
+  use = "complete.obs"
+)
+print(paste("Biserial ingresos-tráfico:", round(biserial_traf, 4)))
+t_test_traf <- t.test(ingresos ~ freq_traf_numeric, data = proc_casen_subset)
+print(t_test_traf)
+```
+
+# Conclusiones
+
+En conclusión, el presente trabajo tuvo como finalidad el encontrar y analizar las relaciones entre distintos factores socioestructurales con la percepción de presencia de tráfico de drogas en Chile, mediante el uso de los datos obtenidos en la encuesta CASEN 2022.
+
+En el sentido, respecto a los planteamientos de las de las hipótesis de la investigación hechos en la sección inicial, los principales hallazgos del trabajo refieren a haber podido constatar de manera significativa la relación entre el área urbanizada y la percepción de tráfico de drogas, en donde se valida la hipótesis (h1) de una relación directa entre ambas. Sin embargo, aún cuando para las demás hipótesis (h2, h3 y h4) se hallaron correlaciones que van acorde a lo planteado originalmente, estas no son lo suficientemente significativas para poder concluir con seguridad que exista una relación entre las variables.
+
+Para futuros proyectos que se enmarquen en el mismo área de interés, sería importante sugerir un análisis basado en indicadores multidimensionales, ya sea en pobreza, vivienda, o seguridad, las cuales podrían brindar una mayor perspectiva sobre cuáles son los sectores de la población más expuestos a situaciones ligadas al narcotráfico. En este sentido, un contraste entre estos indicadores y estadísticas oficiales del crimen, particularmente aquellas asociadas al tráfico de drogas, a nivel regional o comunal sería un gran aporte para dilucidar las relaciones entre las condiciones socioestructurales y el fenómeno del narcotráfico en Chile.
+
+# Bibliografía
+
+-   Arias, C., Leighton, G., y Severich, E. (2025). Salud y delincuencia. Una estrecha relación entre dos mundos distintos. Revista Confluencia, 8. <https://doi.org/10.52611/confluencia.2025.1381>
+
+    E. Feldmann, A., & Luna, J. P. (2022). Gobernanza Criminal y la  Crisis de los Estados  Latinoamericanos  Contemporáneo. Annual Review Of Sociology. <https://www.annualreviews.org/content/journals/10.1146/annurev-soc-101221-021836>
+
+    Enamorado, T., López-Calva, L.,  Rodríguez-Castelán, C., y Winkler H. (2016). Income Inequality and Violent Crime: Evidence from Mexico’s Drug War. Journal of Development Economics, 120. <https://doi.org/10.1596/24872> 
+
+    Frühling, H., & Gallardo, R. (2012). PROGRAMAS DE SEGURIDAD DIRIGIDOS A BARRIOS EN LA EXPERIENCIA CHILENA RECIENTE. Revista Invi. <https://www.scielo.cl/scielo.php?script=sci_arttext&pid=S0718-83582012000100005>
+
+    Gallardo-Terán, R. (2014). Desorden, victimización y temor: Estudio exploratorio sobre la relación entre la percepción de desorden y delito en Chile. Revista Criminalidad. <http://www.scielo.org.co/scielo.php?script=sci_arttext&pid=S1794-31082014000300003>
+
+    Kessler, G. (2009). El sentimiento de inseguridad: Sociologia del temor al delito.
+
+    Martins M, Santos M., y Pillon S. (2008). Low-income families' perceptions on the use of drugs by one of their members. Revista Latino-americana de Enfermagem. 16(2), 293-8. <https://doi.org/10.1590/S0104-11692008000200019>
+
+    Observatorio de la Deuda Social Argentina \[ODSA\]. (2015). Aumento del tráfico de drogas en los barrios, problemas de adicciones severas en las familias y poblaciones en riesgo. <https://repositorio.uca.edu.ar/bitstream/123456789/8294/1/aumento-trafico-drogas-barrios-adicciones.pdf> 
+
+    Organización de las Naciones Unidas. (s.f.). Tráfico de drogas. <https://www.un.org/ruleoflaw/es/thematic-areas/transnational-threats/drug-trafficking/> 
+
+    Osuna, F. y Medina, J. (2018). Deterioro social y participación en el tráfico de drogas en el estado de Sonora. Frontera Norte, 31, 1-22. [https://doi.org/10.33679/rfn.v1i1.197](https://doi.org/10.33679/rfn.v1i1.1976)
+
+    Rose-Ackerman, S., & J. Palifka, B. (2016). Corruption and Government: Causes, Consequences, and Reform. <https://doi.org/10.1017/CBO9781139962933>
+
+    Silveira, R., Firmino, D., y Cavalcanti, F. (2023). The spatial association between drugs and urban violence: an analysis for the Metropolitan Region of Recife, Brazil. Spatial Economic Analysis, 18(4), 486–506. <https://doi.org/10.1080/17421772.2023.2186474>
+
+    Tocornal, X., Tapia, R., & Carvajal, Y. (2014). Delincuencia y violencia en entornos residenciales de Santiago de Chile. Revista Geografía Norte Grande. <https://www.scielo.cl/scielo.php?script=sci_arttext&pid=S0718-34022014000100007>  
