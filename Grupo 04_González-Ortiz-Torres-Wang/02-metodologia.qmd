@@ -1,0 +1,145 @@
+---
+title: "Metodología"
+---
+```{r cargar-librerias-y-bbdd}
+#| warning: false
+#| echo: false
+#| message: false
+
+#cargar librerías
+pacman::p_load(tidyverse, # Manipulacion datos
+               ggplot2, # Gráficos
+               sjPlot, # Tablas y gráficos
+               dplyr,
+               kable,
+               kableExtra,
+               haven,
+               tidyr,
+               knitr,
+               summarytools,
+               crosstable, 
+               table1) 
+               
+
+options(scipen = 999) # para desactivar notacion cientifica
+
+#rm(list = ls()) # para limpiar el entorno de trabajo
+
+
+```
+
+
+```{r Cargar-y-procesar-bbdd}
+#| warning: false
+#| echo: false
+#| message: false
+
+#Cargar bbdd
+
+load("input/enut_subset.Rdata")
+
+datos <- enut_subset           
+rm(enut_subset)                 
+
+
+# Reemplazar valores mayores a 48 por NA en la variable vs1_t_fds
+datos$vs1_t_fds[datos$vs1_t_fds > 48] <- NA
+
+#Tratamiento NA--------------------------------
+datos <- na.omit(datos)
+
+```
+
+
+
+```{r Recodificar-variables}
+#| warning: false
+#| echo: false
+#| message: false
+
+
+
+#Crear nueva variable VS1_total para tiempo total con amigos y familia en una semana
+datos <- datos %>%
+  mutate(vs1_total = rowSums(across(c(vs1_t_ds, vs1_t_fds)), na.rm = TRUE))
+
+#Crear nueva variable edad_dummy, para menores y mayores de 25 años
+datos <- datos %>%
+  mutate(edad_dummy = case_when(
+    edad < 25 ~ 0,
+    edad >= 25 ~ 1,
+    TRUE ~ NA_real_
+  ))
+
+
+
+#Pasar variables a factor o numérico según corresponda
+datos$sexo <- as.factor(datos$sexo)
+datos$bs1  <- as.factor(datos$bs1)
+datos$vs1_total <- as.numeric(datos$vs1_total)
+datos$edad <- as.numeric(datos$edad)
+
+#Recodificar sexo
+datos$sexo <- haven::zap_labels(datos$sexo)  
+
+datos$sexo <- factor(
+  datos$sexo,
+  levels = c(1, 2),
+  labels = c("Hombre", "Mujer")
+)
+
+
+#Recodificar bs1
+datos$bs1 <- haven::zap_labels(datos$bs1)
+
+datos$bs1[datos$bs1 == 96] <- NA  # quitar “No sabe / NR”
+
+datos$bs1 <- factor(
+  datos$bs1,
+  levels = c(1, 2, 3, 4, 5),
+  labels = c("Totalmente insatisfecho",
+             "Insatisfecho",
+             "Ni insatisfsfecho/a, ni satisfecho/a",
+             "Satisfecho",
+             "Totalmente satisfecho")
+)
+
+#Tratamiento NA--------------------------------
+datos <- na.omit(datos)
+
+
+```
+
+
+## Datos
+
+La presente investigación se fundamenta en la base de datos de II Encuesta Nacional sobre Uso del Tiempo (II ENUT), estudio proporcionado por el Instituto Nacional de Estadísticas de Chile (INE). La II ENUT es definida como un "estudio socioeconómico, basado en una encuesta probabilística por muestreo aplicado a hogares, que busca recopilar datos sobre el tiempo que las personas dedican a diversas actividades dentro de un período determinado" (Instituto Nacional de Estadísticas de Chile [INE], 2023, p. 8). Tiene una cobertura geográfica que representa la zona urbana del país. Su público objetivo corresponde a toda persona de 12 años o más que cumpla con las capacidades físicas y mentales para responder la encuesta. La base de datos cuenta con un total de 48.020 observaciones y 1.089 variables,  pero para este análisis sólo fueron seleccionadas siete variables. 
+
+
+## Variables
+
+Se seleccionaron 7 variables de un total de 1.089 las que corresponden a sexo, bs1,vs1_p_ds, vs1_t_ds, vs1_p_fds, vs1_t_fds y edad. Las variables vs1_p_ds y vs1_p_fds corresponden a variables dicotómicas que responden a si la persona pasó o no tiempo con familia, pareja o amigos en días de semana y fin de semana respectivamente, a las que se les asigna un 0 si la persona responde que no y un 1 si responde que sí. De esta forma, se eliminarán a quienes tengan asignado un 0 en esta variable. Posteriormente, las variables vs1_t_ds y vs1_t_fds, que corresponden a variables de razón y responden a la cantidad de horas que las personas dedican a compartir con familia, pareja o amigos durante la semana y el fin de semana respectivamente, se recodifican en una nueva variable que suma ambos valores, la variable recodificada se llamará vs1_total. De manera que las principales variables que se utilizarán para los análisis corresponden a sexo, edad, bs1 y vs1_total.
+La primera variable seleccionada corresponde a “sexo” la cual es de caracter categórica y de escala nominal. Tal como indica su nombre indica el sexo de los encuestados, los que corresponden a 1. Hombre y 2.Mujer. La variable es dicotómica y en el documento de R es tratada con as.factor. Esta variable se utilizará para el contraste de la hipótesis de diferencias. 
+La segunda variable seleccionada es “edad” la cual es de razón y se mide de forma continua, esta corresponde a la cantidad de años que tiene cada encuestado. La variable es tratada en el proyecto de R como as.numeric y para el posterior análisis será recodificada en la variable edad_dummy, la que tratará a los casos menores de 25 años como 0 y a los mayores de 25 como 1, esto para verificar la hipótesis direccional y las posibles diferencias generacionales en el tiempo de ocio social entre jóvenes y adultos.
+La tercera variable seleccionada es "bs1” la que se encuentra dentro del módulo “Bienestar Subjetivo” en una sección con el enunciado “En una escala de 1 a 5, donde 1 es totalmente insatisfecho(a) y 5 es totalmente satisfecho(a), ¿qué tan satisfecho(a) se siente con respecto a…? Correspondiendo la variable seleccionada a “Su vida en general”. La variable es de tipo ordinal, utiliza una Escala de Likert de 5 puntos y mide el nivel de satisfacción general con la vida del encuestado. La variable es tratada con as.factor en el documento de R y se utilizará para la prueba de hipótesis correlacional. 
+Finalmente la variable “vs1_total” la cual corresponde a una recodificación de las variables vs1_t_ds y vs1_t_fds. Dentro del cuestionario la variable se encuentra en módulo “VS: Ocio y Vida Social” y corresponde a  ¿Conversó o compartió con familiares, pareja o amistades durante su tiempo libre? Considere solo si lo hizo de manera presencial". Dentro de la misma pregunta se da la opción de responder las horas correspondientes a día de semana y las de día de fin de semana. La variable es continua, de razón y se responde en horas y minutos (hh:mm). La variable será utilizada para la prueba de las hipótesis de diferencia de medias, direccional y correlacional.
+
+
+**Descriptivos básicos**
+
+```{r}
+#| echo: false
+#| warning: false
+#| tbl-cap: "Estadísticas descriptivas de las variables seleccionadas"
+#| tbl-label: tbl-estadisticas-variables
+
+
+table1::table1(~ factor(sexo) + bs1 + vs1_total, data = datos)
+
+
+```
+
+
+## Métodos
+
+Respecto a las pruebas de hipótesis, se realizan las pruebas estadísticas correspondientes para respaldar o refutar la hipótesis alternativa. Para el caso de la hipótesis de diferencia de medias se  utiliza la prueba t de student en las variables sexo y vs1_total, luego los resultados son sintetizados en una tabla donde se presenta el método utilizado, las medias de cada variable, los grados de libertad, el valor p de significancia estadística y los intervalos de confianza; Posteriormente se ve la distribución y el contraste de los valores t crítico y t empírico en un gráfico de dos colas, para posteriormente sintetizar la información en un gráfico general. Para la hipótesis de direccionalidad se realiza la prueba t de Welch con las variables edad y vs1_total y, al igual que para la hipótesis anterior, se sintetizan los resultados en una tabla, se presenta el gráfico de una cola para el contraste de valores t y se realiza un gráfico de síntesis general. Finalmente, para la hipótesis de correlacionalidad se realiza una prueba de correlación con Pearson para las variables bs1 y vs1_total, debido a que una variable es ordinal mientras que la otra es de razón. Los resultados son sintetizados en una tabla y se realiza un gráfico de dispersión para visualizar la correlación entre variables.

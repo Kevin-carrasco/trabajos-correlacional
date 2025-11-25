@@ -1,0 +1,28 @@
+---
+title: ""
+number-sections: false
+numbered: false
+format:
+  html:
+    title-block-style: none
+    toc: false
+  pdf:
+    title-block-style: none
+---
+
+::: {.content-visible when-format="pdf"}
+\small\textbf{Palabras clave:} Sociologia, tiempo de ocio, satisfacción con la vida, Chile
+\normalsize
+:::
+
+::: {.content-visible when-format="html"}
+<style>
+nav#TOC { display: none !important; }
+div[data-when-format="pdf"] { display: none !important; }
+</style>
+<span class="keywords-line"><strong>Palabras clave:</strong> sociología, educación, Chile</span>
+:::
+
+# Abstract {.unnumbered}
+
+Este estudio analiza la relación entre la satisfacción con la vida y el tiempo dedicado a compartir con familiares y amistades, utilizando datos de la II Encuesta Nacional sobre Uso del Tiempo (ENUT 2023). A partir de un diseño cuantitativo, correlacional y no experimental, se seleccionaron cuatro variables principales: satisfacción vital (BS1), tiempo de sociabilidad presencial (VS1), Sexo y Edad. El análisis descriptivo mostró una alta concentración de respuestas de satisfacción vital en los niveles “satisfecho” y “totalmente satisfecho”, así como diferencias de género en el tiempo destinado a actividades de ocio y socialización. El análisis bivariado incluyó pruebas t de Student y Welch, junto con coeficientes de correlación de Pearson, para contrastar tres hipótesis: diferencias por sexo, diferencias por edad y relación entre sociabilidad y satisfacción vital. Los resultados indican diferencias estadísticamente significativas entre hombres y mujeres en el tiempo dedicado a compartir, así como un mayor promedio de sociabilidad en personas menores de 25 años. Así mismo, se observa una correlación positiva pero débil entre el tiempo de interacción social y la satisfacción vital. Estos hallazgos sugieren que la sociabilidad presencial se asocia al bienestar subjetivo, aunque la magnitud del efecto es limitada.  

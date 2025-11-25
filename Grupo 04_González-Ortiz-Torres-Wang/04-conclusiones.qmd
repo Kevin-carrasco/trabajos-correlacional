@@ -1,0 +1,12 @@
+---
+title: "Conclusiones"
+---
+El presente estudio analizó la relación entre la satisfacción con la vida y el tiempo dedicado a compartir con familiares y amistades, integrando diferencias por sexo y edad a partir de datos de la II Encuesta Nacional sobre Uso del Tiempo (ENUT 2023). Los hallazgos permiten observar patrones consistentes respecto a las hipótesis planteadas. 
+
+En primer lugar, los resultados evidenciaron diferencias significativas entre hombres y mujeres en las horas destinadas a actividades de sociabilidad presencial. lo que respalda la hipótesis de diferencias. Este resultado se vincula con las brechas persistentes en la organización del tiempo, donde las mujeres pueden presentar mayores cargas laborales y domésticas que limitan sus oportunidades de tiempo libre.
+
+En segundo lugar, la hipótesis direccional también fue confirmada, dado que las personas menores de 25 años presentan, en promedio, un mayo tiempo destinado a compartir en comparación con quienes tienen 25 años o más. Este patrón coincide con tendencias sociodemográficas en que los jóvenes cuentan con mayor disponibilidad de horario y estilos de vida asociados a mayores niveles de interacción social. 
+
+Finalmente, en tercer lugar, se identificó una correlación positiva y significativa entre el tiempo dedicado a compartir y la satisfacción con la vida. Sin embargo, el tamaño del efecto fue débil (r = 0.04), lo que sugiere que, si bien la sociabilidad presencial contribuye al bienestar subjetivo, existen otros factores más influyentes que también podrían explicar la variación en la satisfacción vital.
+
+Entre las principales limitaciones del estudio se encuentra el carácter transversal de la ENUT, que impide establecer causalidad entre las variables. Así mismo, la medición autodeclarada puede incorporar sesgos de recuerdo y sub o sobreestimación del tiempo reportado. A futuro, sería pertinente estimar modelos multivariados que, aprovechando otras variables ya disponibles en la ENUT, como nivel socioeconómico, tipo de ocupación, cargas de cuidado y composición del hogar, permitan analizar de manera conjunta cómo estas dimensiones se articulan la satisfacción con la vida y el tiempo de sociabilidad. 

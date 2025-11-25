@@ -1,0 +1,34 @@
+---
+title: "Referencias"
+suppress-bibliography: false
+nocite: |
+  @*
+number-sections: false
+---
+
+::: {#refs}
+- Diener, E. (2009). Subjective well-being. In E. Diener (Ed.), The science of well-being. Springer. 
+
+- Helliwell, J. F., Huang, H., & Wang, S. (2020). Social environments for world happiness. In J. F. Helliwell, R. Layard, J. Sachs, & J. -E. De Neve (eds.), World Happiness Report 2020 (Chap. 2). Sustainable Development Solutions Network. 
+https://www.worldhappiness.report/ed/2020/social-environments-for-world-happiness/
+
+- Instituto Nacional de Estadísticas. (2023). Cuestionario de uso del tiempo: II Encuesta Nacional sobre Uso del Tiempo (ENUT) [Cuestionario].
+https://www.ine.gob.cl/docs/default-source/uso-del-tiempo-tiempo-libre/formularios/ii-enut/cuestionario-de-uso-del-tiempo-ii-enut-2023.pdf?sfvrsn=8734c5f5_4
+
+- Instituto Nacional de Estadísticas de Chile. (2023). Documento metodológico II ENUT 2023. 
+https://www.ine.gob.cl/docs/default-source/uso-del-tiempo-tiempo-libre/metodologias/ii-enut/documento-metodologico-ii-enut-2023.pdf?sfvrsn=c4a74cc4_6
+
+- Instituto Nacional de Estadísticas. (s.f). Encuesta Nacional sobre Uso del Tiempo (ENUT). 
+https://www.ine.gob.cl/enut
+
+- Instituto Nacional de Estadísticas. (2023). Informe de principales resultados: II Encuesta Nacional sobre Uso del Tiempo (ENUT). INE. 
+https://www.ine.gob.cl/docs/default-source/uso-del-tiempo-tiempo-libre/publicaciones-y-anuarios/ii-enut/informe-de-principales-resultados-ii-enut-2023.pdf?sfvrsn=ee33c12c_4
+
+- Programa de las Naciones Unidas para el desarrollo. (2017). Desigualdades: Orígenes, cambios y desafíos de la brecha social en Chile. PNUD. 
+https://files.acquia.undp.org/public/migration/cl/undp_cl_pobreza-Libro-DESIGUALES-final.pdf
+
+
+
+:::
+
+

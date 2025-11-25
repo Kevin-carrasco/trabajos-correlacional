@@ -1,0 +1,25 @@
+---
+title: "Introducción"
+numbered: true
+---
+
+La satisfacción con la vida constituye uno de los componentes centrales del bienestar subjetivo y se ha consolidado como un indicador clave para comprender la calidad de vida en las sociedades contemporáneas (Diener et al., 2009). Este componente integra evaluaciones globales que las personas realizan sobre sus condiciones vitales y sobre el grado en que sus necesidades psicológicas, sociales y materiales se encuentran satisfechas. La literatura ha mostrado que la satisfacción vital se relaciona estrechamente con factores relacionales y afectivos, entre ellos la presencia de vínculos significativos, redes de apoyo y oportunidades de interacción social, elementos que contribuyen a la integración en la vida cotidiana y al afrontamiento emocional (Helliwell et al., 2020).
+En este marco, el tiempo dedicado a compartir con familias y amistades emerge como un elemento relevante para comprender el bienestar subjetivo. La sociabilidad presencial, entendida como interacción directa y significativa con otros, se ha asociado con mayores niveles de apoyo emocional, cohesión social y percepciones positivas sobre la vida. Diversos estudios han planteado que los entornos relacionales constituyen un factor determinante en la experiencia subjetiva del bienestar, al influir en cómo las personas interpretan su entorno, enfrentan dificultades y construyen sentido de pertenencia. En el contexto chileno, las relaciones sociales y el trato interpersonal se han reconocido como dimensiones centrales de la experiencia cotidiana y del bienestar, así como de la percepción subjetiva de la desigualdad (PNUD, 2017).
+Estas dinámicas no se distribuyen de manera homogénea en la población. Factores como el género y la edad inciden en la capacidad de las personas para acceder a actividades de sociabilidad y en el tiempo disponible para ello. La II Encuesta Nacional sobre Uso del Tiempo (ENUT) constituye una fuente pertinente para examinar estas diferencias, dado que permite caracterizar cómo las personas distribuyen su tiempo entre actividades remuneradas, no remuneradas y personales, visibilizando los distintos aportes que mujeres y hombres realizan al sostenimiento de sus hogares y de la sociedad en general (INE, s.f.). El informe más reciente señala que las mujeres presentan mayores cargas laborales y domésticas, lo que restringe sus oportunidades de tiempo libre mientras que los hombres tienden a destinar más horas a actividades de ocio y vida social (INE, 2023). En este estudio, el “tiempo social” se operacionaliza a partir del Módulo VS: Ocio y Vida Social del Cuestionario de Uso del Tiempo, específicamente mediante preguntas como la “VS1”, que consulta si la persona “¿Conversó o compartió con familiares, pareja o amistades durante su tiempo libre? Considere solo si lo hizo de manera presencial” (INE, 2023). 
+
+En este contexto, el objetivo de este trabajo es analizar la relación entre la satisfacción con la vida y el tiempo dedicado a compartir con familiares y amistades, considerando posibles variaciones según sexo y edad. A partir de esto, se formulan tres hipótesis que orientan el analisis descriptivo y bivariado realizado con datos de la II ENUT 2023: una hipótesis de diferencias según sexo, una hipótesis direccional según edad y una hipótesis correlacional que examina el vínculo entre sociabilidad presencial y satisfacción vital. Estas hipótesis permiten abordar de manera integrada cómo los patrones de uso del tiempo y las dinámicas sociales cotidianas se relacionan con el bienestar subjetivo en la población chilena. 
+
+
+**Hipótesis de diferencias**
+
+Se espera que exista una diferencia entre los promedio de horas dedicadas a compartir con familia y amigos entre hombres y mujeres. H0 (nula) no existen diferencias significativas entre los promedios de las horas dedicadas a compartir.
+
+
+**Hipótesis direccional**
+
+Respecto a la edad y la cantidad de horas dedicada a compartir con familia y amigos, se espera que la media de tiempo destinada a compartir con familia y amigos sea mayor en jóvenes de 12 a 25 años que en adultos de 25 años o más. H0 (nula): No hay diferencias mayores en la diferencia de medias entre menores y mayores de 25 años.
+
+
+**Hipótesis correlacional**
+
+Se espera que exista una correlación entre la cantidad de tiempo dedicada a compartir con familia y amigos y el sentimiento de bienestar general. H0 (nula): No existe una correlación significativa o directa entre la cantidad de tiempo dedicada a compartir con amigos y familia y el sentimiento de bienestar general.

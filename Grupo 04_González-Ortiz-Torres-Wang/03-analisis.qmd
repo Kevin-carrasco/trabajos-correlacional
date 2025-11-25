@@ -1,0 +1,396 @@
+---
+title: "Análisis"
+---
+```{r cargar-librerias-y-bbdd}
+#| warning: false
+#| echo: false
+#| message: false
+
+#cargar librerías
+pacman::p_load(tidyverse, # Manipulacion datos
+               ggplot2, # Gráficos
+               sjPlot, # Tablas y gráficos
+               dplyr,
+               kable,
+               kableExtra,
+               haven,
+               tidyr,
+               knitr,
+               summarytools,
+               crosstable, 
+               gginference, # Visualizacion
+               rempsyc, # Reporte
+               broom, # Varios
+               flextable, # nice table
+               rempsyc,
+               table1) 
+            
+               
+             
+
+options(scipen = 999) # para desactivar notacion cientifica
+
+rm(list = ls()) # para limpiar el entorno de trabajo
+
+
+```
+
+
+
+
+```{r Cargar-y-procesar-bbdd}
+#| warning: false
+#| echo: false
+#| message: false
+
+#Cargar bbdd
+
+load("input/enut_subset.Rdata")
+
+datos <- enut_subset           
+rm(enut_subset)                 
+
+
+# Reemplazar valores mayores a 48 por NA en la variable vs1_t_fds
+datos$vs1_t_fds[datos$vs1_t_fds > 48] <- NA
+
+#Tratamiento NA--------------------------------
+datos <- na.omit(datos)
+
+```
+
+
+
+```{r Recodificación-de-variables}
+#| warning: false
+#| echo: false
+#| message: false
+
+
+
+#Crear nueva variable VS1_total para tiempo total con amigos y familia en una semana
+datos <- datos %>%
+  mutate(vs1_total = rowSums(across(c(vs1_t_ds, vs1_t_fds)), na.rm = TRUE))
+
+#Crear nueva variable edad_dummy, para menores y mayores de 25 años
+datos <- datos %>%
+  mutate(edad_dummy = case_when(
+    edad < 25 ~ 0,
+    edad >= 25 ~ 1,
+    TRUE ~ NA_real_
+  ))
+
+
+
+#Pasar variables a factor o numérico según corresponda
+datos$sexo <- as.factor(datos$sexo)
+datos$bs1  <- as.factor(datos$bs1)
+datos$vs1_total <- as.numeric(datos$vs1_total)
+datos$edad <- as.numeric(datos$edad)
+
+#Recodificar sexo
+datos$sexo <- haven::zap_labels(datos$sexo)  
+
+datos$sexo <- factor(
+  datos$sexo,
+  levels = c(1, 2),
+  labels = c("Hombre", "Mujer")
+)
+
+
+#Recodificar bs1
+datos$bs1 <- haven::zap_labels(datos$bs1)
+
+datos$bs1[datos$bs1 == 96] <- NA  # quitar “No sabe / NR”
+
+datos$bs1 <- factor(
+  datos$bs1,
+  levels = c(1, 2, 3, 4, 5),
+  labels = c("Totalmente insatisfecho",
+             "Insatisfecho",
+             "Ni insatisfsfecho/a, ni satisfecho/a",
+             "Satisfecho",
+             "Totalmente satisfecho")
+)
+
+
+
+
+```
+
+
+## Análisis Descriptivo
+
+**Variable Sexo**
+
+```{r descriptivos-sexo}
+#| warning: false
+#| echo: false
+#| message: false
+
+summary (datos$sexo)
+
+```
+Al analizar la variable “Sexo” , se observa una clara predominancia femenina, quienes siendo 9399, representan el 56,77% del total de los casos, superando a los hombres quienes, siendo un total de 7.158, conforman el 43,23% de lal muestra. Esta diferencia de 13,54% indica que, dentro del grupo de encuestados existe una tendencia marcada de feminización en la participación.
+
+**Variable Edad**
+
+```{r Descriptivos-Edad}
+#| warning: false
+#| echo: false
+#| message: false
+
+
+summary (datos$edad)
+sd (datos$edad)
+
+
+```
+En lo que respecta a la variable “Edad”, y quitando los “NA” o casos perdidos, la tabla muestra la edad mínima y máxima de los encuestados, logrando vislumbrar una distribución simétrica entre la media y la mediana. Dado que se encuentran en los valores 43,0 y 43,7 respectivamente, sugiere que la muestra se encuentra equilibrada en individuos que rondan en la adultez media, indicando así que los resultados no muestran sesgos fuertes hacia los grupos extremos de las edades, ya sean más jóvenes o de mayor rango etario. En cuanto a la dispersión de los datos, la desviación estándar  es de 19,38, revelando la existencia de una alta heterogeneidad etaria, indicando que la ENUT logra abarcar diferentes etapas para su estudio y resultados de mayor representatividad. También, al hacer el análisis de cuartiles se logra identificar que el 50% de la población se encuentra entre los 27 y 59 años de edad. Haciendo referencia a una población laboralmente activa y el primer cuartil indicando que el 25% de la muestra se encuentra entre los 12 a 27 años, permitiendo evidenciar que la encuesta abarca tanto adolescentes como jóvenes, cubriendo el ciclo vital de la encuesta, el cual busca abarcar desde una adolescencia temprana hasta individuos de edad o vejez avanzada (100 años). Todo esto con el fin de poder aportar un estudio que demuestre una representatividad efectiva.
+
+
+
+**Variable BS1: Grado de Satisfacción con vida en general**
+```{r Descriptivos-BS1}
+#| warning: false
+#| echo: false
+#| message: false
+
+summary (datos$bs1)
+```
+La variable “BS1” mide el nivel de satisfacción de los participantes con respecto a su vida en general. Se logra observar que, de la totalidad del tamaño muestral, un total de 8.551 encuestados indica que se siente satisfecho con su vida, esto equivale a un 51,66% de la muestra. En el caso de los encuestados que afirman encontrarse totalmente satisfechos con su vida son un total de 4.898, conformando el 29,58% del total muestral. También se observa que un 5,01% de los encuestados afirman sentirse insatisfechos de manera parcial o total de su vida en general, esto equivale a la suma de los 158 y 672 encuestados que respondieron sentirse insatisfechos o totalmente insatisfechos. Esta diferencia refleja una marcada polarización positiva hacia los encuestados que se encuentran satisfechos con su vida, siendo la suma de los porcentajes de estos un 81.24% del total muestral. Estos resultados reflejan una baja dispersión de los datos hacia el extremo negativo (insatisfacción con la vida), dado que la concentración de los datos se encuentra en los dos niveles más altos de satisfacción. 
+
+
+
+**Variable VS1_total: Total de horas dedicadas a compartir con familiares, pareja o amigos a la semana.**
+```{r Descriptivos- VS1_TOTAL}
+#| warning: false
+#| echo: false
+#| message: false
+
+
+summary (datos$vs1_total)
+sd (datos$vs1_total)
+```
+
+Para finalizar, al analizar la variable “VS1_total”, la cual hace referencia al tiempo libre dedicado durante la semana por los individuos encuestados, da cuenta de una asimetría positiva en la distribución de los datos, indicando que la norma, en este caso, es dedicar poco tiempo a la semana a tiempos de sociabilización y recreación, pero la existencia de un grupo minoritario que le dedica un tiempo excesivo a estas actividades hace que la cola de la muestra se extienda hacia la derecha. El promedio dedicado a este tipo de actividades es de 6,20 horas semanales, siendo esta cifra superior a la mediana, la cual tiene un valor de 5,00 horas semanales. Aquí se distinguen dos grupos; la tendencia que se encuentra en horas moderadas dedicadas a actividades de recreación (entre 40 a 45 minutos diarios en una semana) y otro grupo minoritario que le dedica cantidades excesivamente altas de tiempo semanalmente a estas actividades, de esta manera elevando el valor del promedio.  Con respecto a la dispersión, se observa que el 50% dedica entre 3,00 a 8,00 horas de actividades de ocio y/o recreación. Esto sugiere la existencia de un patrón homogéneo de socialización, el cual hace referencia que este grupo mayoritario dedica poco o muy poco tiempo en la semana a dichas actividades de tiempo libre, esto probablemente restringido por otro tipo de cargas, ya sea laborales o de cuidado. Contrario a los casos extremos, los cuales dedican 112 horas semanales a estas actividades, es decir, 16 horas diarias aproximadamente quienes, se asume, cumplen con un perfil de individuos con alta disponibilidad, esto pudiéndose dar por diferentes razones. Respecto a la desviación estándar, esta se encuentra en un valor de 4,78, siendo proporcionalmente alta respecto a la media y permitiendo evaluar la existencia de diferentes tiempos de ocio. Esto refleja la diversidad de estilos de vida de los encuestados por la ENUT.
+
+
+
+## Análisis Bivariado
+Esta sección presenta los análisis bivariados realizados para comprobar las hipótesis de la investigación. Al realizar este análisis se consideró la estimación de coeficientes de correlación y medidas de asociación para variables, de esta manera se realizaron pruebas de hipótesis estadísticas y también se consideró el tamaño del efecto en función del nivel de medición de las variables. Por último, se establece un nivel de significancia de p < .05 para todas las pruebas.
+
+
+
+### Hipótesis de diferencias
+Frente a la siguiente hipótesis: “Se espera que exista una diferencia entre los promedios de horas dedicadas a compartir con familia y amigos entre hombres y mujeres.” Y su respectiva Hipótesis Nula (H0): “No existen diferencias significativas entre los promedios de las horas dedicadas a compartir con familia y amigos entre hombres y mujeres.” es necesario analizar las diferencias en horas dedicadas a compartir con familia y amigos según sexo. Para este procedimiento se utiliza como variable dependiente numérica “horas de compartir” y como independiente dicotómica “sexo”, para posteriormente realizar una prueba de t de Student para verificar la hipótesis. 
+La prueba t de Student de dos colas arrojó un valor t = -2.24 con 16,555 DF (grados de libertad), resultando en un valor p = .025*. Puesto que p < .05, rechazándose la hipótesis nula (H0) (Ver Tabla 1). Esto concluye que existe una diferencia estadísticamente significativa en el promedio de horas dedicadas a compartir entre hombres y mujeres, respaldando la hipótesis de investigación. Luego, el intervalo de confianza del 95% para la diferencia de medias fue de [-0.32, -0.02], confirmando el contraste.
+
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| include: false
+
+
+#Prueba t
+t_test <- t.test(vs1_total ~ sexo, data = datos, var.equal=TRUE)
+t_test
+
+
+```
+
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+
+stats.table <- tidy(t_test, conf_int = T)
+nice_table(stats.table, broom = "t.test")
+```
+
+**Gráfico prueba t**
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+
+gginference::ggttest(t_test)
+```
+
+**Gráfico**
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+
+db_g1 <- datos %>%
+  group_by(sexo) %>%
+  summarise(
+    media_vs1_total = mean(vs1_total, na.rm = TRUE),
+    error_std = sd(vs1_total, na.rm = TRUE) / sqrt(n()),
+    ci_inf = media_vs1_total - qt(0.975, df = n() - 1) * error_std,
+    ci_sup = media_vs1_total + qt(0.975, df = n() - 1) * error_std
+  ) %>%
+  na.omit()
+  
+
+
+ggplot(data = db_g1,
+       mapping = aes(x = sexo, y = media_vs1_total)) + # especificamos datos y mapping 
+  geom_bar(stat = "identity", color = "black", fill = "hotpink") + # agregamos geometria
+  geom_errorbar(aes(ymin = ci_inf, ymax = ci_sup), width = 0.2, color = "red") + # agregamos intervalo de confianza calculado previamente
+   scale_y_continuous(limits = c(0,7), n.breaks = 7) + # agregamos escala en eje Y y ponemos limites minimos y maximos
+  geom_text(aes(label = round(media_vs1_total,2)), vjust = 1.5, colour = "white") + # agregamos los valores de la media para cada barra/grupo 
+  labs(title ="Media de horas dedicadas a familia y amigos según sexo", 
+       x = "sexo", 
+       y = "Media de horas",
+       caption = "Fuente: Elaboración propia en base ENUT 2023.") + # agregamos titulo, nombres a los ejes y fuente 
+  theme_gray() # especificamos tema
+
+```
+
+
+
+### Hipótesis direccional
+Respecto a la hipótesis direccional: “Se espera que la media de tiempo destinada a compartir con familia y amigos sea mayor en jóvenes de 0 a 25 años que en adultos de 25 años o más”, y su hipótesis nula (H0): “No hay diferencias mayores en la media de horas dedicadas a compartir con familia y amigos entre menores y mayores de 25 años”. Para el procedimiento se relacionaron las variables “horas de compartir” y la variable dicotómica “edad recodificada”. En este caso se empleó una prueba t de Welch unilateral, acorde a la direccionalidad establecida.
+Los resultados (ver Gráfico 2) arrojaron un valor t = 4.59 con 5,476.64  DF (grados de libertad) y un valor p < .001*** (Ver tabla 2). Debido a que p < .05 y considerando que la prueba fue direccional o “greater”, se rechaza la hipótesis nula (H0). Esto indica que la media de horas destinadas a compartir es significativamente mayor en el grupo más joven, lo que respalda la hipótesis direccional planteada. El intervalo de confianza del 95% para la diferencia de medias fue de [0.26, Inf], respaldando así la direccionalidad esperada.
+
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| include: false
+
+
+attach(datos)
+
+#Prueba t
+t_test2 <- t.test(vs1_total ~ edad_dummy,
+                  alternative = "greater",
+                  conf.level = 0.95)
+t_test2
+
+```
+
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+
+stats.table2 <- tidy(t_test2, conf_int = T)
+nice_table(stats.table2, broom = "t.test")
+```
+
+
+**Gráfico prueba t**
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+
+gginference::ggttest(t_test2)
+
+```
+
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+
+detach (datos)
+```
+
+**Gráfico**
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+
+db_g2 <- datos %>%
+  group_by(edad_dummy) %>%
+  summarise(
+    media_vs1_total = mean(vs1_total, na.rm = TRUE),
+    error_std = sd(vs1_total, na.rm = TRUE) / sqrt(n()),
+    # Cálculo para un CI del 90% (equivalente a prueba de una cola con alpha=0.05)
+    ci_inf = media_vs1_total - qt(0.95, df = n() - 1) * error_std, 
+    ci_sup = media_vs1_total + qt(0.95, df = n() - 1) * error_std
+  ) %>%
+  na.omit()
+
+
+ggplot(data = db_g2,
+       mapping = aes(x = edad_dummy, y = media_vs1_total)) + # x ahora es 'edad'
+  geom_bar(stat = "identity", color = "black", fill = "hotpink") +
+  geom_errorbar(aes(ymin = ci_inf, ymax = ci_sup), width = 0.2, color = "red") +
+  scale_y_continuous(limits = c(0,7), n.breaks = 7) +
+  geom_text(aes(label = round(media_vs1_total,2)), vjust = 1.5, colour = "white") +
+  scale_x_continuous(breaks = c(0, 1), 
+                   labels = c("Menos de 25 años", "25 años o más")) + 
+  labs(title ="Media de horas dedicadas a familia y amigos según edad", 
+       x = "Edad (Dummy)", 
+       y = "Media de horas",
+       caption = "Fuente: Elaboración propia en base ENUT 2023.") +
+  theme_gray()
+```
+
+
+
+### Hipótesis correlacional
+Finalmente, para analizar la hipótesis: “Se espera que exista una correlación entre la cantidad de tiempo dedicada a compartir con familia y amigos y el sentimiento de bienestar general”, junto con su hipótesis nula (H0): “No existe una correlación significativa o directa entre la cantidad de tiempo dedicada a compartir con amigos y familia y el sentimiento de bienestar general”. Se analizó la relación entre dos variables numéricas mediante un coeficiente de correlación de Pearson. El diagrama de dispersión (ver Gráfico 3) permite visualizar la distribución de los datos, evidenciando una tendencia levemente ascendente que sugiere una correlación débil.
+
+El coeficiente de Pearson fue r = 0.04. Aunque este valor representa una relación muy débil, el análisis arrojó un valor t = 4.69 con 16,555 grados de libertad y un valor p < .001***. Dado que p < .05, se rechaza la hipótesis nula (H0), concluyendo que existe una correlación positiva y estadísticamente significativa entre la cantidad de tiempo dedicado a compartir y el bienestar general. 
+
+No obstante, el tamaño del efecto es mínimo, ya que un valor r = 0.04 refleja que la relación entre las variables es mínima y que prácticamente no comparten variabilidad. Esto sugiere que, si hay un mayor tiempo de interacción social, se asocia con un leve aumento del bienestar subjetivo; pero la magnitud de esta asociación es reducida en la población analizada.
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| include: false
+
+datos$bs1  <- as.numeric(datos$bs1)
+
+cor_results <- cor.test(x = datos$bs1, 
+                        y = datos$vs1_total,
+                        method = "pearson",
+                        use = "complete.obs") # Considerar solo datos completos (listwise)
+
+cor_results
+
+```
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+
+stats.table3 <- tidy(cor_results)
+nice_table(stats.table3, broom = "cor")
+```
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+
+sjPlot::plot_scatter(data = datos, 
+                     x = vs1_total,
+                     y = bs1)
+
+
+```
+
+La discusión de los resultados permite confirmar las tres hipótesis planteadas, mostrando dinámicas relevantes en el uso del tiempo social. Primero, se evidencian diferencias significativas por género, sugiriendo que el sexo influye en los patrones de socialización, aunque la brecha promedio no es amplia. Segundo, la edad se torna el factor determinante: los jóvenes dedican significativamente más tiempo a compartir que los adultos, esto debido a las limitaciones asociadas a la vida laboral adulta. Finalmente, aunque se observa una relación positiva entre el tiempo dedicado a compartir y el bienestar, la correlación es muy débil, indicando que la satisfacción vital es un fenómeno multidimensional y que el tiempo de ocio explica sólo una fracción mínima de dicha variabilidad.
+
+
+
+
+
+
+
