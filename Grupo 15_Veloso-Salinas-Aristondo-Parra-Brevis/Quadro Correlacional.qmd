@@ -1,0 +1,449 @@
+---
+title: "Salud mental y Desigualdad económica según encuesta CASEN 2022"
+subtitle: "REPORTE DE ANALISIS BIVARIADO"
+author: "Gabriel Parra, Daniela Veloso, Pablo Salinas, Valentina Aristongo, Matías Brevis"
+date: "2025-11-23"
+lang: es
+format: html
+editor: source
+---
+
+# 1. Resumen
+
+	Tema del reporte: Correlación entre concurrencia a servicios de salud mental con desigualdad socioeconómica 
+
+
+	Fuentes seleccionadas: Encuesta y Base de Datos CASEN 2022
+
+	Variable dependiente: Concurrencia a servicios de salud mental (continua)
+	
+	Variables independientes:
+- Servicio previsional de salud (nominal)
+- Ingresos líquidos percibidos (continua)
+- Género (nominal)
+- Último (o actual) nivel de educación alcanzado (ordinal)
+
+# 2. Introducción
+
+La salud mental es un asunto que ha cobrado cada vez más relevancia en la sociedad chilena y las diferencias en distribución de ingresos se ha consolidado como uno de los determinantes más influyentes en este tópico y en la posibilidad de acceder a tratamientos oportunos. En Chile, este problema posee una relevancia crítica: la literatura especializada en salud pública ha documentado consistentemente que los trastornos mentales tienen una alta prevalencia, impactando la calidad de vida y generando un enorme costo social. Estudios nacionales señalan que 36% de la población ha presentado un trastorno de salud mental en su vida y solo la mitad accede a atención profesional, lo que evidencia barreras estructurales (Poblete, Sapag & Bossert, 2008). Paralelamente investigaciones recientes muestran que las condiciones de vida precarias, la vulnerabilidad y las desigualdades estructurales incrementan síntomas como ansiedad, depresión o estrés crónico, especialmente durante crisis sanitarias como la pandemia de COVID-19 (Rada, Ortiz & Cabieses, 2023).   
+
+En el plano internacional, Chile se ubica por debajo del promedio de inversión en salud mental de los países de la OCDE. Mientras la OCDE destina entre el 5% y el 14% del presupuesto de salud a servicios de salud mental, Chile invierte aproximadamente un 2,4%, lo que repercute en menor oferta de especialistas (Errázuriz et al., 2015). Este déficit estructural produce un círculo vicioso: las personas con menores ingresos tienden a depender exclusivamente del sistema público, donde existen menores recursos y dificultades de continuidad con los tratamientos. Desde esta perspectiva de los determinantes sociales de la salud, la evidencia también demuestra que el nivel educacional, previsión social, y seguridad económica condicionan fuertemente la capacidad de buscar atención profesional y sostenerla en el tiempo  (Jiménez-Molina et al., 2019). Asimismo, variables como género y edad también determinan desigualdades relevantes: las mujeres consultan más, pero cargan con mayor prevalencia de trastornos afectivos; los jóvenes presentan barreras económicas para acceder a atención sostenida (Rada et al., 2023). Hasta ahora, gran parte de la investigación chilena ha descrito prevalencias y ha discutido el impacto general de la pobreza en la salud mental, pero existe una brecha en estudios que evalúen estadísticamente la relación entre concurrencia efectiva a servicios de salud mental y desigualdad socioeconómica.
+
+En este estudio, el concepto central “concurrencia a servicios de salud mental” se entiende como la acción de asistir, consultar o recibir atención psicológica o psiquiátrica en servicios públicos o privados. Esta definición se relaciona directamente con la literatura que documenta las brechas en la utilización de servicios(Jiménez-Molina et al., 2019). Por su parte, la desigualdad socioeconómica se define como la distribución desigual de ingresos, educación y acceso a sistemas de protección social, parámetros descritos como determinantes directos de las oportunidades de salud y bienestar en Chile (Errázuriz et al., 2015). Para operacionalizar esta desigualdad, este estudio utiliza 4 dimensiones específicas: ingreso, considerado una variable continua que refleja capacidad económica; nivel educativo, considerado una variable ordinal,entendido como el máximo nivel de instrucción alcanzado y asociado al capital cultural, previsión de salud, variable nominal que distingue entre afiliación pública o privada y género, considerado  como variable nominal , utilizada para analizar diferencias en la concurrencia a servicios de salud mental según identidad de género.
+Por lo anterior, el objetivo central de este estudio es *analizar en qué medida la concurrencia a servicios de salud mental se relaciona con indicadores de desigualdad socioeconómica, específicamente nivel de ingresos, nivel educativo y tipo de previsión de salud*. A partir de este objetivo, se formulan las siguientes hipótesis de investigación: H1: a mayor nivel de ingresos, mayor concurrencia a servicios de salud mental; H2: un mayor nivel educativo se asocia positivamente con la probabilidad de consultar y recibir atención psicológica o psiquiátrica; y H3: existen diferencias significativas según previsión, de modo que personas afiliadas al sistema privado (ISAPRE) presentan mayor concurrencia que quienes pertenecen al sistema público (FONASA). H4: las mujeres presentan mayor concurrencia que los hombres. Estas hipótesis permiten evaluar de manera rigurosa cómo la desigualdad socioeconómica condiciona el acceso efectivo a la atención en salud mental. 
+
+# 3. Metodología.
+
+
+```{r librerias, echo=FALSE, warning=FALSE, message=FALSE, collapse=TRUE}
+if (!require("pacman")) install.packages("pacman") # instalar pacman
+pacman::p_load(tidyverse, # Manipulacion datos
+               ggplot2, # Gráficos
+               sjPlot, # Tablas y gráficos
+               ggpubr, # Gráficos
+               ggmosaicdplyr, # para manipular datos
+               psych, # para analizar datos
+               sjmisc,
+               haven,
+               knitr, # Render y tablas
+               kableExtra, # Formateo tablas
+               summarytools, # Tablas
+               stargazer, # Tablas
+               janitor, # Tablas y formateo
+               crosstable, # Tablas
+               table1,
+               broom,
+               rempsyc,
+               sjstats,
+               gginference,
+               foreign
+               )          
+
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+
+#FALTA SUBIR LOS DATOS QUE TRABAJAMOS (YA RECORTADOS)
+Casenproc1 <- read_dta("input (3)/Casenproc1.dta")
+Casenproc2 <- read_dta("input (3)/Casen_numerada.dta")
+Casenproc3 <- read_dta("input (3)/Casen_codificada.dta")
+```
+
+
+## 3.1 Descripción Base de Datos.
+La base de datos a utilizar en la investigación es la de un estudio bivariado realizado con los datos proporcionados por la encuesta CASEN del año 2022 y tanto variables dependientes como la independiente será trabajada desde la misma base de datos.
+
+La Encuesta de Caracterización Socioeconómica Nacional (CASEN) es una encuesta dirigida a hogares levantada regularmente cada dos o 3 años  en el país desde 1987 con representatividad nacional, regional y por área. En el caso específico del año 2022, se realizó presencialmente en 72.056 hogares a lo largo de 16 regiones de Chile. Se empleó una técnica de muestreo probabilístico estratificado y multietápico.
+
+Puesto que nuestra pregunta de investigación esta enfocada en la concurrencia a servicios de atención de salud mental y no si la asistencia a estas se da o no, se reducirá la base de datos en base a la variable s22a, la cual al solo contar quienes SI han asistido a este servicio en los ultimos tres meses, se dejan fuera a todo el resto de la muestra. De un total de 202.231 encuestados, se reduce a solo 2.302 tras la limpieza de todo dato perdido de la muestra.
+
+
+## 3.2 Variables.
+
+### Concurrencia a atención medica de salud mental (s22a)
+```{r}
+#| echo: false
+#| warning: false
+print("valores de concurrencia a atención medica de salud mental")
+table(Casenproc3$ConcAtencionSM)
+print("Tabla de descriptivos")
+summary(Casenproc3$ConcAtencionSM) 
+```
+Descripción: Indicador de variable continua utilizado para medir la necesidad y concurrencia de servicios de salud mental de los encuestados. La variable mide el número de veces en las que el encuestado fue a una consulta de salud mental durante los tres meses anteriores a la realización de la encuesta. Cabe destacar que considera únicamente a quienes respondieron afirmativamente la pregunta anterior, la cual indica si fueron o no a una consulta de atención por salud mental en los últimos tres meses antes de la encuesta. Esto reduce en gran medida la muestra, pero es la variable dependiente y central del análisis. 
+
+Operacionalización en el libro de codigos:
+s22a_preg (Pregunta habilitadora) Entrevistado recibió alguna atención o consulta de salud mental en los últimos 3 meses
+  / 1. = Sí 
+  / 2. = No
+  / -88. = No sabe o No recuerda
+
+Cantidad de consultas de salud mental recibió el entrevistado:
+  / Dentro de la base de datos son consideradas respuestas válidas aquellas que están dentro del rango de 1 a 90 veces
+  / -88. = No sabe o No recuerda
+
+
+
+
+### Ingresos (y1)
+```{r}
+#| echo: false
+#| warning: false
+print("valores de ingresos")
+table(Casenproc3$Ingresos)
+print("Tabla de descriptivos")
+summary(Casenproc2$ingresos)
+```
+Descripción: Indicador presente en la encuesta Casen que mide los ingresos por sueldo o salario líquido percibido por los encuestados durante el último mes. Es una variable continua la cual de forma directa indica la riqueza percibida por los individuos y en la encuesta se consideran respuestas válidas aquellas que están dentro del rango de 8.000 a 25.000.000. A fines de este trabajo, la variable continua es codificada en intervalos, comenzado por quienes no perciven ingresos, siguiendo por quienes reciben menos del sueldo minimo (500.000), para luego ir de el sueldo minimo al millón y desde entonces subir en multiplo de millon de pesos hasta los 5 millones, donde se agrupan hasta el mayor ultimo registrado en la muestra de 2302 casos, que resultó menor a los diez millones.
+
+La razón por la que se escogió este metodo de codificación es que en primer lugar resulta interesante comparar quienes se encuentran antes y despues del sueldo minimo de chile y junto a ello, la diferencia entre quienes se encuentran en el rango del primer millon con como se comportan el resto de multiplos.
+
+Operacionalización en el libro de codigos:
+Sueldo o salario líquido recibido el mes pasado del  trabajo principal
+  / 0. = No recibió sueldo
+  / 8.000 a 25.000.000 = valores validos
+  / -88. = No sabe
+
+
+### Último nivel educacional alcanzado (e6a)
+```{r}
+#| echo: false
+#| warning: false
+print("valores de ultimo o actual nivel educacional alcanzado")
+table(Casenproc3$NivEduc)
+print("Tabla de descriptivos")
+summary(Casenproc2$NivEduc)
+```
+Descripción: Variable de la CASEN que indica el último (o concurrente) nivel educacional alcanzado por los encuestados independiente si lo completo o no, es de carácter ordinal y pone en perspectiva el nivel educacional de quienes buscan atención por salud mental. Las posibles respuestas a la pregunta, ordenadas de un nivel educacional menor al mayor son: 01. No asistió, 02. Sala Cuna, 03. Jardín Infantil, 04. Prekinder / Kinder, 05. Educación Especial 06. Primaria o Preparatoria, 07. Educación Basica 08. Humanidades (Sistema Antiguo) 09. Educación Media Científico-Humanista, 10. Técnica, Comercial, Industrial o Normalista (Sistema Antiguo), 11. Educacion Media Tecnica Profesional, 12. Tecnico Nivel Superior (1 a 3 años), 13. Profesional (4 años o más), 14. Magíster o maestría, 15. Doctorado.
+
+Operacionalización en el libro de codigos: Nivel educacional al que asiste o el más alto al  que asistió el entrevistado 
+  / 1. Nunca asistió
+  / 2. Sala cuna
+  / 3. Jardín Infantil (Medio menor y Medio mayor)
+  / 4. Prekínder / Kínder (Transición menor y Transición Mayor)
+  / 5. Educación Especial (Diferencial)
+  / 6. Primaria o Preparatoria (Sistema antiguo)
+  / 7. Educación Básica
+  / 8. Humanidades (Sistema Antiguo)
+  / 9. Educación Media Científico-Humanista
+  / 10. Técnica, Comercial, Industrial o Normalista (Sistema Antiguo)
+  / 11. Educación Media Técnica Profesional
+  / 12. Técnico Nivel Superior (Carreras 1 a 3 años)
+  / 13. Profesional (Carreras 4 o más años)
+  / 14. Magíster o maestría
+  / 15. Doctorado
+
+
+### Sistema previsional de salud inscrito (s13)
+```{r}
+#| echo: false
+#| warning: false
+print("valores de sistema previsional de salud inscrito")
+table(Casenproc3$SistPrev)
+print("Tabla de descriptivos")
+summary(Casenproc2$SistPrev)
+```
+Descripción: Variable de carácter nominal que indica el sistema previsional de salud en el cual el encuestado se declara adscripto, la respuesta cuenta con un total de 6 respuestas posibles, sumando el caso perdido “no sabe”. Todas excepto la última serán listadas a continuación: 1. Sistema Público FONASA, 2. Isapre, 3. FF.AA. y del Orden, 4. Ninguno (Particular), 5. Otro Sistema.La variable mide asi la Cantidad de personas que pertenecen o no a algún  sistema previsional de salud en Chile y,  la cantidad de adscriptos a cada sistema de salud.
+
+Operacionalización en el libro de codigos: 
+  Sistema previsional de salud en que está adscrito:
+  / 1.- Sistema Público FONASA.
+  / 2.- Isapre.
+  / 3.- FF.AA. y del Orden.
+  / 4.- Ninguno (Particular).
+  / 5.- Otro Sistema.
+
+
+
+### Género (género)
+```{r}
+#| echo: false
+#| warning: false
+print("valores de género")
+table(Casenproc3$Gen)
+print("Tabla de descriptivos")
+summary(Casenproc2$Gen) 
+```
+Descripción: Variable nominal que indica que el género autopercibido e identificado por el encuestado a la hora de responder la encuesta, Hay un total de 8 respuestas, sumando los casos perdidos de quienes no saben y no responden. El resto de indicadores se mencionará a continuación: 1. Masculino, 2. Femenino, 3. Transmasculino, 4. Transfemenino, 5. No binario, 6. Otro género (a especificar).Es una variable que mide una condición sociodemográfica.
+
+Operacionalización en el libro de codigos: 
+Género con el cual se identifica el entrevistado
+/ -99.No responde 
+/ -88. No sabe 
+/ 1. Masculino
+/ 2.Femenino
+/ 3.Transmasculino
+/ 4.Transfemenino
+/ 5.No binario
+/ 6.Otro género. Especifique
+
+
+
+
+# 4. analisis
+## 4.1 Analisis descriptivo Univariado
+En el caso de nuestra investigación, realizar un análisis univariado si bien no indicaría la concurrencia en la que los encuestados se atienden en salud mental si nos permite tener una idea de que indicadores presentan una muestra general más grande considerando que solo se seleccionaron aquellos que respondieron “si” a la pregunta s22a_preg, la cual indica si el encuestado ha ido o no por una atención por salud mental en los últimos 3 meses
+
+### Concurrencia a atención medica de salud mental
+```{r}
+#| echo: false
+#| warning: false
+print("Tabla de descriptivos")
+summary(Casenproc3$ConcAtencionSM) 
+print("Tabla de frecuencias")
+sjmisc::frq(Casenproc3$ConcAtencionSM) %>%
+  kable()
+```
+Analisis: Según la distribución de los datos presentes en la tabla de frecuencia se puede observar que los datos se concentran en niveles bajo de asistencias a consultas de  salud mental ya que el  71,56%  de los entrevistados  ha asistido entre 1 y 3 consultas durante los 3 meses. A su vez se puede observar que a lo largo de la distribución se presentan  datos con valores extremos a partir de las 13 hasta las 36 consultas concentrando solo el 1,54% de personas que han asistido. A partir de esta información se puede inferir que a pesar de que las personas logren acceder a una atención de salud mental, la mayoría no logra sostener el tratamiento constantemente.
+
+
+### Ingresos
+```{r}
+#| echo: false
+#| warning: false
+print("Tabla de descriptivos")
+summary(Casenproc2$ingresos) #ingresos
+print("Tabla de frecuencias")
+sjmisc::frq(Casenproc3$Ingresos) %>%
+  kable()
+```
+Análisis: A partir de la siguiente tabla de frecuencia,  se puede observar que la mayor concentración de datos se encuentra en  ingresos percibidos de niveles bajos,  ya que un 44,70% (Casi la mitad) gana menos de 500.000 pesos al mes. Esto seguido por 30,36% de personas que ganan entre 500.001 y un 1.000. Por lo que un 75% de la población que se atendió en salud mental durante los 3 meses  percibe ingresos menores a 1.000.000 de pesos y, tan solo el 2.6 % de los que han asistido a consultas de salud mental durante los 3 meses tienen ingresos por sobre los 3.000.000 de pesos. Por lo que se puede concluir que las personas que han asistido a salud mental durante los 3 meses tienen una menor cantidad de ingresos percibidos.
+
+### Último nivel educacional alcanzado
+```{r}
+#| echo: false
+#| warning: false
+print("Tabla de descriptivos")
+summary(Casenproc2$NivEduc) #Nivel educacional
+print("Tabla de frecuencias")
+sjmisc::frq(Casenproc3$NivEduc) %>%
+  kable()
+```
+Análisis: La distribución del nivel educacional entre quienes sí consultan por salud mental en los últimos 3 meses  presenta una tendencia muy marcada hacia niveles educativos medios y altos.
+Según la tabla de frecuencia los niveles de consulta se concentran en personas que tienen niveles educativos medios y altos, ya que el 40,8% de los consultantes posee estudios “Profesionales”, lo que representa el grupo más numeroso dentro de toda la muestra. En segundo lugar quienes más consultan servicios de salud mental tenemos “Educación media científico- humanista” con un 17,12%, en tercer lugar “Técnico superior” con un 16,51 y en Cuarto lugar “Educacion media tecnica profesional” con un 10,08. Una apreciación interesante es que las personas con el nivel educativo más alto que es el “Doctorado” corresponde a sólo el 0,70% de la muestra. 
+
+La proporción total de personas con Educación superior ( técnica o universitaria ) asciende a 65% del total. 
+
+Los niveles de baja escolaridad (básica o menos) son escasos los porcentajes en cuanto a concurrencia a servicios de salud mental, representando solo aprox un 7% que corresponde a “No asistió” con un 0,13%, “Educación básica” con un 6,52% y “Primaria sistema antiguo” con un 0,30% 
+
+
+### Sistema previsional de salud inscrito
+```{r}
+#| echo: false
+#| warning: false
+print("Tabla de descriptivos")
+summary(Casenproc2$SistPrev)
+print("Tabla de frecuencias")
+sjmisc::frq(Casenproc3$SistPrev) %>%
+  kable()
+```
+Análisis: Según la tabla de frecuencia podemos observar que la gran mayoría de las consultas por salud mental son de personas que pertenecen al sistema público (FONASA) representando el 72,59% del total, seguidas de las personas que se atienden con Isapre con un 24,98% y, los que pertenecen a FF.AA y del orden representan tan solo el 1,65. Siendo la minoría los que no pertenecen a ninguno en particular u otro sistema con un 0.72%.
+Por lo que podemos concluir que las atenciones de salud mental están mayormente concentradas en pacientes que se atienden en el sistema público. 
+
+### Género
+```{r}
+#| echo: false
+#| warning: false
+print("Tabla de descriptivos")
+summary(Casenproc2$Gen) #Genero
+print("Tabla de frecuencias")
+sjmisc::frq(Casenproc3$Gen) %>%
+  kable() 
+```
+Análisis: Según la información entregada por la tabla de frecuencia podemos observar que el 99,13% de las personas que asistieron a consultas de salud mental se identifican como mujer y hombre por lo que si bien existe una diversidad de género pero que representan una minoría con tan solo el 1% En la misma tabla se aprecia que la mayoría de personas que recibieron consultas se identifican con el género femenino representando así un 74,76% a diferencia de las personas que se identifican con el género masculino que solo representa un 24,37% lo que indica índices muy bajos de asistencia a consultas médicas.
+
+
+## 4.2 Analisis descriptivo Bivariado
+Un análisis bivariado nos permitirá comparar con éxito la variable dependiente (Concurrencia de atención por salud mental) con las independientes. Entender esta relación nos permitirá con facilidad distinguir cómo se relacionan estas variables y entender cómo opera la influencia que tiene una sobre las otras.
+
+### Ingresos
+```{r}
+#| echo: false
+#| warning: false
+print("Tabla bivariada de Concurrencia a atención de salud mental con ingresos")
+sjPlot::sjt.xtab(var.row = Casenproc3$ConcAtencionSM, var.col = Casenproc3$Ingresos, 
+                 show.summary = F, emph.total = T)
+```
+Análisis: Al observar la tabla que cruza la cantidad de consultas de salud mental con los tramos de ingresos mensuales, se aprecia que los tramos con mayor cantidad total de personas corresponde a 0  a 500.000 pesos (1029 casos) y 500.000 a 1.000.000 pesos (699 casos). Estos dos grupos concentran la frecuencia más alta en casi todas las categorías de concurrencia.  Por ejemplo, en 1 consulta, el tramo 0-500000 presenta 303 casos y el tramo 500.00-1.000.000 presenta 209 casos. En 2 consultas, registran 214 y 120 casos, respectivamente. En 3 consultas, estos tramos alcanzan 269 y 158 casos, lo que los convierte en los grupos con mayor presencia en las categorías con más registros. 
+
+En los tramos de ingresos medios, como 1.000.000 a 2.000.000 pesos (384 casos) las frecuencias son menores, pero aún aparecen en todas las categorías de concurrencia. En 1 consulta, este tramo registra 111 casos, en 2 consultas presenta 61 casos y en 3 consultas 77 casos. En el tramo 2.000.00 a 3.000.00 (71 casos) muestra frecuencias más bajas con valores como 23 en 1 consulta, 10 casos en 2 consultas y 14 casos en 3 consultas.
+
+Los tramos de ingresos altos presentan frecuencias muy reducidas. El tramo 3.000.000 a 4.000.000 (34 casos) registran 11 casos en 1 consulta, 5 casos en 2 consultas y 4 casos en 3 consultas. Los tramos 4.000.00 a 5.000.000 y 5.000.000 o más (13 casos cada una) muestran valores aún menores, generalmente entre 0 y 4 casos en la mayoría de las categorías. 
+
+El grupo No percibe ingreso (59 casos) también aparece en las distintas categorías, aunque con valores más bajos. Registra 15 casos en 1 consulta, 7 casos en 2 consultas y 21 casos en 3 consultas. En las categorías superiores, las frecuencias disminuyen considerablemente, con los valores 0 y 2 casos. 
+
+Dado que el sueldo mínimo líquido en Chile ronda los $530.000, es posible notar que una parte importante de las personas ubicadas en el tramo 1 a 500.000 pesos se encuentran por debajo del mínimo legal , mientras que otras del tramo 500.000 a 1.000.000 están apenas por encima de él. Esto permite describir que la mayoría de quienes asistieron a consultas de salud mental se concentran en  niveles de ingreso cercanos o inferiores al sueldo mínimo, ya que estos dos tramos representan el 75% del total de los casos registrados en la tabla. Esta observación muestra que las frecuencias más altas de concurrencia se encuentran precisamente en los grupos con menor remuneración declarada.
+
+
+### Último nivel educacional alcanzado
+```{r}
+#| echo: false
+#| warning: false
+print("Tabla bivariada de Concurrencia a atención de salud mental con ultimo nivel educacional alcanzado")
+sjPlot::sjt.xtab(var.row = Casenproc3$ConcAtencionSM, var.col = Casenproc3$NivEduc, 
+                 show.summary = F, emph.total = T)
+```
+Análisis: La tabla cruzada entre cantidad de consultas en los últimos 3 meses y nivel educacional alcanzado muestra un patrón de estratificación claro: a mayor nivel educacional, mayor presencia dentro del conjunto de personas que asistieron a servicios de salud mental.  
+
+Al revisar la tabla que cruza el número de consultas de salud mental con el nivel educacional alcanzado, se observa que los niveles educativos con mayor cantidad de casos corresponde a “Profesional”, “ Técnico superior”, “ Educacion media cientifico-humanista” y “Educacion media tecnico profesional”. Dentro de estos, el nivel “Profesional” es el que acumula la mayor cantidad de personas, con 941 casos, seguido por “Técnico superior con 380 casos, “Educacion media cientifico- humanista con 394 casos y “Educación media técnica profesional con 232 casos. Estos niveles aparecen con las frecuencias más altas en la mayoría de los grados de consulta, especialmente en 1,2 y 3 consultas. 
+Por el contrario, los niveles con menor cantidad de personas que asistieron a consultas son “No asistió”, “Educación especial”, “Primaria sistema antiguo”, “Humanidades sistema antiguo”, “Técnica/Comercial/Industrial sistema antiguo” y “Doctorado”, los cuales muestran frecuencias muy bajas, generalmente entre 3 y 16 casos en total. Estos niveles aparecen con valores mínimos o nulos en la mayoría de las categorías de número de consultas.
+
+En todas las categorías de concurrencia (de 1 consulta hasta más de 12 consultas), los valores más altos se repiten en los niveles “Profesional”, “Técnico superior” y “Media científico-humanista”, lo que hace que estos tres grupos concentran gran parte de los casos en cada rango. Por su parte, los niveles educacionales más bajos muestran frecuencias muy reducidas y en muchos casos no registran valores en las categorías superiores de número de consultas.
+
+
+### Sistema previsional de salud inscrito
+```{r}
+#| echo: false
+#| warning: false
+print("Tabla bivariada de Concurrencia a atención de salud mental con sistena previsional de salud inscrito")
+sjPlot::sjt.xtab(var.row = Casenproc3$ConcAtencionSM, var.col = Casenproc3$SistPrev, 
+                 show.summary = F, emph.total = T)
+```
+Análisis: Al observar la tabla cruzada entre la cantidad de consultas de salud mental y el sistema previsional inscrito, se aprecia que el sistema que concentra la mayor cantidad de personas en todos los rangos de concurrencia es FONASA, con un total de 1671 casos. Este sistema presenta las frecuencias mas altas en cada categoría de número de consultas, especialmente en 1, 2 y 3 consultas, donde acumula 501, 331 y 418 casos. 
+
+El segundo sistema con mayor cantidad de casos es Isapre, con 775 personas inscritas. Este grupo también aparece representado en todos los rangos de concurrencia, aunque con valores menores que FONASA. En las categorías de concurrencia 1, 2 y 3 consultas, Isapre registra 156,80 y 122 casos. En categorías más altas de consulta 4 a 12, su presencia se mantiene, aunque con frecuencias más bajas 
+
+El sistema FF.AA y de Orden cuenta con 38 casos, lo que lo sitúa como el tercer grupo en magnitud. Sus valores son bajos en todas las categorías, destacando 13 casos en 1 consulta, 6 en 2 consultas y 7 en 3 consultas.
+
+Los sistemas Ninguno/Particular y Otros sistemas muestran frecuencias muy reducidas, ambos con 9 casos en total. En la mayoría de las categorías de concurrencia presentan valores 0 y cuando aparecen, lo hacen con 1 o 2 casos. 
+
+
+
+### Género
+```{r}
+#| echo: false
+#| warning: false
+print("Tabla bivariada de Concurrencia a atención de salud mental con género")
+sjPlot::sjt.xtab(var.row = Casenproc3$ConcAtencionSM, var.col = Casenproc3$Gen, 
+                 show.summary = F, emph.total = T) 
+```
+Análisis: Al observar la tabla cruzada entre la cantidad de consultas de salud mental y el género declarado por las personas encuestadas, se aprecia que el grupo con mayor cantidad total de casos corresponde a Femenino, con 1721 registros, seguido por Masculino, con 561 casos. Estos dos grupos concentran prácticamente la totalidad de las frecuencias en todas las categorías, mientras que los otros géneros presentan valores muy reducidos. 
+
+En la categoría de 1 consulta, el género Femenino registra 494 casos, mientras que el Maculino presenta 178 casos. El mismo patrón  se mantiene en 3 consultas, donde femenino alcanza 440 casos y Masculino 107 casos. Estas tres categorías concentran la mayor parte de los registros totales y muestran las diferencias más amplias en frecuencia absoluta entre ambos géneros.
+
+En las categorías superiores de concurrencias (4 a 12 consultas), los valores continúan siendo mayores en el grupo Femenino  registra 103 casos y Masculino 33, en 6 consultas, Femenino tiene 130 casos y Masculino 28. Aunque las frecuencias bajan en estas categorías el patrón de predominio Femenino se mantiene. 
+
+Los generos No Binario, Otro genero, Transfemenino y Transmasculino presentan valores muy bajos en todas las categorias. Por ejemplo, No Binario tiene 4 casos en 1 consultas, 2 casos en 2 consultas y 0 o 1 caso en la mayoria de las demas categorias. Transmasculino y Transfemeninas aparecen en solo 1 o 2 categorías con 1 caso cada uno. En general, estos grupos presentan frecuencias marginales en comparación con Femenino y Masculino. 
+
+
+## 4.3 Analisis Estadistico Bivariado
+Estimar la correlación entre las variables trabajadas es de suma importancia para comprobar la influencia que tienen las variables independientes con la dependiente. Aqui, la variable dependiente de la concurrencia de atención de salud mental corresponde a una variable numerica continua y en su correlación con las otras se deben emplear los siguientes metodos: el metodo de pearson para comprobarse con la variable ingresos,al ser la ultima una variable numerica intervalar y por otro lado el resto de variables al ser nominales u ordinales se comprobarán con el metodo chi cuadrado. 
+
+### Ingresos (pearson)
+```{r}
+#| echo: false
+#| warning: false
+print("Tabla de correlación entre concurrencia de atención a salud mental con ingresos a traves del metodo pearson")
+coringconc <- cor.test( x = Casenproc2$ingresos,
+                        y = Casenproc2$ConcAtencionSM,
+                        method = 'pearson',
+                        use = 'complete.obs')
+
+stats.table <- tidy(coringconc)
+
+stats.table %>%
+  dplyr::mutate(
+    estimate = round(estimate, 2),
+    statistic = round(statistic, 2),
+    ic_95 = paste0("[", round(conf.low, 2), ",", round(conf.high, 2), "]"),
+    stars = gtools::stars.pval(p.value),
+    p_value = case_when(
+      p.value < 0.05 & p.value > 0.01 ~ "< 0.05",
+      p.value < 0.01 & p.value > 0.001 ~ "< 0.01",
+      p.value < 0.001 ~ "< 0.001",
+      TRUE ~ ""
+    ),
+    p_value = paste0(p_value, stars)
+  ) %>%
+  dplyr::select(estimate, statistic, p_value, parameter, method, alternative, ic_95) %>%
+  kableExtra::kable(
+    col.names = c("Estimación", "t", "p-value", "df", "Método", "Alternativa", "95% IC"),
+    booktabs = T
+  ) %>%
+  kableExtra::kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = T,
+    latex_options = "hold_position",
+    position = "center"
+  )
+```
+Análisis: En vista del resultado de la correlación entre variables, es posible rechazar la hipótesis nula sobre no asociación entre variables con un 95% de confianza, pues 0.16 > a 0, lo que indica una correlación entre el nivel de ingresos y la concurrencia a servicios de salud mental.
+
+### Último nivel educacional alcanzado (Chi cuadrado)
+```{r}
+#| echo: false
+#| warning: false
+print("Tabla de correlación entre concurrencia de atención a salud mental con ultimo nivel educacional alcanzado a traves del metodo chi cuadrado")
+cornived <- chisq.test(table(Casenproc3$NivEduc, Casenproc3$ConcAtencionSM))
+cornived1 <- tidy(cornived, conf_int = T )
+nice_table(cornived1)
+```
+Análisis: En vista del resultado de la prueba de chi cuadrado entre variables, es posible rechazar la hipótesis nula (p < ,001), lo que indica una correlación entre la elección de sistema previsional y la concurrencia a servicios de salud mental. 
+
+### Sistema previsional de salud inscrito (Chi cuadrado)
+```{r}
+#| echo: false
+#| warning: false
+print("Tabla de correlación entre concurrencia de atención a salud mental con sistema previsional de salud inscrito a traves del metodo chi cuadrado")
+corsist <- chisq.test(table(Casenproc3$SistPrev, Casenproc3$ConcAtencionSM))
+corsist1 <- tidy(corsist, conf_int = T )
+nice_table(corsist1)
+```
+Análisis: En vista del resultado de la prueba de chi cuadrado, no es posible encontrar evidencia suficiente para rechazar la hipótesis nula (p = .644) por lo que no es significativa la correlación entre educación y concurrencia a salud mental. 
+
+### Género (Chi cuadrado)
+```{r}
+#| echo: false
+#| warning: false
+print("Tabla de correlación entre concurrencia de atención a salud mental con género a traves del metodo Chi cuadrado")
+corGen <- chisq.test(table(Casenproc3$Gen, Casenproc3$ConcAtencionSM))
+corGen1 <- tidy(corGen, conf_int = T)
+nice_table(corGen1) 
+```
+Análisis: En vista del resultado de la prueba de chi cuadrado, es posible rechazar la hipótesis nula (p = .001), lo que indica una correlación entre el género y la concurrencia a servicios de salud mental.
+
+# 5.Conclusiónes
+Los resultados del análisis bivariado y de las pruebas estadísticas permiten afirmar que en términos descriptivos, la variable dependiente muestra una fuerte concentración en rangos de asistencia, lo que señala que la mayoría de las personas consultó entre 1 y 3 veces durante los tres meses previos a la encuesta. Sin embargo, más allá de esta observación descriptiva, son las correlaciones y las pruebas de hipótesis las que permiten establecer conclusiones con sustento empírico. 
+
+En primer lugar, la correlación entre ingresos y concurrencia es positiva (r = .16) y estadísticamente significativa. Esto permite rechazar la hipótesis nula y afirmar que efectivamente existe una asociación entre ingresos y número de consultas, aunque su magnitud sea baja. Por tanto, la hipótesis H1 (“A mayor ingreso, mayor concurrencia”) se confirma parcialmente: la relación existe, pero es débil. 
+
+La hipótesis H2, que planteaba que “un mayor nivel educativo se asocia positivamente con la concurrencia a servicios de salud mental”, queda rechazada, ya que la prueba de Chi-cuadrado arrojó un valor p = .644, indicando que no existe una relación estadísticamente significativa entre el nivel educacional alcanzado y la cantidad de consultas de salud mental realizadas en los últimos tres meses. Aunque en las tablas descriptivas se observa una mayor concentración de casos en niveles como Profesional, Técnico Superior y Educación Media Científico-Humanista, estas diferencias no son suficientes para establecer una asociación real, por lo que no se puede afirmar que el nivel educativo influye en la concurrencia a servicios de salud mental dentro de esta muestra.
+
+La hipótesis H3 plantea que “las personas afiliadas al sistema privado (ISAPRE) presentan mayor concurrencia que quienes pertenecen al sistema público (FONASA), sin embargo los resultados del análisis estadísticos permiten rechazar esta hipótesis , ya que la prueba de Chi- cuadrado fue significativa  (p < .001), lo que confirma que sí existen diferencias en la concurrencia según sistema previsional, pero en un sentido distinto al propuesto. Al observar la tabla bivariada se evidencia que FONASA concentra la gran mayoría de las consultas en todas las categorías. Esto mencionado lleva a rechazar la H3 en su forma original propuesta, ya que la relación existe, pero en sentido inverso al planteado.
+
+Para continuar la hipótesis H4 busca plantear si el género autopercibido influye en la cantidad de consultas o servicios de salud mental recibas en los últimos 3 meses lo cual, al rechazar la hipótesis nula se comprueba de que las personas que se identifican con el género femenino si asisten más que las personas que se identifican con el género masculino. lo que demuestra la existencia de la correlación.
+Las limitaciones de la investigación van relacionadas al hecho de que son múltiples los factores que determinan el acceso a la salud mental, con las variables seleccionadas no es posible observar el panorama total de la salud mental en Chile, por lo que, como recomendación para futuras investigaciones, se podrían comparar más variables a trabajar en relación al acceso a salud mental, variables como la comuna de residencia o la ruptura rural / ciudad podrían ayudar a vislumbrar cómo se configura territorialmente el acceso a salud mental y la persistencia de la gente en terapia. 
+
+
+# 6. Biliografía
+
+-   Valdés, C., y Errázuri, P. (2012). Salud Mental en Chile: El Pariente Pobre del Sistema de Salud. 
+[Enlace](http://biblioteca.esucomex.cl/RCA/Salud%20mental%20en%20Chile_el%20pariente%20pobre%20del%20sistema%20de%20salud.pdf)
+
+-   Poblete, Fernando C, Sapag, Jaime C y Bossert, Thomas J. (2008). Capital social y salud mental en comunidades urbanas de bajos ingresos en Santiago, Chile. Revista médica de Chile , 136 (2), 230-239.Capital social y salud mental en comunidades urbanas de nivel socioeconómico bajo, en Santiago, Chile
+
+-   Errázuriz, P., Valdés, C.,  Vöhringer, P. y Calvo, E. (2015). Financiamiento de la salud mental en
+Chile: una deuda pendiente. Revista Médica de Chile, 143(11), 1179-1186.
+
+-   Sepulveda, R., y Bocic, M. (2005). Capital social, salud y salud mental. Psiquiatría y Salud Mental, 22 (1-2), 75-82. [Enlace](https://schilesaludmental.cl/web/wp-content/uploads/2022/11/05-1y2-09-Capital-Social.pdf)
+
+
+-   Jiménez-Molina, Á., Abarca-Brown, G. A., y Montenegro, C. (2019). “No hay salud mental sin justicia social”: desigualdades, determinantes sociales y salud mental en Chile. Revista de Psiquiatría Clínica, 57, 7–20. [Enlace](https://revistapsiquiatriaclinica.uchile.cl/index.php/RPSC/article/view/65638/68872)

@@ -1,0 +1,16 @@
+#librerias
+if (!require("pacman")) install.packages("pacman") # instalar pacman
+
+pacman::p_load(dplyr, # para sintaxis
+               Publish)   # para IC)    
+
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls())       # para limpiar el entorno de trabajo
+
+#A) Promedio y Desviación estandar
+set.seed(123) # Fijar la semilla para reproducibilidad
+vector <- rnorm(100, mean = 5, sd = 2)
+print(vector) # Ver el vector generado (100 numeros del 1 al 10)
+
+hist(vector,main="Histograma del Vector",xlab="Valor",ylab="Frecuencia",col="cyan4",border="black")
+boxplot(vector,main="Diagrama de Caja del Vector aleatorio",ylab="Valor",col="cyan3")

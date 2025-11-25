@@ -1,0 +1,58 @@
+if (!require("pacman")) install.packages("pacman") # instalar pacman
+
+pacman::p_load(tidyverse, # Manipulacion datos
+               ggplot2, # Gráficos
+               sjPlot, # Tablas y gráficos
+               ggpubr, # Gráficos
+               ggmosaicdplyr, # para manipular datos
+               psych, # para analizar datos
+               sjmisc) # para analizar datos
+              
+
+
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+
+Casen <- read_dta("input/Base de datos Casen 2022 STATA_18 marzo 2024.dta")
+
+Casenproc1 <- Casen
+
+view(Casen)
+
+Casenproc1 <- dplyr::select(Casenproc1, VecesSaludMental = s22a)
+
+is.na(Casenproc1)
+
+sum(is.na(Casenproc1))
+
+Casenproc1 <- na.omit(Casenproc1)
+
+summary(Casenproc1)
+
+sum(is.na(Casen$s22a_preg, s22a, s13, e6a, y1))
+
+Casenproc1 <- dplyr::select(Casen, 
+                            AtencionSM = s22a_preg,
+                            VecesSM = s22a,
+                            ingresos = y1,
+                            NivEduc = e6a,
+                            SistPrev = s13
+                            )
+
+
+Casenproc1 <- na.omit(Casenproc1)
+
+summary(Casenproc1)
+
+Casenproc2 <- dplyr::select(Casen, 
+                            AtencionSM = s22a_preg,
+                            ingresos = y1,
+                            NivEduc = e6a,
+                            SistPrev = s13
+)
+
+sum(is.na(Casenproc2))
+
+Casenproc2 <- na.omit(Casenproc2)
+
+summary(Casenproc2)

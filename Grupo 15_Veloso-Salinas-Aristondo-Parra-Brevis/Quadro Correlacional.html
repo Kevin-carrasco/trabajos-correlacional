@@ -1,0 +1,2712 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Gabriel Parra, Daniela Veloso, Pablo Salinas, Valentina Montecinos, Matías Brevis">
+
+<title>Salud mental y Desigualdad económica según encuesta CASEN 2022</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Quadro Correlacional_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Quadro Correlacional_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Quadro Correlacional_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Quadro Correlacional_files/libs/quarto-html/popper.min.js"></script>
+<script src="Quadro Correlacional_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Quadro Correlacional_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Quadro Correlacional_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Quadro Correlacional_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Quadro Correlacional_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Quadro Correlacional_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Quadro Correlacional_files/libs/bootstrap/bootstrap-bb462d781dde1847d9e3ccf7736099dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="Quadro Correlacional_files/libs/kePrint-0.0.1/kePrint.js"></script>
+
+<link href="Quadro Correlacional_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+<link href="Quadro Correlacional_files/libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+
+<script src="Quadro Correlacional_files/libs/tabwid-1.1.3/tabwid.js"></script>
+
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Salud mental y Desigualdad económica según encuesta CASEN 2022</h1>
+<p class="subtitle lead">REPORTE DE ANALISIS BIVARIADO</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Gabriel Parra, Daniela Veloso, Pablo Salinas, Valentina Montecinos, Matías Brevis </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">23 de noviembre de 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="resumen" class="level1">
+<h1>1. Resumen</h1>
+<pre><code>Tema del reporte: Correlación entre concurrencia a servicios de salud mental con desigualdad socioeconómica 
+
+
+Fuentes seleccionadas: Encuesta y Base de Datos CASEN 2022
+
+Variable dependiente: Concurrencia a servicios de salud mental (continua)
+
+Variables independientes:</code></pre>
+<ul>
+<li>Servicio previsional de salud (nominal)</li>
+<li>Ingresos líquidos percibidos (continua)</li>
+<li>Género (nominal)</li>
+<li>Último (o actual) nivel de educación alcanzado (ordinal)</li>
+</ul>
+</section>
+<section id="introducción" class="level1">
+<h1>2. Introducción</h1>
+<p>La salud mental es un asunto que ha cobrado cada vez más relevancia en la sociedad chilena y las diferencias en distribución de ingresos se ha consolidado como uno de los determinantes más influyentes en este tópico y en la posibilidad de acceder a tratamientos oportunos. En Chile, este problema posee una relevancia crítica: la literatura especializada en salud pública ha documentado consistentemente que los trastornos mentales tienen una alta prevalencia, impactando la calidad de vida y generando un enorme costo social. Estudios nacionales señalan que 36% de la población ha presentado un trastorno de salud mental en su vida y solo la mitad accede a atención profesional, lo que evidencia barreras estructurales (Poblete, Sapag &amp; Bossert, 2008). Paralelamente investigaciones recientes muestran que las condiciones de vida precarias, la vulnerabilidad y las desigualdades estructurales incrementan síntomas como ansiedad, depresión o estrés crónico, especialmente durante crisis sanitarias como la pandemia de COVID-19 (Rada, Ortiz &amp; Cabieses, 2023).</p>
+<p>En el plano internacional, Chile se ubica por debajo del promedio de inversión en salud mental de los países de la OCDE. Mientras la OCDE destina entre el 5% y el 14% del presupuesto de salud a servicios de salud mental, Chile invierte aproximadamente un 2,4%, lo que repercute en menor oferta de especialistas (Errázuriz et al., 2015). Este déficit estructural produce un círculo vicioso: las personas con menores ingresos tienden a depender exclusivamente del sistema público, donde existen menores recursos y dificultades de continuidad con los tratamientos. Desde esta perspectiva de los determinantes sociales de la salud, la evidencia también demuestra que el nivel educacional, previsión social, y seguridad económica condicionan fuertemente la capacidad de buscar atención profesional y sostenerla en el tiempo (Jiménez-Molina et al., 2019). Asimismo, variables como género y edad también determinan desigualdades relevantes: las mujeres consultan más, pero cargan con mayor prevalencia de trastornos afectivos; los jóvenes presentan barreras económicas para acceder a atención sostenida (Rada et al., 2023). Hasta ahora, gran parte de la investigación chilena ha descrito prevalencias y ha discutido el impacto general de la pobreza en la salud mental, pero existe una brecha en estudios que evalúen estadísticamente la relación entre concurrencia efectiva a servicios de salud mental y desigualdad socioeconómica.</p>
+<p>En este estudio, el concepto central “concurrencia a servicios de salud mental” se entiende como la acción de asistir, consultar o recibir atención psicológica o psiquiátrica en servicios públicos o privados. Esta definición se relaciona directamente con la literatura que documenta las brechas en la utilización de servicios(Jiménez-Molina et al., 2019). Por su parte, la desigualdad socioeconómica se define como la distribución desigual de ingresos, educación y acceso a sistemas de protección social, parámetros descritos como determinantes directos de las oportunidades de salud y bienestar en Chile (Errázuriz et al., 2015). Para operacionalizar esta desigualdad, este estudio utiliza 4 dimensiones específicas: ingreso, considerado una variable continua que refleja capacidad económica; nivel educativo, considerado una variable ordinal,entendido como el máximo nivel de instrucción alcanzado y asociado al capital cultural, previsión de salud, variable nominal que distingue entre afiliación pública o privada y género, considerado como variable nominal , utilizada para analizar diferencias en la concurrencia a servicios de salud mental según identidad de género. Por lo anterior, el objetivo central de este estudio es <em>analizar en qué medida la concurrencia a servicios de salud mental se relaciona con indicadores de desigualdad socioeconómica, específicamente nivel de ingresos, nivel educativo y tipo de previsión de salud</em>. A partir de este objetivo, se formulan las siguientes hipótesis de investigación: H1: a mayor nivel de ingresos, mayor concurrencia a servicios de salud mental; H2: un mayor nivel educativo se asocia positivamente con la probabilidad de consultar y recibir atención psicológica o psiquiátrica; y H3: existen diferencias significativas según previsión, de modo que personas afiliadas al sistema privado (ISAPRE) presentan mayor concurrencia que quienes pertenecen al sistema público (FONASA). H4: las mujeres presentan mayor concurrencia que los hombres. Estas hipótesis permiten evaluar de manera rigurosa cómo la desigualdad socioeconómica condiciona el acceso efectivo a la atención en salud mental.</p>
+</section>
+<section id="metodología." class="level1">
+<h1>3. Metodología.</h1>
+<section id="descripción-base-de-datos." class="level2">
+<h2 class="anchored" data-anchor-id="descripción-base-de-datos.">3.1 Descripción Base de Datos.</h2>
+<p>La base de datos a utilizar en la investigación es la de un estudio bivariado realizado con los datos proporcionados por la encuesta CASEN del año 2022 y tanto variables dependientes como la independiente será trabajada desde la misma base de datos.</p>
+<p>La Encuesta de Caracterización Socioeconómica Nacional (CASEN) es una encuesta dirigida a hogares levantada regularmente cada dos o 3 años en el país desde 1987 con representatividad nacional, regional y por área. En el caso específico del año 2022, se realizó presencialmente en 72.056 hogares a lo largo de 16 regiones de Chile. Se empleó una técnica de muestreo probabilístico estratificado y multietápico.</p>
+<p>Puesto que nuestra pregunta de investigación esta enfocada en la concurrencia a servicios de atención de salud mental y no si la asistencia a estas se da o no, se reducirá la base de datos en base a la variable s22a, la cual al solo contar quienes SI han asistido a este servicio en los ultimos tres meses, se dejan fuera a todo el resto de la muestra. De un total de 202.231 encuestados, se reduce a solo 2.302 tras la limpieza de todo dato perdido de la muestra.</p>
+</section>
+<section id="variables." class="level2">
+<h2 class="anchored" data-anchor-id="variables.">3.2 Variables.</h2>
+<section id="concurrencia-a-atención-medica-de-salud-mental-s22a" class="level3">
+<h3 class="anchored" data-anchor-id="concurrencia-a-atención-medica-de-salud-mental-s22a">Concurrencia a atención medica de salud mental (s22a)</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "valores de concurrencia a atención medica de salud mental"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  20  22  24  25 
+678 419 548 136  78 168  27  43  35  49   2  83   7   7  12   3   2   1   1   1 
+ 30  36 
+  1   1 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla de descriptivos"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  1.000   1.000   3.000   3.498   4.000  36.000 </code></pre>
+</div>
+</div>
+<p>Descripción: Indicador de variable continua utilizado para medir la necesidad y concurrencia de servicios de salud mental de los encuestados. La variable mide el número de veces en las que el encuestado fue a una consulta de salud mental durante los tres meses anteriores a la realización de la encuesta. Cabe destacar que considera únicamente a quienes respondieron afirmativamente la pregunta anterior, la cual indica si fueron o no a una consulta de atención por salud mental en los últimos tres meses antes de la encuesta. Esto reduce en gran medida la muestra, pero es la variable dependiente y central del análisis.</p>
+<p>Operacionalización en el libro de codigos: s22a_preg (Pregunta habilitadora) Entrevistado recibió alguna atención o consulta de salud mental en los últimos 3 meses / 1. = Sí / 2. = No / -88. = No sabe o No recuerda</p>
+<p>Cantidad de consultas de salud mental recibió el entrevistado: / Dentro de la base de datos son consideradas respuestas válidas aquellas que están dentro del rango de 1 a 90 veces / -88. = No sabe o No recuerda</p>
+</section>
+<section id="ingresos-y1" class="level3">
+<h3 class="anchored" data-anchor-id="ingresos-y1">Ingresos (y1)</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "valores de ingresos"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   01. No percibe ingresos             02. 0 a 500000 
+                        59                       1029 
+   03. 500.000 a 1.000.000  04. 1.000.000 a 2.000.000 
+                       699                        384 
+ 05. 2.000.000 a 3.000.000  06. 3.000.000 a 4.000.000 
+                        71                         34 
+ 07. 4.000.000 a 5.000.000 08. 5.000.000 a 10.000.000 
+                        13                         13 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla de descriptivos"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+      0  400000  550000  820691 1000000 9000000 </code></pre>
+</div>
+</div>
+<p>Descripción: Indicador presente en la encuesta Casen que mide los ingresos por sueldo o salario líquido percibido por los encuestados durante el último mes. Es una variable continua la cual de forma directa indica la riqueza percibida por los individuos y en la encuesta se consideran respuestas válidas aquellas que están dentro del rango de 8.000 a 25.000.000. A fines de este trabajo, la variable continua es codificada en intervalos, comenzado por quienes no perciven ingresos, siguiendo por quienes reciben menos del sueldo minimo (500.000), para luego ir de el sueldo minimo al millón y desde entonces subir en multiplo de millon de pesos hasta los 5 millones, donde se agrupan hasta el mayor ultimo registrado en la muestra de 2302 casos, que resultó menor a los diez millones.</p>
+<p>La razón por la que se escogió este metodo de codificación es que en primer lugar resulta interesante comparar quienes se encuentran antes y despues del sueldo minimo de chile y junto a ello, la diferencia entre quienes se encuentran en el rango del primer millon con como se comportan el resto de multiplos.</p>
+<p>Operacionalización en el libro de codigos: Sueldo o salario líquido recibido el mes pasado del trabajo principal / 0. = No recibió sueldo / 8.000 a 25.000.000 = valores validos / -88. = No sabe</p>
+</section>
+<section id="último-nivel-educacional-alcanzado-e6a" class="level3">
+<h3 class="anchored" data-anchor-id="último-nivel-educacional-alcanzado-e6a">Último nivel educacional alcanzado (e6a)</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "valores de ultimo o actual nivel educacional alcanzado"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                                             01. No AsistiÃ³ 
+                                                           3 
+                                             05. Ed Especial 
+                                                           3 
+                                   06. Primaria Sist Antiguo 
+                                                           7 
+                                               07. Ed Basica 
+                                                         150 
+                                08. Humanidades Sist Antiguo 
+                                                           6 
+                           09. Ed Media Cientifico Humanista 
+                                                         394 
+10. Tecnica, Comercial, Industrial o Normalista Sist Antiguo 
+                                                           6 
+                            11. Ed Media Tecnico Profesional 
+                                                         232 
+                                        12. Tecnico Superior 
+                                                         380 
+                                             13. Profesional 
+                                                         941 
+                                     14. Magister o Maestria 
+                                                         164 
+                                               15. Doctorado 
+                                                          16 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla de descriptivos"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1.00   11.00   12.00   11.57   13.00   15.00 </code></pre>
+</div>
+</div>
+<p>Descripción: Variable de la CASEN que indica el último (o concurrente) nivel educacional alcanzado por los encuestados independiente si lo completo o no, es de carácter ordinal y pone en perspectiva el nivel educacional de quienes buscan atención por salud mental. Las posibles respuestas a la pregunta, ordenadas de un nivel educacional menor al mayor son: 01. No asistió, 02. Sala Cuna, 03. Jardín Infantil, 04. Prekinder / Kinder, 05. Educación Especial 06. Primaria o Preparatoria, 07. Educación Basica 08. Humanidades (Sistema Antiguo) 09. Educación Media Científico-Humanista, 10. Técnica, Comercial, Industrial o Normalista (Sistema Antiguo), 11. Educacion Media Tecnica Profesional, 12. Tecnico Nivel Superior (1 a 3 años), 13. Profesional (4 años o más), 14. Magíster o maestría, 15. Doctorado.</p>
+<p>Operacionalización en el libro de codigos: Nivel educacional al que asiste o el más alto al que asistió el entrevistado / 1. Nunca asistió / 2. Sala cuna / 3. Jardín Infantil (Medio menor y Medio mayor) / 4. Prekínder / Kínder (Transición menor y Transición Mayor) / 5. Educación Especial (Diferencial) / 6. Primaria o Preparatoria (Sistema antiguo) / 7. Educación Básica / 8. Humanidades (Sistema Antiguo) / 9. Educación Media Científico-Humanista / 10. Técnica, Comercial, Industrial o Normalista (Sistema Antiguo) / 11. Educación Media Técnica Profesional / 12. Técnico Nivel Superior (Carreras 1 a 3 años) / 13. Profesional (Carreras 4 o más años) / 14. Magíster o maestría / 15. Doctorado</p>
+</section>
+<section id="sistema-previsional-de-salud-inscrito-s13" class="level3">
+<h3 class="anchored" data-anchor-id="sistema-previsional-de-salud-inscrito-s13">Sistema previsional de salud inscrito (s13)</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "valores de sistema previsional de salud inscrito"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  FFAA y del Orden             Fonasa             Isapre Ninguno/Particular 
+                38               1671                575                  9 
+      Otro Sistema 
+                 9 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla de descriptivos"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1.00    1.00    1.00    1.31    2.00    5.00 </code></pre>
+</div>
+</div>
+<p>Descripción: Variable de carácter nominal que indica el sistema previsional de salud en el cual el encuestado se declara adscripto, la respuesta cuenta con un total de 6 respuestas posibles, sumando el caso perdido “no sabe”. Todas excepto la última serán listadas a continuación: 1. Sistema Público FONASA, 2. Isapre, 3. FF.AA. y del Orden, 4. Ninguno (Particular), 5. Otro Sistema.La variable mide asi la Cantidad de personas que pertenecen o no a algún sistema previsional de salud en Chile y, la cantidad de adscriptos a cada sistema de salud.</p>
+<p>Operacionalización en el libro de codigos: Sistema previsional de salud en que está adscrito: / 1.- Sistema Público FONASA. / 2.- Isapre. / 3.- FF.AA. y del Orden. / 4.- Ninguno (Particular). / 5.- Otro Sistema.</p>
+</section>
+<section id="género-género" class="level3">
+<h3 class="anchored" data-anchor-id="género-género">Género (género)</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "valores de género"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+      Femenino      Masculino     No binario    Otro genero  Transfemenino 
+          1721            561             15              2              1 
+Transmasculino 
+             2 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla de descriptivos"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  1.000   2.000   2.000   1.781   2.000   6.000 </code></pre>
+</div>
+</div>
+<p>Descripción: Variable nominal que indica que el género autopercibido e identificado por el encuestado a la hora de responder la encuesta, Hay un total de 8 respuestas, sumando los casos perdidos de quienes no saben y no responden. El resto de indicadores se mencionará a continuación: 1. Masculino, 2. Femenino, 3. Transmasculino, 4. Transfemenino, 5. No binario, 6. Otro género (a especificar).Es una variable que mide una condición sociodemográfica.</p>
+<p>Operacionalización en el libro de codigos: Género con el cual se identifica el entrevistado / -99.No responde / -88. No sabe / 1. Masculino / 2.Femenino / 3.Transmasculino / 4.Transfemenino / 5.No binario / 6.Otro género. Especifique</p>
+</section>
+</section>
+</section>
+<section id="analisis" class="level1">
+<h1>4. analisis</h1>
+<section id="analisis-descriptivo-univariado" class="level2">
+<h2 class="anchored" data-anchor-id="analisis-descriptivo-univariado">4.1 Analisis descriptivo Univariado</h2>
+<p>En el caso de nuestra investigación, realizar un análisis univariado si bien no indicaría la concurrencia en la que los encuestados se atienden en salud mental si nos permite tener una idea de que indicadores presentan una muestra general más grande considerando que solo se seleccionaron aquellos que respondieron “si” a la pregunta s22a_preg, la cual indica si el encuestado ha ido o no por una atención por salud mental en los últimos 3 meses</p>
+<section id="concurrencia-a-atención-medica-de-salud-mental" class="level3">
+<h3 class="anchored" data-anchor-id="concurrencia-a-atención-medica-de-salud-mental">Concurrencia a atención medica de salud mental</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla de descriptivos"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  1.000   1.000   3.000   3.498   4.000  36.000 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla de frecuencias"</code></pre>
+</div>
+<div class="cell-output-display">
+<table class="kable_wrapper">
+<tbody>
+<tr>
+<td>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">val</th>
+<th style="text-align: left;">label</th>
+<th style="text-align: right;">frq</th>
+<th style="text-align: right;">raw.prc</th>
+<th style="text-align: right;">valid.prc</th>
+<th style="text-align: right;">cum.prc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">678</td>
+<td style="text-align: right;">29.45</td>
+<td style="text-align: right;">29.45</td>
+<td style="text-align: right;">29.45</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">419</td>
+<td style="text-align: right;">18.20</td>
+<td style="text-align: right;">18.20</td>
+<td style="text-align: right;">47.65</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">548</td>
+<td style="text-align: right;">23.81</td>
+<td style="text-align: right;">23.81</td>
+<td style="text-align: right;">71.46</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">136</td>
+<td style="text-align: right;">5.91</td>
+<td style="text-align: right;">5.91</td>
+<td style="text-align: right;">77.37</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">78</td>
+<td style="text-align: right;">3.39</td>
+<td style="text-align: right;">3.39</td>
+<td style="text-align: right;">80.76</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">168</td>
+<td style="text-align: right;">7.30</td>
+<td style="text-align: right;">7.30</td>
+<td style="text-align: right;">88.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">1.17</td>
+<td style="text-align: right;">1.17</td>
+<td style="text-align: right;">89.23</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">1.87</td>
+<td style="text-align: right;">1.87</td>
+<td style="text-align: right;">91.09</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">1.52</td>
+<td style="text-align: right;">1.52</td>
+<td style="text-align: right;">92.62</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;">2.13</td>
+<td style="text-align: right;">2.13</td>
+<td style="text-align: right;">94.74</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">94.83</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">83</td>
+<td style="text-align: right;">3.61</td>
+<td style="text-align: right;">3.61</td>
+<td style="text-align: right;">98.44</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">13</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">98.74</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">99.04</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0.52</td>
+<td style="text-align: right;">0.52</td>
+<td style="text-align: right;">99.57</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">99.70</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">99.78</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">99.83</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">24</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">99.87</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">25</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">99.91</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">30</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">99.96</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">36</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">100.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Analisis: Según la distribución de los datos presentes en la tabla de frecuencia se puede observar que los datos se concentran en niveles bajo de asistencias a consultas de salud mental ya que el 71,56% de los entrevistados ha asistido entre 1 y 3 consultas durante los 3 meses. A su vez se puede observar que a lo largo de la distribución se presentan datos con valores extremos a partir de las 13 hasta las 36 consultas concentrando solo el 1,54% de personas que han asistido. A partir de esta información se puede inferir que a pesar de que las personas logren acceder a una atención de salud mental, la mayoría no logra sostener el tratamiento constantemente.</p>
+</section>
+<section id="ingresos" class="level3">
+<h3 class="anchored" data-anchor-id="ingresos">Ingresos</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla de descriptivos"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+      0  400000  550000  820691 1000000 9000000 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla de frecuencias"</code></pre>
+</div>
+<div class="cell-output-display">
+<table class="kable_wrapper">
+<tbody>
+<tr>
+<td>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">val</th>
+<th style="text-align: left;">label</th>
+<th style="text-align: right;">frq</th>
+<th style="text-align: right;">raw.prc</th>
+<th style="text-align: right;">valid.prc</th>
+<th style="text-align: right;">cum.prc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">01. No percibe ingresos</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">2.56</td>
+<td style="text-align: right;">2.56</td>
+<td style="text-align: right;">2.56</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">02. 0 a 500000</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">1029</td>
+<td style="text-align: right;">44.70</td>
+<td style="text-align: right;">44.70</td>
+<td style="text-align: right;">47.26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">03. 500.000 a 1.000.000</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">699</td>
+<td style="text-align: right;">30.36</td>
+<td style="text-align: right;">30.36</td>
+<td style="text-align: right;">77.63</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">04. 1.000.000 a 2.000.000</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">384</td>
+<td style="text-align: right;">16.68</td>
+<td style="text-align: right;">16.68</td>
+<td style="text-align: right;">94.31</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">05. 2.000.000 a 3.000.000</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">3.08</td>
+<td style="text-align: right;">3.08</td>
+<td style="text-align: right;">97.39</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">06. 3.000.000 a 4.000.000</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">1.48</td>
+<td style="text-align: right;">1.48</td>
+<td style="text-align: right;">98.87</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">07. 4.000.000 a 5.000.000</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">0.56</td>
+<td style="text-align: right;">0.56</td>
+<td style="text-align: right;">99.44</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">08. 5.000.000 a 10.000.000</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">0.56</td>
+<td style="text-align: right;">0.56</td>
+<td style="text-align: right;">100.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Análisis: A partir de la siguiente tabla de frecuencia, se puede observar que la mayor concentración de datos se encuentra en ingresos percibidos de niveles bajos, ya que un 44,70% (Casi la mitad) gana menos de 500.000 pesos al mes. Esto seguido por 30,36% de personas que ganan entre 500.001 y un 1.000. Por lo que un 75% de la población que se atendió en salud mental durante los 3 meses percibe ingresos menores a 1.000.000 de pesos y, tan solo el 2.6 % de los que han asistido a consultas de salud mental durante los 3 meses tienen ingresos por sobre los 3.000.000 de pesos. Por lo que se puede concluir que las personas que han asistido a salud mental durante los 3 meses tienen una menor cantidad de ingresos percibidos.</p>
+</section>
+<section id="último-nivel-educacional-alcanzado" class="level3">
+<h3 class="anchored" data-anchor-id="último-nivel-educacional-alcanzado">Último nivel educacional alcanzado</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla de descriptivos"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1.00   11.00   12.00   11.57   13.00   15.00 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla de frecuencias"</code></pre>
+</div>
+<div class="cell-output-display">
+<table class="kable_wrapper">
+<tbody>
+<tr>
+<td>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 62%">
+<col style="width: 7%">
+<col style="width: 4%">
+<col style="width: 8%">
+<col style="width: 10%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">val</th>
+<th style="text-align: left;">label</th>
+<th style="text-align: right;">frq</th>
+<th style="text-align: right;">raw.prc</th>
+<th style="text-align: right;">valid.prc</th>
+<th style="text-align: right;">cum.prc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">01. No AsistiÃ³</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">0.13</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">05. Ed Especial</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">0.26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">06. Primaria Sist Antiguo</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">0.56</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">07. Ed Basica</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">6.52</td>
+<td style="text-align: right;">6.52</td>
+<td style="text-align: right;">7.08</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">08. Humanidades Sist Antiguo</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">7.34</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">09. Ed Media Cientifico Humanista</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">394</td>
+<td style="text-align: right;">17.12</td>
+<td style="text-align: right;">17.12</td>
+<td style="text-align: right;">24.46</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10. Tecnica, Comercial, Industrial o Normalista Sist Antiguo</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">24.72</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">11. Ed Media Tecnico Profesional</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">232</td>
+<td style="text-align: right;">10.08</td>
+<td style="text-align: right;">10.08</td>
+<td style="text-align: right;">34.80</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">12. Tecnico Superior</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">380</td>
+<td style="text-align: right;">16.51</td>
+<td style="text-align: right;">16.51</td>
+<td style="text-align: right;">51.30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">13. Profesional</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">941</td>
+<td style="text-align: right;">40.88</td>
+<td style="text-align: right;">40.88</td>
+<td style="text-align: right;">92.18</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">14. Magister o Maestria</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">164</td>
+<td style="text-align: right;">7.12</td>
+<td style="text-align: right;">7.12</td>
+<td style="text-align: right;">99.30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">15. Doctorado</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">100.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Análisis: La distribución del nivel educacional entre quienes sí consultan por salud mental en los últimos 3 meses presenta una tendencia muy marcada hacia niveles educativos medios y altos. Según la tabla de frecuencia los niveles de consulta se concentran en personas que tienen niveles educativos medios y altos, ya que el 40,8% de los consultantes posee estudios “Profesionales”, lo que representa el grupo más numeroso dentro de toda la muestra. En segundo lugar quienes más consultan servicios de salud mental tenemos “Educación media científico- humanista” con un 17,12%, en tercer lugar “Técnico superior” con un 16,51 y en Cuarto lugar “Educacion media tecnica profesional” con un 10,08. Una apreciación interesante es que las personas con el nivel educativo más alto que es el “Doctorado” corresponde a sólo el 0,70% de la muestra.</p>
+<p>La proporción total de personas con Educación superior ( técnica o universitaria ) asciende a 65% del total.</p>
+<p>Los niveles de baja escolaridad (básica o menos) son escasos los porcentajes en cuanto a concurrencia a servicios de salud mental, representando solo aprox un 7% que corresponde a “No asistió” con un 0,13%, “Educación básica” con un 6,52% y “Primaria sistema antiguo” con un 0,30%</p>
+</section>
+<section id="sistema-previsional-de-salud-inscrito" class="level3">
+<h3 class="anchored" data-anchor-id="sistema-previsional-de-salud-inscrito">Sistema previsional de salud inscrito</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla de descriptivos"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1.00    1.00    1.00    1.31    2.00    5.00 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla de frecuencias"</code></pre>
+</div>
+<div class="cell-output-display">
+<table class="kable_wrapper">
+<tbody>
+<tr>
+<td>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">val</th>
+<th style="text-align: left;">label</th>
+<th style="text-align: right;">frq</th>
+<th style="text-align: right;">raw.prc</th>
+<th style="text-align: right;">valid.prc</th>
+<th style="text-align: right;">cum.prc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">FFAA y del Orden</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">1.65</td>
+<td style="text-align: right;">1.65</td>
+<td style="text-align: right;">1.65</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fonasa</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">1671</td>
+<td style="text-align: right;">72.59</td>
+<td style="text-align: right;">72.59</td>
+<td style="text-align: right;">74.24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Isapre</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">575</td>
+<td style="text-align: right;">24.98</td>
+<td style="text-align: right;">24.98</td>
+<td style="text-align: right;">99.22</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ninguno/Particular</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0.39</td>
+<td style="text-align: right;">0.39</td>
+<td style="text-align: right;">99.61</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Otro Sistema</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0.39</td>
+<td style="text-align: right;">0.39</td>
+<td style="text-align: right;">100.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Análisis: Según la tabla de frecuencia podemos observar que la gran mayoría de las consultas por salud mental son de personas que pertenecen al sistema público (FONASA) representando el 72,59% del total, seguidas de las personas que se atienden con Isapre con un 24,98% y, los que pertenecen a FF.AA y del orden representan tan solo el 1,65. Siendo la minoría los que no pertenecen a ninguno en particular u otro sistema con un 0.72%. Por lo que podemos concluir que las atenciones de salud mental están mayormente concentradas en pacientes que se atienden en el sistema público.</p>
+</section>
+<section id="género" class="level3">
+<h3 class="anchored" data-anchor-id="género">Género</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla de descriptivos"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  1.000   2.000   2.000   1.781   2.000   6.000 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla de frecuencias"</code></pre>
+</div>
+<div class="cell-output-display">
+<table class="kable_wrapper">
+<tbody>
+<tr>
+<td>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">val</th>
+<th style="text-align: left;">label</th>
+<th style="text-align: right;">frq</th>
+<th style="text-align: right;">raw.prc</th>
+<th style="text-align: right;">valid.prc</th>
+<th style="text-align: right;">cum.prc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Femenino</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">1721</td>
+<td style="text-align: right;">74.76</td>
+<td style="text-align: right;">74.76</td>
+<td style="text-align: right;">74.76</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Masculino</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">561</td>
+<td style="text-align: right;">24.37</td>
+<td style="text-align: right;">24.37</td>
+<td style="text-align: right;">99.13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">No binario</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">99.78</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Otro genero</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">99.87</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Transfemenino</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">99.91</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Transmasculino</td>
+<td style="text-align: left;"><none></none></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">100.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Análisis: Según la información entregada por la tabla de frecuencia podemos observar que el 99,13% de las personas que asistieron a consultas de salud mental se identifican como mujer y hombre por lo que si bien existe una diversidad de género pero que representan una minoría con tan solo el 1% En la misma tabla se aprecia que la mayoría de personas que recibieron consultas se identifican con el género femenino representando así un 74,76% a diferencia de las personas que se identifican con el género masculino que solo representa un 24,37% lo que indica índices muy bajos de asistencia a consultas médicas.</p>
+</section>
+</section>
+<section id="analisis-descriptivo-bivariado" class="level2">
+<h2 class="anchored" data-anchor-id="analisis-descriptivo-bivariado">4.2 Analisis descriptivo Bivariado</h2>
+<p>Un análisis bivariado nos permitirá comparar con éxito la variable dependiente (Concurrencia de atención por salud mental) con las independientes. Entender esta relación nos permitirá con facilidad distinguir cómo se relacionan estas variables y entender cómo opera la influencia que tiene una sobre las otras.</p>
+<section id="ingresos-1" class="level3">
+<h3 class="anchored" data-anchor-id="ingresos-1">Ingresos</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla bivariada de Concurrencia a atención de salud mental con ingresos"</code></pre>
+</div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; border-bottom: 1px solid;">ConcAtencionSM</td>
+<td colspan="8" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal;">Ingresos</td>
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; font-weight: bolder; font-style: italic; border-bottom: 1px solid; background-color: #f8f8f8;">Total</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">01. No percibe<br>
+ingresos</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">02. 0 a 500000</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">03. 500.000 a<br>
+1.000.000</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">04. 1.000.000 a<br>
+2.000.000</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">05. 2.000.000 a<br>
+3.000.000</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">06. 3.000.000 a<br>
+4.000.000</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">07. 4.000.000 a<br>
+5.000.000</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">08. 5.000.000 a<br>
+10.000.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">1</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">15</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">303</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">209</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">111</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">23</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">11</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">4</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">678</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">2</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">7</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">214</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">120</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">61</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">10</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">5</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">419</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">3</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">21</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">269</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">158</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">77</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">14</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">4</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">548</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">4</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">6</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">58</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">49</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">20</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">136</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">5</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">33</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">32</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">9</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">78</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">6</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">71</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">52</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">33</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">168</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">7</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">10</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">7</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">10</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">27</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">8</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">16</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">12</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">11</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">43</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">9</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">10</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">11</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">7</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">35</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">10</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">24</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">8</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">11</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">49</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">11</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">2</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">12</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">15</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">28</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">20</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">9</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">6</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">83</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">13</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">7</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">14</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">5</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">7</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">15</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">6</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">12</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">16</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">3</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">20</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">2</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">22</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">24</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">25</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">30</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">36</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8; font-weight: bolder; font-style: italic; vertical-align: middle;">Total</td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">59</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">1029</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">699</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">384</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">71</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">34</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">13</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">13</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">2302</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Análisis: Al observar la tabla que cruza la cantidad de consultas de salud mental con los tramos de ingresos mensuales, se aprecia que los tramos con mayor cantidad total de personas corresponde a 0 a 500.000 pesos (1029 casos) y 500.000 a 1.000.000 pesos (699 casos). Estos dos grupos concentran la frecuencia más alta en casi todas las categorías de concurrencia. Por ejemplo, en 1 consulta, el tramo 0-500000 presenta 303 casos y el tramo 500.00-1.000.000 presenta 209 casos. En 2 consultas, registran 214 y 120 casos, respectivamente. En 3 consultas, estos tramos alcanzan 269 y 158 casos, lo que los convierte en los grupos con mayor presencia en las categorías con más registros.</p>
+<p>En los tramos de ingresos medios, como 1.000.000 a 2.000.000 pesos (384 casos) las frecuencias son menores, pero aún aparecen en todas las categorías de concurrencia. En 1 consulta, este tramo registra 111 casos, en 2 consultas presenta 61 casos y en 3 consultas 77 casos. En el tramo 2.000.00 a 3.000.00 (71 casos) muestra frecuencias más bajas con valores como 23 en 1 consulta, 10 casos en 2 consultas y 14 casos en 3 consultas.</p>
+<p>Los tramos de ingresos altos presentan frecuencias muy reducidas. El tramo 3.000.000 a 4.000.000 (34 casos) registran 11 casos en 1 consulta, 5 casos en 2 consultas y 4 casos en 3 consultas. Los tramos 4.000.00 a 5.000.000 y 5.000.000 o más (13 casos cada una) muestran valores aún menores, generalmente entre 0 y 4 casos en la mayoría de las categorías.</p>
+<p>El grupo No percibe ingreso (59 casos) también aparece en las distintas categorías, aunque con valores más bajos. Registra 15 casos en 1 consulta, 7 casos en 2 consultas y 21 casos en 3 consultas. En las categorías superiores, las frecuencias disminuyen considerablemente, con los valores 0 y 2 casos.</p>
+<p>Dado que el sueldo mínimo líquido en Chile ronda los $530.000, es posible notar que una parte importante de las personas ubicadas en el tramo 1 a 500.000 pesos se encuentran por debajo del mínimo legal , mientras que otras del tramo 500.000 a 1.000.000 están apenas por encima de él. Esto permite describir que la mayoría de quienes asistieron a consultas de salud mental se concentran en niveles de ingreso cercanos o inferiores al sueldo mínimo, ya que estos dos tramos representan el 75% del total de los casos registrados en la tabla. Esta observación muestra que las frecuencias más altas de concurrencia se encuentran precisamente en los grupos con menor remuneración declarada.</p>
+</section>
+<section id="último-nivel-educacional-alcanzado-1" class="level3">
+<h3 class="anchored" data-anchor-id="último-nivel-educacional-alcanzado-1">Último nivel educacional alcanzado</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla bivariada de Concurrencia a atención de salud mental con ultimo nivel educacional alcanzado"</code></pre>
+</div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; border-bottom: 1px solid;">ConcAtencionSM</td>
+<td colspan="12" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal;">NivEduc</td>
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; font-weight: bolder; font-style: italic; border-bottom: 1px solid; background-color: #f8f8f8;">Total</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">01. No AsistiÃ³</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">05. Ed Especial</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">06. Primaria Sist<br>
+Antiguo</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">07. Ed Basica</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">08. Humanidades Sist<br>
+Antiguo</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">09. Ed Media<br>
+Cientifico Humanista</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">10. Tecnica,<br>
+Comercial,<br>
+Industrial o<br>
+Normalista Sist<br>
+Antiguo</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">11. Ed Media Tecnico<br>
+Profesional</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">12. Tecnico Superior</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">13. Profesional</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">14. Magister o<br>
+Maestria</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">15. Doctorado</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">1</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">55</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">117</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">71</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">122</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">256</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">44</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">678</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">2</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">27</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">85</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">52</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">69</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">156</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">19</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">419</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">3</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">50</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">110</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">65</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">88</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">199</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">27</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">4</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">548</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">4</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">6</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">19</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">11</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">24</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">63</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">11</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">136</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">5</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">11</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">5</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">14</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">40</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">4</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">78</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">6</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">6</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">22</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">17</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">26</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">78</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">19</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">168</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">7</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">4</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">15</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">27</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">8</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">11</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">22</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">6</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">43</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">9</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">4</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">4</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">4</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">18</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">35</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">10</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">8</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">9</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">18</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">10</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">49</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">11</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">2</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">12</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">13</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">53</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">12</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">83</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">13</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">6</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">7</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">14</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">4</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">7</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">15</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">7</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">12</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">16</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">3</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">20</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">2</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">22</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">24</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">25</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">30</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">36</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8; font-weight: bolder; font-style: italic; vertical-align: middle;">Total</td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">7</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">150</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">6</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">394</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">6</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">232</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">380</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">941</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">164</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">16</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">2302</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Análisis: La tabla cruzada entre cantidad de consultas en los últimos 3 meses y nivel educacional alcanzado muestra un patrón de estratificación claro: a mayor nivel educacional, mayor presencia dentro del conjunto de personas que asistieron a servicios de salud mental.</p>
+<p>Al revisar la tabla que cruza el número de consultas de salud mental con el nivel educacional alcanzado, se observa que los niveles educativos con mayor cantidad de casos corresponde a “Profesional”, “ Técnico superior”, “ Educacion media cientifico-humanista” y “Educacion media tecnico profesional”. Dentro de estos, el nivel “Profesional” es el que acumula la mayor cantidad de personas, con 941 casos, seguido por “Técnico superior con 380 casos, “Educacion media cientifico- humanista con 394 casos y “Educación media técnica profesional con 232 casos. Estos niveles aparecen con las frecuencias más altas en la mayoría de los grados de consulta, especialmente en 1,2 y 3 consultas. Por el contrario, los niveles con menor cantidad de personas que asistieron a consultas son “No asistió”, “Educación especial”, “Primaria sistema antiguo”, “Humanidades sistema antiguo”, “Técnica/Comercial/Industrial sistema antiguo” y “Doctorado”, los cuales muestran frecuencias muy bajas, generalmente entre 3 y 16 casos en total. Estos niveles aparecen con valores mínimos o nulos en la mayoría de las categorías de número de consultas.</p>
+<p>En todas las categorías de concurrencia (de 1 consulta hasta más de 12 consultas), los valores más altos se repiten en los niveles “Profesional”, “Técnico superior” y “Media científico-humanista”, lo que hace que estos tres grupos concentran gran parte de los casos en cada rango. Por su parte, los niveles educacionales más bajos muestran frecuencias muy reducidas y en muchos casos no registran valores en las categorías superiores de número de consultas.</p>
+</section>
+<section id="sistema-previsional-de-salud-inscrito-1" class="level3">
+<h3 class="anchored" data-anchor-id="sistema-previsional-de-salud-inscrito-1">Sistema previsional de salud inscrito</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla bivariada de Concurrencia a atención de salud mental con sistena previsional de salud inscrito"</code></pre>
+</div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; border-bottom: 1px solid;">ConcAtencionSM</td>
+<td colspan="5" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal;">SistPrev</td>
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; font-weight: bolder; font-style: italic; border-bottom: 1px solid; background-color: #f8f8f8;">Total</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">FFAA y del Orden</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Fonasa</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Isapre</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Ninguno/Particular</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Otro Sistema</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">1</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">13</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">501</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">156</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">6</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">678</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">2</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">6</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">331</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">80</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">419</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">3</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">7</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">418</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">122</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">548</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">4</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">100</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">34</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">136</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">5</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">4</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">57</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">17</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">78</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">6</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">113</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">53</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">168</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">7</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">21</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">27</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">8</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">28</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">14</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">43</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">9</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">13</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">19</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">35</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">10</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">34</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">14</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">49</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">11</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">2</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">12</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">40</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">42</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">83</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">13</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">5</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">7</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">14</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">4</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">7</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">15</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">6</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">6</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">12</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">16</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">3</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">20</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">2</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">22</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">24</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">25</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">30</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">36</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8; font-weight: bolder; font-style: italic; vertical-align: middle;">Total</td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">38</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">1671</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">575</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">9</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">9</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">2302</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Análisis: Al observar la tabla cruzada entre la cantidad de consultas de salud mental y el sistema previsional inscrito, se aprecia que el sistema que concentra la mayor cantidad de personas en todos los rangos de concurrencia es FONASA, con un total de 1671 casos. Este sistema presenta las frecuencias mas altas en cada categoría de número de consultas, especialmente en 1, 2 y 3 consultas, donde acumula 501, 331 y 418 casos.</p>
+<p>El segundo sistema con mayor cantidad de casos es Isapre, con 775 personas inscritas. Este grupo también aparece representado en todos los rangos de concurrencia, aunque con valores menores que FONASA. En las categorías de concurrencia 1, 2 y 3 consultas, Isapre registra 156,80 y 122 casos. En categorías más altas de consulta 4 a 12, su presencia se mantiene, aunque con frecuencias más bajas</p>
+<p>El sistema FF.AA y de Orden cuenta con 38 casos, lo que lo sitúa como el tercer grupo en magnitud. Sus valores son bajos en todas las categorías, destacando 13 casos en 1 consulta, 6 en 2 consultas y 7 en 3 consultas.</p>
+<p>Los sistemas Ninguno/Particular y Otros sistemas muestran frecuencias muy reducidas, ambos con 9 casos en total. En la mayoría de las categorías de concurrencia presentan valores 0 y cuando aparecen, lo hacen con 1 o 2 casos.</p>
+</section>
+<section id="género-1" class="level3">
+<h3 class="anchored" data-anchor-id="género-1">Género</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla bivariada de Concurrencia a atención de salud mental con género"</code></pre>
+</div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; border-bottom: 1px solid;">ConcAtencionSM</td>
+<td colspan="6" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal;">Gen</td>
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; font-weight: bolder; font-style: italic; border-bottom: 1px solid; background-color: #f8f8f8;">Total</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Femenino</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Masculino</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">No binario</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Otro genero</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Transfemenino</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Transmasculino</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">1</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">494</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">178</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">4</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">678</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">2</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">303</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">113</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">419</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">3</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">440</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">107</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">548</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">4</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">103</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">33</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">136</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">5</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">50</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">25</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">78</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">6</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">130</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">35</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">3</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">168</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">7</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">22</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">4</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">27</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">8</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">29</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">14</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">43</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">9</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">23</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">11</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">35</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">10</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">41</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">7</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">49</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">11</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">2</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">12</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">54</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">28</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">83</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">13</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">5</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">7</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">14</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">7</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">7</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">15</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">12</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">12</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">16</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">3</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">20</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">2</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">22</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">24</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">25</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">30</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">36</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8; font-weight: bolder; font-style: italic; vertical-align: middle;">Total</td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">1721</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">561</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">15</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">1</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">2</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">2302</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Análisis: Al observar la tabla cruzada entre la cantidad de consultas de salud mental y el género declarado por las personas encuestadas, se aprecia que el grupo con mayor cantidad total de casos corresponde a Femenino, con 1721 registros, seguido por Masculino, con 561 casos. Estos dos grupos concentran prácticamente la totalidad de las frecuencias en todas las categorías, mientras que los otros géneros presentan valores muy reducidos.</p>
+<p>En la categoría de 1 consulta, el género Femenino registra 494 casos, mientras que el Maculino presenta 178 casos. El mismo patrón se mantiene en 3 consultas, donde femenino alcanza 440 casos y Masculino 107 casos. Estas tres categorías concentran la mayor parte de los registros totales y muestran las diferencias más amplias en frecuencia absoluta entre ambos géneros.</p>
+<p>En las categorías superiores de concurrencias (4 a 12 consultas), los valores continúan siendo mayores en el grupo Femenino registra 103 casos y Masculino 33, en 6 consultas, Femenino tiene 130 casos y Masculino 28. Aunque las frecuencias bajan en estas categorías el patrón de predominio Femenino se mantiene.</p>
+<p>Los generos No Binario, Otro genero, Transfemenino y Transmasculino presentan valores muy bajos en todas las categorias. Por ejemplo, No Binario tiene 4 casos en 1 consultas, 2 casos en 2 consultas y 0 o 1 caso en la mayoria de las demas categorias. Transmasculino y Transfemeninas aparecen en solo 1 o 2 categorías con 1 caso cada uno. En general, estos grupos presentan frecuencias marginales en comparación con Femenino y Masculino.</p>
+</section>
+</section>
+<section id="analisis-estadistico-bivariado" class="level2">
+<h2 class="anchored" data-anchor-id="analisis-estadistico-bivariado">4.3 Analisis Estadistico Bivariado</h2>
+<p>Estimar la correlación entre las variables trabajadas es de suma importancia para comprobar la influencia que tienen las variables independientes con la dependiente. Aqui, la variable dependiente de la concurrencia de atención de salud mental corresponde a una variable numerica continua y en su correlación con las otras se deben emplear los siguientes metodos: el metodo de pearson para comprobarse con la variable ingresos,al ser la ultima una variable numerica intervalar y por otro lado el resto de variables al ser nominales u ordinales se comprobarán con el metodo chi cuadrado.</p>
+<section id="ingresos-pearson" class="level3">
+<h3 class="anchored" data-anchor-id="ingresos-pearson">Ingresos (pearson)</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla de correlación entre concurrencia de atención a salud mental con ingresos a traves del metodo pearson"</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="table-responsive">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">Estimación</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">t</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">p-value</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">df</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Método</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Alternativa</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">95% IC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">7.77</td>
+<td style="text-align: left;">&lt; 0.001***</td>
+<td style="text-align: right;">2300</td>
+<td style="text-align: left;">Pearson's product-moment correlation</td>
+<td style="text-align: left;">two.sided</td>
+<td style="text-align: left;">[0.12,0.2]</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Análisis: En vista del resultado de la correlación entre variables, es posible rechazar la hipótesis nula sobre no asociación entre variables con un 95% de confianza, pues 0.16 &gt; a 0, lo que indica una correlación entre el nivel de ingresos y la concurrencia a servicios de salud mental.</p>
+</section>
+<section id="último-nivel-educacional-alcanzado-chi-cuadrado" class="level3">
+<h3 class="anchored" data-anchor-id="último-nivel-educacional-alcanzado-chi-cuadrado">Último nivel educacional alcanzado (Chi cuadrado)</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla de correlación entre concurrencia de atención a salud mental con ultimo nivel educacional alcanzado a traves del metodo chi cuadrado"</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-8a1c60ce{table-layout:auto;}.cl-8a10d25e{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8a10d272{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8a157c14{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-8a157c28{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-8a15a9d2{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a15a9dc{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a15a9e6{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-8a1c60ce"><thead><tr style="overflow-wrap:break-word;"><th class="cl-8a15a9d2"><p class="cl-8a157c14"><span class="cl-8a10d25e">statistic</span></p></th><th class="cl-8a15a9d2"><p class="cl-8a157c14"><span class="cl-8a10d272">p</span></p></th><th class="cl-8a15a9d2"><p class="cl-8a157c14"><span class="cl-8a10d25e">parameter</span></p></th><th class="cl-8a15a9d2"><p class="cl-8a157c14"><span class="cl-8a10d25e">Method</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-8a15a9dc"><p class="cl-8a157c28"><span class="cl-8a10d25e">222.53</span></p></td><td class="cl-8a15a9e6"><p class="cl-8a157c14"><span class="cl-8a10d25e">.644</span></p></td><td class="cl-8a15a9e6"><p class="cl-8a157c14"><span class="cl-8a10d25e">231</span></p></td><td class="cl-8a15a9e6"><p class="cl-8a157c14"><span class="cl-8a10d25e">Pearson's Chi-squared test</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>Análisis: En vista del resultado de la prueba de chi cuadrado entre variables, es posible rechazar la hipótesis nula (p &lt; ,001), lo que indica una correlación entre la elección de sistema previsional y la concurrencia a servicios de salud mental.</p>
+</section>
+<section id="sistema-previsional-de-salud-inscrito-chi-cuadrado" class="level3">
+<h3 class="anchored" data-anchor-id="sistema-previsional-de-salud-inscrito-chi-cuadrado">Sistema previsional de salud inscrito (Chi cuadrado)</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla de correlación entre concurrencia de atención a salud mental con sistema previsional de salud inscrito a traves del metodo chi cuadrado"</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-8a439004{table-layout:auto;}.cl-8a387dd6{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8a387dea{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8a3ca712{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-8a3ca730{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-8a3cc8aa{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a3cc8be{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a3cc8c8{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-8a439004"><thead><tr style="overflow-wrap:break-word;"><th class="cl-8a3cc8aa"><p class="cl-8a3ca712"><span class="cl-8a387dd6">statistic</span></p></th><th class="cl-8a3cc8aa"><p class="cl-8a3ca712"><span class="cl-8a387dea">p</span></p></th><th class="cl-8a3cc8aa"><p class="cl-8a3ca712"><span class="cl-8a387dd6">parameter</span></p></th><th class="cl-8a3cc8aa"><p class="cl-8a3ca712"><span class="cl-8a387dd6">Method</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-8a3cc8be"><p class="cl-8a3ca730"><span class="cl-8a387dd6">188.98</span></p></td><td class="cl-8a3cc8c8"><p class="cl-8a3ca712"><span class="cl-8a387dd6">&lt; .001***</span></p></td><td class="cl-8a3cc8c8"><p class="cl-8a3ca712"><span class="cl-8a387dd6">84</span></p></td><td class="cl-8a3cc8c8"><p class="cl-8a3ca712"><span class="cl-8a387dd6">Pearson's Chi-squared test</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>Análisis: En vista del resultado de la prueba de chi cuadrado, no es posible encontrar evidencia suficiente para rechazar la hipótesis nula (p = .644) por lo que no es significativa la correlación entre educación y concurrencia a salud mental.</p>
+</section>
+<section id="género-chi-cuadrado" class="level3">
+<h3 class="anchored" data-anchor-id="género-chi-cuadrado">Género (Chi cuadrado)</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tabla de correlación entre concurrencia de atención a salud mental con género a traves del metodo Chi cuadrado"</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-8a669978{table-layout:auto;}.cl-8a5cc52e{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8a5cc542{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8a60946a{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-8a60947e{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-8a60b918{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a60b922{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a60b923{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-8a669978"><thead><tr style="overflow-wrap:break-word;"><th class="cl-8a60b918"><p class="cl-8a60946a"><span class="cl-8a5cc52e">statistic</span></p></th><th class="cl-8a60b918"><p class="cl-8a60946a"><span class="cl-8a5cc542">p</span></p></th><th class="cl-8a60b918"><p class="cl-8a60946a"><span class="cl-8a5cc52e">parameter</span></p></th><th class="cl-8a60b918"><p class="cl-8a60946a"><span class="cl-8a5cc52e">Method</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-8a60b922"><p class="cl-8a60947e"><span class="cl-8a5cc52e">156.38</span></p></td><td class="cl-8a60b923"><p class="cl-8a60946a"><span class="cl-8a5cc52e">.001***</span></p></td><td class="cl-8a60b923"><p class="cl-8a60946a"><span class="cl-8a5cc52e">105</span></p></td><td class="cl-8a60b923"><p class="cl-8a60946a"><span class="cl-8a5cc52e">Pearson's Chi-squared test</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>Análisis: En vista del resultado de la prueba de chi cuadrado, es posible rechazar la hipótesis nula (p = .001), lo que indica una correlación entre el género y la concurrencia a servicios de salud mental.</p>
+</section>
+</section>
+</section>
+<section id="conclusiónes" class="level1">
+<h1>5.Conclusiónes</h1>
+<p>Los resultados del análisis bivariado y de las pruebas estadísticas permiten afirmar que en términos descriptivos, la variable dependiente muestra una fuerte concentración en rangos de asistencia, lo que señala que la mayoría de las personas consultó entre 1 y 3 veces durante los tres meses previos a la encuesta. Sin embargo, más allá de esta observación descriptiva, son las correlaciones y las pruebas de hipótesis las que permiten establecer conclusiones con sustento empírico.</p>
+<p>En primer lugar, la correlación entre ingresos y concurrencia es positiva (r = .16) y estadísticamente significativa. Esto permite rechazar la hipótesis nula y afirmar que efectivamente existe una asociación entre ingresos y número de consultas, aunque su magnitud sea baja. Por tanto, la hipótesis H1 (“A mayor ingreso, mayor concurrencia”) se confirma parcialmente: la relación existe, pero es débil.</p>
+<p>La hipótesis H2, que planteaba que “un mayor nivel educativo se asocia positivamente con la concurrencia a servicios de salud mental”, queda rechazada, ya que la prueba de Chi-cuadrado arrojó un valor p = .644, indicando que no existe una relación estadísticamente significativa entre el nivel educacional alcanzado y la cantidad de consultas de salud mental realizadas en los últimos tres meses. Aunque en las tablas descriptivas se observa una mayor concentración de casos en niveles como Profesional, Técnico Superior y Educación Media Científico-Humanista, estas diferencias no son suficientes para establecer una asociación real, por lo que no se puede afirmar que el nivel educativo influye en la concurrencia a servicios de salud mental dentro de esta muestra.</p>
+<p>La hipótesis H3 plantea que “las personas afiliadas al sistema privado (ISAPRE) presentan mayor concurrencia que quienes pertenecen al sistema público (FONASA), sin embargo los resultados del análisis estadísticos permiten rechazar esta hipótesis , ya que la prueba de Chi- cuadrado fue significativa (p &lt; .001), lo que confirma que sí existen diferencias en la concurrencia según sistema previsional, pero en un sentido distinto al propuesto. Al observar la tabla bivariada se evidencia que FONASA concentra la gran mayoría de las consultas en todas las categorías. Esto mencionado lleva a rechazar la H3 en su forma original propuesta, ya que la relación existe, pero en sentido inverso al planteado.</p>
+<p>Para continuar la hipótesis H4 busca plantear si el género autopercibido influye en la cantidad de consultas o servicios de salud mental recibas en los últimos 3 meses lo cual, al rechazar la hipótesis nula se comprueba de que las personas que se identifican con el género femenino si asisten más que las personas que se identifican con el género masculino. lo que demuestra la existencia de la correlación. Las limitaciones de la investigación van relacionadas al hecho de que son múltiples los factores que determinan el acceso a la salud mental, con las variables seleccionadas no es posible observar el panorama total de la salud mental en Chile, por lo que, como recomendación para futuras investigaciones, se podrían comparar más variables a trabajar en relación al acceso a salud mental, variables como la comuna de residencia o la ruptura rural / ciudad podrían ayudar a vislumbrar cómo se configura territorialmente el acceso a salud mental y la persistencia de la gente en terapia.</p>
+</section>
+<section id="biliografía" class="level1">
+<h1>6. Biliografía</h1>
+<ul>
+<li><p>Valdés, C., y Errázuri, P. (2012). Salud Mental en Chile: El Pariente Pobre del Sistema de Salud. <a href="http://biblioteca.esucomex.cl/RCA/Salud%20mental%20en%20Chile_el%20pariente%20pobre%20del%20sistema%20de%20salud.pdf">Enlace</a></p></li>
+<li><p>Poblete, Fernando C, Sapag, Jaime C y Bossert, Thomas J. (2008). Capital social y salud mental en comunidades urbanas de bajos ingresos en Santiago, Chile. Revista médica de Chile , 136 (2), 230-239.Capital social y salud mental en comunidades urbanas de nivel socioeconómico bajo, en Santiago, Chile</p></li>
+<li><p>Errázuriz, P., Valdés, C., Vöhringer, P. y Calvo, E. (2015). Financiamiento de la salud mental en Chile: una deuda pendiente. Revista Médica de Chile, 143(11), 1179-1186.</p></li>
+<li><p>Sepulveda, R., y Bocic, M. (2005). Capital social, salud y salud mental. Psiquiatría y Salud Mental, 22 (1-2), 75-82. <a href="https://schilesaludmental.cl/web/wp-content/uploads/2022/11/05-1y2-09-Capital-Social.pdf">Enlace</a></p></li>
+<li><p>Jiménez-Molina, Á., Abarca-Brown, G. A., y Montenegro, C. (2019). “No hay salud mental sin justicia social”: desigualdades, determinantes sociales y salud mental en Chile. Revista de Psiquiatría Clínica, 57, 7–20. <a href="https://revistapsiquiatriaclinica.uchile.cl/index.php/RPSC/article/view/65638/68872">Enlace</a></p></li>
+</ul>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

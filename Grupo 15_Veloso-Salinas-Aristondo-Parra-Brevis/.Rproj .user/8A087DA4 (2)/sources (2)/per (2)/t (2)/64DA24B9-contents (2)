@@ -1,0 +1,176 @@
+if (!require("pacman")) install.packages("pacman") # instalar pacman
+
+pacman::p_load(tidyverse, # Manipulacion datos
+               ggplot2, # Gráficos
+               sjPlot, # Tablas y gráficos
+               ggpubr, # Gráficos
+               ggmosaicdplyr, # para manipular datos
+               psych, # para analizar datos
+               sjmisc) # para analizar datos
+              
+p_load(haven)
+
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+
+Casen <- read_dta("input/Base de datos Casen 2022 STATA_18 marzo 2024.dta")
+
+Casenproc1 <- Casen
+
+view(Casen)
+
+Casenproc1 <- dplyr::select(Casenproc1, VecesSaludMental = s22a)
+
+is.na(Casenproc1)
+
+sum(is.na(Casenproc1))
+
+Casenproc1 <- na.omit(Casenproc1)
+
+summary(Casenproc1)
+
+sum(is.na(Casen$s22a_preg, s22a, s13, e6a, y1))
+
+Casenproc1 <- dplyr::select(Casen, 
+                            AtencionSM = s22a_preg,
+                            VecesSM = s22a,
+                            ingresos = y1,
+                            NivEduc = e6a,
+                            SistPrev = s13
+                            )
+
+
+Casenproc1 <- na.omit(Casenproc1)
+
+sum(is.na(Casen$genero))
+na.omit(Casen$genero)
+summary(Casenproc1)
+dplyr::recode()
+Casenproc2 <- dplyr::select(Casen, 
+                            AtencionSM = s22a_preg,
+                            ingresos = y1,
+                            NivEduc = e6a,
+                            SistPrev = s13,
+                            Gen = genero
+)
+
+sum(is.na(Casenproc2))
+
+Casenproc2 <- na.omit(Casenproc2)
+
+view(Casen$genero)
+
+Casenproc2 <- Casenproc2 %>%
+  mutate( Gen = ifelse( Gen < 0, NA, Gen))
+
+Casenproc2 <- na.omit(Casenproc2)
+
+table(Casenproc2$Gen)
+
+Casenproc2$Gen <- recode(Casenproc2$Gen, '1' = 'Masculino', '2' = 'Femenino', '3' = 'Transmasculino', '4' = 'Transfemenino', '5' = 'No binario', '6' = 'Otro genero')
+
+Casenproc2$Gen <- recode(Casenproc2$Gen, '1. Masculino' = 'Masculino', '2. Femenino' = 'Femenino', '3. Transmasculino' = 'Transmasc', '4. Transfemenino' = 'Transfem', '5. No binario' = 'No binario', '6. Otro genero' = 'Otro genero')
+
+table(Casenproc2$SistPrev)
+
+Casenproc2 <- Casenproc2 %>%
+  mutate( SistPrev = ifelse( SistPrev < 0, NA, SistPrev))
+table(Casenproc2$SistPrev)
+
+table(Casenproc2$AtencionSM)
+
+Casenproc2 <- Casenproc2 %>% 
+  mutate( AtencionSM = ifelse( AtencionSM < 0, NA, AtencionSM))
+
+table(Casenproc2$ingresos)
+
+Casenproc2 <- Casenproc2 %>% 
+  mutate(ingresos = ifelse(ingresos < 0, NA, ingresos))
+
+table(Casenproc2$AtencionSM)
+table(Casenproc2$ingresos)
+table(Casenproc2$NivEduc)          
+table(Casenproc2$SistPrev)
+table(Casenproc2$Gen)
+
+summary(Casenproc2$ingresos)
+
+Casenproc3 <- Casenproc2
+
+Casenproc3 <- Casenproc3 %>%
+mutate(Casenproc3$ingresos, case_when(
+    ingresos < 1 ~ 'No percibe ingresos',
+      ingresos < 500001 ~ '0 a 500000',
+      ingresos > 500001 & ingresos < 1000001 ~ '500.000 a 1.000.000',
+      ingresos > 1000001 & ingresos < 2000001 ~ '1.000.000 a 2.000.000', 
+      ingresos > 2000001 & ingresos < 3000001 ~ '2.000.000 a 3.000.000', 
+      ingresos > 3000001 & ingresos < 4000001 ~ '3.000.000 a 4.000.000',
+      ingresos > 4000001 & ingresos < 5000001 ~ '4.000.000 a 5.000.000', 
+      ingresos > 5000001 & ingresos < 10000001 ~ '5.000.000 a 10.000.000', 
+      ingresos > 10000001 & ingresos < 15000001 ~ '10.000.000 a 15.000.000',
+      ingresos > 15000001 & ingresos < 20000001 ~ '15.000.000 a 20.000.000',
+      ingresos > 20000001 & ingresos < 25000001 ~ '20.000.000 a 25.000.000'))
+
+colnames(Casenproc3)
+
+Casenproc3 <- Casenproc3[c("AtencionSM", "NivEduc" , "SistPrev", "Gen", "case_when(...)" )]
+Casenproc3 <- Casenproc3 %>%
+  rename(Ingresos = `case_when(...)`)
+
+table(Casenproc3$Ingresos)
+
+Casenproc3 <- Casenproc3 %>% 
+  mutate(Casenproc3$NivEduc, case_when(
+    NivEduc == 1 ~ '1. No Asistió',
+    NivEduc == 2 ~ '2. Sala Cuna',
+    NivEduc == 3 ~ '3. Jardin Infantil',
+    NivEduc == 4 ~ '4. Prekinder/Kinder',
+    NivEduc == 5 ~ '5. Ed Especial',
+    NivEduc == 6 ~ '6. Primaria Sist Antiguo',
+    NivEduc == 7 ~ '7. Ed Basica',
+    NivEduc == 8 ~ '8. Humanidades Sist Antiguo',
+    NivEduc == 9 ~ '9. Ed Media Cientifico Humanista',
+    NivEduc == 10 ~ '10. Tecnica, Comercial, Industrial o Normalista Sist Antiguo',
+    NivEduc == 11 ~ '11. Ed Media Tecnico Profesional',
+    NivEduc == 12 ~ '12. Tecnico Superior',
+    NivEduc == 13 ~ '13. Profesional',
+    NivEduc == 14 ~ '14. Magister o Maestria',
+    NivEduc == 15 ~ '15. Doctorado'
+  ))
+
+colnames(Casenproc3)
+
+Casenproc3 <- Casenproc3[c("AtencionSM", "SistPrev", "Gen", "Ingresos", "case_when(...)" )]
+
+Casenproc3 <- Casenproc3 %>%
+  rename(NivEduc = 'case_when(...)')
+
+table(Casenproc3$Ingresos)
+
+Casenproc3 <- Casenproc3 %>%
+  mutate(Casenproc3$SistPrev, case_when(
+    SistPrev == 1 ~ 'Fonasa',
+    SistPrev == 2 ~ 'Isapre',
+    SistPrev == 3 ~ 'FFAA y del Orden',
+    SistPrev == 4 ~ 'Ninguno/Particular',
+    SistPrev == 5 ~ 'Otro Sistema'
+  ))
+colnames(Casenproc3)
+Casenproc3 <- Casenproc3[c("AtencionSM", "Gen", "Ingresos", "NivEduc", "case_when(...)")]
+Casenproc3 <- Casenproc3 %>%
+  rename(SistPrev = 'case_when(...)')
+
+Casenproc3 <- Casenproc3 %>%
+  mutate(Casenproc3$AtencionSM, case_when(
+    AtencionSM == 1 ~ '1. Si',
+    AtencionSM == 2 ~ '2. No'
+  ))
+colnames(Casenproc3)
+Casenproc3 <- Casenproc3[c("Gen" , "Ingresos","NivEduc", "SistPrev", "case_when(AtencionSM == 1 ~ \"1. Si\", AtencionSM == 2 ~ \"2. No\")" )]
+
+Casenproc3 <- Casenproc3 %>%
+  rename(AtencionSM = "case_when(AtencionSM == 1 ~ \"1. Si\", AtencionSM == 2 ~ \"2. No\")")
+
+summary(Casenproc3$Gen)
+
+summary(Casenproc2$Gen)
