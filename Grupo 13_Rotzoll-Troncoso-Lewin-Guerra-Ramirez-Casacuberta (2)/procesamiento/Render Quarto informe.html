@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Benjamin Casacuberta, Fernanda Troncoso, Harold Ramirez, Ingo Rotzoll, Tomás Guerra y Raitrallén Lewin">
+<meta name="description" content="Profesor: Juan Castillo   Apoyo docente: Kevin Carrasco   Ayudante: Valentina Montecinos">
+
+<title>Trabajo Final Estadística Correlacional 2025</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Render Quarto informe_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Render Quarto informe_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Render Quarto informe_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Render Quarto informe_files/libs/quarto-html/popper.min.js"></script>
+<script src="Render Quarto informe_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Render Quarto informe_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Render Quarto informe_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Render Quarto informe_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Render Quarto informe_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Render Quarto informe_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Render Quarto informe_files/libs/bootstrap/bootstrap-bb462d781dde1847d9e3ccf7736099dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<style>
+p { text-align: justify; }
+</style>
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Trabajo Final Estadística Correlacional 2025</h1>
+<p class="subtitle lead">Estadística Correlacional - Facultad de Ciencias Sociales (Universidad de Chile)</p>
+</div>
+
+<div>
+  <div class="description">
+    <p><strong>Profesor:</strong> Juan Castillo <br> <strong>Apoyo docente:</strong> Kevin Carrasco <br> <strong>Ayudante:</strong> Valentina Montecinos</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Benjamin Casacuberta, Fernanda Troncoso, Harold Ramirez, Ingo Rotzoll, Tomás Guerra y Raitrallén Lewin </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">25 de noviembre de 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>Introducción:</strong></p>
+<p>Los problemas de salud mental, la depresión y ansiedad, son problemas que en la actualidad representan una de las cargas más grandes para la salud en el mundo. La prevalencia de casos de depresión ha tenido un aumento global importante en las últimas décadas, con gran aumento después de la pandemia de Covid-19 (Celis-morales, Nazar 2022). De acuerdo con la OMS (2025) se estima que el 4% de la población mundial sufre de depresión, mientras que en Chile según la ENS (2016-2017) el 6,1% de la población vive con depresión, afectando a mujeres en un 10.1% y a hombres en un 2.1%. Además, un 15,8% de la población a nivel país presenta síntomas depresivos, afectando en un 21.7% en mujeres y 10% en hombres, habiendo diferencia en el componente del sexo en el riesgo de padecer depresión. Chile se muestra entonces como un país por encima del promedio mundial, con alta disparidad en el padecimiento de depresión y presencia de síntomas depresivos, según el sexo de las personas, que ha sido un factor históricamente, que ha develado con consistencia que afecta en mayor proporción a mujeres que hombres. (Jiménez-Molina, Reyes, Rojas, 2021) Otro factor relevante asociado al incremento de riesgo a padecer depresión es el ingreso de las personas, un estudio realizado por Andersen et al.&nbsp;(2009) investigó diferentes factores socioeconómicos y su relación con el padecimiento de depresión. Encontró que la asociación más grande no se daba entre nivel educacional, o estatus social, si no que se daba entre desempleo e ingresos bajos. En Chile la desigualdad de ingresos es alta en comparación con otros países del cono sur, el coeficiente GINI que mide la desigualdad de ingresos por país, pone un puntaje de 43 para Chile en 2025, mientras que otorga un puntaje de 40.9 para Bolivia, 40.7 para Argentina, 40.6 para Uruguay y 40.3 para Perú. Por lo que ver la relación entre el ingreso como medida de desigualdad del riesgo a padecer depresión, es relevante (Statista, 2025). La OMS (2025) tipifica los síntomas asociados a la depresión como, dificultades para concentrarse, sentimientos de culpa excesiva o de baja autoestima, falta de esperanza acerca del futuro, pensamientos de muerte o suicidio, alteraciones del sueño, cambios en el apetito o en el peso, sensación de cansancio acusado o de falta de energía. Debido al aumento de casos y de síntomas de depresión en la población post pandemia en Chile, Realizaremos un estudio que mida la presencia de síntomas de depresión en la población chilena usando la base de datos de la encuesta longitudinal social de Chile (ELSOC) de 2023, Midiendo además cómo el sexo y desigualdad de ingresos se relacionan con la presencia de síntomas asociados al padecimiento de depresión como factores relevantes. Nuestra pregunta de investigación para este trabajo es ¿Cómo se relacionan el ingreso y el género con la presencia de síntomas de depresión? Para abordar esta pregunta planteamos 2 hipótesis. H1: Existe asociación entre las variables de nivel socioeconómico y depresión. H2: Existe mayor presencia de síntomas de depresión en mujeres que en hombres.</p>
+<p><strong>Metodología:</strong></p>
+<p><strong>2.1 Datos:</strong></p>
+<p>Para el presente trabajo se decidió utilizar la base de datos del Estudio Longitudinal Social de Chile (ELSOC) del año 2023. El estudio es realizado por el Centro de Estudios de Conflicto y Cohesión Social, se origina en función de la medición del conflicto y la cohesión social a través del tiempo y pretende ser un aporte empírico para la comprensión de percepciones, actitudes y creencias de la población chilena en lo que respecta a la convivencia y el conflicto permitiendo la observación de sus cambios (COES, s. f.). En el 2023 se entrevistaron a 1,737 personas de la muestra original y 989 personas de una muestra de refresco, el diseño muestral del estudio es probabilístico, estratificado, por conglomerados y multietápico, tiene por población objetivo a mujeres y hombres entre 18 y 75 años residentes del país, el cuestionario se aplicó principalmente de manera presencial y ha sido aplicado un total de 7 veces entre los años 2016 y 2023 (COES, 2024).</p>
+<p><strong>2.2 Variables:</strong></p>
+<p>Para determinar el grado de depresión se decidió utilizar preguntas seleccionadas del módulo S (salud y bienestar) del estudio, y elaborar una escala de síntomas de depresión, se seleccionaron diversas variables a partir de la pregunta S11 “¿Cuántas veces durante las últimas dos semanas ha sentido alguna de las siguientes molestias?” (COES, 2023, p.&nbsp;63). Se seleccionó la variable S11_07 “Mala opinión de Si mismo, tener la sensación de ser fracasado o haber defraudado a la familia” (COES, 2023, p.&nbsp;65) la cual es fundamentada por la conceptualización de la depresión en términos freudianos, que contempla la autocrítica del yo (Cruz Pérez, 2012), esta conceptualización también contempla el “rechazo a alimentarse como consecuencia de su regresión a la fase oral” (Cruz Pérez, 2012, p.&nbsp;1.312) y la “tendencia al suicidio como signo de hostilidad contra sí mismo, como objeto” (Cruz Pérez, 2012, p.&nbsp;1.313), estas cualidades de la depresión freuidiana son medidas claramente por las variables S11_05 “Apetito disminuido o aumentado” (COES, 2023, p.&nbsp;65) y S11_09 “Ha tenido pensamiento de querer estar muerto o de querer hacerse daño o sufrir” (COES, 2023, p.&nbsp;66), ambas incluidas en la escala. Cruz Pérez (2012) refiere a una variedad extensa de síntomas de depresión, los cuales afirma que son claros y observables, algunos de estos validan la elección de las variables mencionadas previamente,la perturbación del apetito y del peso (S11_05), los síntomas y pensamientos generalizados de culpa y/o vergüenza (S11_07) y los pensamientos frecuentes sobre muerte y suicidio (S11_09), y otros sintomas validan la inclusión de otras variables presentes en el módulo. Un indicador de depresión es la presencia de síntomas evidentes de tristeza, los cuales son reflejados en las variables S11_01 “Poco interés o alegría para realizar sus actividades” (COES, 2023, p.&nbsp;64) y S11_02 “Decaimiento, pesadez o desesperanza” (COES, 2023, p.&nbsp;64). Otro síntoma de la depresión refiere al insomnio, el cual es claramente medido por la variable S11_03 “Dificultad para dormirse, dormir toda la noche, o exceso de sueño” (COES, 2023, p.&nbsp;64). También se considera un síntoma la disminución de energía y sensación de fatiga o letargo, claramente pesquisada en la variable S11_04 “Cansancio o tener la sensación de falta de energía” (COES, 2023, p.&nbsp;64). Por último, es preciso mencionar la alteración cognoscitiva de la concentración, medida a través de la variable S11_06 “Dificultades para concentrarse en algo, como leer el diario o ver televisión” (COES, 2023, p.&nbsp;65). Es preciso mencionar que la autora menciona una variedad de otros síntomas, pero ELSOC no contempla variables que permitan su medición. Las variables seleccionadas son variables ordinales, que presentan valores del 1 al 5, a partir de alternativas de preguntas likert que midieron la presencia de los síntomas de depresión en las últimas 2 semanas, de manera que 1 = Nunca 2 = Algunos días 3= Más de la mitad de los días 4 = Casi todos los días y 5 = Todos los días. La escala construida contempla un rango de valores del 0 al 4, donde los valores cercanos al 0 indican una ausencia de síntomas de depresión y valores cercanos al 4 indican una alta presencia de síntomas de depresión.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'knitr' was built under R version 4.5.2</code></pre>
+</div>
+<div id="tbl-descdep" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-descdep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;1: Descriptivos de Depresión
+</figcaption>
+<div aria-describedby="tbl-descdep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">N válido</th>
+<th style="text-align: right;">Media</th>
+<th style="text-align: right;">Desv. Estándar</th>
+<th style="text-align: right;">Mínimo</th>
+<th style="text-align: right;">Máximo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2725</td>
+<td style="text-align: right;">0.732</td>
+<td style="text-align: right;">0.662</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>En complemento a la escala y con fines de realizar análisis bivariados entre variables categóricas, se creó una variable ordinal que representa la presencia de síntomas de depresión, la variable transforma los puntajes del 0 al 0.9 en la escala a “baja”, del 1 a 1.9 a “media baja”, del 2 al 2.9 a “media alta” y del 3 al 4 en “alta”, indicando el grado de presencia de síntomas de depresión de manera categórica.</p>
+<div class="cell">
+<div id="tbl-freq-depresion-ordinal" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-freq-depresion-ordinal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;2: Frecuencia y Porcentaje de los Niveles de Depresión (Ordinal)
+</figcaption>
+<div aria-describedby="tbl-freq-depresion-ordinal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Nivel de Depresión</th>
+<th style="text-align: right;">Frecuencia (N)</th>
+<th style="text-align: right;">Porcentaje (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Bajo</td>
+<td style="text-align: right;">1945</td>
+<td style="text-align: right;">71.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Medio bajo</td>
+<td style="text-align: right;">607</td>
+<td style="text-align: right;">22.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Medio alto</td>
+<td style="text-align: right;">144</td>
+<td style="text-align: right;">5.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Alto</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">1.1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Respecto al ingreso, se re-codificó la variable m13, variable cuantitativa, que representa los ingresos de las personas encuestadas, pasando a ser una variable ordinal, que representa los tramos de ingreso al que pertenecen las personas encuestadas, en función de una división por quintiles.</p>
+<div class="cell">
+<div id="tbl-quintiles-rangos" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-quintiles-rangos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;3: Rangos de ingreso por quintil (cortes reales)
+</figcaption>
+<div aria-describedby="tbl-quintiles-rangos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quintil</th>
+<th style="text-align: left;">Rango de Ingreso (CLP)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Q1 (más bajo)</td>
+<td style="text-align: left;">15000 - 370000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Q2</td>
+<td style="text-align: left;">370000 - 500000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Q3</td>
+<td style="text-align: left;">500000 - 700000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Q4</td>
+<td style="text-align: left;">700000 - 1000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Q5 (más alto)</td>
+<td style="text-align: left;">≥ 1000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>En cuanto a la variable género, se utilizó la variable m0_sexo, variable dicotómica que representa a las mujeres y a los hombres, sin incluir a personas de otras identidades de género.</p>
+<div class="cell">
+<div id="tbl-freq-genero" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-freq-genero-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;4: Frecuencia y Porcentaje por Género
+</figcaption>
+<div aria-describedby="tbl-freq-genero-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Género</th>
+<th style="text-align: right;">Frecuencia (N)</th>
+<th style="text-align: right;">Porcentaje (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Hombre</td>
+<td style="text-align: right;">988</td>
+<td style="text-align: right;">36.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mujer</td>
+<td style="text-align: right;">1738</td>
+<td style="text-align: right;">63.8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p><strong>2.3 Métodos:</strong></p>
+<p>Se realizaron cálculos de correlación entre género y síntomas de depresión con Chi Cuadrado y de correlación policórica para pesquisar la relación entre ingreso y síntomas depresivos, se calculó la diferencia de medidas en la escala de síntomas de depresión entre hombres y mujeres y se realizó una prueba t.&nbsp;</p>
+<p><strong>Análisis:</strong></p>
+<p><strong><em>Variable dependiente: sintomas de depresion</em></strong></p>
+<p><strong><em>Variable independiente: género dicotómico e ingresos por quintiles.</em></strong></p>
+<p><strong>3.1. Análisis descriptivo:</strong></p>
+<p>Al crear la escala de síntomas de depresión, se evaluó la confiabilidad de esta mediante el coeficiente Alfa de Cronbach, obteniéndose un valor de, α = 0.85. Este nivel corresponde a una confiabilidad alta, lo que indica que los ítems presentan coherencia interna y tienden a medir un mismo constructo, en este caso, síntomas depresivos. Los análisis de confiabilidad indican que cada ítem aporta de manera relevante a la medición global.</p>
+<p>Además, las correlaciones entre los ítems de la escala oscilan entre 0.2 cómo valor mínimo y 0.6 cómo valor máximo, que, según los criterios de Cohen, corresponden a correlaciones&nbsp; entre pequeñas y grandes. Todos los valores están asociados a un 99,9 % de confianza y 0,01 de probabilidad de error. Los ítems con correlaciones más bajas sugieren que algunas preguntas aportan dimensiones complementarias dentro del constructo de síntomas de depresión, pero sin comprometer la coherencia global de la escala. En conjunto, la matriz apoya la validez de la escala y es coherente con el valor elevado del alfa de Cronbach reportado anteriormente.</p>
+<p><strong>1. Variable Síntomas de Depresión:</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-distdep" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-distdep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Render-Quarto-informe_files/figure-html/fig-distdep-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-distdep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Distribución de la Escala de Depresión
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Los resultados de la escala de depresión nos presentan un promedio de 0.73, lo que indica que, en general, la población estudiada presenta niveles bajos de síntomas de depresión, la mediana se encuentra en el valor&nbsp; 0,62, lo que indicaría que un 50% de los resultados están bajo ese valor, lo que volvería a indicar bajos síntomas de depresión en la población de la muestra.<br>
+La desviación estándar (0.66) muestra una variabilidad moderada, reflejando que, si bien existen diferencias individuales, la mayoría de los encuestados tiende a reportar una menor tendencia a síntomas depresivos.</p>
+<p>En todos los casos de las variables individuales de la escala, el promedio bordea entre 0.1 y 1.1 puntos, lo que indica de nuevo, que en general, los puntajes de falta de síntomas de depresión tienden a acercarse al 0, lo que consolida que la mayor parte de la muestra se encuentra en estados emocionales relativamente favorables.</p>
+<p><strong>2. Variable Nivel Socioeconómico:</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-disping" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-disping-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Render-Quarto-informe_files/figure-html/fig-disping-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-disping-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Distribución del Ingreso Mensual (m13)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>La distribución del ingreso presenta alta dispersión y una asimetría fuerte a la derecha. El hecho de que el promedio ($792.537) sea mucho mayor que la mediana ($600.000) indica presencia de valores extremadamente altos que “estiran” el promedio hacia arriba, mientras que la desviación estándar es de $942.291, al ser muy elevada, indica que los ingresos individuales se alejan bastante del valor promedio, reforzando la idea de una distribución heterogénea y con fuerte concentración de valores atípicos en los tramos altos.</p>
+<p>Por otro lado, al observar la versión ordinal dividida en quintiles se aprecia que la muestra se concentra mayormente en los niveles medios-bajos y medios, con un promedio y una media ubicada en el tramo 3. La dispersión dentro de esta medida ordinal es moderada (SD ≈ 1.41), lo que sugiere que, aunque existe diversidad en la posición socioeconómica de los participantes, esta variabilidad es menor que la observada en la escala continua de ingresos. Esto es consistente con lo analizado previamente, sin embargo, la escala ordinal suaviza las diferencias extremas que aparecían en los ingresos continuos, permitiendo identificar de manera más clara la concentración en el segmento medio de la muestra, sin que los valores atípicos influyan en exceso en las medidas descriptivas.</p>
+<p><strong>3. Género:</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-dipsgenero" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dipsgenero-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Render-Quarto-informe_files/figure-html/fig-dipsgenero-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dipsgenero-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Distribución por género
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>En esta variable, se encuentran 1738 mujeres encuestadas, equivalente a un 64% de la muestra total, mientras que fueron 988 hombres, lo que representa un 36% de la muestra, esto refleja una mayor participación femenina.</p>
+<p><strong>3.2. Análisis estadístico bivariado</strong></p>
+<p><strong>1. Relación entre síntomas depresión e Ingresos (nivel socioeconómico):</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-nivsoc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-nivsoc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Render-Quarto-informe_files/figure-html/fig-nivsoc-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nivsoc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Distribución de Nivel de Depresión por Quintil
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Para la correlación entre estas variables se utilizó depresión recodificada ordinalmente y la variable de ingresos por quintiles, al ser ambas variables ordinales, se eligió hacer una correlación policórica.</p>
+<p>El coeficiente&nbsp; de correlación dio –0.1 lo cual indica una asociación negativa débil, sin embargo, esto va en la dirección de la hipótesis, que planteaba que existe asociación entre nivel socioeconómico y síntomas de depresión, como se puede observar en el gráfico, el quintil de mayor ingreso es el que presenta menores personas con niveles medio altos y altos de depresión, y el quintil de menores ingresos el que presenta mayor cantidad de niveles medios altos y altos. Aunque la magnitud es baja, indica ligeramente que los tramos altos reportan una relación mental algo mejor.&nbsp;</p>
+<p>Complementando este análisis con la prueba de de Chi-cuadrado, los resultados de esta prueba indican que existe una asociación estadísticamente significativa entre las variables. El valor del estadístico de chi cuadrado es de 24.5180 con 12 grados de libertad. El p-value es de 0.0173, el cual es menor al nivel de significancia = 0.05, permitiendo rechazar la hipótesis nula de independencia entre las variables.</p>
+<p>Esto se visualiza en el gráfico de barras, donde los quintiles con menores ingresos (Q1, Q2, Q3) presentan mayor nivel de síntomas de depresión alto, medio alto y medio bajo respectivamente, y por el otro lado, los de ingreso alto (Q3 y Q4) presentan menores niveles de síntomas de depresión en los tramos alto, medio alto y medio bajo y un mayor nivel de síntomas de depresión bajo.</p>
+<p><strong>2. Relación entre síntomas de depresión y Género:</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-nivygen" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-nivygen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Render-Quarto-informe_files/figure-html/fig-nivygen-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nivygen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Distribución de Nivel de Depresión por género
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Para la relación entre las variables de depresión y género, al ser una variable ordinal y otra dicotómica, se hizo una tabla de contingencia, Este procedimiento resulta adecuado incluso cuando la muestra presenta un desbalance en la proporción de hombres y mujeres, ya que la tabla, junto con el estadístico χ², ajusta automáticamente los valores esperados de cada celda según el tamaño de cada grupo.&nbsp;</p>
+<p>Al observar las proporciones, se aprecia que las mujeres presentan una mayor proporción de casos en las categorías de depresión media baja, mostrando un 24.6% respectivamente frente a un 18.2% de los hombres. En la categoría media alta presentan un 6.8% frente al&nbsp; 2.6% de los hombres. Y en la categoría alta, las mujeres presentan un 1.4% frente a un 0.4% de los hombres, lo que va en línea con la hipótesis planteada de que las mujeres reportan mayores niveles depresivos más altos.</p>
+<p>Sin embargo, los hombres se concentran en la categoría de depresión baja (78.7 frente al 67.2% de las mujeres). Esta distribución sugiere diferencias entre ambos géneros en los síntomas de depresión, reflejando que, aunque las diferencias no son extremadamente grandes, las mujeres tienden a registrar mayores puntajes en los niveles más altos de depresión.</p>
+<p>El contraste estadístico confirma esta tendencia: el resultado del test χ² (χ² = 50.216) indica una asociación significativa entre género y nivel de depresión, mientras que el valor de p (Fisher’s p = 0.0002) refuerza la existencia de diferencias sistemáticas entre ambos grupos. No obstante, el tamaño del efecto (Cramer’s V = 0.13) se sitúa en el rango de efecto pequeño, lo que sugiere que, aunque la relación es estadísticamente significativa, la magnitud de la asociación es débil. En conjunto, los resultados permiten sostener que las mujeres presentan mayores niveles de depresión que los hombres, aunque la diferencia observada es relativamente modesta en términos prácticos.</p>
+<p><strong>3. Prueba t: diferencia de medias de síntomas de depresión por género:</strong></p>
+<p>Los resultados del test t de Welch, se observa una diferencia significativa entre los síntomas de depresión según género. El promedio de depresión en mujeres&nbsp; (0.8) es mayor que en hombres (0.6). El estadístico t = -8.75 (df ≈ 2400.5) y el p-value &lt; 0.0000 indican que la diferencia es altamente significativa. Además, el intervalo de confianza del 95% [0.17, 0.26] no incluye el 0, por lo que se rechaza H0 y se confirma que la diferencia de medias no es producto del azar. En consecuencia, sí existe evidencia estadística que respalda la hipótesis de que las mujeres presentan mayores síntomas de depresión que los hombres.</p>
+<p><strong>Conclusiones:</strong></p>
+<p>En síntesis, se realizó una escala de síntomas de depresión, esta escala se relaciono con las variables de ingreso y género. Los resultados en cuanto a la relación con ingresos, presentaron que a mayor nivel socioeconómico, la presencia de síntomas de depresión es ligeramente menor. En cuanto a la relación con el género, se encontró que existe mayor presencia de síntomas de depresión media alta y alta en mujeres, y una mayor presencia de depresión baja en hombres. Estos dos resultados confirman nuestras hipótesis de que a mayor nivel socioeconómico menores síntomas de depresión, y que las mujeres padecen estos mismos de forma más alta que los hombres.&nbsp;</p>
+<p>Una posible explicación para la relación asociativa entre nivel socioeconómico y síntomas depresivos, es que los grupos con mayores ingresos (Q4 y Q5) suelen disponer de mejores condiciones materiales y sociales para sostener su bienestar, además de una mejor red de apoyo. Sumado a esto, un nivel socioeconómico más alto permite cubrir adecuadamente las necesidades básicas y reduce la exposición a factores de estrés. Por último, quienes cuentan con mayores recursos económicos tienen más posibilidades de acceder a atención psicológica o psiquiátrica especializada, lo que favorece el manejo temprano de síntomas depresivos. Por otro lado, los grupos con ingresos bajos (Q1, Q2 y Q3) presentan mayores niveles de depresión, lo cual podría explicarse por un menor acceso a programas de tratamiento de salud mental, o una mayor exposición a situaciones de estrés debido a presiones económicas de la planificación familiar. Cabe aclarar que en los tramos de ingreso recién mencionados, las condiciones materiales son diversas, pero sufren de las mismas problemáticas en distinta intensidad.</p>
+<p>La mayor presencia de síntomas depresivos en mujeres se puede deber a factores sociales o culturales, por ejemplo, su rol en la organización familiar (pensando en mujeres que forman parte de una familia) y su posición en la estructura patriarcal de la sociedad chilena (pensando en las mujeres en general). Respecto a la primera explicación, la mujer se ve expuesta a una doble función en la sociedad actual: función de proveedora y función de los cuidados y quehaceres domésticos, lo cual puede generar un aumento de presencia de síntomas de depresión debido a la carga emocional y física. Y por último, respecto a la segunda explicación, la mujer en sus dinámicas en términos generales, se ve expuesta a presiones de estándares de belleza, acoso, restricciones en su desarrollo laboral y académico…etc. Esto debido a la masculinización y machismo de los distintos espacios de la sociedad donde la mujer se desenvuelve, lo que podría provocar una presión estructural que genera&nbsp; mayor síntomas de depresión en las mujeres.&nbsp;</p>
+<p>Los hombres por otro lado tienden a reportar una presencia más baja de síntomas, esto puede ser debido a que culturalmente está mal vista la disfuncionalidad en los hombres, la condición social normada de proveedor, podría generar que no reporten síntomas en el cuestionario, o que los ignoren en pos de la funcionalidad laboral, teniendo la responsabilidad de los ingresos del hogar, genera que en muchas ocasiones no se sientan capaces de demostrar síntomas depresivos abiertamente.</p>
+<p>Se debe mencionar como limitación para el análisis realizado el hecho de que ELSOC pregunte por un número limitado de síntomas de depresión, por lo que la escala de síntomas de depresión no es tan completa como podría ser idealmente. Además, ELSOC solo entrega datos de hombres y mujeres, por lo que no permite dimensionar la presencia de síntomas de depresión en personas que no se identifiquen dentro del binarismo de género.</p>
+<p><strong>Bibliografía:</strong></p>
+<p>Andersen, I., Thielen, K., Nygaard, E., &amp; Diderichsen, F. (2009). Social inequality in the prevalence of depressive disorders. Journal Of Epidemiology &amp; Community Health, 63(7), 575-581. <a href="https://doi.org/10.1136/jech.2008.082719">https://doi.org/10.1136/jech.2008.08271</a></p>
+<p>Celis-Morales, C., &amp; Nazar, G. (2022). Cambios en la prevalencia de depresión en Chile y el mundo debido a la pandemia por COVID-19. Revista Médica de Chile, 150(5), 691-692. <a href="https://doi.org/10.4067/s0034-98872022000500691" class="uri">https://doi.org/10.4067/s0034-98872022000500691</a>&nbsp;</p>
+<p>Centro de Estudios de Conflicto y Cohesión Social [COES]. (2023). Cuestionario ELSOC 2022 M1: Información de identificación de la encuesta Descripción del cuestionario. <a href="https://drive.google.com/file/d/1jY5wi9fDkbJg0KR3TkkZiv_nXTcQeRoM/view" class="uri">https://drive.google.com/file/d/1jY5wi9fDkbJg0KR3TkkZiv_nXTcQeRoM/view</a>&nbsp;</p>
+<p>Centro de Estudios de Conflicto y Cohesión Social [COES]. (2024). Radiografía de la Cohesión Social en Chile 2016-2023.</p>
+<p>Centro de Estudios de Conflicto y Cohesión Social [COES]. (s. f.). Manual Metodológico ELSOC 2016-2022. <a href="https://manual-metodologico-elsoc.netlify.app/" class="uri">https://manual-metodologico-elsoc.netlify.app/</a>&nbsp;</p>
+<p>Cruz Pérez, G. (2012). De la tristeza a la depresión. Revista Electrónica de Psicología Iztacala, 15(4), 1310-1325.</p>
+<p>Jiménez-Molina, Á., Reyes, P., &amp; Rojas, G. (2021). Determinantes socioeconómicos y brechas de género de la sintomatología depresiva en Chile. Revista Médica de Chile, 149(4), 533-542. <a href="https://doi.org/10.4067/s0034-98872021000400533" class="uri">https://doi.org/10.4067/s0034-98872021000400533</a></p>
+<p>tatista. (2025, 6 mayo). Gini coefficient income distribution inequality in Latin America 2023, by country. <a href="https://www.statista.com/statistics/980285/income-distribution-gini-coefficient-latin-america-caribbean-country/?srsltid=AfmBOoo8XiDrQcSgcvwnD8HALk78PcuvDe1xhRRJlTAAfwga-7_fLG6-" class="uri">https://www.statista.com/statistics/980285/income-distribution-gini-coefficient-latin-america-caribbean-country/?srsltid=AfmBOoo8XiDrQcSgcvwnD8HALk78PcuvDe1xhRRJlTAAfwga-7_fLG6-</a>&nbsp;</p>
+<p>World Health Organization: WHO &amp; World Health Organization: WHO. (2025, 29 agosto). Trastorno depresivo (depresión). <a href="https://www.who.int/es/news-room/fact-sheets/detail/depression" class="uri">https://www.who.int/es/news-room/fact-sheets/detail/depression</a>&nbsp;</p>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
