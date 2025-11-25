@@ -1,0 +1,296 @@
+pacman::p_load(tidyverse, # Manipulacion datos
+               sjPlot, # Graficos y tablas
+               sjmisc, # Descriptivos
+               corrplot, # Correlaciones
+               psych, # Test estadísticos
+               kableExtra, # Tablas
+               rempsyc,
+               broom,
+               sjstats,
+               gginference,
+               haven )
+
+load("input/data/EBS_subset.Rdata")
+options(scipen = 999) # para desactivar notacion cientifica
+
+
+
+#seleccion de variables
+df<- EBS_subset
+
+#valores perdidos
+
+df <- df %>%
+  mutate(across(everything(), ~ na_if(.x, -99))) %>%
+  mutate(across(everything(), ~ na_if(.x, -88))) %>%
+  mutate(across(everything(), ~ na_if(.x, -77)))
+
+#Recodificar variables
+
+#Sexo
+df <- df %>%
+  mutate(
+    sexo = case_when(
+      sexo == 1 ~ 0,
+      sexo == 2 ~ 1,
+      TRUE ~ NA_real_
+    )
+  )
+
+# Económicas
+df <- df %>%
+  mutate(
+    protegido_salud = as.numeric(protegido_salud),
+    fin_mes = as.numeric(fin_mes),
+    deudas = case_when(
+      deudas == 1 ~ 1,
+      deudas == 2 ~ 0,
+      TRUE ~ NA_real_
+    )
+  )
+
+# Laboral
+df <- df %>%
+  mutate(
+    apoyo_laboral = as.numeric(apoyo_laboral),
+    inseguridad_laboral = as.numeric(inseguridad_laboral)
+  )
+
+# Salud
+df <- df %>%
+  mutate(
+    salud_actual = as.numeric(salud_actual),
+    satisfaccion_vida = as.numeric(satisfaccion_vida)
+  )
+
+# Relaciones sociales
+df <- df %>%
+  mutate(
+    soledad = as.numeric(soledad),   # mayor valor = más frecuencia de sentirse solo
+    apoyo_dinero = case_when(
+      apoyo_dinero == 3 ~ 3,  # ambas personas
+      apoyo_dinero %in% c(1,2) ~ 2,  # una persona
+      apoyo_dinero == 4 ~ 1,  # no conoce a nadie
+      TRUE ~ NA_real_
+    )
+  )
+
+
+# Asegurar que todas las variables estén en formato numeric
+
+df <- df %>%
+  mutate(across(
+    c(protegido_salud, fin_mes, deudas,
+      apoyo_laboral, inseguridad_laboral,
+      salud_actual, satisfaccion_vida,
+      soledad, apoyo_dinero, sexo),
+    ~ as.numeric(.x)
+  ))
+
+
+# Crear escalas
+
+scale_1_10 <- function(x) {
+  rng <- range(x, na.rm = TRUE)
+  ((x - rng[1]) / (rng[2] - rng[1])) * 9 + 1
+}
+
+#Economico
+df <- df %>%
+  mutate(
+    fin_mes_s = scale_1_10(fin_mes),
+    deudas_s = scale_1_10(deudas),
+    protegido_s = scale_1_10(protegido_salud),
+    escala_econ = fin_mes_s + deudas_s + protegido_s
+  )
+
+
+# Laboral
+df <- df %>%
+  mutate(
+    inseguridad_inv = max(inseguridad_laboral, na.rm=TRUE) - inseguridad_laboral + 1,
+    inseguridad_s = scale_1_10(inseguridad_inv),
+    apoyo_laboral_s = scale_1_10(apoyo_laboral),
+    escala_laboral = apoyo_laboral_s + inseguridad_s
+  )
+
+
+# Salud
+df <- df %>%
+  mutate(
+    salud_actual_s = scale_1_10(salud_actual),
+    satisfaccion_vida_s = scale_1_10(satisfaccion_vida),
+    protegido_salud_s2 = scale_1_10(protegido_salud),
+    escala_salud = salud_actual_s + satisfaccion_vida_s + protegido_salud_s2
+  )
+
+# social
+df <- df %>%
+  mutate(
+    soledad_inv = max(soledad, na.rm=TRUE) - soledad + 1,
+    soledad_s = scale_1_10(soledad_inv),
+    apoyo_dinero_s = scale_1_10(apoyo_dinero),
+    escala_social = soledad_s + apoyo_dinero_s
+  )
+
+
+#(bienestar general)
+df <- df %>%
+  mutate(
+    indice_bienestar = scale(
+      escala_econ +
+        escala_laboral +
+        escala_social +
+        escala_salud
+    )[,1]
+  )
+
+# Tabla de descriptivos
+
+descriptivos <- psych::describe(df %>% 
+                                  select(
+                                    escala_econ, escala_laboral,
+                                    escala_salud, escala_social,
+                                    indice_bienestar
+                                  ))
+
+kableExtra::kable(descriptivos, caption = "Descriptivos de las Escalas e Índice") %>%
+  kableExtra::kable_styling(full_width = FALSE)
+
+
+#histograma
+df %>% 
+  select(escala_econ, escala_laboral, escala_salud, escala_social) %>%
+  pivot_longer(everything(), names_to = "Escala", values_to = "Puntaje") %>%
+  ggplot(aes(Puntaje)) +
+  geom_histogram(bins = 30, fill = "green") +
+  facet_wrap(~Escala, scales = "free") +
+  labs(
+    title = "Distribución de las Escalas",
+    x = "Puntaje",
+    y = "Frecuencia"
+  ) +
+  theme_minimal()
+
+
+
+df_hist <- df %>%
+  select(
+    escala_econ,
+    escala_laboral,
+    escala_salud,
+    escala_social
+  ) %>%
+  mutate(across(everything(), ~ scale_1_10(.x))) %>%   # normaliza para el histograma
+  pivot_longer(everything(), names_to = "Escala", values_to = "Puntaje")
+
+ggplot(df_hist, aes(Puntaje)) +
+  geom_histogram(binwidth = 1, fill = "green", color = "black") +
+  scale_x_continuous(breaks = 1:10, limits = c(1, 10)) +
+  facet_wrap(~Escala, scales = "free") +
+  labs(
+    title = "Distribución de Escalas (Normalizadas 1–10)",
+    x = "Puntaje (1–10)",
+    y = "Frecuencia"
+  ) +
+  theme_minimal()
+
+
+#boxplot
+df %>%
+  pivot_longer(cols = starts_with("escala_")) %>%
+  ggplot(aes(x = name, y = value)) +
+  geom_boxplot() +
+  coord_flip() +
+  labs(title = "Boxplots de Escalas", x = "Escala", y = "Puntaje") +
+  theme_minimal()
+
+#Matriz
+cor_matrix <- cor(df %>% 
+                    select(escala_econ, escala_laboral,
+                           escala_salud, escala_social,
+                           indice_bienestar),
+                  use = "pairwise.complete.obs")
+
+corrplot::corrplot(cor_matrix, method="color", 
+                   addCoef.col = "black",
+                   tl.col = "black", number.cex = 0.7)
+
+
+# Correlaciones
+vars_cor <- df %>% select(escala_econ, escala_laboral, escala_salud, escala_social, indice_bienestar)
+cor_matrix <- cor(vars_cor, use = "pairwise.complete.obs")
+corrplot::corrplot(cor_matrix, method = "color", addCoef.col = "black", tl.col = "black", number.cex = 0.7)
+
+# Tabla correlaciones (con p y CI)
+varnames <- colnames(vars_cor)
+k <- length(varnames)
+tabla_cor <- data.frame(Var1=character(), Var2=character(), r=numeric(), p=numeric(), CI_low=numeric(), CI_high=numeric(), stringsAsFactors = FALSE)
+for (i in 1:(k-1)) {
+  for (j in (i+1):k) {
+    x <- vars_cor[[i]]; y <- vars_cor[[j]]
+    ct <- cor.test(x, y)
+    tabla_cor <- rbind(tabla_cor, data.frame(Var1=varnames[i], Var2=varnames[j],
+                                             r=round(ct$estimate,3), p=round(ct$p.value,4),
+                                             CI_low=round(ct$conf.int[1],3), CI_high=round(ct$conf.int[2],3)))
+  }
+}
+kable(tabla_cor, caption = "Correlaciones (r), p-values e IC 95%") %>% kable_styling(full_width = FALSE)
+
+
+#Prueba χ²
+tabla_chi <- table(df$sexo, df$deudas)
+
+chisq.test(tabla_chi)
+
+sjPlot::tab_xtab(df$sexo, df$deudas, 
+                 title="Asociación sexo - deudas",
+                 show.col.prc=TRUE,
+                 show.row.prc=TRUE)
+
+
+
+modelo1 <- lm(indice_bienestar ~ escala_salud, data = df)
+
+summary(modelo1)
+
+sjPlot::tab_model(
+  modelo1,
+  show.ci = TRUE,
+  title = "Modelo de regresión: Bienestar ~ Salud"
+)
+
+
+# H1 
+modelo_H1 <- lm(indice_bienestar ~ escala_econ * escala_laboral, data = df)
+
+sjPlot::tab_model(
+  modelo_H1,
+  show.ci = TRUE,
+  title = "H1: interacción pobreza × precariedad laboral"
+)
+
+
+# H2: Salud predice bienestar
+modelo_H2 <- lm(indice_bienestar ~ escala_salud, data = df)
+
+summary(modelo_H2)
+
+sjPlot::tab_model(
+  modelo_H2,
+  show.ci = TRUE,
+  title = "H2: Salud → Bienestar"
+)
+
+
+#h3 
+modelo_H3 <- lm(soledad_s ~ escala_laboral, data = df)
+
+summary(modelo_H3)
+
+sjPlot::tab_model(
+  modelo_H3,
+  show.ci = TRUE,
+  title = "H3: Precariedad laboral → Soledad"
+)
+

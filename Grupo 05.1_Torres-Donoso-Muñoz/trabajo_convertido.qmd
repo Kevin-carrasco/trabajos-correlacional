@@ -1,0 +1,267 @@
+Correlación entre nivel de pobreza y problemas de salud mental con perspectiva de género
+
+
+
+Estadística Correlacional
+
+Profesor: Juan Castillo V.
+
+Profesor Colaborador: 
+
+Kevin Carrasco Quintanilla
+
+Andreas Laffert T.
+
+Ayudante: 
+
+Felipe Vega G.
+
+Integrantes:
+
+Ariel Alarcón T.
+
+Francisco Muñoz M.
+
+Trinidad Gaete D.
+
+Fecha de entrega: 23/11/2025
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. Introducción (2 puntos, app. 500 palabras)
+
+Definición de la problemática a abordar, su relevancia y principales conceptos.
+
+En este apartado es importante considerar:
+
+La salud mental 
+
+Relevancia del tema de investigación.
+
+Problematización: señalar problema de investigación y principales antecedentes
+
+Precisar los conceptos centrales a investigar: Ejemplo “vamos a analizar la participación informal, entendiendo por ello la frecuencia de participación en actividades como marchas, boycotts y en redes sociales” [cita que apoye la definición].
+
+Mencionar el principal objetivo del trabajo y las hipótesis de investigación en el párrafo final de esta sección (ej: se espera que el nivel educacional sea mayor en zonas urbanas en relación a zonas rurales). Mencionar al menos tres hipótesis (Hipótesis nula/ alternativa)
+
+Esta sección debe estar respaldada por al menos 5 referencias bibliográficas.
+
+Introducción
+
+La salud mental, definida por la OMS como "un estado de completo bienestar físico, mental y social, y no solamente la ausencia de afecciones o enfermedades” es una de las grandes problemáticas del país, adquiriendo más notoriedad tras la pandemia en 2020, donde se pudo observar un deterioro de esta con las medidas de aislamiento para prevenir el covid. Tras el término de la pandemia estudios realizados por la UC y la ACHS indican que un 23,6% de los chilenos presenta sospechas o problemas de salud mental, y que el 45,9% evalúa que su estado de ánimo es peor o mucho peor que antes de la pandemia. Esto va acompañado con un gran déficit de financiamiento hacia la salud mental, ya que el presupuesto fiscal destinado a la salud mental apenas supera el 2% del total de presupuesto en salud, algo que se ve reflejado con el alcance de la atención de salud mental que en chile no supera el 20%, mientras que otros países la cobertura alcanza un 50% (Jiménez, J. P., Olhaberry, M., Altimir, C., Errázuriz, P., & Dagnino, P. 2021)
+
+Estos antecedentes van evidenciando la falta de ayuda estatal hacia los ciudadanos para combatir los crecientes problemas de salud mental, por lo que nuestro enfoque será el de analizar si existe una correlación con la pobreza en Chile, la cual según la últimos resultados de la encuesta CASEN 2022 la tasa de pobreza por ingresos fue del 6,5%, sin embargo, los cambios recomendados por la Mesa Técnica derivan en una nueva cifra de un 22,3%, por lo que la pobreza está mucho más presente en nuestro país de lo que se pensaba. También la precariedad laboral constituye una situación de riesgo para las personas, entendiéndolo como el espacio en que se relaciona el espacio de producción y el mercado laboral en los trabajadores, pudiendo así existir una crisis en este espacio ante situaciones de subordinación, ingresos, seguridad y formas contractuales (Blanco, O., & Dasten, J. 2019)
+
+Con estas problemáticas presentes el objetivo de nuestro trabajo será presentar un análisis sobre el dualismo entre la precariedad laboral y la pobreza como determinantes críticos de la salud mental en Chile, nuestras principales hipótesis son: Efecto directo acumulativo mayor
+
+de la coexistencia de pobreza multidimensional y precariedad laboral sobre la salud mental, que la suma de sus efectos individuales. Con esta hipótesis buscamos demostrar que quienes experimentan ambas condiciones mostrarán prevalencias mayores de trastornos depresivos que aquellos con solo una de las condiciones.
+
+La segunda Hipótesis será establecer la relación entre cómo la salud general puede predecir el bienestar subjetivo, esto ya que se puede evidenciar que “La salud se ve influenciada por las condiciones biopsicosociales en las que se desenvuelven las personas” (Jiménez, J. P., Olhaberry, M., Altimir, C., Errázuriz, P., & Dagnino, P. 2021)
+
+Finalmente, la tercera hipótesis sería observar cómo la precariedad laboral aumenta la soledad, perjudicando la salud mental, esto en el marco mencionado anteriormente de las relaciones de producción dentro del trabajo.
+
+
+
+
+2. Metodología (2 puntos, app. 800 palabras)
+
+2.1 Definición de la base de datos
+
+¿Qué fuente de información se utilizará?
+
+¿Por qué organismo, empresa o institución está creada // diseñada y publicada?
+
+Marco muestral
+
+¿Qué tipo de representatividad tiene la base de datos // muestra?
+
+¿Cuál es el tamaño de la muestra?
+
+¿Cuál fue el tipo de muestreo utilizado?
+
+¿Qué se utilizará para esta investigación? ¿Submuestra, tamaño muestral, qué filtros?
+
+La presente investigación se sustenta metodológicamente en la Encuesta de Bienestar Social (EBS) del año 2023, instrumento diseñado por la Subsecretaría de Evaluación Social del Ministerio de Desarrollo Social y Familia de Chile. Su elección se debe a que posee técnicas sólidas que garantizan la representatividad estadística. El marco muestral original corresponde a personas de 18 años o más que conforman los hogares de viviendas particulares dentro del territorio nacional que habían participado previamente en la CASEN 2022. Este enfoque de panel permite realizar análisis longitudinales y aprovechar la información socioeconómica previamente recogida .La encuesta alcanza representatividad a nivel nacional, regional y por zona (urbana y rural), con la excepción de algunas comunas que el Instituto Nacional de Estadística (INE) cataloga como "especiales" debido a características particulares como alta densidad institucional, presencia de cuarteles militares, o zonas de difícil acceso que requieren procedimientos de muestreo específicos.
+
+
+
+El tamaño muestral efectivo de la EBS 2023 alcanza las 11.234 personas tras aplicar los criterios de control de calidad y representatividad. Este tamaño muestral proporciona un error muestral máximo de ±0.93% para el nivel nacional con un nivel de confianza del 95%, permitiendo estimaciones precisas incluso para subgrupos poblacionales de tamaño moderado. El procedimiento de muestreo implementado fue de carácter probabilístico, bifásico y estratificado, compuesto por dos etapas claramente diferenciadas. La primera fase se basó en el marco muestral de viviendas logradas en CASEN 2022. La segunda fase seleccionó a personas de 18 años y más mediante un muestreo aleatorio estratificado por región, garantizando la proporcionalidad territorial en la representación.
+
+
+
+Para evaluar las hipótesis se ha optado por trabajar con una submuestra específicamente definida. Esto debido a la necesidad de concentrar los datos estadísticos en los grupos de mayor interés analítico y de controlar la heterogeneidad no relevante para las hipótesis de investigación planteadas.
+
+
+
+La submuestra seleccionada integra cuatro dimensiones centrales: nivel económico, situación laboral, salud y relaciones sociales. En el plano económico, se consideran los indicadores de pobreza multidimensional que combinan mediciones por ingresos con privaciones en dimensiones como educación, salud, trabajo y seguridad social, y vivienda. En la dimensión laboral, se incorporan variables relacionadas con la calidad del empleo, incluyendo formalidad, seguridad contractual, exposición a riesgos psicosociales y adecuación entre formación y ocupación. En el ámbito de la salud, se contemplan tanto indicadores auto reportados de salud física como mental. Finalmente, en la esfera de las relaciones sociales, se incluyen mediciones sobre composición y tamaño de red de apoyo, frecuencia de contacto social, participación comunitaria y percepción de apoyo social disponible.
+
+
+
+Esta submuestra busca realizar análisis comparativos entre grupos de especial vulnerabilidad, como trabajadores informales con problemas de salud crónicos y redes sociales débiles, o adultos mayores en situación de pobreza multidimensional con limitaciones funcionales. 
+
+
+
+2.2 Definición de variables a utilizar:
+
+Las variables a utilizar fueron 4 y son:
+
+
+
+
+
+
+
+
+
+Para contrastar las hipótesis que planteamos utilizamos diferentes métodos estadísticos de acuerdo a los diferentes tipos de variables y objetivos analíticos. Todos los procedimientos se realizaron en R.
+
+Lo primero que se realizó fueron las correlaciones de Pearson entre las distintas escalas construidas (económica, laboral, salud y relaciones sociales) y el índice general de bienestar. Este análisis preliminar permitió identificar relaciones lineales entre las dimensiones y justificar el uso de modelos de regresión en la siguiente etapa. Las correlaciones entregaron además un primer tamaño de efecto mediante el coeficiente r, interpretado bajo los criterios de Cohen para asociaciones pequeñas, medianas o grandes.
+
+Luego se utilizaron  modelos de regresión lineal, los cuales fueron los métodos centrales para el contraste de las hipótesis. Para la hipótesis número uno se utilizó un modelo de regresión lineal múltiple con interacción entre la escala económica y la escala laboral, permitiendo así evaluar si el efecto combinado de las dos variables es mayor que la suma de sus efectos individuales, indicando teóricamente un efecto sinérgico. 
+
+La segunda hipótesis se evaluó mediante un modelo de regresión lineal simple, utilizando la escala de salud como predictor único. Este procedimiento permite estimar la magnitud y dirección del efecto, así como determinar si dicho efecto es estadísticamente significativo. De manera similar, la tercera hipótesis —que establece que la precariedad laboral incrementa los niveles de soledad— se examinó mediante otro modelo de regresión lineal simple, considerando la escala laboral como variable independiente y la soledad invertida como variable dependiente.
+
+Además de los contrastes de hipótesis, se efectuó una prueba de chi-cuadrado (χ²) para explorar la asociación entre el sexo y la presencia de deudas, con el objetivo de complementar los análisis descriptivos y contextualizar posibles desigualdades económicas entre subgrupos poblacionales. Aunque esta prueba no corresponde directamente a las hipótesis principales del estudio, contribuye a una comprensión más amplia del escenario socioeconómico de la muestra. 
+
+Respecto al cálculo de tamaños de efecto, se empleó el modelo de regresión, el coeficiente de determinación (R²) se utilizó para evaluar la proporción de varianza explicada por los predictores, constituyendo un indicador global del tamaño del efecto del modelo. Asimismo, se examinaron los coeficientes beta estandarizados (β), los cuales permiten comparar la magnitud relativa de los efectos entre variables en escalas distintas. En el caso de las correlaciones, el coeficiente r de Pearson se interpretó como medida de tamaño de efecto bivariado, siguiendo los criterios propuestos por Cohen (pequeño = 0.10, mediano = 0.30 y grande = 0.50). Finalmente, los intervalos de confianza del 95% acompañaron cada estimación como indicador de precisión.
+
+
+
+
+
+
+
+Análisis de Resultados 
+
+Correlaciones (r), p-values e IC 95%
+
+
+
+H1: Interacción pobreza × precariedad laboral sobre índice de bienestar
+
+Observaciones: 6233
+
+R² / R² ajustado: 0.669 / 0.669
+
+
+
+H2: Efecto de salud sobre bienestar
+
+Observaciones: 6233
+ R² / R² ajustado: 0.588 / 0.588
+
+
+
+H3: Efecto de precariedad laboral sobre soledad
+
+Observaciones: 6290
+ R² / R² ajustado: 0.002 / 0.001
+
+
+
+
+
+
+
+Asociación entre sexo y deudas
+
+Prueba χ² de independencia: χ² = 4.117, df = 1, φ = 0.019, p = 0.042
+
+
+
+
+
+
+
+
+
+En primer lugar, se analizaron descriptivamente las escalas construidas. La escala económica, compuesta por la capacidad de llegar a fin de mes, presencia de deudas y percepción de protección financiera ante problemas de salud, presenta una distribución relativamente amplia y dispersa, lo que sugiere alta heterogeneidad en las percepciones económicas del país. Esto es consistente con los datos agregados de la EBS y la CASEN 2022, donde los niveles de vulnerabilidad económica no se concentran exclusivamente en los estratos bajos, sino que se extienden hacia sectores medios afectados por inseguridad financiera, endeudamiento y fluctuaciones en ingresos.
+
+
+
+La escala laboral, que combina seguridad laboral invertida y apoyo entre compañeros/as de trabajo, muestra una distribución más concentrada, indicando variabilidad moderada. Esto es coherente con estudios previos que señalan que, si bien la precariedad laboral está presente en múltiples segmentos, la percepción de apoyo laboral tiende a ser más estable entre trabajadores formales. Además, la inseguridad laboral, incluso normalizada en escala 1–10, evidencia un peso significativo en la variación total del bienestar reportado.
+
+
+
+Por su parte, la escala de salud, construida a partir de la salud autopercibida, la satisfacción con la vida y la protección financiera ante problemas de salud, es la que mostró mayor coherencia interna y una distribución menos simétrica. Esto sugiere que la salud en sentido amplio —no solo biomédica sino también emocional y subjetiva— es un eje dominante del bienestar personal. Los valores más altos se concentran en la satisfacción con la vida, mientras que la salud física presenta una mayor dispersión.
+
+
+
+Finalmente, la escala social, que considera la frecuencia de soledad invertida y la existencia de redes que podrían prestar apoyo económico en casos de emergencia, presenta la distribución más marcada hacia valores intermedios. La soledad —incluso invertida para que un mayor valor signifique menor aislamiento— muestra un patrón que indica que buena parte de los encuestados experimenta niveles intermedios de desconexión social. La literatura internacional señala que la soledad es uno de los predictores más relevantes del malestar psicológico en contextos urbanos modernos, lo que se observa reflejado en los resultados preliminares.
+
+
+
+Al examinar la matriz de correlaciones, se observó que todas las escalas se correlacionan positivamente con el índice general de bienestar. La correlación más alta se presenta entre la escala de salud y el índice de bienestar (r > .60), lo que valida empíricamente la segunda hipótesis: “La salud predice significativamente el bienestar subjetivo”. El siguiente valor más elevado corresponde a la relación entre la escala económica y el bienestar general (r entre .40 y .50), lo cual es teóricamente consistente con modelos multidimensionales de bienestar que postulan que la seguridad financiera es uno de los factores estructurales que más influyen en la estabilidad emocional y psicológica de las personas.
+
+
+
+Las correlaciones entre la escala laboral y la social con el bienestar general también fueron significativas, aunque de menor magnitud. Esto indica que la precariedad laboral y la calidad de las relaciones sociales influyen en el bienestar, pero su peso relativo es menor en comparación con la salud y la situación económica.
+
+
+
+La correlación entre la escala económica y laboral es moderada, lo que respalda parcialmente la primera hipótesis: “La coexistencia de precariedad laboral y pobreza produce un efecto conjunto mayor que la suma de cada efecto individual sobre la salud mental”. Alcanzando una correlación del 95% de confianza, lo que, sí sugiere que ambas dimensiones están vinculadas, esto indica que las condiciones estructurales de inseguridad, inestabilidad laboral y endeudamiento se retroalimentan.Para corroborar la primera hipótesis se hizo uso de  los modelos de regresión lineal, permitiendo profundizar en la evaluación de cada hipótesis.
+
+
+
+En el modelo simple de bienestar predicho por la escala de salud, se observó un efecto estadísticamente significativo, robusto y con alto poder explicativo. Acto seguido, al modelar la interacción entre la escala económica y la laboral para evaluar la primera hipótesis, se observó que ambos predictores eran significativos por separado y que, además, la interacción también aportaba efectos al modelo. Este resultado indica que la combinación de vulnerabilidad económica y precariedad laboral no solo afecta de manera independiente al bienestar, sino que además amplifica sus efectos cuando se experimentan conjuntamente. Esto quiere decir que, las personas que enfrentan simultáneamente inseguridad laboral y dificultades económicas experimentan niveles de bienestar significativamente menores que aquellos que enfrentan solo una de estas condiciones.
+
+
+
+Por otro lado, la tercera hipótesis, que proponía que la precariedad laboral incrementa la soledad, también fue contrastada mediante un modelo de regresión donde la variable dependiente fue el puntaje de soledad invertida. Los resultados muestran que la escala laboral predice significativamente la variación en la soledad, de modo que quienes reportan mayor inseguridad laboral y menores niveles de apoyo en el trabajo muestran mayor frecuencia de sentirse solos. Estos resultados complementan lo planteado en la referencia utilizada sobre vínculos entre precarización del trabajo y deterioro de redes afectivas producto de un mal ambiente laboral, dado que ambientes laborales inestables o hostiles pueden incrementar la distancia emocional entre los trabajadores y sus entornos sociales.
+
+
+
+Adicionalmente, el análisis χ² entre sexo y presencia de deudas mostró diferencias moderadas, sin embargo este resultado no refuta la tercera hipótesis del estudio. La prueba χ²  en este contexto no indicó el poder rechazar la H0.
+
+
+
+En conjunto, los resultados del análisis terminan por demostrar que la salud mental puede estar condicionada por factores múltiples e interconectados, donde la salud física es el apartado más relevante, pero otras variables como la  economía, el trabajo y las redes sociales también terminan por ejercer un efecto significativo. Este análisis da cuenta de interacciones reales entre precariedad económica y laboral, lo que refuerza el planteamiento inicial de que estas condiciones operan de manera acumulativa y no aislada. De esta forma aspectos como el endeudamiento, la inestabilidad laboral y ell malestar social si reflejan un deterioramiento de la salud mental en el país, en donde los resultados de la EBS del 2023 dan cuenta de que existe un aumento de esta crisis tras pasar los años de la pandemia.
+
+ 
+
+
+
+Conclusión
+
+El análisis realizado confirma que las hipótesis sobre la salud mental de las personas según su nivel de pobreza y la precariedad laboral está fuertemente determinada por los factores que influyen en estos, siendo los económicos, laborales, sociales y de salud, aspectos que  interactúan entre sí en formas que amplifican su impacto sobre la calidad de vida. Los resultados permiten validar las tres hipótesis del estudio: primero, la coexistencia de precariedad laboral y vulnerabilidad económica produce un efecto conjunto y significativo sobre el bienestar, pudiendo establecer una relación entre la acumulación de desventajas estructurales con la intensificación  del riesgo de malestar psicológico. Segundo, la salud —en su dimensión física, emocional y subjetiva— es el predictor más sólido del bienestar, coincidiendo con la noción general de que una buena salud física conlleva a una buena salud mental. Tercero, la precariedad laboral se asocia directamente con mayores niveles de soledad, mostrando que la inestabilidad en el empleo afecta no solo las condiciones materiales, sino también los vínculos sociales fundamentales, deteriorando la salud mental del individuo en el proceso.
+
+
+
+En conclusión los resultados evidencian que la salud mental no puede ser comprendida de manera individual, sino como un fenómeno multidimensional que puede estar relacionado por las condiciones socioeconómicas y laborales del individuo. Estos hallazgos dan cuenta de la ausencia de políticas públicas orientadas a fortalecer y ayudar a la salud mental de las personas en Chile, produciendo una crisis que escala a niveles mas allá del interpersonal, por lo que el empezar por mejorar las condiciones laborales y económicas de las personas podría contribuir a la mejora de la salud mental de las personas.
+
+
+
+Bibliografía:
+
+Blanco, O., & Dasten, J. (2019). Una tipología de precariedad laboral para Chile: la precariedad como fenómeno transclasista. Revista de la CEPAL.
+
+Jiménez, J. P., Olhaberry, M., Altimir, C., Errázuriz, P., & Dagnino, P. (2021). Salud mental en Chile: urgencias, desafíos y silencios.
+
+Leiva-Peña, V., Rubí-González, P., & Vicente-Parada, B. (2021). Determinantes sociales de la salud mental: políticas públicas desde el modelo biopsicosocial en países latinoamericanos. Revista panamericana de salud pública, 45, e158.
+
+Ministerio de Desarrollo Social y Familia (2025) . Nota técnica: Resumen del Proceso de Revisión de las Propuestas para la Actualización de la Medición de la Pobreza en Chile.Bidat.gob.cl. 
+
+Ministerio de Desarrollo Social y Familia (2022). Encuesta de Caracterización Socioeconómica Nacional. 
+
+Etienne, C. F. (2018). Salud mental como componente de la salud universal. Revista Panamericana de Salud Pública, 42, e140.
+
+Organización Panamericana de la Salud. Plan de acción sobre salud mental 2015-2020. 53 Consejo Directivo, 66 Sesión del Comité Regional de la OMS para las Américas. Washington, DC: OPS; 2014. Disponible en: 
+
+» https://www.paho.org/hq/dmdocuments/2015/plan-of-action-on-MH-2014.pdf
