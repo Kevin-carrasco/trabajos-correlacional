@@ -1,0 +1,855 @@
+---
+title: "Diferencia en el tiempo libre"
+subtitle: "Estadística Correlacional 2025"
+author: "Ángela Aguilar, Mariana Cuervo, Nayomi López, Cassidy Mansilla e Ingrid Pita"
+date: "2025-11-23"
+lang: es
+format: html
+editor: source
+theme: yeti
+---
+
+# Introducción
+
+El estudio que se realiza del uso del tiempo se ha convertido en un elemento importante para comprender sucesos que ocurren en la sociedad, como la desigualdad económica y de género presente en la vida cotidiana. En Chile, el análisis del tiempo libre constituye una herramienta clave para evaluar el bienestar, la calidad de vida y la distribución de las descargas que se realizan en distintos grupos sociales. 
+
+Según la Comisión Económica para América Latina y el Caribe (CEPAL), el tiempo es una dimensión estructural de desigualdad que revela brechas no notorias en los ingresos, pero sí son visibles cuando la persona organiza sus actividades diarias (CEPAL, 2004). Por eso, el estudio del tiempo libre, entendido como el conjunto de actividades no obligatorias que las personas realizan para descansar o desarrollar intereses personales (Gershuny y Fisher, 2014), se vuelve esencial para poder evaluar la calidad y estilo de vida. 
+
+La disponibilidad y el uso del tiempo no solo se relaciona con el bienestar, sino también con la inserción laboral, el nivel económico, las responsabilidades de cuidado y las desigualdades de género. Distintas investigaciones han demostrado que las mujeres suelen disponer de menos tiempo libre debido a la ocupación que tienen en la casa como tareas domésticas o de trabajos no remunerados que asumen dentro del hogar (Aguirre, 2005; Miranda, 2011). Esta desigualdad se puede reflejar en patrones estructurales presentes en toda América Latina. En esta línea, Arriagada (2011) plantea que la organización social del cuidado reproduce desigualdades que limitan la autonomía de ciertos grupos, como mujeres o personas de menores ingresos. De manera complementaria, estudios contemporáneos han demostrado que la distribución del tiempo libre está asociado tanto a factores estructurales como a condiciones laborales, trayendo educativas y características del entorno residencial (Mora, 2019). 
+
+Desde esta perspectiva, el presente trabajo busca analizar las desigualdades en el uso del tiempo libre en Chile, considerando variables sociodemográficas y laborales que pueden incidir en su distribución del tiempo. Se decidió construir un índice de tiempo libre a partir de variables relacionadas al uso del tiempo en base a ENUT, 2023 de esta manera el tiempo libre se aborda como la variable dependiente del estudio. El objetivo es indagar en si hay correlación entre el sexo, la discapacidad y la edad en el tiempo libre que las personas poseen. El informe se dividirá en la metodología usada, donde se explicará la base con la que se trabajó y las variables usadas para construir el índice para, posteriormente, entrar en la sección del análisis de los resultados, donde se analizarán gráficos y tablas de correlación para terminar concluyendo. 
+
+Se espera que la investigación pueda aportar en indicar si las variables sexo, discapacidad y edad están correlacionadas al tiempo libre que puedan poseer las personas. En este contexto, se formularon tres hipótesis: 
+
+-H1) Las mujeres no tienen tiempo libre a comparación a hombres. 
+
+-H2) Las personas mayores (65 años o más) y los menores (0 a 18 años) tienen tiempo libre, mientras que las personas adultas (19 años a 64 años) no lo tienen. 
+
+-H3) Las personas discapacitadas tienen tiempo libre, mientras que las personas que no poseen discapacidad no tienen tiempo libre.
+
+# Metodología
+
+## Datos
+
+La metodología que conforma todo este informe se basa en los datos de la ENUT 2023, la cual es la Encuesta Nacional sobre el Uso del Tiempo. Este es un estudio estadístico que se encarga de registrar el cómo las personas emplean las horas del día en ciertas actividades, como lo son el trabajo remunerado, el trabajo no remunerado y el tiempo personal, entre otras situaciones. Esta encuesta es realizada por el Instituto Nacional de Estadística (INE), de modo que logra una visibilidad sobre las diversas formas de trabajo diario que las personas desempeñan, aún si dicho trabajo no es remunerado, y, a su vez, comprender cómo se distribuye el tiempo en la sociedad (INE, 2023). 
+Teniendo en cuenta la ENUT como base de datos es que se determina que el tema central para el presente informe es “La diferencia en de tiempo libre de las personas”.
+
+En base a este tema central es que se desglosó la variable dependiente, la cual sería “El tiempo libre”, debido a que así se se espera  medir o identificar si existe algún cambio en si las personas tienen o no tiempo libre según las variables independientes que fueron escogidas. Las tres variables independientes escogidas fueron las siguientes: “Sexo”, “Edad” y “Discapacidad”. Esto debido a que son las que se espera que influyan en los resultados que se obtendrán en la variable dependiente, debido a que estas variables, las independientes, tienen a marcar una diferencia en múltiples fenónemos, por lo que se busca comprobar si las personas tienen tiempo libre o no se correlaciona a su sexo, edad o si tiene discapacidad.
+
+Para poder medir si las personas tienen tiempo libre o no se creó un índice a partir de ciertas variables de la encuesta ENUT 2023, el cual será ocupado para realizar correlaciones y crear gráficos comparativos que sustenten o anulen las 3 hipótesis planteadas con anterioridad.
+
+## Variables
+
+Para medición de si las personas tienen tiempo libre o no se creó un índice de tiempo libre, que se midió en cuatro dimensiones divididad de la siguiente forma: 
+
+1. Dimensión 1: Tiempo de trabajo (trabajo). Variable nominal Esta dimensión presenta sus resultados de forma dicotómica, de modo que se operacionaliza tal que: "Si los individuos poseen tiempo libre o no, según su tiempo de traslado más sus actividades laborales".
+
+Esta dimensión contempla las variables: 
+
+-"tiempo de traslado" (t_tto_dt). De razón: Tiempo en día tipo en traslados por trabajo en la ocupación.
+
+-"tiempo que trabaja" (t_to_dt). De razón: Tiempo en día tipo en actividades de trabajo en la ocupación
+
+2. Dimensión 2: Tiempo de estudio (estudio). Variable nominal Esta dimensión presenta sus resultados de forma dicotómica, de modo que se operacionaliza tal que: "Si los individuos poseen tiempo libre o no, según su tiempo de traslado más sus actividades educativas". 
+
+Esta dimensión contempla las variables:
+
+-"tiempo de traslado" (t_ted_dt). De razón: Tiempo de traslados en educación en día tipo.
+
+-"tiempo en actividades de educación" (t_ed_dt). De razón: Tiempo en día tipo en actividades de educación.
+
+3. Dimensión 3: Responsabilidades personales (resp_personal) Variable nominal. Esta dimensión presenta sus resultados de forma dicotómica, de modo que se operacionaliza tal que: "Si los individuos poseen tiempo libre o no, según sus actividades de cuidado a otras personas, de trabajo doméstico y de cuidado personal en un día tipo".
+
+Esta dimensión contempla las variables:
+
+-"tiempo de actividades de cuidado" (t_tcnr_ce_dt). De razón: Tiempo en día tipo en actividades de Cuidados esenciales a
+integrantes del hogar, tales como mudar o llevar al baño, bañar
+o asear, vestir o arreglar, dar de comer, ayudar a camina,
+desplazarse o cambiar de posición, ayudar a comunicarse con
+otras personas, contar juegos o jugar o la acostó o le hizo
+dormir.
+
+-"tiempo de trabajo doméstico" (t_tdnr_dt). De razón: Tiempo en día tipo en Trabajo Doméstico No Remunerado
+para el Propio Hogar. Está a nivel de gran división de CAUTAL.
+
+-"tiempo de cuidado personal" (t_cpaf_cp_dt). De razón: Tiempo en día tipo en actividades de Cuidado personal, tales
+como bañarse, vestirse o arreglarse o ir a una consulta o
+centro médico.
+
+4. Dimensión 4: Tiempo de ocio (ocio). Variable ordinal. Esta dimensión presenta sus resultados de forma dicotómica, de modo que se operacionaliza tal que: "Si los individuos poseen tiempo libre o no para realizar actividades de uso de Medios de Comunicación Masiva y si poseen tiempo libre o no para realizar actividades de vida social y ocio en un día tipo".
+
+Esta dimensión contempla las variables:
+
+-"tiempo de uso de MCM" (t_mcm_dt). De razón: Tiempo en día tipo en uso de Medios de Comunicación Masiva en un día tipo.
+
+-"tiempo de uso en vida social y ocio" (t_vsyo_dt). De razón: Tiempo en día tipo en actividades de Vida social y ocio. No contempla actividades deportivas y uso de medios de comunicación masiva.
+
+Se utilizaron ciertas variables para la construcción de gráficos y correlaciones, las cuales son:
+
+1. Sexo (Sexo). Variable nominal.
+
+2. Edad (edad). Variable de razón: Edad en años cumplidos.
+
+3. Edad recodificada (edad_recod). Variable ordinal: Edad separada en tramos etarios.
+
+4. Discapacidad (pesd). Variable nominal: Identifica si una persona está en situación de discapacidad.
+
+Para cerrar, la variable del índice fue recodificada como "itl_recod" para volverla una variable dicotómica para indicar si se posee tiempo libre o no.
+
+Respecto al trato de los NA, se optó por aplicar listwise a las variables que fueron creadas para las dimensiones, ya que esto permitía calcularlas por medio de una suma ponderada para la creación del índice. 
+
+```{r librerias, echo=FALSE, warning=FALSE, message=FALSE, collapse=TRUE}
+library(pacman)
+pacman::p_load(tidyverse,   # manipulacion datos
+               sjPlot,      # tablas
+               confintr,    # IC
+               gginference, # visualizacion 
+               rempsyc,     # reporte
+               broom,       # varios
+               sjmisc,      # para descriptivos 
+               knitr,
+               dplyr,
+               tidyr,
+               kableExtra,
+               haven,
+               ggplot2,
+               kable)            
+
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+```
+
+```{r datos y creación del índice}
+#| echo: false
+#| warning: false
+#| message: false
+
+enut <- readRDS("C:/Users/GAMER/Desktop/informe correlacional/input/enut.RDS")
+
+#creacion de indicadores
+ind_tiempo <- enut %>% 
+  mutate(
+  #para la dimensión de trabajo
+    t_traslado_trabajo = case_when(
+      t_tto_dt == 96 ~ NA_real_,
+     t_tto_dt >= 1 ~ 0,       #si se traslada en igual o más de una hora, cuenta con poco tiempo librelibre
+     t_tto_dt < 1 ~ 1           #si se traslada en menos de una hora, cuenta con tiempo libre
+     ),
+    
+    t_trabajo = case_when(
+      t_to_dt == 96 ~ NA_real_,
+      t_to_dt > 10 ~ 0,           #si trabaja igual o más de 10 horas, cuenta con menos tiempo libre
+      t_to_dt <= 10 ~ 1            #si trabaja menos de 10 horas, cuenta con tiempo libre
+    ),
+    
+  #para la dimensión de estudio
+    t_traslado_estudio = case_when(
+      t_ted_dt == 96 ~ NA_real_,
+      t_ted_dt >= 1 ~ 0,          #si se traslada en igual o más de 1 hora, cuenta con poco tiempo libre
+      t_ted_dt < 1 ~ 1       ##si se traslada en menos de 1 hora, cuenta con tiempo libre
+    ),
+  t_act_educación = case_when(
+    t_ed_dt == 96 ~ NA_real_,
+    t_ed_dt > 8 ~ 0,              #si estudia más de 8 horas, cuenta con poco tiempo libre
+    t_ed_dt <= 8 ~ 1            #si estudia menos o igual a 8 horas, cuenta con tiempo libre
+  ),
+  
+  #para la dimensión de responsabilidades personales
+    t_act_cuidado = case_when(
+      t_tcnr_ce_dt == 96 ~ NA_real_, 
+      t_tcnr_ce_dt > 1 ~ 0,     #cuidadar de otro por más de una hora, menos tiempo libre
+      t_tcnr_ce_dt <= 1 ~ 1    #cuidar de otro menos o igual de una hora, tiene tiempo libre
+    ),
+    
+  t_trabajo_doméstico = case_when (
+    t_tdnr_dt == 96 ~ NA_real_,
+    t_tdnr_dt > 1 ~ 0,        #le dedica más de una hora al trabajo doméstico, tiene menos tiempo libre
+    t_tdnr_dt <= 1 ~ 1       #le dedica menos o igual de una hora al trabajo doméstico, tiene tiempo libre
+  ),
+  
+  cuidado_personal = case_when(
+    t_cpaf_cp_dt == 96 ~ NA_real_,
+    t_cpaf_cp_dt > 1 ~ 0,        #le dedica más de una hora al cuidado personal, tiene menos tiempo
+    t_cpaf_cp_dt <= 1 ~ 1       #le dedica menos o igual de una hora al cuidado personal, tiene tiempo
+  ),
+    
+  #para la dimensión de ocio
+    alcanza_ocio = case_when(
+      bs9 %in% c(85, 96) ~ NA_real_,
+      bs9 %in% c(2, 3) ~ 1,         #le alcanza el tiempo, tiene tiempo libre
+      bs9 == 1 ~ 0                #no le alcanza el tiempo, tiene poco tiempo libre
+    ),
+  t_medios_com = case_when(
+    t_mcm_dt == 96 ~ NA_real_,
+    t_mcm_dt >= 1 ~ 1,        #uso de medios de comunicación más de una hora, tiene tiempo libre
+    t_mcm_dt < 1 ~ 0      #uso de medios de comunicación menos de una hora, no tiene tiempo libre
+  ),
+  t_social = case_when(
+    t_vsyo_dt == 96 ~ NA_real_,
+    t_vsyo_dt >= 1 ~ 1,        #vida social más de una hora, tiene tiempo libre
+    t_vsyo_dt < 1 ~ 0       #vida social menos de una hora, no tiene tiempo libre
+  )
+  )
+
+#agrupacion de variables
+t_libre <- ind_tiempo%>% select( t_traslado_trabajo,
+                                 t_trabajo,
+                                 t_traslado_estudio,
+                                 t_act_educación,
+                                 t_act_cuidado,
+                                 t_trabajo_doméstico,
+                                 cuidado_personal,
+                                 alcanza_ocio,
+                                 t_medios_com,
+                                 t_social
+)
+
+#cálculo de dimensiones mediante suma ponderada en un nuevos objeto
+
+proc_enut <- t_libre %>% 
+  mutate(
+    trabajo = rowSums(across(c(t_traslado_trabajo,
+                               t_trabajo)), na.rm = TRUE),
+    
+    estudio = rowSums(across(c(t_traslado_estudio,
+                               t_act_educación)), na.rm = TRUE),
+   
+    resp_personal = rowSums(across(c(t_act_cuidado,
+                                     t_trabajo_doméstico,
+                                     cuidado_personal,)), na.rm = TRUE),
+        
+    ocio = rowSums(across(c(alcanza_ocio,
+                            t_medios_com,
+                            t_social)), na.rm = TRUE)
+      )
+
+# creación del índice de tiempo libre
+proc_enut <- proc_enut %>% mutate(
+  
+  # creamos la nueva variable índice de tiempo libre (itl): 
+  itl = (trabajo*0.25 +  # multplicamos por su peso
+                 estudio*0.25 +    # multplicamos por su peso
+                 resp_personal*0.25 +
+                 ocio*0.25), na.rm = TRUE) # multiplicamos por su peso
+
+
+```
+
+
+
+
+```{r tabla-estadisticas-variables}
+#| echo: false
+#| warning: false
+#| tbl-cap: "Estadísticas descriptivas por variable"
+#| tbl-label: tbl-estadisticas-variables
+if (requireNamespace("dplyr", quietly = TRUE) &&
+    requireNamespace("tidyr", quietly = TRUE)) {
+  
+  tabla_variables <- dplyr::select(proc_enut, trabajo, estudio, resp_personal, ocio) |>
+    dplyr::summarise(
+      dplyr::across(
+        .cols = dplyr::everything(),
+        .fns = list(
+          N = ~sum(!is.na(.)),
+          Media = ~mean(., na.rm = TRUE),
+          Desv_Est = ~sd(., na.rm = TRUE),
+          Min = ~min(., na.rm = TRUE),
+          Max = ~max(., na.rm = TRUE)
+        ),
+        .names = "{.col}.{.fn}" 
+      )
+    ) |>
+    tidyr::pivot_longer(
+      cols = dplyr::everything(),
+      names_to = c("Variable", ".value"),
+      names_sep = "\\." 
+    ) |>
+    dplyr::mutate(
+      Variable = dplyr::recode(
+        Variable,
+        trabajo = "Tiempo dedicado al trabajo (trabajo)",
+        estudio = "Tiempo dedicado a la educación (estudio)",
+        resp_personal = "Tiempo dedicado a Responsabilidades personales (resp_personal)",
+        ocio = "Tiempo dedicado al ocio (ocio)"
+      ),
+      Media = sprintf("%0.3f", Media),
+      Desv_Est = sprintf("%0.3f", Desv_Est), 
+      Min = sprintf("%0.3f", Min),
+      Max = sprintf("%0.3f", Max)
+    )
+
+  if (!knitr::is_latex_output() && requireNamespace("gt", quietly = TRUE)) {
+    gt::gt(tabla_variables) |> 
+      gt::tab_header(
+        title = gt::md("**Estadísticas descriptivas de dimensiones del índice de tiempo libre**"),
+        subtitle = gt::md("Variables de uso del tiempo en base a ENUT, 2023")
+      ) |>
+      gt::cols_label(
+        Variable = "Variable",
+        N = "N",
+        Media = "Media",
+        # 🟢 CORRECCIÓN 3: Etiquetamos el nombre interno 'Desv_Est' para mostrar 'Desv. Est.'
+        Desv_Est = "Desv. Est.", 
+        Min = "Mín.",
+        Max = "Máx."
+      ) |>
+      gt::tab_options(
+        table.width = gt::pct(85),
+        heading.title.font.size = gt::px(16),
+        heading.subtitle.font.size = gt::px(11),
+        table.border.top.width = gt::px(1.5),
+        table.border.top.color = "#000000",
+        table.border.bottom.width = gt::px(1.5),
+        table.border.bottom.color = "#000000",
+        column_labels.border.top.width = gt::px(1.2),
+        column_labels.border.top.color = "#000000",
+        column_labels.border.bottom.width = gt::px(1.2),
+        column_labels.border.bottom.color = "#000000",
+        data_row.padding = gt::px(4),
+        table.font.size = 13
+      ) |>
+      gt::cols_align(align = "center", columns = c(N, Media, Desv_Est, Min, Max)) |> # Usar Desv_Est aquí también
+      gt::cols_align(align = "left", columns = Variable) |>
+      gt::opt_table_font(
+        font = list(
+          gt::google_font("Source Sans Pro"),
+          gt::default_fonts()
+        )
+      ) |>
+      gt::tab_source_note(gt::md("Notas: En base a ENUT, 2023"))
+  } else {
+    knitr::kable(
+      tabla_variables,
+      format = if (knitr::is_latex_output()) "pipe" else "html",
+      align = c("l", "c", "c", "c", "c", "c"),
+      escape = FALSE
+    )
+  }
+}
+```
+
+
+
+Cálculo de correlación del índice de tiempo libre (itl) mediante Alpha de Cronbach.
+
+```{r Alpha de Cronbach para verificar el índice}
+#| echo: false
+#| warning: false
+#| message: false
+
+#Matriz correlacion de indice
+M_itl <- proc_enut %>%
+  dplyr::select(trabajo, estudio, resp_personal, ocio)
+
+sjPlot::tab_corr(M_itl, 
+                 na.deletion = "listwise", # espeficicamos tratamiento NA
+                 triangle = "lower")
+
+#calculo alpha de Cronbach
+
+alpha_itl <- psych::alpha(M_itl)
+
+alpha_itl$total$raw_alpha
+```
+
+
+## Métodos
+
+Los métodos estadísticos para el cálculo de las dimension fue una suma ponderada para estadandarizar sus datos y evitar errores en el cálculo debido a los NA, puesto que por la naturaleza de las variables, no era posible calculas las dimensiones con un promedio ponderado. 
+Tras esto, el cálculo del índice de tiempo libre como tal si fue realizado por medio de un promedio ponderado, ya que se buscaba que las cuatros dimensiones valieran 0.25, de modo que se estandarizaran.
+
+Tras esto, se realiza un Alpha de Cronbach para ver la correlación del índice y sus dimensiones, dando 0.61, por lo que el índice está apto para su uso.
+
+Posteriormente, se realizaron correlaciones entre el índice de tiempo libre (itl) y el sexo, entre itl y la edad y entre itl y discapacidad, utilizando Pearson. 
+
+También se realizó una prueba de CHI2 entre el índice de tiempo libre recodificado (itl_recod) y sexo y una tabla de contingencia entre itl_recod y edad_recod.
+
+```{r agregar variables y recodificación de itl y de edad}
+#| echo: false
+#| warning: false
+#| message: false
+
+proc_enut <- proc_enut %>%
+  mutate(pesd = enut$pesd)
+
+proc_enut <- proc_enut %>%
+  mutate(sexo = enut$sexo)
+
+proc_enut <- proc_enut %>%
+  mutate(edad = enut$edad)
+
+proc_enut <- proc_enut %>% mutate(
+  
+  # creamos la nueva variable índice de tiempo libre (itl) RECODIFICADO: 
+  itl_recod = case_when(
+    itl < 1 ~ 0,           #si no tiene tiempo libre
+    itl >= 1 ~ 1            #si tiene tiempo libre
+  ))
+
+#recodificacion variable edad
+
+proc_enut <- proc_enut %>%
+  mutate(
+    # creamos la nueva variable para agrupar la edad
+    edad_recod = case_when(
+      edad >= 0 & edad <= 18 ~ "0-18 años",
+      edad >= 19 & edad <= 29 ~ "19-29 años",
+      edad >= 30 & edad <= 49 ~ "30-49 años",
+      edad >= 50 & edad <= 64 ~ "50-64 años",
+      edad >= 65 ~ "65+ años",
+      TRUE ~ NA_character_ # Para cualquier otro valor de edad (ej: NA, negativos)
+    )
+  )
+
+```
+
+
+# Análisis
+
+## Análisis descriptivo
+
+### Resumen de las estadisticas descriptivas clave de la variable índice de tiempo libre
+
+```{r descriptivos itl, echo=FALSE, warning=FALSE, message=FALSE, collapse=TRUE}
+
+
+stats_itl <- data.frame(
+  Estadístico = c("Media", "Mediana", "Desviación estándar", "Varianza",
+                  "Mínimo", "Máximo", "Rango", "Coef. Variación", "N válidos"),
+  Valor = c(
+    mean(proc_enut$itl, na.rm = TRUE),
+    median(proc_enut$itl, na.rm = TRUE),
+    sd(proc_enut$itl, na.rm = TRUE),
+    var(proc_enut$itl, na.rm = TRUE),
+    min(proc_enut$itl, na.rm = TRUE),
+    max(proc_enut$itl, na.rm = TRUE),
+    diff(range(proc_enut$itl, na.rm = TRUE)),
+    sd(proc_enut$itl, na.rm = TRUE) / mean(proc_enut$itl, na.rm = TRUE),
+    sum(!is.na(proc_enut$itl))
+  )
+)
+
+kable(stats_itl, digits = 2)
+```
+
+La media del ITL es de 0,62 mientras que la mediana alcanza el 0,75, lo que propone que la distribución posee asimetría negativa, pues la mitad de las personas tienen un nivel de tiempo libre igual o mayor a 0,75, pero el promedio baja dado a la existencia de los valores bajos. Mientras tanto su desviación estándar de 0,58 indica una variabilidad moderada con respecto a la disponibilidad de tiempo libre.
+
+### Frecuencia de la variable ITL
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+sjmisc::frq(proc_enut$itl)
+```
+
+La distribución del ITL es continua y se puede observar una mayor concentración de casos en valores bajos, especialmente entre 0 y 1, lo cual significa que gran parte de la población dispone de niveles reducidos de tiempo libre. 
+
+### Histograma de la distribución del Índice de tiempo libre
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, collapse=TRUE}
+hist(proc_enut$itl,
+     main = "Distribución del Índice ITL",
+     xlab = "Valor del ITL",
+     ylab = "Frecuencia",
+     col = "skyblue4",
+     border = "white",
+     breaks = 20)
+```
+
+Los resultados muestran que hay una alta concentración en valores muy bajos del índice, específicamente entre el 0.0 y 0.3, demostrando una alta frecuencia logrando superar así los 5000 casos. A partir de esto, la frecuencia disminuye progresivamente, aunque con pequeños progresos entre 0.8 y 1.5, hasta llegar a los valores más alejados de los niveles más altos. Esto presenta que el tiempo libre está distribuido de manera desigual, en donde una proporción significativa de la población dispone de niveles muy limitados, mientras que un grupo específico alcanza niveles mayores.
+
+### Frecuencia de la variable sexo
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+sjmisc::frq(proc_enut$sexo)
+```
+
+La distribución por sexo muestra un equilibrio razonable entre hombres (47.08 %) y mujeres (52.92 %), lo que implica que la muestra es relativamente balanceada. Este equilibrio es relevante dado que permite comparar el tiempo libre entre ambos grupos sin que exista un sesgo fuerte en la composición de la muestra. La presencia mínima de valores perdidos indica buena calidad en los resultados.
+
+
+### Índice de confianza
+
+```{r cálculo de descriptivos, echo=FALSE, warning=FALSE, message=FALSE, collapse=TRUE}
+
+t_test_itl <- t.test(proc_enut$itl)
+
+media_itl <- t_test_itl$estimate
+ic_itl <- t_test_itl$conf.int
+
+
+data.frame(
+  Estadístico = c("Media ITL", "Límite inferior IC 95%", "Límite superior IC 95%"),
+  Valor = c(media_itl, ic_itl[1], ic_itl[2])
+) %>%
+  kable() %>%
+  kable_styling(full_width = FALSE)
+```
+
+Con respecto a los intervalos, la proximidad que hay entre esto se explica debido a un tamaño muestral grande, lo cual entrega una alta precisión a la estimación de la media. Dado que el IC no incluye valores altos, en este caso sobre 1,0, se confirma que, en promedio, la población presenta niveles relativamente moderados o bajos de tiempo libre.
+
+
+### Cálculo de Alpha de Crobach aplicado al ITL
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, collapse=TRUE}
+alpha_itl <- psych::alpha(M_itl)
+
+alpha_itl$total$raw_alpha
+
+```
+
+El coeficiente obtenido indica que el conjunto de indicadores y dimensiones ocupados para poder realizar el índice presenta una consistencia interna alta. Lo cual significa que los elementos que componen este índice está midiendo un mismo concepto de manera coherente, en otras palabras es suficiente sólida para que el índice sea empleado como variable dependiente para los resultados posteriores.
+
+## Análisis estadístico bivariado
+
+### Matríz de correlaciones
+
+```{r , echo=FALSE, warning=FALSE, message=FALSE, collapse=TRUE}
+# Cargar librerías necesarias
+library(dplyr)
+library(sjPlot)
+
+# Selección de variables del índice ITL
+M_itl <- proc_enut %>%
+  dplyr::select(trabajo, estudio, resp_personal, ocio)
+
+# Matriz de correlaciones
+sjPlot::tab_corr(
+  M_itl,
+  na.deletion = "listwise",
+  triangle = "lower"
+)
+```
+
+Las correlaciones presentadas son estadísticamente significativas (p \< .001) lo cual indica relaciones consistentes por disponibilidad horaria. Por un lado la relación entre trabajo y estudio es relativamente baja y negativa (-0.054) lo cual indica que dedicar más tiempo al trabajo apenas se asocia con reducir el tiempo destinado al estudio. Por otro lado, las responsabilidades personales muestran una correlación moderada con el trabajo (0.35) y una correlación también moderada con estudio (0.24), lo que indica que quienes estudian o trabajan suelen asumir simultáneamente más tareas personales. Por último el patrón que más resalta está entre responsabilidades personales y ocio (0.55), relación que indica que estas dos dimensiones se mueven de manera conjunta dentro del índice
+
+### Correlación de Pearson entre ITL y sexo
+
+```{r, echo=FALSE}
+
+cor_results <- cor.test(x = proc_enut$sexo, 
+                        y = proc_enut$itl,
+                        method = "pearson",
+                        use = "complete.obs") 
+
+# tabla amigable de correlación Pearson entre ITL y sexo
+
+
+stats.table <- tidy(cor_results)
+
+stats.table %>%
+  dplyr::mutate(
+    estimate = round(estimate, 2),
+    statistic = round(statistic, 2),
+    ic_95 = paste0("[", round(conf.low, 2), ", ", round(conf.high, 2), "]"),
+    stars = gtools::stars.pval(p.value),
+    p_value = dplyr::case_when(
+      p.value < 0.05 & p.value > 0.01 ~ "< 0.05",
+      p.value < 0.01 & p.value > 0.001 ~ "< 0.01",
+      p.value < 0.001 ~ "< 0.001",
+      TRUE ~ ""
+    ),
+    p_value = paste0(p_value, stars)
+  ) %>%
+  dplyr::select(
+    estimate, statistic, p_value, parameter,
+    method, alternative, ic_95
+  ) %>%
+  kableExtra::kable(
+    col.names = c("Estimación", "t", "p-value", "df", "Método", "Alternativa", "95% IC"),
+    booktabs = TRUE
+  ) %>%
+  kableExtra::kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = TRUE,
+    latex_options = "hold_position",
+    position = "center"
+  )
+```
+
+El analisis de Pearson entre ITL y sexo muestra una correlacion menor (0.03) aunque estadisticamente significativa gracias al gran tamaño de la muestra. Dado de que el valor de p es menor a 0.001, la magnitud del efecto es prácticamente nula lo que implica que el sexo explica una fracción ínfima de las diferencias en el tiempo libre.
+
+### Correlación de Pearson entre ITL y edad:
+
+```{r, echo=FALSE}
+# correlación Pearson entre ITL y edad
+cor_results2 <- cor.test(
+  x = proc_enut$edad,
+  y = proc_enut$itl,
+  method = "pearson",
+  use = "complete.obs"
+)
+
+
+# tabla amigable
+stats.table2 <- tidy(cor_results2)
+
+stats.table2 %>%
+  dplyr::mutate(
+    estimate = round(estimate, 2),
+    statistic = round(statistic, 2),
+    ic_95 = paste0("[", round(conf.low, 2), ", ", round(conf.high, 2), "]"),
+    stars = gtools::stars.pval(p.value),
+    p_value = case_when(
+      p.value < 0.05 & p.value > 0.01 ~ "< 0.05",
+      p.value < 0.01 & p.value > 0.001 ~ "< 0.01",
+      p.value < 0.001 ~ "< 0.001",
+      TRUE ~ ""
+    ),
+    p_value = paste0(p_value, stars)
+  ) %>%
+  dplyr::select(estimate, statistic, p_value, parameter, method, alternative, ic_95) %>%
+  kableExtra::kable(
+    col.names = c("Estimación", "t", "p-value", "df", "Método", "Alternativa", "95% IC"),
+    booktabs = TRUE
+  ) %>%
+  kableExtra::kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = TRUE,
+    position = "center"
+  )
+```
+
+La correlación entre ITL y edad tiene un valor aproximado de 0.215, lo cual indica una relación positiva pero a su vez débil. Es estadísticamente significativo al tener un p menor a 0,001. Esto significa que la edad de una persona explica en menor medida si posee tiempo libre o no.
+
+### Correlación de Pearson entre ITL y discapacidad
+
+```{r,  echo=FALSE}
+# Correlación entre ITL y discapacidad (pesd)
+cor_results3 <- cor.test(
+  x = proc_enut$pesd,
+  y = proc_enut$itl,
+  method = "pearson",
+  use = "complete.obs"
+)
+
+
+# Tabla amigable con kableExtra
+stats.table3 <- tidy(cor_results3)
+
+stats.table3 %>%
+  dplyr::mutate(
+    estimate = round(estimate, 2),
+    statistic = round(statistic, 2),
+    ic_95 = paste0("[", round(conf.low, 2), ", ", round(conf.high, 2), "]"),
+    stars = gtools::stars.pval(p.value),
+    p_value = dplyr::case_when(
+      p.value < 0.05 & p.value > 0.01 ~ "< 0.05",
+      p.value < 0.01 & p.value > 0.001 ~ "< 0.01",
+      p.value < 0.001 ~ "< 0.001",
+      TRUE ~ ""
+    ),
+    p_value = paste0(p_value, stars)
+  ) %>%
+  dplyr::select(estimate, statistic, p_value, parameter, method, alternative, ic_95) %>%
+  kableExtra::kable(
+    col.names = c("Estimación", "t", "p-value", "df", "Método", "Alternativa", "95% IC"),
+    booktabs = TRUE
+  ) %>%
+  kableExtra::kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = TRUE,
+    position = "center"
+  )
+
+```
+
+
+La correlación de Pearson entre ITL y discapacidad es de -0.06, un valor bajo que indica una relación negativa y débil. Este resultado contradice la hipótesis planteada (H3) dado que se esperaba que las personas con discapacidad tengan más tiempo libre, pero obteniendo los resultados se muestra lo contrario, aunque de igual manera su efecto es el mínimo.
+
+
+### Frecuencia por sexo e itl
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+sjPlot::sjt.xtab(
+  var.row = proc_enut$sexo,
+  var.col = proc_enut$itl_recod,
+  show.summary = FALSE,
+  emph.total = TRUE
+)
+```
+
+La tabla muestra que, al recodificar el ITL es una variable dicotómica (0 = bajo tiempo libre; 1 = alto tiempo libre), los porcentajes difieren entre hombres y mujeres. Por un lado el de los hombres con 13557, presentando un bajo ITL y un 9053 representando un alto ITL; por el lado de las mujeres con un 15691 en bajo ITL y un 9720 con un alto ITL. A primera vista ambos sexos tienen mayor presencia en la categoría de poco tiempo libre, pero las mujeres aparecen ligeramente sobre representadas en esta categoría. 
+
+
+### Tabla de contingencia entre ITL y sexo
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+sjPlot::sjt.xtab(var.row = proc_enut$sexo, 
+                 var.col = proc_enut$itl_recod, 
+                 show.summary = F, 
+                 emph.total = T, 
+                 show.row.prc = T, # porcentaje fila
+                 show.col.prc = T # porcentaje columna
+)
+```
+
+La tabla permite observar una asociación débil pero visible, las mujeres presentan mayor proporción de tiempo libre reducido respecto a los hombres. Este análisis refuerza la validez de la hipótesis H1 (“Las mujeres tienen menos tiempo libre que los hombres”), dado que  incluso con la recodificación del ITL, la tendencia se mantiene
+
+
+### Prueba CHI2 entre ITL y sexo
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, collapse=TRUE}
+chi_results <- chisq.test(table(proc_enut$sexo, proc_enut$itl_recod))
+
+```
+```{r, echo=FALSE, warning=FALSE, message=FALSE, collapse=TRUE}
+stats.table4 <- tidy(chi_results, conf.int = TRUE)
+nice_table(stats.table4)
+```
+```{r, echo=FALSE, warning=FALSE, message=FALSE, collapse=TRUE}
+ggchisqtest(chi_results)
+```
+
+La prueba chi-cuadrado calcula un valor de 15.953, con 1 grado de libertad y un p-value < 0.001, el cual indica que existe una asociación estadísticamente significativa entre el sexo y el nivel de tiempo libre recodificado (no tener tiempo libre o si tenerlo). Esto significa que la distribución del tiempo libre no es igual entre hombres y mujeres y que el sexo tiene una relación con si se dispone o no de tiempo libre.
+
+
+### Cálculo del Coeficiente Phi
+
+```{r, echo=FALSE}
+sjstats::phi(table(proc_enut$sexo, proc_enut$itl_recod))
+```
+
+El coeficiente Phi reportado, aprox. 0.02, refleja la magnitud del efecto, y este es muy pequeño. Esto significa que aunque la relación entre sexo e ITL recodificado es estadísticamente significativa, el tamaño del efecto es débil. Este resultado es coherente con investigaciones previas, las desigualdades de género existen, pero no siempre muestran efectos grandes en mediciones agregadas, especialmente cuando el itl resume múltiples actividades diarias.
+
+
+### Gráfico entre ITL y sexo
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+# creamos un nuevo objeto "graf" para transformar la clase de las variables a factor
+graf <- proc_enut %>%
+  mutate(
+    itl_recod = factor(itl_recod, labels = c("No tiene tiempo libre", "Tiene tiempo libre")),
+    sexo = factor(sexo, labels = c("Hombre", "Mujer"))
+  )
+
+ggplot(
+  data = graf, 
+  mapping = aes(x = itl_recod, fill = sexo)
+) + 
+  geom_bar(position = "dodge2") +
+  labs(
+    title ="ITL, según sexo ENUT 2023", 
+    x = "ITL", 
+    y = "Frecuencia",
+    caption = "Fuente: Elaboración propia en base a ENUT 2023."
+  ) +
+  geom_text(
+    aes(label = ..count..),
+    stat = "count",
+    colour = "black", 
+    vjust = 1.5,
+    position = position_dodge(.9),
+    size = 3
+  )
+
+```
+
+La diferencia más notoria es que las mujeres presentan un número mayor en la categoría “No tiene tiempo libre”, mientras que la diferencia en “Tiene tiempo libre” es menor, aunque igualmente presente. Esta visualización respalda la hipótesis H1 y demuestra que las mujeres están más concentradas en niveles reducidos de tiempo libre. Este gráfico facilita observar la desigualdad de género en la distribución del tiempo libre, reforzando los resultados estadísticos.
+
+
+### Tabla de contingencia entre ITL y tramos de edad
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+sjPlot::sjt.xtab(
+  var.row = proc_enut$edad_recod,
+  var.col = proc_enut$itl_recod, 
+  show.summary = FALSE,
+  emph.total = TRUE
+)
+
+```
+
+La tabla muestra cómo se distribuye el tiempo libre (no tiene tiempo libre y tiene tiempo libre) según los distintos tramos de edad. En otros términos más generales, se observa que todos los grupos presentan mayor proporción en la categoría de no tiene tiempo libre, lo que confirma una tendencia a no tener disponibilidad de tiempo libre.
+
+
+### Tabla de contingencia entre ITL y tramos de edad en porcentajes
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+sjPlot::sjt.xtab(
+  var.row = proc_enut$edad_recod, 
+  var.col = proc_enut$itl_recod, 
+  show.summary = FALSE, 
+  emph.total = TRUE, 
+  show.row.prc = TRUE,   # porcentaje por fila
+  show.col.prc = TRUE    # porcentaje por columna
+)
+
+```
+
+La siguiente tabla permite hacer una mejor interpretación comparativa, por ejemplo en el grupo de  0–18 años hay un 79.5 %  que presenta bajo tiempo libre y solo el 20.5 % declara alto ITL. Diferente al grupo 30–49 años que tiene una distribución  casi pareja: 49.9 % bajo ITL, 50.1 % alto ITL. Este tramo presenta el mayor acceso relativo al tiempo libre, lo cual puede estar vinculado a estabilidad laboral y mejor organización del tiempo. En conjunto, estos porcentajes no apoyan completamente la hipótesis H2, porque los grupos extremos (menores y mayores) no son los que poseen más tiempo libre. De hecho, quienes reportan mejores niveles de tiempo libre son las personas de 30–49 años.
+
+### Prueba de CHI2 entre ITL y edad
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, collapse=TRUE}
+chi_results2 <- chisq.test(table(proc_enut$edad_recod, proc_enut$itl_recod))
+
+```
+```{r, echo=FALSE, warning=FALSE, message=FALSE, collapse=TRUE}
+stats.table5 <- tidy(chi_results2, conf.int = TRUE)
+nice_table(stats.table5)
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, collapse=TRUE}
+ggchisqtest(chi_results2)
+```
+
+El gráfico ilustra la comparación entre la distribución teórica del estadístico Chi-cuadrado con 4 grados de libertad y el valor observado en la prueba aplicada a las variables ITL y edad. Siendo el resultado de la prueba Chi2 = 2,824.96, se sitúa muy por encima del valor crítico para α = 0.05 (9.488), demostrando que existe correlación entre la edad y el tiempo libre.
+
+### Gráfico de ITL y edad 
+
+```{r}
+#| echo: false
+#| fig-cap: "ITL según tramos etarios ENUT 2023"
+
+graf2 <- proc_enut %>%
+  mutate(
+    itl_recod = factor(itl_recod, labels = c("No tiene tiempo libre", "Tiene tiempo libre")),
+    edad_recod = factor(edad_recod, labels = c("0-18 años", "19-29 años", "30-49 años", "50-64 años", "65+ años"))
+  )
+
+ggplot(
+  data = graf2, 
+  mapping = aes(x = itl_recod, fill = edad_recod)) + 
+  geom_bar(position = "dodge2") +
+  labs(title ="ITL, según tramos etarios ENUT 2023", 
+       x = "ITL", 
+       y = "Frecuencia",
+       caption = "Fuente: Elaboración propia en base a ENUT 2023.") +
+  geom_text(aes(label = ..count..), stat = "count", colour = "black", 
+            vjust = 1.5, position = position_dodge(.9), size = 3)
+```
+
+El siguiente gráfico solidifica las tendencias presentadas anteriormente. Comenzando por el tramo 0–18 años concentra el valor más alto en “No tiene tiempo libre”, lo que coincide podría coincidir con la carga escolar. Por otro lado los grupos 30–49 y 19–29 años son los que muestran una mayor presencia en la categoría “Tiene tiempo libre”, pero por una diferencia de aproximadamente 100 personas. Mientras tanto el grupo 65+ años vuelve a destacarse por tener mayor frecuencia en no tener tiempo libre, lo cual es contrario a lo esperado teóricamente.
+
+Con el siguiente gráfico se puede confirmar que la distribución del tiempo libre no sigue un patrón lineal respecto a la edad, y los adultos de mediana edad parecen estar en las mejores condiciones para disponer de tiempo libre.
+
+## Discusión de resultados
+
+Respecto a los resultados, es posible corroborar la hipótesis 1, ya que los resultados indican que las mujeres poseen menos tiempo libre que los hombres; sin embargo, la correlaciones indican que el factor sexo no es un factor que esté muy correlacionado a si se dispone de tiempo libre o no.
+
+Es posible falsear la hipótesis 2, ya que los resultados indican que las personas entre 0-18 años y 65 años o más tienden a no poseer tiempo libre y gracias a los resultados se puede indicar que hay una correlación débil entre la edad y el tiempo libre.
+
+La hipótesis 3 se falsea, ya que las personas con discapacidad tienden a no tener tiempo libre; sin embargo, la correlación entre dispacidad y tiempo libre no es muy fuerte.
+
+Para cerrar, aun se necesitan más datos e identificar distintas variables que pudiesen estar correlacionadas sobre la disposición de tiempo libre.
+
+# Conclusión
+
+Para concluir podemos decir que se puede apreciar que el tiempo libre se distribuye de manera desigual, debido a que se presentan mayormente una alta concentración en los valores bajos del índice. La primera hipótesis se confirma, mientras que la segunda hipótesis fue desmentida gracias a los datos obtenidos y, por último, la tercera hipótesis referente a la discapacidad es que podemos denotar una correlación débil y negativa que termina por desmentir la hipótesis planteada.
+
+Respecto a las limitaciones que se pueden observar en la investigación, se puede mencionar que, si bien las correlaciones presentadas fueron estadísticamente significativas gracias al gran tamaño muestral, hubieron variables con una magnitud de efecto fue muy pequeño, por lo que esto limitaría el indicar si la variable posee o no un impacto en relación al tiempo libre. Posiblemente el hecho de haber construido un índice a partir de dimensiones con pocos indicadores sea una explicación de por qué los resultados de las correlaciones fueron menores a los esperados.
+
+Como sugerencias para futuros análisis, se propone el tener en cuenta que la creación de un índice de tiempo libre a partir de dimensiones que posean indicadores específicos en días tipo, puesto que sintetiza de buena manera si las personas poseen tiempo libre o no, pero que este sea hecho con la implementación de un mayor número de indicadores correlacionados en cada dimensión para que este sea aún más efectivo. La creación de un índice de tiempo libre puede ayudar a futuros estudios a entender las desigualdades que pueden llegar a darse en la población y comprender la razón detrás de ello, por lo que se propone que la creación de un índice de tiempo libre se tenga presente para futuras investigadores que busquen identificar desigualdades.
+
+# Bibliografía
+
+  Arriagada, I. (2011). La organización social del cuidado: desafíos para la autonomía de las mujeres en América Latina. CEPAL.
+  
+  Aguirre, R. (2005). Los cuidados y las mujeres: indicadores para un análisis de uso del tiempo. CEPAL.
+
+  Gershuny, J., y Fisher, K. (2014). Time Use Research: An Introduction. Oxford University Press.
+
+  Mora, C. 2019. Interseccionalidad y fronteras sociales: género y clase social en el mercado laboral chileno. Estudios Públicos. 156 (dic. 2019).
+
+  Naciones Unidas, Comisión Económica para América Latina y el Caribe (CEPAL). (2004). Panorama social de América Latina 2002-2003. Santiago de Chile: Naciones Unidas.
+

@@ -1,0 +1,8 @@
+"0","alpha_itl <- psych::alpha(M_itl)
+alpha_itl <- psych::alpha(M_itl)
+alpha_itl$total$raw_alpha
+"
+"1","[1]"
+"1"," 0.6158207"
+"1","
+"
