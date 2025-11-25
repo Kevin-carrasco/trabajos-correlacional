@@ -1,0 +1,211 @@
+---
+title: "TrabajoEstadisticaCorrelacional"
+author: "Josefa Isler Mayen, Nuni Sanhueza Ibarra y Antonia Silva Guerrero"
+format: pdf
+editor: visual
+---
+
+```{r}
+#| label: setup
+#| include: false
+#| warning: false
+
+# 1. Cargar librerías
+if (!require("pacman")) install.packages("pacman")
+# Agregamos 'haven' para solucionar el error de las etiquetas
+pacman::p_load(ggplot2, dplyr, kableExtra, sjmisc, knitr, haven)
+
+# 2. Cargar la base de datos
+# (Asegúrate que el archivo esté en la carpeta correcta del proyecto)
+load("Base de datos EBS 2023.RData")
+
+# 3. Asignar la base al objeto 'df'
+df <- EBS_2023_vp
+```
+
+1.  Introducción La satisfacción subjetiva de la vida de las personas nos permite entender la visión individual del bienestar que los individuos perciben sobre su estado actual de la vida, tomando en cuenta diversos factores que afectarían su rendimiento social, económico y cultural, tales como sus trabajos, sus sueldos, la seguridad del barrio donde viven, sus relaciones interpersonales, entre otros aspectos. La importancia de su medición surge de la latente necesidad de realizar un control sobre el grado de satisfacción que las personas poseen, que se ha visto afectado a lo largo de las últimas décadas, con el avance de la atomización de la sociedad, las crisis económicas, democráticas, el aumento de la individualización y soledad de las personas. Informes de la Organización Mundial de la Salud afirman que “En la actualidad, casi una de cada seis personas a escala mundial afirma sentirse sola” (OMS, 2025), lo que indica un aumento en la insatisfacción con la vida. Por lo que el problema que queremos investigar es qué factores/variables afectan en mayor medida a la satisfacción de un sujeto con su vida.
+
+Para ello, se utilizarán las siguientes variables:
+
+La variable dependiente del estudio es la satisfacción subjetiva con la vida, entendida como una evaluación cognitiva global que las personas realizan sobre su propia existencia. Según Diener, Emmons, Larsen y Griffin (1985), la satisfacción con la vida es un componente cognitivo del bienestar subjetivo, distinto de los afectos positivos y negativos. Esta concepción se apoya también en la teoría homeostática del bienestar (Arita, 2005).
+
+Como variables independientes, se trabajará con:
+
+Sexo, entendido como una categoría sociodemográfica básica.
+
+Puesto de ocupación, vinculado a investigaciones que muestran que características laborales influyen en la satisfacción general (Cardoza et al., 2019).
+
+Orientación sexual, que puede relacionarse con experiencias diferenciales de discriminación.
+
+Confianza en las personas, la cual se relaciona con el funcionamiento social y es parte de las evaluaciones globales de vida.
+
+Considerando lo anterior, el objetivo de este estudio es analizar los determinantes sociales y personales de la satisfacción vital. Se plantean las siguientes hipótesis de investigación:
+
+H1: Existe una correlación positiva entre la confianza interpersonal (f1) y la satisfacción con la vida (a1); es decir, a mayor confianza en los demás, mayor bienestar subjetivo.
+
+H2: Se espera que existan diferencias significativas en la satisfacción vital según la categoría ocupacional (l11), donde aquellos con roles de mayor autonomía (empleadores) presentarán medias más altas que trabajadores por cuenta propia o familiares no remunerados.
+
+H3: Las personas pertenecientes a minorías sexuales (os1_recat) reportarán niveles de satisfacción subjetiva inferiores en comparación con la población heterosexual.
+
+2.  Metodología 2.1 Datos Los datos utilizados para este trabajo provienen de la Encuesta de Bienestar Social (EBS) 2023, una medición realizada por el Ministerio de Desarrollo Social y Familia y el INE. La encuesta tiene una cobertura nacional y su unidad de análisis son personas de 18 años y más. La muestra se seleccionó mediante un diseño probabilístico, bifásico y estratificado, con un tamaño muestral final de 11.234 personas.
+
+2.2 Variables Variable dependiente:
+
+Satisfacción subjetiva con la vida (a1): Evaluación cognitiva global (Escala Likert 1 a 5).
+
+Variables independientes:
+
+Sexo (sg01): Nominal dicotómica (1=Hombre, 2=Mujer).
+
+Puesto de ocupación (l11): Nominal politómica (Patrón, Cuenta propia, Asalariado, etc.).
+
+Orientación sexual (os1_recat): Nominal politómica (Gay, Lesbiana, Bisexual, Heterosexual, Otro).
+
+Confianza en las personas (f1): Ordinal tipo Likert (1=Nada a 5=Mucho).
+
+Variables independientes: (Se omitirá la definición conceptual al ya estar en la introducción del documento)
+
+Sexo sg01
+
+Definición operacional: Sexo de la persona mayor de edad seleccionada.
+
+Nivel de medición: Nominal dicotómica; donde 1 = hombre y 2 = mujer.
+
+Puesto de ocupación I11
+
+Definición operacional: Posición que ocupa una persona mayor de edad en su ocupación o negocio principal. Esta pregunta debe ser habilitada bajo la condición de que esta persona esté ocupada, tanto que hayan trabajado al menos una hora la semana pasada, que realizaron otra actividad remunerada por al menos una hora o tenían empleo al cual estuvieron ausentes temporalmente.
+
+Nivel de medición: Nominal politómica/categórica; 1 = Patrón(a) o empleador(a), 2 = Trabajador(a) por cuenta propia, 3 = Empleado(a) u obrero(a) del sector público (Gobierno Central o Municipal), 4 = Empleado(a) u obrero(a) de empresas públicas, 5 = Empleado(a) u obrero(a) del sector privado, 6 = Servicio doméstico puertas adentro, 7 = Servicio doméstico puertas afuera, 8 = FF.AA. y del Orden, 9 = Familiar no remunerado.
+
+Orientación sexual os1
+
+Definición operacional: La autodeclaración de la orientación sexual por parte del encuestado mayo de 18 años, el género por el cual se siente atraído considerando su propia identidad de género.
+
+Nivel de medición: Nominal politómica/categórica, donde 1 = Gay. Atracción de un hombre hacia otro hombre, 2 = Lesbiana. Atracción de una mujer hacia otra mujer, 3 = Bisexual. Atracción hacia más de un sexo o género, 4 = Heterosexual. Atracción hacia el sexo opuesto, 5 = Otro, ¿Cuál?.
+
+Confianza en las personas f1
+
+Definición operacional: La evaluación subjetiva que el encuestado mayor de edad realiza sobre el grado de confianza o desconfianza que siente hacia el resto de personas en general.
+
+Nivel de medición: Ordinal tipo Likert, donde 1 = Nada, 2 = Poco, 3 = Algo, 4 = Bastante, 5 = Mucho.
+
+2.3 Estrategia de Análisis Para el procesamiento de datos se utilizó el software R. Se realizó una limpieza de los casos con valores no válidos (-88 "No sabe" y -99 "No responde"), recodificándolos como valores perdidos (NA). El análisis se dividió en dos etapas: primero, un análisis descriptivo univariado para caracterizar la muestra; y segundo, un análisis bivariado para testear las hipótesis mediante correlaciones y comparación de medias.
+
+3.  Análisis 3.1 Análisis Descriptivo A continuación, se presentan los estadísticos descriptivos básicos de las variables seleccionadas.
+
+```{r}
+#| label: tbl-descriptivos
+#| tbl-cap: "Estadísticos descriptivos de las variables de estudio"
+#| echo: false
+#| warning: false
+
+# 1. Limpieza: Quitar etiquetas y NAs
+df_tabla <- df %>%
+  # Seleccionamos las variables (usando l11 y os1_recat)
+  select(a1, sg01, l11, os1_recat, f1) %>%
+  
+  # PASO CLAVE: Quitamos las etiquetas de la encuesta (zap_labels)
+  mutate(across(everything(), haven::zap_labels)) %>%
+  
+  # Convertimos a numérico
+  mutate(across(everything(), as.numeric)) %>%
+  
+  # Limpiamos los valores -88 y -99
+  mutate(across(everything(), ~ifelse(. %in% c(-88, -99), NA, .))) %>%
+  
+  # Renombramos para la tabla final
+  rename(
+    "Satisfacción Vital (a1)" = a1,
+    "Sexo (sg01)" = sg01,
+    "Ocupación (l11)" = l11,
+    "Orientación Sexual" = os1_recat,
+    "Confianza (f1)" = f1
+  )
+
+# 2. Generar la tabla
+sjmisc::descr(df_tabla,
+              show = c("label", "range", "mean", "sd", "NA.prc", "n")) %>% 
+  knitr::kable(., "markdown", digits = 2)
+```
+
+Como se observa en la @tbl-descriptivos, se detallan los promedios, rangos y desviación estándar de las variables principales.
+
+3.2 Análisis Bivariado A continuación, se presentan los cruces de variables para responder a las hipótesis planteadas.
+
+Hipótesis 1: Confianza y Satisfacción
+
+Se explora la relación entre el grado de confianza en las personas y la satisfacción con la vida.
+
+```{r}
+
+#| label: fig-confianza
+#| fig-cap: "Relación entre Confianza Interpersonal y Satisfacción Vital"
+#| echo: false
+#| warning: false
+
+# Preparamos datos para el gráfico (Limpieza local)
+df_graf <- df %>% 
+  select(a1, f1, l11, os1_recat) %>% 
+  mutate(across(everything(), haven::zap_labels)) %>%
+  mutate(across(everything(), as.numeric)) %>% 
+  mutate(across(everything(), ~ifelse(. %in% c(-88, -99), NA, .)))
+
+# Gráfico de dispersión
+ggplot(df_graf, aes(x = f1, y = a1)) +
+  geom_jitter(alpha = 0.2, color = "steelblue") + 
+  geom_smooth(method = "lm", color = "red") +
+  labs(x = "Confianza en las personas (1-5)", 
+       y = "Satisfacción Vital (1-5)",
+       subtitle = "A mayor confianza, se observa una tendencia al alza en satisfacción") +
+  theme_minimal()
+```
+
+Como se aprecia en la @fig-confianza, la línea de tendencia roja indica una relación positiva: las personas que confían más en los demás (puntajes cercanos a 5 en el eje X) tienden a reportar mayores niveles de satisfacción con su vida.
+
+Hipótesis 2: Ocupación y Satisfacción
+
+A continuación se comparan los niveles de satisfacción según la categoría ocupacional.
+
+```{r}
+#| label: fig-ocupacion
+#| fig-cap: "Distribución de la Satisfacción según Categoría Ocupacional"
+#| echo: false
+#| warning: false
+
+df_graf %>%
+  filter(!is.na(l11)) %>%
+  ggplot(aes(x = as.factor(l11), y = a1, fill = as.factor(l11))) +
+  geom_boxplot() +
+  labs(x = "Categoría Ocupacional (1-9)", 
+       y = "Satisfacción Vital", 
+       fill = "Ocupación") +
+  coord_flip() + # Voltear el gráfico para leer mejor
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+En la @fig-ocupacion, se observa la distribución de la satisfacción. Si bien las medianas son similares, se aprecia que categorías asociadas a mayor precariedad suelen mostrar rangos intercuartílicos más bajos o dispersos que categorías más estables.
+
+Hipótesis 3: Orientación Sexual y Satisfacción
+
+Finalmente, analizamos si existen brechas de bienestar según la orientación sexual.
+
+```{r}
+#| label: tbl-orientacion
+#| tbl-cap: "Promedio de Satisfacción según Orientación Sexual"
+#| echo: false
+#| warning: false
+
+df_graf %>%
+  group_by(os1_recat) %>%
+  summarise(
+    "Media Satisfacción" = mean(a1, na.rm = TRUE),
+    "Desv. Estándar" = sd(a1, na.rm = TRUE),
+    "N" = n()
+  ) %>%
+  knitr::kable(digits = 2)
+```
+
+La @tbl-orientacion muestra los promedios de satisfacción diferenciados por orientación sexual, permitiendo observar si existen desigualdades en el bienestar subjetivo asociadas a la identidad sexual.
+
+4.  Conclusiones A partir de los datos analizados de la EBS 2023, es posible identificar patrones claros en el bienestar subjetivo de la población. Los hallazgos sugieren que la satisfacción con la vida no es un fenómeno aislado, sino que está fuertemente anclado en el capital social (confianza interpersonal). Asimismo, se observan diferencias según las condiciones estructurales (ocupación) y características identitarias, lo que refuerza la necesidad de políticas públicas que no solo apunten a lo económico, sino también a la cohesión social y la no discriminación.

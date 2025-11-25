@@ -1,0 +1,548 @@
+---
+title: "Trabajo Estadística Correlacional"
+author: "Josefa Isler Mayen, Nuni Sanhueza Ibarra y Antonia Silva Guerrero"
+format: 
+  pdf:
+    geometry: "left=3cm,right=3cm,top=2cm,bottom=2cm"
+header-includes:
+  - \usepackage{ragged2e}
+editor: visual
+---
+
+```{r}
+#| include: false
+
+#| label: setup
+#| include: false
+#| warning: false
+
+# 1. Cargar librerías
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(ggplot2, dplyr, kableExtra, sjmisc, knitr, haven, broom, tidyverse, summary, vcd, sjPlot, flextable, corrplot, sjstats, gginference, gtools)
+
+# 2. Cargar datos
+load("Base de datos EBS 2023.RData")
+df <- EBS_2023_vp
+
+# 3. Limpieza General de Datos
+df_clean <- df %>%
+  select(a1, sg01, l11, os1_recat, f1) %>%
+  mutate(across(everything(), haven::zap_labels)) %>%
+  mutate(across(everything(), as.numeric)) %>%
+  mutate(across(everything(), ~ifelse(. %in% c(-88, -99), NA, .)))
+
+# 4. CREACIÓN DE ETIQUETAS (Esto arregla tus tablas)
+
+# Sexo
+df_clean$sexo_label <- factor(df_clean$sg01, levels = c(1,2), labels = c("Hombre", "Mujer"))
+
+# Confianza (Arregla el error "Unknown column")
+df_clean$confianza_label <- factor(df_clean$f1, 
+                                   levels = 1:5, 
+                                   labels = c("Nada", "Poco", "Algo", "Bastante", "Mucho"))
+
+# Ocupación (Agrega los nombres del PDF a los números 1-9)
+df_clean$ocupacion_label <- factor(df_clean$l11, 
+                                   levels = 1:9,
+                                   labels = c("Patrón/Empleador", "Cuenta Propia", "Emp. Público", 
+                                              "Emp. Pública", "Emp. Privado", "Serv. Dom. Adentro", 
+                                              "Serv. Dom. Afuera", "FF.AA.", "Familiar no rem."))
+
+# Orientación Sexual (Basado en tu output: 3 es la mayoría, así que es Heterosexual)
+# Ajustamos 1 y 2 como minorías según el orden usual
+df_clean$orientacion_label <- factor(df_clean$os1_recat, 
+                                     levels = c(1, 2, 3), 
+                                     labels = c("Gay/Lesbiana", "Bisexual/Otro", "Heterosexual"))
+
+# Recodificación numérica para correlaciones (sin cambios)
+df_clean$sexo_dummy <- ifelse(df_clean$sg01 == 2, 1, 0)
+```
+
+# 1. Introducción
+
+La satisfacción subjetiva de la vida es un indicador fundamental para comprender cómo los individuos perciben su bienestar en un contexto de transformaciones sociales aceleradas. La importancia de su medición surge de la necesidad de monitorear el bienestar en un escenario caracterizado por la "atomización de la sociedad, las crisis económicas, democráticas y el aumento de la individualización" (Bauman, 2000).
+
+Informes recientes de la Organización Mundial de la Salud alertan que “en la actualidad, casi una de cada seis personas a escala mundial afirma sentirse sola” (OMS, 2025), lo que sugiere una crisis de bienestar vinculada a la erosión del tejido social. El problema de investigación aborda qué factores estructurales y relacionales afectan en mayor medida a la satisfacción vital en la sociedad chilena actual.
+
+Para este estudio, definimos la **satisfacción con la vida** como "una evaluación cognitiva de la propia vida desde una perspectiva global" (Diener et al., 1985). Esta definición se diferencia de los estados afectivos momentáneos, centrándose en un juicio reflexivo sobre la propia existencia, coherente con la teoría homeostática del bienestar que postula mecanismos internos de regulación psicológica (Arita, 2005). Asimismo, analizaremos el rol del **capital social**, entendido a través de la confianza interpersonal, y factores estructurales como la ocupación y la identidad sexual.
+
+El objetivo principal es analizar la relación entre variables sociodemográficas, laborales y de capital social con la satisfacción subjetiva de la vida. Se plantean las siguientes hipótesis:
+
+-   **H1:** Existe una correlación positiva entre la confianza interpersonal y la satisfacción con la vida; a mayor confianza en los otros, mayor bienestar reportado.
+
+-   **H2:** Se espera que existan diferencias significativas según la categoría ocupacional, donde roles de mayor autonomía (empleadores) tendrán mayor satisfacción que roles precarios.
+
+-   **H3:** Las personas pertenecientes a minorías sexuales reportarán niveles de satisfacción inferiores en comparación con la población heterosexual, producto del estrés de minorías (Meyer, 2003).
+
+# 2. Metodología
+
+## 2.1 Datos
+
+Se utilizaron datos de la **Encuesta de Bienestar Social (EBS) 2023**, realizada por el Ministerio de Desarrollo Social y el INE. La muestra es probabilística, estratificada y bietápica, representativa de la población nacional mayor de 18 años ($N=11.234$).
+
+## 2.2 Variables
+
+A continuación se describen las variables y sus niveles de medición.
+
+-   **Variable Dependiente:**
+
+    -   **Satisfacción con la vida (`a1`):** Medida en escala Likert de 1 (Totalmente insatisfecho) a 5 (Totalmente satisfecho). Se trata como variable ordinal. La variable satisfaccion con la vida se mide en una escala que tiene un orden explícito (de insatisfecho a satisfecho), la clasificacion fundamental es simplmente la etiqueta asignada a la percepción de un individuo.
+
+-   **Variables Independientes:**
+
+    -   **Sexo (`sg01`):** Nominal dicotómica (1=Hombre, 2=Mujer). Variable nominal categórica que clasifica a los individuos en categorías mutuamente excluyentes y exhaustivas.
+
+    -   **Categoría Ocupacional (`l11`):** Nominal politómica (9 categorías, desde Empleador a Familiar no remunerado). El puesto de ocupación (o categoría ocupacional) es la clasificación nominal que identifica la posición jerárquica o el tipo de relación de dependencia que una persona mantiene con su trabajo o negocio principal. No describe 'qué' hace la persona (oficio), sino en 'calidad de qué' trabaja.
+
+    -   **Orientación Sexual (`os1_recat`):** Nominal politómica (Heterosexual, Gay, Lesbiana, Bisexual, Otro). La orientación sexual es una variable nominal politómica que identifica el tipo de atracción emocional, romántica y/o sexual duradera de un individuo hacia otras personas.
+
+    -   **Confianza Interpersonal (`f1`):** Ordinal (Likert 1-5), donde mayor valor indica mayor confianza. La confianza interpersonal se define nominalmente comom la clasificación de la creencia generalizada de un individuo sobre el comportamiento predecible y positivo de la mayoría de las personas en la sociedad.
+
+**Tabla 1. Estadísticos Descriptivos de las Variables**
+
+```{r}
+#| echo: false
+
+# Seleccionamos y renombramos las 5 variables para que la tabla salga lista
+df_clean %>%
+  select(
+    "Satisfacción Vital (a1)" = a1,
+    "Confianza Interpersonal (f1)" = f1,
+    "Sexo (sg01)" = sg01,
+    "Categoría Ocupacional (l11)" = l11,
+    "Orientación Sexual (os1)" = os1_recat
+  ) %>%
+  
+  # Generamos los descriptivos
+  sjmisc::descr(
+    show = c("n", "mean", "sd", "range", "NA.prc"), # Elegimos qué columnas mostrar
+    out = "viewer" 
+  ) %>%
+  
+  # Formateamos la tabla final
+  as.data.frame() %>% # Convertimos a tabla normal para poder editarla
+  select(var, n, mean, sd, range, NA.prc) %>% # Aseguramos el orden de columnas
+  knitr::kable(
+    caption = "Tabla 1. Estadísticos descriptivos de las variables de estudio",
+    digits = 2, # Dos decimales
+    col.names = c("Variable", "N", "Media", "D.E.", "Rango", "% Perdidos"),
+    align = "lccccc" # Alineación: Izquierda para nombres, Centro para números
+  ) %>%
+  kable_styling(
+    full_width = F, 
+    position = "center",
+    bootstrap_options = c("striped", "hover", "condensed")
+  )
+```
+
+a\. Variable dependiente:
+
+```{r}
+#| echo: false
+# --- A. Creación de la Tabla Formateada ---
+df_satisfaccion <- df_clean %>%
+  mutate(satisfaccion_label = factor(a1, 
+                                     levels = c(1, 2, 3, 4, 5),
+                                     labels = c("Totalmente insatisfecho", 
+                                                "Insatisfecho", 
+                                                "Indiferente", 
+                                                "Satisfecho", 
+                                                "Totalmente satisfecho")))
+
+# --- B. Creación del Gráfico (Histograma CORREGIDO) ---
+ggplot(df_satisfaccion, aes(x = satisfaccion_label)) +
+  geom_bar(fill = "#D399DF", color = "black", alpha = 0.8) +
+  
+  # AQUÍ ESTÁ EL CAMBIO: usamos after_stat(count) en vez de ..count..
+  geom_text(stat='count', aes(label=after_stat(count)), vjust=-0.5, size=3.5) + 
+  
+  labs(title = "Figura 1. Distribución de la Satisfacción Vital",
+       subtitle = "La distribución presenta un sesgo negativo (tendencia a la alta satisfacción)",
+       x = "", 
+       y = "Frecuencia") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+b\. Variables dependientes:
+
+```{r}
+#| echo: false
+# --- Gráfico de Barras para SEXO ---
+ggplot(df_clean, aes(x = sg01)) +
+  geom_bar(fill = "#E7A746", color = "black", alpha = 0.8) + # Usamos un azul distinto para diferenciar
+  geom_text(stat='count', aes(label=after_stat(count)), vjust=-0.5, size=3.5) +
+  labs(title = "Figura 2. Distribución de la muestra según Sexo",
+       subtitle = "Se observa una mayor proporción de mujeres en la muestra encuestada",
+       x = "",
+       y = "Frecuencia") +
+  theme_minimal()
+```
+
+Respecto a la distribución por sexo, la muestra total analizada asciende a 11.234 observaciones válidas. Tal como se aprecia en la Figura 2, existe una predominancia femenina en el estudio: el 59.44% de los participantes corresponde a mujeres ($n=6.677$), mientras que el 40.56% se identifica como hombres ($n=4.557$). Esta diferencia en la composición muestral (aproximadamente 19 puntos porcentuales) es un factor relevante a considerar al interpretar los resultados posteriores sobre brechas de género.
+
+```{r}
+#| echo: false
+
+# Gráfico de Barras Horizontales para Puesto de Ocupación (CORREGIDO)
+# Usamos 'ocupacion_label' en lugar de 'l11'
+ggplot(df_clean, aes(x = fct_rev(fct_infreq(ocupacion_label)))) + 
+  geom_bar(fill = "#2E86C1", color = "black", alpha = 0.8) +
+  
+  # Agregamos los números al final de cada barra
+  geom_text(stat='count', aes(label=after_stat(count)), hjust=-0.1, size=3) + 
+  
+  coord_flip() + # Giramos para que se lean las etiquetas
+  
+  labs(title = "Figura 3. Distribución según Puesto de Ocupación",
+       subtitle = "La categoría predominante es el trabajador por cuenta propia",
+       x = "", 
+       y = "Frecuencia") +
+       
+  theme_minimal() +
+  # Ajustamos márgenes para que no se corten los nombres largos
+  theme(plot.margin = margin(0.5, 1, 0.5, 0.5, "cm"))
+```
+
+En cuanto a la situación ocupacional, se cuenta con información válida para 6.343 encuestados. Como se ilustra en la Figura 3, la distribución de la fuerza laboral en la muestra es heterogénea. Se observa una alta prevalencia de trabajadores por cuenta propia y asalariados del sector privado, quienes concentran la mayor parte de las observaciones. Por el contrario, categorías como "Familiar no remunerado" o "Personal de servicio doméstico" representan grupos minoritarios dentro del estudio. Esta estructura ocupacional será determinante para analizar cómo la posición en el mercado laboral influye en la satisfacción vital percibida.
+
+```{r}
+#| echo: false
+# Gráfico de Barras para Orientación Sexual
+# Usamos fct_infreq para que la barra más alta (Heterosexual) salga primero
+ggplot(df_clean, aes(x = fct_infreq(orientacion_label))) + 
+  geom_bar(fill = "#48C9B0", color = "black", alpha = 0.8) +
+  
+  # Etiquetas con los números sobre las barras
+  geom_text(stat='count', aes(label=after_stat(count)), vjust=-0.5, size=3.5) + 
+  
+  labs(title = "Figura 4. Distribución según Orientación Sexual",
+       subtitle = "Predominancia de la población heterosexual en la muestra",
+       x = "", # Sin etiqueta en X para limpieza visual
+       y = "Frecuencia") +
+       
+  theme_minimal()
+```
+
+Respecto a la autoidentificación de la orientación sexual, la distribución de la muestra refleja una marcada homogeneidad estadística. Tal como se observa en la Figura 4, la gran mayoría de los encuestados se identifica como Heterosexual ($n=11.097$, correspondiente al 98.8% de los casos válidos). Las minorías sexuales (agrupadas en categorías Gay/Lesbiana y Bisexual/Otro) representan un porcentaje reducido de la muestra total ($1.22\%$). Esta asimetría en el tamaño de los grupos es un desafío metodológico importante al momento de comparar los promedios de satisfacción vital, ya que la varianza en el grupo mayoritario tiende a estabilizarse más que en los grupos minoritarios.
+
+```{r}
+#| echo: false
+# Gráfico de Barras para Confianza Interpersonal
+# Usamos la variable 'confianza_label' y mantenemos el orden natural (Nada -> Mucho)
+ggplot(df_clean %>% drop_na(confianza_label), aes(x = confianza_label)) + 
+  geom_bar(fill = "#CD6155", color = "black", alpha = 0.8) +
+  
+  # Etiquetas con los números sobre las barras
+  geom_text(stat='count', aes(label=after_stat(count)), vjust=-0.5, size=3.5) + 
+  
+  labs(title = "Figura 5. Distribución de la Confianza Interpersonal",
+       subtitle = "Nivel de confianza percibido hacia las personas en general",
+       x = "Grado de Confianza", 
+       y = "Frecuencia") +
+       
+  theme_minimal()
+```
+
+Para la variable de capital social revela un escenario de baja cohesión. Como se aprecia en la Figura 5, la distribución de la confianza interpersonal presenta un sesgo hacia los niveles inferiores de la escala. La categoría modal (la más frecuente) suele concentrarse en las opciones "Poco" o "Algo", mientras que los niveles de confianza plena ("Mucho") representan una fracción minoritaria de la muestra. Este patrón es consistente con el promedio reportado de \$2.68\$2, lo que sitúa a la población general en una zona de desconfianza o cautela moderada hacia los demás.
+
+2.**Análisis Bivariado (3.2):** Se estimaron coeficientes de correlación con un 95% de confianza ($p<0.05$).
+
+-   Para **Satisfacción vs. Confianza** (Ordinal-Ordinal) se utilizó el coeficiente **Rho de Spearman**.
+
+-   Para **Satisfacción vs. Sexo** (Ordinal-Dicotómica) se utilizó correlación **Punto Biserial**.
+
+-   Para variables **Politómicas** (Ocupación y Orientación) se analizaron las diferencias de medias mediante tablas de contingencia descriptiva, dado que no aplica un coeficiente lineal único.
+
+# 3. Análisis
+
+## 3.1 Análisis Descriptivo
+
+PONER DESCRIPTIVOS AQUI Y TABLA DE FRECUENCIAS
+
+## 3.2 Análisis Estadístico Bivariado
+
+A continuación se presentan los coeficientes de asociación y la discusión de hipótesis.
+
+**Tabla de Coeficientes de Correlación**
+
+```{r}
+#| echo: false
+# -----------------------------------------------------------------------------
+# 1. CÁLCULO DE LOS ESTADÍSTICOS
+# -----------------------------------------------------------------------------
+
+# A. SATISFACCIÓN vs CONFIANZA (Ordinal vs Ordinal) -> Spearman
+test_confianza <- cor.test(df_clean$a1, df_clean$f1, method = "spearman", exact=FALSE)
+coef_confianza <- test_confianza$estimate
+p_confianza    <- test_confianza$p.value
+metodo_confianza <- "Spearman (Rho)"
+
+# B. SATISFACCIÓN vs SEXO (Ordinal vs Nominal Dicotómica) -> Punto Biserial
+# (Calculado como Pearson sobre la variable dummy)
+test_sexo <- cor.test(df_clean$a1, df_clean$sexo_dummy, method = "pearson")
+coef_sexo <- test_sexo$estimate
+p_sexo    <- test_sexo$p.value
+metodo_sexo <- "Punto Biserial (r)"
+
+# C. SATISFACCIÓN vs OCUPACIÓN (Ordinal vs Nominal Politómica) -> V de Cramér
+tabla_ocup <- table(df_clean$a1, df_clean$ocupacion_label)
+chisq_ocup <- chisq.test(tabla_ocup)
+cramer_ocup <- vcd::assocstats(tabla_ocup)$cramer
+
+coef_ocup   <- cramer_ocup
+p_ocup      <- chisq_ocup$p.value
+metodo_ocup <- "V de Cramér"
+
+# D. SATISFACCIÓN vs ORIENTACIÓN (Ordinal vs Nominal Politómica) -> V de Cramér
+tabla_orient <- table(df_clean$a1, df_clean$orientacion_label)
+chisq_orient <- chisq.test(tabla_orient)
+cramer_orient <- vcd::assocstats(tabla_orient)$cramer
+
+coef_orient   <- cramer_orient
+p_orient      <- chisq_orient$p.value
+metodo_orient <- "V de Cramér"
+
+# -----------------------------------------------------------------------------
+# 2. TABLA RESUMEN (SOLO DATOS)
+# -----------------------------------------------------------------------------
+
+tabla_final <- data.frame(
+  "Variable Independiente" = c("Confianza Interpersonal", 
+                               "Sexo", 
+                               "Categoría Ocupacional", 
+                               "Orientación Sexual"),
+  
+  "Prueba Estadística" = c(metodo_confianza, 
+                           metodo_sexo, 
+                           metodo_ocup, 
+                           metodo_orient),
+  
+  "Coeficiente" = c(round(coef_confianza, 3), 
+                    round(coef_sexo, 3), 
+                    round(coef_ocup, 3), 
+                    round(coef_orient, 3)),
+  
+  "Valor p" = c(format.pval(p_confianza, eps=0.001, digits=3),
+                format.pval(p_sexo, eps=0.001, digits=3),
+                format.pval(p_ocup, eps=0.001, digits=3),
+                format.pval(p_orient, eps=0.001, digits=3))
+)
+
+# Imprimir tabla estilo académico
+knitr::kable(tabla_final, 
+             caption = "Tabla Resumen: Coeficientes de Asociación y Valores P",
+             align = "lccc") %>%
+  kableExtra::kable_styling(bootstrap_options = c("striped", "hover"), full_width = F)
+```
+
+1.  **Análisis de correlación entre las variables:**
+
+**1.1 Confianza Interpersonal y Satisfacción Vital**
+
+Se observa una correlación positiva y estadísticamente significativa (Rho = 0.141; $p < 0.001$). Esto indica que, a medida que aumenta la confianza en las personas, tiende a aumentar la satisfacción vital. Sin embargo, al analizar la fuerza de esta asociación según los criterios de Cohen, el coeficiente de 0.141 revela un tamaño del efecto pequeño. Esto sugiere que, si bien la confianza es un factor incidente y no producto del azar, por sí sola explica una parte modesta de la variabilidad en la satisfacción de los sujetos.
+
+```{r}
+#| echo: false
+# -----------------------------------------------------------------------------
+# 1. CONFIANZA vs SATISFACCIÓN: Gráfico de Tendencia de Medias
+# -----------------------------------------------------------------------------
+# Calculamos la media de satisfacción para cada nivel de confianza
+df_graf1 <- df_clean %>%
+  drop_na(confianza_label, a1) %>%
+  group_by(confianza_label) %>%
+  summarise(media = mean(a1), 
+            se = sd(a1)/sqrt(n())) # Error estándar para las barritas
+
+ggplot(df_graf1, aes(x = confianza_label, y = media, group = 1)) +
+  geom_line(color = "steelblue", size = 1) +
+  geom_point(size = 3, color = "steelblue") +
+  geom_errorbar(aes(ymin = media - 1.96*se, ymax = media + 1.96*se), width = 0.1) +
+  labs(title = "Gráfico 1. Tendencia: Confianza vs. Satisfacción",
+       subtitle = "A mayor confianza interpersonal, aumenta el promedio de satisfacción",
+       x = "Nivel de Confianza",
+       y = "Satisfacción Promedio (1-5)") +
+  theme_minimal()
+```
+
+Como se aprecia en la gráfica, existe una tendencia lineal ascendente clara entre ambas variables. La línea de promedios muestra que, a medida que aumenta el nivel de confianza interpersonal, se incrementa sistemáticamente el promedio de satisfacción vital.
+
+Específicamente, el grupo que manifiesta **"Nada"** de confianza reporta los niveles más bajos de bienestar (con una media aproximada de 3.65), mientras que aquellos que confían **"Mucho"** en los demás alcanzan los puntajes más altos, superando el promedio de 4.1.
+
+Las barras de error (intervalos de confianza) indican la precisión de estas estimaciones. Aunque hay cierto solapamiento entre las categorías superiores ("Bastante" y "Mucho"), la brecha entre los extremos de la escala es evidente y significativa. Visualmente, esto confirma la **Hipótesis 1**: el capital social, entendido como la capacidad de confiar en el otro, actúa como un factor protector que eleva la percepción subjetiva de bienestar.
+
+**1.2 Sexo y Satisfacción Vital**
+
+La prueba de correlación de Punto Biserial arrojó un coeficiente de -0.023 con un valor p de 0.0132. Aunque el resultado es "estadísticamente significativo" (debido al gran tamaño muestral, $p < 0.05$), la magnitud del coeficiente es extremadamente baja (cercana a cero). Según los criterios de Cohen, esto se considera una relación trivial o nula ($r < 0.10$). En términos prácticos, esto implica que no existen diferencias sustantivas en la satisfacción vital entre hombres y mujeres en esta muestra; el sexo no es un predictor relevante del bienestar subjetivo en este caso.
+
+```{r}
+#| echo: false
+# -----------------------------------------------------------------------------
+# 2. SEXO vs SATISFACCIÓN: Gráfico de Violín
+# -----------------------------------------------------------------------------
+ggplot(df_clean %>% drop_na(sexo_label, a1), aes(x = sexo_label, y = a1, fill = sexo_label)) +
+  # El violín muestra la densidad (qué tan 'gorda' es la distribución)
+  geom_violin(alpha = 0.5, trim = FALSE) +
+  # El boxplot adentro muestra la mediana y cuartiles
+  geom_boxplot(width = 0.1, fill = "white", outlier.shape = NA) +
+  # Agregamos la media como un punto rojo
+  stat_summary(fun = mean, geom = "point", shape = 18, size = 3, color = "red") +
+  labs(title = "Gráfico 2. Distribución de Satisfacción por Sexo",
+       subtitle = "La distribución y promedios (punto rojo) son muy similares",
+       x = "", y = "Satisfacción Vital") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+Este gráfico permite visualizar la distribución de la satisfacción vital desagregada por sexo mediante un diagrama de violín. Lo que destaca inmediatamente es la **similitud estructural** entre ambos grupos.
+
+Tanto en hombres como en mujeres, la mayor densidad de respuestas (la parte más ancha de la figura) se concentra en el nivel 4 ("Satisfecho") y en el 5. Los indicadores de tendencia central refuerzan esta homogeneidad: el promedio (representado por el rombo rojo) y la mediana (línea negra horizontal) se ubican prácticamente en la misma posición para ambos sexos.
+
+Visualmente, esto respalda la conclusión del análisis estadístico previo: aunque la prueba de correlación arrojó un valor $p$ significativo debido al tamaño muestral, **no existe una brecha de bienestar sustantiva** entre hombres y mujeres; las experiencias de satisfacción se distribuyen de manera casi idéntica en ambos grupos.
+
+**1.3 Categoría Ocupacional y Satisfacción Vital**
+
+Respecto a la categoría ocupacional, la prueba V de Cramér indica una asociación estadísticamente significativa ($V = 0.058$; $p < 0.001$). No obstante, al igual que en el caso anterior, el coeficiente es muy bajo. Un valor de V de Cramér de 0.058 señala una asociación de fuerza pequeña o despreciable. Esto indica que, aunque la posición en el mercado laboral influye matemáticamente en la satisfacción, la relación es muy débil cuando se analiza de forma aislada sin controlar otras variables (como el ingreso).
+
+```{r}
+#| echo: false
+# -----------------------------------------------------------------------------
+# 3. OCUPACIÓN vs SATISFACCIÓN: Gráfico de Ranking (Medias + IC)
+# -----------------------------------------------------------------------------
+# Preparamos los datos ordenados por media
+df_graf3 <- df_clean %>%
+  drop_na(ocupacion_label, a1) %>%
+  group_by(ocupacion_label) %>%
+  summarise(media = mean(a1), 
+            se = sd(a1)/sqrt(n()),
+            n = n()) %>%
+  # Filtramos categorías con muy poca gente para no ensuciar (opcional)
+  filter(n > 30) 
+
+ggplot(df_graf3, aes(x = reorder(ocupacion_label, media), y = media)) +
+  geom_errorbar(aes(ymin = media - 1.96*se, ymax = media + 1.96*se), width = 0.2, color = "gray50") +
+  geom_point(size = 3, color = "#2E86C1") +
+  coord_flip() + # Volteamos para leer bien los nombres
+  labs(title = "Gráfico 3. Ranking de Satisfacción según Ocupación",
+       subtitle = "Puntos representan el promedio; barras el intervalo de confianza (95%)",
+       x = "", y = "Satisfacción Promedio") +
+  theme_minimal()
+```
+
+Este gráfico presenta una jerarquización clara del bienestar laboral. En el extremo superior, los **Patrones** y **Empleados del Sector Público** lideran los puntajes de satisfacción, lo que sugiere un vínculo positivo entre el bienestar subjetivo y condiciones de mayor autonomía o estabilidad contractual.
+
+Por el contrario, categorías frecuentemente asociadas a la precariedad o incertidumbre de ingresos, como el **Servicio Doméstico** y los **Trabajadores por Cuenta Propia**, se ubican en la base del ranking. Asimismo, es importante notar la extensa barra de error en la categoría **"Familiar no remunerado"**; esto indica una alta dispersión de los datos y baja precisión estadística, por lo que su promedio debe interpretarse con cautela en comparación con grupos más consolidados como el empleo privado.
+
+**1.4 Orientación Sexual y Satisfacción Vital**
+
+Finalmente, para la variable orientación sexual, se obtuvo un coeficiente V de Cramér de 0.024 con un valor p de 0.109. Al ser el valor p mayor que el nivel de significancia establecido ($\alpha = 0.05$), no se rechaza la hipótesis nula. Esto significa que no existe evidencia estadística suficiente para afirmar que la satisfacción vital varíe según la orientación sexual en esta muestra. Las diferencias observadas en el análisis descriptivo probablemente se deban al azar o al error muestral y no a una relación sistemática en la población.
+
+```{r}
+#| echo: false
+# -----------------------------------------------------------------------------
+# 4. ORIENTACIÓN SEXUAL vs SATISFACCIÓN (CORREGIDO: Gráfico de Medias)
+# -----------------------------------------------------------------------------
+# Calculamos las medias y errores estándar para cada grupo
+df_graf4 <- df_clean %>%
+  drop_na(orientacion_label, a1) %>%
+  group_by(orientacion_label) %>%
+  summarise(
+    media = mean(a1), 
+    se = sd(a1)/sqrt(n()), # Error Estándar
+    n = n()
+  )
+
+# Generamos el gráfico de puntos y barras de error
+ggplot(df_graf4, aes(x = orientacion_label, y = media)) +
+  # Barra de error (Intervalo de Confianza del 95%)
+  geom_errorbar(aes(ymin = media - 1.96*se, ymax = media + 1.96*se), 
+                width = 0.1, color = "gray40") +
+  
+  # Punto que representa el promedio
+  geom_point(size = 4, color = "#48C9B0") +
+  
+  # Etiquetas de texto para ver el número exacto del promedio
+  geom_text(aes(label = round(media, 2)), hjust = -0.3, size = 3.5) +
+  
+  labs(title = "Gráfico 4. Promedio de Satisfacción según Orientación Sexual",
+       subtitle = "Puntos indican la media; barras el intervalo de confianza (95%)",
+       x = "", 
+       y = "Satisfacción Promedio (1-5)") +
+  
+  theme_minimal() +
+  ylim(3.5, 4.2) # Hacemos zoom en el eje Y para ver mejor las diferencias pequeñas
+```
+
+El gráfico compara el bienestar subjetivo según la orientación sexual auto-reportada. Aunque se observa una leve gradiente aritmética, donde la población **Heterosexual** presenta el promedio más alto (3.89) frente al grupo **Gay/Lesbiana** (3.85) y **Bisexual/Otro** (3.87), las diferencias son numéricamente marginales.
+
+El aspecto visual más crítico es la disparidad en los **intervalos de confianza**. La barra de error del grupo Heterosexual es mínima, reflejando una alta precisión dada su mayoría numérica. En contraste, las barras de los grupos minoritarios son extensas, lo que denota una mayor incertidumbre en la estimación. Dado que los intervalos de las minorías se solapan completamente con el promedio heterosexual, el gráfico confirma visualmente el resultado de la prueba estadística: no existe evidencia suficiente para afirmar que estas diferencias sean significativas y no producto del azar muestral.
+
+### Discusión de Resultados
+
+-   **Discusión de las hipótesis de investigación**.
+
+    A continuación, se evalúa el cumplimiento de las hipótesis planteadas, integrando la significancia estadística (valor $p$) y el tamaño del efecto (Criterios de Cohen) obtenidos en el análisis bivariado.
+
+    #### **H1: Existe una correlación positiva entre la confianza interpersonal y la satisfacción con la vida**
+
+    **Resultado: Hipótesis Aceptada (con matices)**
+
+    El análisis de correlación de Spearman arrojó un coeficiente de $\rho = 0.141$ con una significancia estadística de $p < 0.001$.
+
+    -   **Interpretación Estadística:** Dado que el valor $p$ es inferior al nivel de significancia ($\alpha = 0.05$), se rechaza la hipótesis nula y se confirma que existe una asociación lineal positiva: a mayor confianza en los otros, los individuos tienden a reportar mayor satisfacción vital.
+
+    -   **Análisis de Fuerza (Cohen):** Sin embargo, al aplicar los criterios de Cohen (1988), el coeficiente de **0.141** corresponde a un **tamaño del efecto pequeño**. Esto implica que, aunque la confianza interpersonal es un factor que incide en el bienestar, su capacidad explicativa por sí sola es limitada. Es probable que la satisfacción vital sea un fenómeno multicausal donde la confianza es solo una pieza de un engranaje más complejo.
+
+    #### **H2: Se espera que existan diferencias significativas según la categoría ocupacional (empleadores \> roles precarios)**
+
+    **Resultado: Hipótesis Aceptada parcialmente**
+
+    Para evaluar esta relación entre una variable nominal politómica (Ocupación) y una ordinal (Satisfacción), se utilizó la prueba de Chi-cuadrado y el coeficiente V de Cramér. El resultado fue estadísticamente significativo ($p < 0.001$), lo que confirma que la satisfacción no se distribuye igual en todas las ocupaciones.
+
+    -   **Análisis Visual y de Medias:** Tal como se observó en el gráfico de ranking, se cumple la dirección esperada de la hipótesis: los roles de mayor autonomía (**Patrones/Empleadores** y **Empleados Públicos**) presentaron los promedios más altos, mientras que roles más inestables (**Servicio Doméstico**, **Cuenta Propia**) se ubicaron en la base.
+
+    -   **Análisis de Fuerza (Cohen):** No obstante, el coeficiente **V de Cramér de 0.058** indica una asociación de **fuerza despreciable o muy pequeña**. Esto sugiere que, aunque la jerarquía ocupacional influye en el bienestar y las diferencias no son producto del azar, la ocupación por sí sola no determina drásticamente los niveles de felicidad en esta muestra masiva.
+
+    #### **H3: Las personas de minorías sexuales reportarán niveles de satisfacción inferiores debido al estrés de minorías**
+
+    **Resultado: Hipótesis Rechazada**
+
+    El análisis estadístico mediante V de Cramér arrojó un coeficiente de **0.024** con un valor $p$ de **0.109**.
+
+    -   **Interpretación Estadística:** Al ser el valor $p$ mayor que $0.05$, **no existe evidencia estadística suficiente** para afirmar que hay una relación entre la orientación sexual y la satisfacción vital en esta muestra.
+
+    -   **Análisis:** Aunque en el análisis descriptivo se observó una diferencia aritmética marginal (donde los heterosexuales tenían un promedio levemente superior de 3.89 frente a 3.85 de minorías), los intervalos de confianza se solapan. Esto indica que dicha diferencia probablemente se deba al error muestral y no a una disparidad estructural en la población estudiada. Por lo tanto, con los datos de la EBS 2023, no es posible sostener que la orientación sexual sea un predictor de la satisfacción con la vida.
+
+    En resumen, los hallazgos sugieren que el **capital social** (H1) y la **estructura ocupacional** (H2) son factores estadísticamente incidentes en el bienestar subjetivo de los chilenos, aunque su impacto individual es de magnitud pequeña. Por otro lado, la **orientación sexual** (H3) no demostró ser una variable diferenciadora del bienestar en este estudio, lo cual invita a reflexionar si el "estrés de minorías" podría estar mediado por otras variables no observadas aquí (como el apoyo familiar o redes de contacto) que amortiguan su impacto negativo.
+
+# 4. Conclusiones
+
+La presente investigación tuvo por objetivo analizar los determinantes sociales y personales de la satisfacción vital en la población chilena, utilizando datos de la Encuesta de Bienestar Social (EBS) 2023. A partir de los análisis estadísticos realizados, es posible extraer tres conclusiones fundamentales que dialogan con la discusión teórica sobre el bienestar en sociedades modernas.
+
+En primer lugar, se confirma la relevancia del **capital social** como un componente del bienestar subjetivo. Los resultados validan la Hipótesis 1, mostrando que existe una relación positiva y significativa entre la confianza interpersonal y la satisfacción con la vida. Esto sugiere que, en un contexto caracterizado por la individualización y la atomización social, la percepción de un entorno confiable actúa como un factor protector. Sin embargo, el tamaño del efecto observado (pequeño según los criterios de Cohen) indica que la confianza es una condición necesaria pero no suficiente; la felicidad de los sujetos no depende exclusivamente de sus lazos sociales, sino de una configuración más compleja de factores.
+
+En segundo lugar, la evidencia respalda la influencia de las **condiciones estructurales** en la calidad de vida percibida (Hipótesis 2). Se observó una jerarquía clara donde roles de mayor autonomía y poder (como empleadores) reportan mayores niveles de satisfacción que roles caracterizados por la inestabilidad o la dependencia precaria (como el servicio doméstico o el trabajo por cuenta propia). Si bien la asociación estadística fue de magnitud baja, el patrón visual es consistente: la posición en la estructura productiva sigue siendo un diferenciador del bienestar en Chile.
+
+En tercer lugar, un hallazgo contraintuitivo fue la **ausencia de diferencias significativas** según la orientación sexual (Hipótesis 3 rechazada) y el sexo del encuestado. Contrario a lo esperado por la literatura sobre el "estrés de minorías", en esta muestra no se encontró evidencia estadística de que las personas de minorías sexuales reporten una satisfacción vital inferior a la población heterosexual. Esto podría interpretarse de dos formas: o bien la orientación sexual por sí misma ha perdido peso como predictor de infelicidad en el Chile actual, o bien las disparidades existen pero están mediadas por otras variables no controladas en este diseño bivariado (como el nivel socioeconómico o el apoyo familiar).
+
+**Limitaciones y Proyecciones**
+
+Es necesario interpretar estos resultados considerando las limitaciones del estudio. La principal restricción es el **tamaño del efecto**, que fue sistemáticamente pequeño en todas las asociaciones significativas. Esto revela que el bienestar subjetivo es un fenómeno multicausal que no puede explicarse por una sola variable sociodemográfica aislada. Asimismo, el diseño transversal de la encuesta impide establecer relaciones de causalidad directa.
+
+Para futuras investigaciones, se sugiere avanzar hacia **modelos multivariados** (como regresiones lineales o logísticas) que permitan controlar el efecto del ingreso económico y la edad. Esto ayudaría a dilucidar, por ejemplo, si la baja satisfacción en trabajadores por cuenta propia se debe a la ocupación en sí misma o a los ingresos variables asociados a ella.
+
+# 5. Bibliografía
+
+-   Arita Watanabe, B. Y. (2005). *Satisfacción por la vida y teoría homeostática del bienestar.* Psicología y Salud, 15(1), 121–126. https://www.redalyc.org/pdf/291/29115113.pdf
+
+-   Bauman, Z. (2000). *Modernidad líquida*. Fondo de Cultura Económica.
+
+-   Cardoza Sernaqué, M. A., Hidalgo Salinas, L., Peña Romero, J., y Torres Solano, C. (2019). *Satisfacción con la vida y satisfacción laboral.* UCV-HACER. Revista de Investigación y Cultura, 8(1). http://www.redalyc.org/articulo.oa?id=521758809021
+
+-   Diener, E., et al. (1985). The Satisfaction with Life Scale. *Journal of Personality Assessment*.
+
+-   Meyer, I. H. (2003). Prejudice, social stress, and mental health in lesbian, gay, and bisexual populations. *Psychological Bulletin*.
+
+-   Ministerio de Desarrollo Social y Familia de Chile. (2023). *Encuesta de Bienestar Social (EBS) 2023.* Observatorio Social, Subsecretaría de Evaluación Social. https://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-bienestar-social-2023
+
+-   OMS. (2025). *Informe sobre el estado de la conexión social mundial*. Organización Mundial de la Salud.

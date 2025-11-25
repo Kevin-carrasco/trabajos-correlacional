@@ -1,0 +1,132 @@
+---
+title: "TrabajoEstadisticaCorrelacional"
+author: "Josefa Isler Mayen, Nuni Sanhueza Ibarra y Antonia Silva Guerrero"
+format: html
+editor: visual
+---
+
+```{r}
+#| label: setup
+#| include: false
+#| warning: false
+
+# 1. Cargar librerías (Tal cual sale en tu práctico)
+# Si no tienes pacman instalado, R intentará instalarlo, o cárgalo normal si prefieres.
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(ggplot2, dplyr, kableExtra, sjmisc, knitr)
+
+# 2. Cargar la base de datos
+# Asegúrate que el archivo esté en esa carpeta "input". Si te da error, avísame.
+load("Base de datos EBS 2023.RData")
+
+# 3. Asignar la base al objeto 'df' para trabajar más fácil
+# AQUÍ ESTÁ EL CAMBIO: Usamos el nombre que me diste.
+df <- EBS_2023_vp
+
+```
+
+[**1. Introducción**]{.underline}
+
+La satisfacción subjetiva de la vida de las personas, nos permite entender la visión individual del bienestar que los individuos perciben sobre su estado actual de la vida, tomando en cuenta diversos factores que afectarían su rendimiento social, económico y cultural, tales como sus trabajos, sus sueldos, la seguridad del barrio donde viven, sus relaciones interpersonales, entre otros aspectos. La importancia de su medición surge de la latente necesidad de realizar un control sobre el grado de satisfacción que las personas poseen, que se ha visto afectado a lo largo de las últimas décadas, con el avance de la atomización de la sociedad, las crisis económicas, democráticas, el aumento de la individualización y soledad de las personas. Informes de la Organización Mundial de la Salud, afirman que “En la actualidad, casi una de cada seis personas a escala mundial afirma sentirse sola.” (OMS, 2025), lo que indica un aumento en la insatisfacción con la vida, por lo que el problema que queremos investigar es qué factores/variables afectan en mayor medida a la satisfacción de un sujeto con su vida, es decir, qué condiciones existentes en la sociedad podrían indicar o anteceder una mayor insatisfacción con la vida.
+
+Para ello, se utilizarán las siguientes variables:
+
+La variable dependiente del estudio es la satisfacción subjetiva con la vida, entendida como una evaluación cognitiva global que las personas realizan sobre su propia existencia. Según Diener, Emmons, Larsen y Griffin (1985), la satisfacción con la vida es un componente cognitivo del bienestar subjetivo, distinto de los afectos positivos y negativos, que consiste en “una evaluación cognitiva de la propia vida desde una perspectiva global”. Esta concepción se apoya también en la teoría homeostática del bienestar, que según Beatriz Arita (2005) en esta la satisfacción vital refleja el ajuste psicológico general y un tono afectivo positivo sostenido por mecanismos internos de regulación.
+
+Como variables independientes, se trabajará con:
+
+-   Sexo, entendido como una categoría sociodemográfica básica que puede relacionarse con diferencias en bienestar percibido.
+
+-   Puesto de ocupación, vinculado a investigaciones que muestran que características laborales —como estabilidad, autonomía o carga de trabajo— influyen en la satisfacción general (como señalan estudios sobre satisfacción laboral y vida: Cardoza et al., 2019).
+
+-   Orientación sexual, que puede relacionarse con experiencias diferenciales de discriminación o integración social, influyendo potencialmente en el bienestar subjetivo.
+
+-   Confianza en las personas, la cual se relaciona con el funcionamiento social y es parte de las evaluaciones globales que las personas hacen sobre su vida, coherente con los planteamientos de la teoría del bienestar subjetivo y sus componentes evaluativos (Diener, 1985, citado en Arita, 2005).
+
+Mencionar el principal objetivo del trabajo y las hipótesis de investigación en el párrafo final de esta sección (ej: se espera que el nivel educacional sea mayor en zonas urbanas en relación a zonas rurales). Mencionar al menos tres hipótesis.
+
+Hay que tener en cuenta que “la satisfacción laboral es quizá el antecedente del comportamiento humano en el trabajo más estudiado en el mundo entero.” (Cernas, et al., 2017). Es entonces que se vuelve vital analizar cómo variables sociodemográficas y psicosociales —sexo, puesto de ocupación, orientación sexual y confianza interpersonal— se asocian con la satisfacción subjetiva de la vida en la población encuestada en la EBS, comprendiendo estos vínculos desde las teorías del bienestar subjetivo y la satisfacción vital.
+
+**2. Metodología (2 puntos, app. 800 palabras)**
+
+**2.1 Datos:**
+
+Los datos utilizados para este trabajo provienen de la Encuesta de Bienestar Social (EBS) 2023, una medición realizada por el Ministerio de Desarrollo Social y Familia, ejecutada y posteriormente procesada por el Instituto Nacional de Estadísticas (INE). La encuesta tiene una cobertura nacional y su unidad de análisis son personas de 18 años y más, que residen en viviendas particulares, excluyendo áreas de difícil acceso.
+
+La muestra se seleccionó mediante un diseño probabilístico, bifásico y estratificado: “La primera fase corresponde a las viviendas logradas en Casen 2022 cuyo diseño muestral es probabilístico, estratificado, por conglomerados y en múltiples etapas, luego la segunda fase, se obtiene de las personas de 18 años y más a través de un muestreo aleatorio y estratificado por región. La unidad de selección son las personas.” El tamaño muestral final logrado, para las unidades de análisis, fue de 11234 personas.
+
+**2.2 Variables**
+
+**Variable dependiente:** Grado de satisfacción subjetiva con la vida (a1)
+
+-   **Definición conceptual:** Evaluación cognitiva global que las personas realizan sobre su propia existencia.
+
+-   **Definición operacional:** Considerando todas las cosas sobre la vida de un sujeto mayor de 18 años, el nivel de satisfacción que subjetivamente cree tener con su vida. Considerado en una escala de 1 a 5
+
+-   **Nivel de medición:** Se mide mediante una escala tipo Likert de 1 a 5; donde 1 es totalmente insatisfecho(a), 2 insatisfecho(a), 3 indiferente, 4 satisfecho(a) y 5 totalmente satisfecho(a).
+
+**Variables independientes:** (Se omitirá la definición conceptual al ya estar en la introducción del documento)
+
+1.  **Sexo** sg01
+
+-   **Definición operacional:** Sexo de la persona mayor de edad seleccionada.
+
+-   **Nivel de medición:** Nominal dicotómica; donde 1 = hombre y 2 = mujer.
+
+2.  **Puesto de ocupación** I11
+
+-   **Definición operacional:** Posición que ocupa una persona mayor de edad en su ocupación o negocio principal. Esta pregunta debe ser habilitada bajo la condición de que esta persona esté ocupada, tanto que hayan trabajado al menos una hora la semana pasada, que realizaron otra actividad remunerada por al menos una hora o tenían empleo al cual estuvieron ausentes temporalmente. 
+
+-   **Nivel de medición:** Nominal politómica/categórica; 1 = Patrón(a) o empleador(a), 2 = Trabajador(a) por cuenta propia, 3 = Empleado(a) u obrero(a) del sector público (Gobierno Central o Municipal), 4 = Empleado(a) u obrero(a) de empresas públicas, 5 = Empleado(a) u obrero(a) del sector privado, 6 = Servicio doméstico puertas adentro, 7 = Servicio doméstico puertas afuera, 8 = FF.AA. y del Orden, 9 = Familiar no remunerado.
+
+3.  **Orientación sexual** os1
+
+-   **Definición operacional:** La autodeclaración de la orientación sexual por parte del encuestado mayo de 18 años, el género por el cual se siente atraído considerando su propia identidad de género.
+
+-   **Nivel de medición:** Nominal politómica/categórica, donde 1 = Gay. Atracción de un hombre hacia otro hombre, 2 = Lesbiana. Atracción de una mujer hacia otra mujer, 3 = Bisexual. Atracción hacia más de un sexo o género, 4 = Heterosexual. Atracción hacia el sexo opuesto, 5 = Otro, ¿Cuál?.
+
+4.  **Confianza en las personas** f1
+
+-   **Definición operacional:** La evaluación subjetiva que el encuestado mayor de edad realiza sobre el grado de confianza o desconfianza que siente hacia el resto de personas en general.
+
+-   **Nivel de medición:** Ordinal tipo Likert, donde 1 = Nada, 2 = Poco, 3 = Algo, 4 = Bastante, 5 = Mucho.
+
+[**Tabla de descriptivos:**]{.underline}
+
+```{r}
+#| label: tbl-descriptivos
+#| tbl-cap: "Estadísticos descriptivos de las variables de estudio"
+#| echo: false
+#| warning: false
+
+# Asegurarnos de tener la librería 'haven' (para zap_labels)
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(haven, dplyr, sjmisc, knitr)
+
+# 1. Limpieza y Selección
+df_tabla <- df %>%
+  # Seleccionamos las variables (usando l11 como indicaste)
+  select(a1, sg01, l11, os1_recat, f1) %>%
+  # PASO NUEVO: Usamos zap_labels() para quitar el formato "haven_labelled"
+  # Esto elimina el error que te salía antes.
+  mutate(across(everything(), haven::zap_labels)) %>%
+  # Ahora convertimos a numérico con seguridad
+  mutate(across(everything(), as.numeric)) %>%
+  # Limpiamos los -88 y -99
+  mutate(across(everything(), ~ifelse(. %in% c(-88, -99), NA, .))) %>%
+  # Renombramos para la tabla final
+  rename(
+    "Satisfacción Vital (a1)" = a1,
+    "Sexo (sg01)" = sg01,
+    "Ocupación (l11)" = l11,
+    "Orientación Sexual" = os1_recat,
+    "Confianza (f1)" = f1
+  )
+
+# 2. Generar la tabla
+sjmisc::descr(df_tabla,
+              show = c("label", "range", "mean", "sd", "NA.prc", "n")) %>% 
+  knitr::kable(., "markdown", digits = 2)
+
+
+```
