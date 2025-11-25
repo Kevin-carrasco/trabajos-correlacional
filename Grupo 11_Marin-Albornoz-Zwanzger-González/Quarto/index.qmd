@@ -1,0 +1,32 @@
+---
+title: "Trabajo Final Estadística Correlacional"
+number-sections: false
+numbered: false
+format:
+  html:
+    title-block-style: none
+    toc: false
+  pdf:
+    title-block-style: none
+---
+
+::: {.content-visible when-format="pdf"}
+\small\textbf{Palabras clave:} sociología, migración, Chile, correlación, variables, nivel de confianza
+\normalsize
+:::
+
+::: {.content-visible when-format="html"}
+<style>
+nav#TOC { display: none !important; }
+div[data-when-format="pdf"] { display: none !important; }
+</style>
+<span class="keywords-line"><strong>Palabras clave:</strong> sociología, migración, Chile, correlación, variables, nivel de confianza </span>
+:::
+
+# Resumen {.unnumbered}
+
+El siguiente estudio analiza los factores asociados al nivel de confianza de la población chilena hacia las personas inmigrantes, en el contexto de explosion migratoria ocurrida en la última década en Chile. Utilizando datos de la ola 2 de la encuesta ELSOC 2022,  el objetivo de este trabajo es evaluar en qué medida la posición política, la edad y el sexo de los encuestados se relacionan con actitudes de confianza hacia grupos inmigrantes residentes en Chile. 
+
+Desde aquí se plantearon tres hipótesis centrales: (1) que existe una asociación lineal significativa entre la posición política y el nivel de confianza, esperándose una relación negativa, donde una mayor identificación con la derecha se vincularía con menor confianza; (2) que edad tiene un efecto significativo, de modo que las personas mayores tenderían a mostrar niveles más bajos de confianza hacia los inmigrantes; y (3) que existen diferencias significativas según el sexo, anticipándose brechas entre hombres y mujeres en su nivel de confianza. 
+
+Mediante el software RStudio se realizó análisis descriptivos, pruebas de asociación, correlaciones y diferencias de medias, donde se busca aportar evidencia empírica sobre los determinantes sociopolíticos y demográficos que influyen en las actitudes hacia la inmigración en el Chile contemporáneo.

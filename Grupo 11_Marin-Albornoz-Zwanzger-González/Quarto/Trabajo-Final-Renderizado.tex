@@ -1,0 +1,1352 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  spanish,
+  a4paper,
+  oneside]{scrbook}
+\usepackage{xcolor}
+\usepackage[top=25mm,bottom=25mm,left=30mm,right=20mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\AtBeginDocument{\hypersetup{linkcolor=black}}
+% ---------- Paquetes tipograficos y microajustes ----------
+\usepackage{microtype}        % mejor interletrado y justificado
+\usepackage{csquotes}         % comillas tipograficas
+\usepackage{iftex}
+\ifPDFTeX\else
+  % Seleccion de fuentes solo cuando XeTeX/LuaTeX esta disponible.
+  \IfFontExistsTF{TeX Gyre Termes}{
+    \setmainfont{TeX Gyre Termes}
+  }{
+    \IfFontExistsTF{Latin Modern Roman}{\setmainfont{Latin Modern Roman}}{}
+  }
+  \IfFontExistsTF{TeX Gyre Heros}{
+    \setsansfont{TeX Gyre Heros}
+  }{
+    \IfFontExistsTF{Latin Modern Sans}{\setsansfont{Latin Modern Sans}}{}
+  }
+  \IfFontExistsTF{TeX Gyre Cursor}{
+    \setmonofont{TeX Gyre Cursor}
+  }{
+    \IfFontExistsTF{Latin Modern Mono}{\setmonofont{Latin Modern Mono}}{}
+  }
+\fi
+\usepackage{enumitem}         % listas compactas
+\setlist{itemsep=.2em, topsep=.2em}
+
+% ---------- KOMA-Script: estilo de titulos y espaciado ----------
+\KOMAoptions{
+  headings=big,
+  parskip=half,
+  fontsize=12pt,
+  appendixprefix=true
+}
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0.6em}
+\usepackage{indentfirst}
+\usepackage{setspace}         % Control del interlineado del documento
+\setstretch{1.5}
+
+% ---------- Encabezados y pies (scrlayer-scrpage) ----------
+\usepackage[automark,headsepline]{scrlayer-scrpage}
+\clearpairofpagestyles
+\automark[chapter]{chapter}
+\ihead{\pagemark}
+\ohead{\itshape\headmark}
+\setheadsepline{0.4pt}
+\renewcommand*{\chaptermarkformat}{}
+\renewcommand*{\chapterpagestyle}{scrheadings}
+\pagestyle{scrheadings}
+\makeatletter
+\let\ps@plain\ps@scrheadings
+\makeatother
+\cfoot{}
+
+% ---------- Hipervinculos mas sobrios ----------
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=[rgb]{0.05,0.2,0.5},
+  urlcolor=[rgb]{0.05,0.2,0.5},
+  pdfauthor={\@author},
+  pdftitle={\@title}
+}
+
+% ---------- Leyendas de figuras/tablas ----------
+\usepackage[labelfont=bf,textfont=it]{caption}
+\captionsetup{
+  skip=8pt
+}
+
+% ---------- Tabla de contenidos ----------
+\KOMAoptions{toc=graduated}
+\RedeclareSectionCommand[tocnumwidth=3em]{chapter}
+\RedeclareSectionCommand[tocindent=3.25em,tocnumwidth=2.8em]{section}
+\RedeclareSectionCommand[tocindent=6.5em,tocnumwidth=2.5em]{subsection}
+\makeatletter
+\newcommand*{\tocdotfill}{\leavevmode\leaders\hbox to .6em{\hss.\hss}\hfill}
+\makeatother
+\RedeclareSectionCommand[toclinefill=\tocdotfill]{chapter}
+\RedeclareSectionCommand[toclinefill=\tocdotfill]{section}
+\RedeclareSectionCommand[toclinefill=\tocdotfill]{subsection}
+\renewcommand*{\contentsname}{Tabla de contenido}
+\setkomafont{chapterentry}{\normalfont}
+\setkomafont{chapterentrypagenumber}{\normalfont}
+
+% ---------- Viudas/Huerfanas y cortes de pagina ----------
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+% ---------- Entorno abstract para scrbook ----------
+\providecommand{\abstractname}{Resumen}
+\makeatletter
+\@ifundefined{abstract}{
+  \newenvironment{abstract}{
+    \cleardoublepage
+    \thispagestyle{plain}
+    \null\vfill
+    \begin{center}
+      {\bfseries\Large \abstractname\par}
+    \end{center}\vspace{1em}
+    \begingroup
+  }{
+    \par\endgroup
+    \vfill\null
+    \cleardoublepage
+  }
+}{}
+\makeatother
+
+% ---------- Soporte de subtitulo desde YAML ----------
+\makeatletter
+\providecommand{\subtitle}[1]{\gdef\@subtitle{#1}}
+\providecommand{\@subtitle}{}
+\makeatother
+
+\makeatletter
+\newcommand{\facso@iflist}[4]{%
+  \begingroup
+    \def\addvspace##1{}%
+    \def\numberline##1{##1}%
+    \def\facso@target{#2}%
+    \newcount\facso@entrycount
+    \facso@entrycount=0\relax
+    \long\def\contentsline##1##2##3{%
+      \def\facso@this{##1}%
+      \ifx\facso@this\facso@target
+        \advance\facso@entrycount\@ne
+      \fi
+    }%
+    \InputIfFileExists{\jobname.#1}{}{}%
+  \endgroup
+  \ifnum\facso@entrycount>0\relax
+    #3%
+  \else
+    #4%
+  \fi}
+\renewcommand{\listoffigures}{%
+  \facso@iflist{lof}{figure}{%
+    \cleardoublepage
+    \phantomsection
+    \addchap*{Listado de Figuras}%
+    \thispagestyle{scrheadings}%
+    \markboth{Listado de Figuras}{Listado de Figuras}%
+    \addcontentsline{toc}{chapter}{Listado de Figuras}%
+    \@starttoc{lof}%
+    \cleardoublepage
+    \automark[chapter]{chapter}%
+  }{}}
+\renewcommand{\listoftables}{%
+  \facso@iflist{lot}{table}{%
+    \cleardoublepage
+    \phantomsection
+    \addchap*{Listado de Tablas}%
+    \thispagestyle{scrheadings}%
+    \markboth{Listado de Tablas}{Listado de Tablas}%
+    \addcontentsline{toc}{chapter}{Listado de Tablas}%
+    \@starttoc{lot}%
+    \cleardoublepage
+    \automark[chapter]{chapter}%
+  }{}}
+\makeatother
+
+% --- Desactivar portada y abstract automaticos de Pandoc (PDF) ---
+\AtBeginDocument{\let\maketitle\relax}
+\renewenvironment{abstract}{}{}
+\providecommand{\appendixname}{}
+\providecommand{\appendixtocname}{}
+\providecommand{\appendixpagename}{}
+\renewcommand*{\appendixname}{Anexo}
+\renewcommand*{\appendixtocname}{Anexos}
+\renewcommand*{\appendixpagename}{Anexos}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Tabla de contenidos}
+\else
+  \newcommand\contentsname{Tabla de contenidos}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{Listado de Figuras}
+\else
+  \newcommand\listfigurename{Listado de Figuras}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{Listado de Tablas}
+\else
+  \newcommand\listtablename{Listado de Tablas}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Lista de figuras}
+\else
+  \newcommand\figurename{Lista de figuras}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Lista de tablas}
+\else
+  \newcommand\tablename{Lista de tablas}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listado}
+\newcommand*\listoflistings{\listof{codelisting}{Listado de Listados}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Trabajo Final Estadística Correlacional},
+  pdfauthor={Integrantes:Andrés Albornoz, Antonia González, Josefina Marín, Elisa Zwanzger},
+  pdflang={es},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Trabajo Final Estadística Correlacional}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Determinantes en la confianza frente a la inmigración: un
+análisis bivariado a partir de los datos de ELSOC 2022}
+\author{Integrantes:Andrés Albornoz, Antonia González, Josefina Marín,
+Elisa Zwanzger}
+\date{23 de Noviembre de 2025}
+\begin{document}
+\frontmatter
+\maketitle
+
+% --- title-pdf.tex personalizado para portada formal ---
+\makeatletter
+\providecommand{\subtitle}[1]{\gdef\@subtitle{#1}}
+\providecommand{\@subtitle}{}
+\providecommand{\frontmattercontext}{}
+\providecommand{\advisorname}{}
+\providecommand{\advisorlabel}{}
+\providecommand{\frontmatterlocation}{}
+\InputIfFileExists{includes/cover-config.tex}{}{}
+
+\newcommand{\PrintTitle}{%
+  {\sffamily\bfseries\fontsize{24pt}{28pt}\selectfont \@title\par}%
+}
+\newcommand{\PrintSubtitle}{%
+  \begingroup
+  \edef\temp{\detokenize{\@subtitle}}%
+  \ifx\temp\empty\relax
+    % sin subtitulo
+  \else
+    {\sffamily\bfseries\large \@subtitle\par}%
+  \fi
+  \endgroup
+}
+\newcommand{\PrintAuthor}{%
+  {\Large\bfseries \@author\par}%
+}
+\newcommand{\PrintDate}{%
+  {\small \@date\par}%
+}
+\makeatother
+
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{center}
+\vspace*{10mm}
+
+% Logo o imagen institucional
+\includegraphics[width=0.35\textwidth]{assets/cover.png}\par
+\vspace{12mm}
+
+% Titulo y subtitulo
+\PrintTitle
+\vspace{6mm}
+\PrintSubtitle
+
+\vspace{22mm}
+\begingroup
+\edef\temp{\detokenize{\frontmattercontext}}%
+\ifx\temp\empty\relax
+  % sin contexto adicional
+\else
+  {\normalsize \frontmattercontext\par}
+\fi
+\endgroup
+
+\vspace{18mm}
+\PrintAuthor
+
+\vspace{16mm}
+\begingroup
+\edef\temp{\detokenize{\advisorname}}%
+\ifx\temp\empty\relax
+  % sin tutor
+\else
+  \rule{0.45\textwidth}{0.4pt}\par
+  {\small \advisorlabel\ \advisorname\par}
+\fi
+\endgroup
+
+\vfill
+\begingroup
+\edef\temp{\detokenize{\frontmatterlocation}}%
+\ifx\temp\empty\relax
+  % sin ubicacion
+\else
+  {\small \frontmatterlocation\par}
+\fi
+\endgroup
+\PrintDate
+
+\end{center}
+\end{titlepage}
+
+% Preliminares (numeros romanos) y estilo simple
+\frontmatter
+\pagestyle{scrheadings}
+
+\setcounter{tocdepth}{2} % (o 1/3 segun prefieras)
+\tableofcontents
+\listoffigures
+\listoftables
+
+
+\mainmatter
+\bookmarksetup{startatroot}
+
+\chapter{Trabajo Final Estadística
+Correlacional}\label{trabajo-final-estaduxedstica-correlacional}
+
+\small\textbf{Palabras clave:} sociología, migración, Chile,
+correlación, variables, nivel de confianza \normalsize
+
+\bookmarksetup{startatroot}
+
+\chapter*{Resumen}\label{resumen}
+\addcontentsline{toc}{chapter}{Resumen}
+
+\markboth{Resumen}{Resumen}
+
+El siguiente estudio analiza los factores asociados al nivel de
+confianza de la población chilena hacia las personas inmigrantes, en el
+contexto de explosion migratoria ocurrida en la última década en Chile.
+Utilizando datos de la ola 2 de la encuesta ELSOC 2022, el objetivo de
+este trabajo es evaluar en qué medida la posición política, la edad y el
+sexo de los encuestados se relacionan con actitudes de confianza hacia
+grupos inmigrantes residentes en Chile.
+
+Desde aquí se plantearon tres hipótesis centrales: (1) que existe una
+asociación lineal significativa entre la posición política y el nivel de
+confianza, esperándose una relación negativa, donde una mayor
+identificación con la derecha se vincularía con menor confianza; (2) que
+edad tiene un efecto significativo, de modo que las personas mayores
+tenderían a mostrar niveles más bajos de confianza hacia los
+inmigrantes; y (3) que existen diferencias significativas según el sexo,
+anticipándose brechas entre hombres y mujeres en su nivel de confianza.
+
+Mediante el software RStudio se realizó análisis descriptivos, pruebas
+de asociación, correlaciones y diferencias de medias, donde se busca
+aportar evidencia empírica sobre los determinantes sociopolíticos y
+demográficos que influyen en las actitudes hacia la inmigración en el
+Chile contemporáneo.
+
+\bookmarksetup{startatroot}
+
+\chapter{Introducción}\label{introducciuxf3n}
+
+En los últimos años, Chile se ha convertido en un destino central para
+personas de distintos países latinoamericanos. Este proceso ha generado
+transformaciones sociales, pero también conflictos y tensiones en torno
+a la convivencia intercultural, el acceso a recursos y la pertenencia a
+la comunidad nacional (Navarrete Yáñez, 2017).
+
+En este contexto, el estudio de las actitudes de la población chilena
+hacia las personas inmigrantes resulta clave para comprender cómo se
+producen y reproducen el racismo, el prejuicio y la desigualdad (Tijoux
+\& Córdova, 2015).
+
+Diversas investigaciones muestran que, en América Latina, una parte
+importante de la opinión pública asocia la migración con delincuencia,
+sobrecarga de los servicios públicos y competencia laboral, lo que se
+traduce en percepciones de amenaza y actitudes negativas hacia las
+personas migrantes (Banco Interamericano de Desarrollo, 2023;
+Carmona-Halty et al., 2018). En Chile, la imagen de un país ``abierto''
+y hospitalario coexiste con actos de discriminación y una valoración
+desigual de ciertas nacionalidades, además de expresiones de racismo
+donde se combinan elementos coloniales, nacionales y de clase (González
+et al., 2019; Tijoux \& Córdova, 2015). Esto sugiere que no se trata
+solo de opiniones individuales, sino de patrones de percepción que
+pueden respaldar políticas migratorias restrictivas y marcar la
+experiencia cotidiana de quienes migran.
+
+En este trabajo nos centraremos en cuatro variables. Primero, la
+confianza hacia las personas migrantes, entendida como la disposición a
+considerarlas como sujetos confiables y legítimos en la convivencia
+social, indicador relevante de integración y reconocimiento (Banco
+Interamericano de Desarrollo, 2023). Segundo, la ideología política,
+entendida como la auto-ubicación de las personas en el eje
+izquierda--derecha, asociada con actitudes más o menos favorables hacia
+la migración (Gatica \& Navarro-Lashayas, 2019; González et al., 2019).
+Tercero, la edad, considerada como un factor generacional que puede
+expresar diferencias en valores, experiencias de contacto con personas
+migrantes y formas de interpretar los cambios sociales recientes
+(Arancibia \& Cárdenas, 2022). Finalmente, incluimos el sexo del
+encuestado como característica sociodemográfica para explorar posibles
+diferencias en los niveles de confianza.
+
+Considerando lo anterior, el objetivo de este trabajo es analizar en qué
+medida la posición política, la edad y el sexo de las personas
+encuestadas se asocian con su nivel de confianza en las personas
+inmigrantes que viven en Chile. De la bibliografía se derivan estas
+hipótesis:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  Hipótesis Nula (H0): No existe asociación lineal entre la posición
+  política y el nivel de confianza en las personas inmigrantes.
+\end{enumerate}
+
+Hipótesis Alternativa (H1): Existe una asociación lineal significativa
+entre la posición política y el nivel de confianza en inmigrantes.
+(Generalmente se espera una correlación negativa: a mayor identificación
+con la derecha, menor confianza).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Hipótesis Nula (H0): La edad de los encuestados no tiene un efecto
+  significativo sobre el nivel de confianza en las personas inmigrantes.
+\end{enumerate}
+
+Hipótesis Alternativa (H1): La edad tiene un efecto significativo en el
+nivel de confianza; a mayor edad, la confianza tiende a disminuir.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Hipótesis Nula (H0): No existen diferencias estadísticamente
+  significativas en el nivel medio de confianza hacia los inmigrantes
+  entre hombres y mujeres.
+\end{enumerate}
+
+Hipótesis Alternativa (H1): Existe una diferencia significativa en el
+nivel de confianza en personas inmigrantes entre hombres y mujeres.
+
+\bookmarksetup{startatroot}
+
+\chapter{Metodología}\label{metodologuxeda}
+
+\section{Datos}\label{datos}
+
+Para esta investigación se basó en los datos proporcionados por la
+encuesta Estudio Longitudinal Social De Chile (ELSOC) realizada desde el
+Centro De Estudios Y Cohesión Social (COES). Esta busca examinar los
+principales antecedentes, factores, consecuencias asociadas al
+desarrollo de conflicto y cohesión social en Chile. Al ser de tipo
+longitudinal, como primera decisión metodológica, se seleccionó ``la ola
+2'' correspondiente a los datos del año 2022, al contener variables más
+pertinentes para la investigación. La muestra se conformó desde una
+selección inductiva de ciudades, manzanas, viviendas y finalmente
+personas, teniendo un tamaño muestral final cercano a 3000 personas.
+
+\section{Variables}\label{variables}
+
+Desde la anterior base de datos, se seleccionó un total de cuatro
+variables, representando una variable dependiente y tres variables
+independientes. La variable dependiente seleccionada; ``Grado de
+confianza en {[}PER/HAI/VEN{]}'', con el código ``r16'', fraseada como
+``¿Podría decirme, en términos generales, cuánto confía usted en los
+{[}peruanos/haitianos/venezolanos{]} que viven en Chile?'', cuyas
+posibles respuestas se muestran como escala likert de 1 ;representa Nada
+de confianza, a 5; Mucha Confianza y -888; No sabe, -999; No responde.
+Busca captar el nivel de confianza que el entrevistado posee hacia
+personas inmigrantes. Esta es de tipo ordinal y categórica al tener
+posibles respuestas en categorías finitas y que no representan
+cantidades numéricas directas.
+
+Pasando a las variables independientes, se incluyó ``Sexo del
+entrevistado'', ``codigo m0\_sexo'', fraseada como;``¿Cuál es su
+sexo?''. Esta representa una variable nominal de tipo dicotómica y a su
+vez categórica, al contener únicamente dos posibles respuestas
+mutuamente excluyentes; ``1. Hombre'' y ``2. Mujer''.
+
+Como segunda variable independiente se incluyó a ``Confidente 5:
+Ideología'', con el código ``R13\_ideol'', fraseada; ``¿Y en términos de
+su posición política \%rostertitle\% es una persona de\ldots?''. Esta es
+de tipo nominal y categórica. Contiene siete posibles respuestas; ``1.
+Derecha'', ``2.Centro derecha'',``3.Centro'',``4.Centro izquierda'',
+``5. Izquierda'', ``6. Ninguno(No posee posición política)'' y ``-999.
+NS/NR''. Busca tener un acercamiento hacia la posición ideológica con la
+que el entrevistado se identifica mediante una pregunta directa.
+
+Como tercera variable Independiente se incorporó ``Edad entrevistado'',
+codificada como ``m0\_edad'' y apareciendo en el cuestionario con el
+siguiente fraseo; ``¿Cuál es su fecha de nacimiento?''. La anterior
+variable corresponde a una variable de tipo numérica continua, al no
+poseer categorías de posible respuesta.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pacman}\SpecialCharTok{::}\FunctionTok{p\_load}\NormalTok{(psych, tidyverse, kableExtra)}
+
+\NormalTok{datos\_resumen }\OtherTok{\textless{}{-}}\NormalTok{ elsoc\_subset }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}
+    \StringTok{"Edad"} \OtherTok{=}\NormalTok{ m0\_edad,}
+    \StringTok{"Ideología Política"} \OtherTok{=}\NormalTok{ r13\_ideol\_01,}
+    \StringTok{"Confianza Inmigrantes"} \OtherTok{=}\NormalTok{ r16,}
+    \StringTok{"Sexo"} \OtherTok{=}\NormalTok{ m0\_sexo }
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+  
+    \FunctionTok{across}\NormalTok{(}\FunctionTok{everything}\NormalTok{(), }\SpecialCharTok{\textasciitilde{}}\FunctionTok{as.numeric}\NormalTok{(.)) }
+\NormalTok{  )}
+
+
+\NormalTok{stats }\OtherTok{\textless{}{-}} \FunctionTok{describe}\NormalTok{(datos\_resumen)}
+
+
+\NormalTok{stats }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{as.data.frame}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(n, mean, sd, median, min, max, skew, kurtosis) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kbl}\NormalTok{(}
+    \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"N"}\NormalTok{, }\StringTok{"Media"}\NormalTok{, }\StringTok{"D.E."}\NormalTok{, }\StringTok{"Mediana"}\NormalTok{, }
+                  \StringTok{"Mín"}\NormalTok{, }\StringTok{"Máx"}\NormalTok{, }\StringTok{"Asimetría"}\NormalTok{, }\StringTok{"Curtosis"}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable\_styling}\NormalTok{(}
+    \AttributeTok{bootstrap\_options =} \FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{, }\StringTok{"condensed"}\NormalTok{),}
+    \AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{,}
+    \AttributeTok{font\_size =} \DecValTok{12}\NormalTok{,}
+    
+    \AttributeTok{latex\_options =} \FunctionTok{c}\NormalTok{(}\StringTok{"scale\_down"}\NormalTok{, }\StringTok{"hold\_position"}\NormalTok{) }
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tbl-descriptivos}Tabla 1: Resumen de estadísticos
+descriptivos de las variables de estudio}
+
+\centering{
+
+\centering\begingroup\fontsize{12}{14}\selectfont
+
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\begin{tabular}[t]{l|r|r|r|r|r|r|r|r}
+\hline
+  & N & Media & D.E. & Mediana & Mín & Máx & Asimetría & Curtosis\\
+\hline
+Edad & 2473 & 47.60 & 15.31 & 48 & 18 & 89 & 0.05 & -0.96\\
+\hline
+Ideología Política & 2152 & 5.12 & 1.62 & 6 & 1 & 6 & -1.72 & 1.47\\
+\hline
+Confianza Inmigrantes & 2343 & 2.72 & 1.05 & 3 & 1 & 5 & 0.00 & -0.55\\
+\hline
+Sexo & 2473 & 1.62 & 0.49 & 2 & 1 & 2 & -0.47 & -1.78\\
+\hline
+\end{tabular}}
+\endgroup{}
+
+}
+
+\end{table}%
+
+\section{Métodos}\label{muxe9todos}
+
+Para la realización del contraste de hipótesis se apoyó la Software
+RStudio. En primer lugar, para la preparación de datos se descargó y se
+filtró para trabajar desde los datos únicamente de la ola 2. Después se
+creó un objeto desde el código ``subset()'', donde se incluyeron las
+cuatro variables seleccionadas para este análisis. Seguidamente, se
+generó la limpieza de los casos perdidos y mediante una tabla de
+frecuencia general se comprobó una correcta limpieza.
+
+Finalizado esto, se pasó al análisis univariado, creando los
+estadísticos descriptivos de cada una de las variables individualmente.
+Primeramente se generaron las tablas de frecuencia de las dos variables
+categóricas y no dicotómicas además de gráficos de barra. Luego, se dio
+paso a la variable continua, optando por crear un histograma de densidad
+que permita observar la distribución de las edades. Se determinó la
+media, rango e intervalo de confianza. Por último, se realizó una tabla
+de frecuencia y gráfico para la variable dicotómica.
+
+Posteriormente, para el análisis descriptivo bivariado se buscó comparar
+la distribución de la variable ``Grado de confianza en
+{[}PER/HAI/VEN{]}'' junto a ``Confidente 5: Ideología''. Así, se generó
+una tabla de contingencia expresada en un gráfico de barras para aportar
+a la evaluación de la primera hipótesis.
+
+Finalmente, se realizó el análisis estadístico bivariado. Se evaluó la
+primera hipótesis desde se usó la prueba de Chi-Cuadrado (X2) entre las
+variables ``Grado de confianza en {[}PER/HAI/VEN{]}'' junto con
+``Confidente 5: Ideología'' para evaluar si existe una asociación
+estadísticamente significativa, a mayor identificación con la derecha,
+menor confianza. Luego se aplicó un coeficiente V de Cramer para medir
+el tamaño de efecto y la intensidad de la relación.
+
+En segundo lugar, evaluando la segunda Hipótesis se calculó el
+coeficiente de correlación de Spearman entre las variables ``Grado de
+confianza en {[}PER/HAI/VEN{]}'' y ``Edad entrevistado''. Esto para
+estimar si existe una asociación estadísticamente significativa donde al
+aumentar la edad, la confianza tiende a disminuir.
+
+Finalmente para la evaluación de la tercera hipótesis, se trato como
+factor la variable ``Grado de confianza en {[}PER/HAI/VEN{]}''
+numéricamente para tratarla como escala continua y así, compararla con
+los grupos de la variable ``Sexo del entrevistado''. Después, se realizó
+una diferencia de medias entre ambos sexos aplicando prueba T.
+Finalmente, se estimó el tamaño de efecto utilizando D de Cohen,
+determinando la intensidad de la diferencia observada entre ambas
+variables.
+
+\bookmarksetup{startatroot}
+
+\chapter{Análisis}\label{anuxe1lisis}
+
+\section{Análisis Descriptivo
+Univariado}\label{anuxe1lisis-descriptivo-univariado}
+
+A continuación, el presente apartado realiza un análisis descriptivo de
+los datos con el propósito de caracterizar sus principales tendencias y
+distribuciones. A través de medidas de tendencia central, dispersión y
+representaciones gráficas, se busca ofrecer una visión general del
+comportamiento de las variables estudiadas al identificar patrones
+relevantes, posibles valores atípicos y la estructura básica del
+conjunto de datos.
+
+Este análisis constituye un paso preliminar fundamental para comprender
+la información disponible y orientar la etapa posterior de análisis
+bivariado.
+
+En primer lugar, se encuentra la variable ``Grado de confianza en
+{[}PER/HAI/VEN{]}'' ---con el código ``r16'', fraseada como ``¿Podría
+decirme, en términos generales, cuánto confía usted en los
+{[}peruanos/haitianos/venezolanos{]} que viven en Chile?''--- de la cuál
+se realizó un gráfico de barras para la visualización de la distribución
+de sus datos.
+
+El gráfico muestra una distribución claramente inclinada hacia niveles
+intermedios, siendo ``Algo de confianza'' la categoría predominante con
+alrededor del 40\% de los casos. Le siguen con proporciones menores
+``Poca confianza'' con un 23,1\% y ``Bastante confianza'' con un 17,4\%,
+lo que sugiere una tendencia hacia percepciones moderadas de confianza.
+En contraste, los extremos de la escala ---``Nada de confianza''
+(15,4\%) y especialmente ``Mucha confianza'' (4\%)--- concentran los
+porcentajes más bajos. En conjunto, el gráfico evidencia que la mayoría
+de los encuestados se sitúa en posiciones intermedias, evitando tanto la
+desconfianza absoluta como la confianza total.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(sjPlot)}
+
+\FunctionTok{plot\_frq}\NormalTok{(elsoc\_subset}\SpecialCharTok{$}\NormalTok{r16, }
+         \AttributeTok{title =} \StringTok{"Nivel de confianza en inmigrantes"}\NormalTok{,}
+         \AttributeTok{geom.colors =} \StringTok{"skyblue"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+\caption{\label{fig-confianza-inmigrantes}Distribución de frecuencias:
+Confianza en inmigrantes}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{04-resultados_files/figure-pdf/fig-confianza-inmigrantes-1.pdf}}
+
+}
+
+\end{figure}%
+
+Para la variable ``Confidente 5: Ideología'' ---con el código
+``r13\_ideol\_01'', fraseada como ``¿Y en términos de su posición
+política \%rostertitle\% es una persona de\ldots?''--- también se
+realizó un gráfico de barras para su análisis descriptivo. En el gráfico
+se observa que la categoría ``Ninguno / No posee posición política''
+concentra la mayor cantidad de casos, representando cerca del 70\% del
+total. Esto indica que la mayoría de los encuestados no se atribuye una
+orientación ideológica definida.
+
+En contraste, las demás categorías presentan frecuencias
+considerablemente menores: alrededor de un 10\% se identifica una
+postura de izquierda, cerca de un 9\% se ubica en la derecha, y
+proporciones aún menores corresponden al centro (4.7\%), centroizquierda
+(3.9\%) y centroderecha (2.2\%). El gráfico evidencia, en conjunto, una
+distribución altamente desbalanceada, marcada por el predominio de la
+ausencia de identificación política frente a posiciones ideológicas
+específicas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(sjPlot)}
+
+\FunctionTok{plot\_frq}\NormalTok{(elsoc\_subset}\SpecialCharTok{$}\NormalTok{r13\_ideol\_01, }
+         \AttributeTok{title =} \StringTok{"Identificación política de los encuestados"}\NormalTok{,}
+         \AttributeTok{type =} \StringTok{"bar"}\NormalTok{,}
+         \AttributeTok{show.na =} \ConstantTok{FALSE}\NormalTok{,        }
+         \AttributeTok{geom.colors =} \StringTok{"salmon"}\NormalTok{, }
+         \AttributeTok{axis.title =} \StringTok{"Posición Política"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+\caption{\label{fig-ideologia}Distribución de frecuencias: Posición
+política}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{04-resultados_files/figure-pdf/fig-ideologia-1.pdf}}
+
+}
+
+\end{figure}%
+
+La tercera variable ``Sexo del entrevistado'' --- con el ``codigo
+m0\_sexo'', fraseada como ``¿Cuál es su sexo?''--- fue graficada de la
+misma forma, simplemente para hacer posible la visualización de las
+proporciones del sexo de los encuestados. La muestra se conforma de
+manera preponderante por un 61.5\% de personas de sexo femenino. En su
+contraparte, un 38.5\% de la muestra está compuesta por personas de sexo
+masculino.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(sjPlot)}
+
+\FunctionTok{plot\_frq}\NormalTok{(elsoc\_subset}\SpecialCharTok{$}\NormalTok{m0\_sexo, }
+         \AttributeTok{title =} \StringTok{"Composición de la muestra por sexo"}\NormalTok{,}
+         \AttributeTok{type =} \StringTok{"bar"}\NormalTok{,}
+         \AttributeTok{show.na =} \ConstantTok{FALSE}\NormalTok{,            }
+         \AttributeTok{geom.colors =} \StringTok{"mediumpurple"}\NormalTok{, }
+         \AttributeTok{axis.title =} \StringTok{"Sexo del encuestado"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+\caption{\label{fig-sexo}Distribución de la muestra según sexo}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{04-resultados_files/figure-pdf/fig-sexo-1.pdf}}
+
+}
+
+\end{figure}%
+
+Finalmente, para la visualización de la distribución de los datos de la
+variable ``Edad entrevistado'' ---codificada como ``m0\_edad'' y
+apareciendo en el cuestionario con el siguiente fraseo: ``¿Cuál es su
+fecha de nacimiento?''--- se generó un histograma, dada la naturaleza de
+esta. ``Edad'' presenta una media de 47.6 años y una desviación estándar
+de 15.3, con valores que oscilan entre los 18 y los 89 años. La mediana
+es de 48 y el coeficiente de asimetría es prácticamente cero, lo que
+indica una distribución simétrica sin sesgos importantes hacia edades
+jóvenes o avanzadas. Esto puede confirmarse al observar el gráfico, pues
+la mayor concentración de individuos se encuentra entre los 30 y los 60
+años, mientras que los extremos muestran una frecuencia menor.
+
+Al estimar el intervalo de confianza al 95\% considerando un error
+estándar de 0.31, se puede afirmar que la edad promedio de la población
+se encuentra entre los 47.0 y 48.2 años.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(Publish) }
+
+\FunctionTok{ggplot}\NormalTok{(elsoc\_subset, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ m0\_edad)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{bins =} \DecValTok{30}\NormalTok{, }
+                 \AttributeTok{fill =} \StringTok{"cornflowerblue"}\NormalTok{, }
+                 \AttributeTok{color =} \StringTok{"white"}\NormalTok{,         }
+                 \AttributeTok{alpha =} \FloatTok{0.8}\NormalTok{) }\SpecialCharTok{+}           
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Distribución de la edad en la muestra"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Edad"}\NormalTok{, }
+       \AttributeTok{y =} \StringTok{"Frecuencia"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }
+
+\NormalTok{Publish}\SpecialCharTok{::}\FunctionTok{ci.mean}\NormalTok{(elsoc\_subset}\SpecialCharTok{$}\NormalTok{m0\_edad)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ mean  CI-95%       
+ 47.60 [47.00;48.21]
+\end{verbatim}
+
+\begin{figure}[H]
+
+\caption{\label{fig-distribucion-edad}Distribución de la edad de los
+encuestados}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{04-resultados_files/figure-pdf/fig-distribucion-edad-1.pdf}}
+
+}
+
+\end{figure}%
+
+\section{Análisis Descriptivo
+Bivariado}\label{anuxe1lisis-descriptivo-bivariado}
+
+En el siguiente análisis, la tendencia más identificable es la
+transversalidad de la moderación. A simple vista, todos los grupos
+ideológicos se comportan de manera similar respecto a la confianza: la
+opción ``Algo de confianza'' es la más frecuente en todas las categorías
+(superando el 35\% en cada una). Esto sugiere que la ideología no genera
+una polarización extrema en este tema, sino que existe un ``suelo
+común''.
+
+Sin embargo, al contrastar los polos, Derecha e Izquierda presentan
+niveles de desconfianza total (``Nada'') prácticamente idénticos (13.8\%
+y 14.1\% respectivamente), pero se diferencian en la intensidad
+positiva: la Izquierda muestra una mayor proporción de confianza alta
+(``Bastante'': 21.4\%) en comparación con la Derecha (16.8\%).
+
+Finalmente, el grupo sin posición política (``Ninguno'') tiende
+levemente hacia la duda, registrando el porcentaje más alto en la opción
+de nula confianza (15.7\%).
+
+\begin{table}[!h]
+\caption{Tabla de Contingencia: Confianza según Ideología (\%)}\tabularnewline
+
+\centering\begingroup\fontsize{10}{12}\selectfont
+
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\begin{tabular}[t]{r|r|r|r|r|r}
+\hline
+1 & 2 & 3 & 4 & 5 & 6\\
+\hline
+13.8 & 4.4 & 10.2 & 13.4 & 14.1 & 15.7\\
+\hline
+26.0 & 24.4 & 28.6 & 17.1 & 24.8 & 22.5\\
+\hline
+38.8 & 44.4 & 43.9 & 41.5 & 35.0 & 41.2\\
+\hline
+16.8 & 22.2 & 13.3 & 20.7 & 21.4 & 17.1\\
+\hline
+4.6 & 4.4 & 4.1 & 7.3 & 4.9 & 3.5\\
+\hline
+\end{tabular}}
+\endgroup{}
+\end{table}
+
+\section{Análisis Estadístico
+Bivariado}\label{anuxe1lisis-estaduxedstico-bivariado}
+
+El presente apartado tiene como objetivo realizar un análisis
+estadístico bivariado. Es decir, evaluar las relaciones entre variables
+relevantes para las hipótesis planteadas, empleando coeficientes de
+correlación, medidas de asociación para variables categóricas, pruebas
+de hipótesis y estadísticos de tamaño del efecto, siempre en función del
+nivel de medición correspondiente.
+
+Este análisis permite examinar la dirección, la intensidad y la
+significancia estadística de las correlaciones entre ellas, aportando
+evidencia empírica para responder a las preguntas de investigación.
+
+\textbf{1.Hipótesis}
+
+Hipótesis Nula (H\_0): No existe asociación lineal entre la posición
+política de los encuestados y su nivel de confianza en las personas
+inmigrantes.
+
+Hipótesis Alternativa (H\_1): Existe una asociación Lineal significativa
+entre la posición política y el nivel de confianza en inmigrantes.
+(Generalmente se espera una correlación negativa: a mayor identificación
+con la derecha, menor confianza).
+
+A fin de evaluar la correlación entre las variables ``Grado de
+confianza'' e ``Ideología'' se aplicó la prueba de Chi Cuadrado (χ²).
+
+Los resultados obtenidos (χ² = 19.522; p = 0.4882) indican que no se
+cuenta con evidencia suficiente para rechazar la hipótesis nula. Es
+decir, no se identifica una asociación entre la posición política y el
+nivel de confianza en inmigrantes dentro de la muestra analizada.
+
+\begin{table}[!h]
+\centering
+\caption{\label{tab:chi-cuadrado-tabla}Resultados prueba Chi-Cuadrado}
+\centering
+\begin{tabular}[t]{r|r|r}
+\hline
+Estadístico (X2) & Grados Libertad & Valor p\\
+\hline
+19.522 & 20 & 0.488\\
+\hline
+\end{tabular}
+\end{table}
+
+De manera consistente, el coeficiente V de Cramer (0.048) confirma que,
+aun si existiera alguna relación, esta sería de magnitud extremadamente
+débil y carente de relevancia práctica.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(rstatix) }
+
+\FunctionTok{cramer\_v}\NormalTok{(elsoc\_subset}\SpecialCharTok{$}\NormalTok{r16, elsoc\_subset}\SpecialCharTok{$}\NormalTok{r13\_ideol\_01)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.04893599
+\end{verbatim}
+
+\textbf{2.Hipótesis}
+
+Hipótesis Nula (H\_0): La edad de los encuestados no tiene un efecto
+significativo sobre el nivel de confianza en las personas inmigrantes.
+
+Hipótesis Alternativa (H\_1): La edad tiene un efecto significativo en
+el nivel de confianza en las personas inmigrantes; específicamente, a
+mayor edad, el nivel de confianza tiende a disminuir.
+
+Para poner a prueba la hipótesis de que la edad ejerce un efecto
+significativo sobre el nivel de confianza, se calculó el coeficiente de
+correlación de rangos de Spearman, dado el carácter ordinal de la
+variable dependiente.
+
+El análisis arrojó un coeficiente de correlación rho = -0.037 con un
+valor p = 0.076. Dado que el valor p excede el nivel de significancia
+estándar (alpha = 0.05), no existe evidencia estadística suficiente para
+rechazar la Hipótesis Nula (H\_0). Por lo que la edad de los encuestados
+no tiene un efecto significativo sobre el nivel de confianza en las
+personas inmigrantes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cor\_test\_edad\_conf }\OtherTok{\textless{}{-}} \FunctionTok{cor.test}\NormalTok{(elsoc\_subset}\SpecialCharTok{$}\NormalTok{m0\_edad, }
+                               \FunctionTok{as.numeric}\NormalTok{(elsoc\_subset}\SpecialCharTok{$}\NormalTok{r16), }
+                               \AttributeTok{method =} \StringTok{"spearman"}\NormalTok{)}
+
+\FunctionTok{print}\NormalTok{(cor\_test\_edad\_conf)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+    Spearman's rank correlation rho
+
+data:  elsoc_subset$m0_edad and as.numeric(elsoc_subset$r16)
+S = 2222293527, p-value = 0.07605
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+        rho 
+-0.03665891 
+\end{verbatim}
+
+\textbf{3.Hipótesis}
+
+Hipótesis Nula (H\_0): No existen diferencias estadísticamente
+significativas en el nivel medio de confianza hacia los inmigrantes
+entre hombres y mujeres.
+
+Hipótesis Alternativa (H\_1): Existe una diferencia significativa en el
+nivel de confianza en personas inmigrantes entre hombres y mujeres.
+
+Para las brechas de género en la confianza hacia la población
+inmigrante, se sometió a prueba mediante una prueba t para realizar una
+diferencia de medias.
+
+El análisis estadístico arrojó un valor t= 1.38 y un valor p = 0.167.
+Dado que el valor p es superior al nivel de significancia convencional
+(alpha = 0.05), no existe evidencia estadística suficiente para rechazar
+la Hipótesis Nula (H\_0).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{elsoc\_subset}\SpecialCharTok{$}\NormalTok{r16\_num }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(elsoc\_subset}\SpecialCharTok{$}\NormalTok{r16)}
+
+\NormalTok{t\_test\_result }\OtherTok{\textless{}{-}} \FunctionTok{t.test}\NormalTok{(r16\_num }\SpecialCharTok{\textasciitilde{}}\NormalTok{ m0\_sexo, }
+                        \AttributeTok{data =}\NormalTok{ elsoc\_subset, }
+                        \AttributeTok{var.equal =} \ConstantTok{FALSE}\NormalTok{) }
+
+\FunctionTok{print}\NormalTok{(t\_test\_result)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+    Welch Two Sample t-test
+
+data:  r16_num by m0_sexo
+t = 1.3832, df = 1945.3, p-value = 0.1667
+alternative hypothesis: true difference in means between group 1 and group 2 is not equal to 0
+95 percent confidence interval:
+ -0.02564195  0.14838610
+sample estimates:
+mean in group 1 mean in group 2 
+       2.754696        2.693324 
+\end{verbatim}
+
+El grupo de Hombres presenta un promedio de confianza (M = 2.75)
+levemente superior al del grupo Mujeres (M = 2.69). Sin embargo, al
+evaluar la magnitud de esta diferencia mediante la d de Cohen, se obtuvo
+un coeficiente de 0.0586. Este valor clasifica el tamaño del efecto
+indica que la diferencia observada carece de relevancia práctica. Por lo
+que el sexo del encuestado no influye significativamente en su nivel de
+confianza hacia los inmigrantes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(rstatix)}
+
+\NormalTok{elsoc\_subset }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{cohens\_d}\NormalTok{(r16\_num }\SpecialCharTok{\textasciitilde{}}\NormalTok{ m0\_sexo, }\AttributeTok{var.equal =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1 x 7
+  .y.     group1 group2 effsize    n1    n2 magnitude 
+* <chr>   <chr>  <chr>    <dbl> <int> <int> <ord>     
+1 r16_num 1      2       0.0586   905  1438 negligible
+\end{verbatim}
+
+\bookmarksetup{startatroot}
+
+\chapter{Conclusiones}\label{conclusiones}
+
+Este trabajo analizó en qué medida la posición política, la edad y el
+sexo de las personas encuestadas en ELSOC 2022 se asocian con su nivel
+de confianza en las personas inmigrantes en Chile.
+
+Descriptivamente, la mayoría de los encuestados se ubica en niveles
+intermedios de confianza y una proporción importante no declara una
+posición política definida.
+
+Los análisis bivariados no entregaron evidencia suficiente para rechazar
+las hipótesis nulas: no se identificó una asociación significativa entre
+ideología y confianza, la correlación entre edad y confianza fue cercana
+a cero y las diferencias de medias entre sexos no fueron significativas,
+con tamaños de efecto nulos.
+
+Estos resultados deben interpretarse considerando algunas limitaciones.
+Aunque ELSOC es un estudio longitudinal, aquí se trabajó solo con una
+ola, por lo que el análisis es transversal y no permite observar cambios
+en el tiempo ni variaciones en la confianza. Además, la concentración de
+casos en la categoría ``ninguno / no posee posición política'' reduce la
+variabilidad de la ideología y puede atenuar asociaciones; en futuros
+análisis podría recodificarse esta categoría o tratarse por separado.
+
+La confianza se midió mediante una escala ordinal que en parte del
+análisis se trató como continua, lo que pudo limitar la sensibilidad
+para detectar diferencias; el uso de modelos específicos para variables
+ordinales permitiría un ajuste más adecuado. Finalmente, el auto-reporte
+implica posibles sesgos de deseabilidad social.
+
+Para futuros análisis, sería pertinente aprovechar el carácter
+longitudinal de ELSOC incorporando varias olas y modelos que estudien
+trayectorias de confianza hacia las personas inmigrantes, así como
+incluir otras variables, como nivel educacional, posición
+socioeconómica, contacto intergrupal o experiencias de migración, y
+complementar con estudios cualitativos que profundicen en los
+significados atribuidos a la inmigración y la confianza.
+
+\bookmarksetup{startatroot}
+
+\chapter{Referencias}\label{referencias}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-arancibia2022}
+Arancibia, H., \& Cárdenas, M. (2022). Y verás como quieren en
+Chile\ldots{} los inmigrantes a los chilenos. \emph{Psicoperspectivas},
+\emph{21}(2), 11-25.
+\url{https://doi.org/10.5027/psicoperspectivas-vol21-issue2-fulltext-2240}
+
+\bibitem[\citeproctext]{ref-bid2023}
+Banco Interamericano de Desarrollo. (2023). \emph{La opinión pública
+respecto de la migración en América Latina y el Caribe}. BID.
+
+\bibitem[\citeproctext]{ref-carmona2018}
+Carmona-Halty, M., Navas, M., \& Rojas-Paz, P. (2018). Percepción de
+amenaza exogrupal, contacto intergrupal y prejuicio afectivo hacia
+colectivos migrantes latinoamericanos residentes en Chile.
+\emph{Interciencia}, \emph{43}(1), 23-27.
+
+\bibitem[\citeproctext]{ref-elsoc2022}
+Centro de Estudios de Conflicto y Cohesión Social. (2022). \emph{Estudio
+Longitudinal Social de Chile (ELSOC) 2016-2022}. Harvard Dataverse.
+\url{https://dataverse.harvard.edu/dataverse/elsoc}
+
+\bibitem[\citeproctext]{ref-gatica2019}
+Gatica, L., \& Navarro-Lashayas, M. A. (2019). Ideología política,
+actitudes hacia la inmigración y atribuciones causales sobre la pobreza
+en una muestra universitaria. \emph{Zerbitzuan: Revista de Servicios
+Sociales}, \emph{69}, 87-98.
+
+\bibitem[\citeproctext]{ref-gonzalez2019}
+González, R., Muñoz, E., \& Mackenna, B. (2019). Cómo quieren en Chile
+al amigo cuando es forastero: Actitudes de los chilenos hacia la
+inmigración. En I. Aninat \& R. Vergara (Eds.), \emph{Inmigración en
+Chile: Una mirada multidimensional} (pp. 321-346). Fondo de Cultura
+Económica / Centro de Estudios Públicos.
+
+\bibitem[\citeproctext]{ref-navarrete2017}
+Navarrete Yáñez, B. (2017). Percepciones sobre inmigración en Chile:
+Lecciones para una política migratoria. \emph{Migraciones
+Internacionales}, \emph{9}(1), 179-209.
+
+\bibitem[\citeproctext]{ref-tijoux2015}
+Tijoux, M. E., \& Córdova, M. G. (2015). Racismo en Chile: Colonialismo,
+nacionalismo, capitalismo. \emph{Polis}, \emph{14}(42), 7-13.
+\url{https://doi.org/10.4067/S0718-65682015000300001}
+
+\end{CSLReferences}
+
+
+\backmatter
+
+% --- Cuerpo del libro (capítulos) en arábigos ---
+\mainmatter
+\pagestyle{scrheadings}
+
+% --- (Opcional) Estilo del índice general ---
+% \addtocontents{toc}{\protect\thispagestyle{plain}}
+
+
+\end{document}

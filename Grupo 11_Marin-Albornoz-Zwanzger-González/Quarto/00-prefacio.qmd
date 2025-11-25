@@ -1,0 +1,20 @@
+---
+number-sections: false
+numbered: false
+---
+
+# Tabla de contenidos {.unnumbered}
+
+1. Introducción
+
+2. Metodología
+
+3. Análisis
+
+4. Conclusiones
+
+5. Referencias
+
+::: {=latex}
+\mainmatter
+:::

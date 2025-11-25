@@ -1,0 +1,15 @@
+---
+title: "Conclusiones"
+---
+Este trabajo analizó en qué medida la posición política, la edad y el sexo de las personas encuestadas en ELSOC 2022 se asocian con su nivel de confianza en las personas inmigrantes en Chile. 
+
+Descriptivamente, la mayoría de los encuestados se ubica en niveles intermedios de confianza y una proporción importante no declara una posición política definida. 
+
+Los análisis bivariados no entregaron evidencia suficiente para rechazar las hipótesis nulas: no se identificó una asociación significativa entre ideología y confianza, la correlación entre edad y confianza fue cercana a cero y las diferencias de medias entre sexos no fueron significativas, con tamaños de efecto nulos.
+
+Estos resultados deben interpretarse considerando algunas limitaciones. Aunque ELSOC es un estudio longitudinal, aquí se trabajó solo con una ola, por lo que el análisis es transversal y no permite observar cambios en el tiempo ni variaciones en la confianza. Además, la concentración de casos en la categoría “ninguno / no posee posición política” reduce la variabilidad de la ideología y puede atenuar asociaciones; en futuros análisis podría recodificarse esta categoría o tratarse por separado. 
+
+La confianza se midió mediante una escala ordinal que en parte del análisis se trató como continua, lo que pudo limitar la sensibilidad para detectar diferencias; el uso de modelos específicos para variables ordinales permitiría un ajuste más adecuado. Finalmente, el auto-reporte implica posibles sesgos de deseabilidad social.
+
+Para futuros análisis, sería pertinente aprovechar el carácter longitudinal de ELSOC incorporando varias olas y modelos que estudien trayectorias de confianza hacia las personas inmigrantes, así como incluir otras variables, como nivel educacional, posición socioeconómica, contacto intergrupal o experiencias de migración, y complementar con estudios cualitativos que profundicen en los significados atribuidos a la inmigración y la confianza.
+

@@ -1,0 +1,37 @@
+---
+title: "Introducción"
+numbered: true
+---
+
+En los últimos años, Chile se ha convertido en un destino central para personas de distintos países latinoamericanos. Este proceso ha generado transformaciones sociales, pero también conflictos y tensiones en torno a la convivencia intercultural, el acceso a recursos y la pertenencia a la comunidad nacional (Navarrete Yáñez, 2017).
+
+
+En este contexto, el estudio de las actitudes de la población chilena hacia las personas inmigrantes resulta clave para comprender cómo se producen y reproducen el racismo, el prejuicio y la desigualdad (Tijoux & Córdova, 2015).
+
+
+Diversas investigaciones muestran que, en América Latina, una parte importante de la opinión pública asocia la migración con delincuencia, sobrecarga de los servicios públicos y competencia laboral, lo que se traduce en percepciones de amenaza y actitudes negativas hacia las personas migrantes (Banco Interamericano de Desarrollo, 2023; Carmona-Halty et al., 2018). En Chile, la imagen de un país “abierto” y hospitalario coexiste con actos de discriminación y una valoración desigual de ciertas nacionalidades, además de expresiones de racismo donde se combinan elementos coloniales, nacionales y de clase (González et al., 2019; Tijoux & Córdova, 2015). Esto sugiere que no se trata solo de opiniones individuales, sino de patrones de percepción que pueden respaldar políticas migratorias restrictivas y marcar la experiencia cotidiana de quienes migran.
+
+
+En este trabajo nos centraremos en cuatro variables. Primero, la confianza hacia las personas migrantes, entendida como la disposición a considerarlas como sujetos confiables y legítimos en la convivencia social, indicador relevante de integración y reconocimiento (Banco Interamericano de Desarrollo, 2023). Segundo, la ideología política, entendida como la auto-ubicación de las personas en el eje izquierda–derecha, asociada con actitudes más o menos favorables hacia la migración (Gatica & Navarro-Lashayas, 2019; González et al., 2019). Tercero, la edad, considerada como un factor generacional que puede expresar diferencias en valores, experiencias de contacto con personas migrantes y formas de interpretar los cambios sociales recientes (Arancibia & Cárdenas, 2022). Finalmente, incluimos el sexo del encuestado como característica sociodemográfica para explorar posibles diferencias en los niveles de confianza.
+
+
+
+
+Considerando lo anterior, el objetivo de este trabajo es analizar en qué medida la posición política, la edad y el sexo de las personas encuestadas se asocian con su nivel de confianza en las personas inmigrantes que viven en Chile. De la bibliografía se derivan estas hipótesis:
+
+
+
+1) Hipótesis Nula (H0): No existe asociación lineal entre la posición política y el nivel de confianza en las personas inmigrantes. 
+
+Hipótesis Alternativa (H1): Existe una asociación lineal significativa entre la posición política y el nivel de confianza en inmigrantes. (Generalmente se espera una correlación negativa: a mayor identificación con la derecha, menor confianza).
+
+2) Hipótesis Nula (H0): La edad de los encuestados no tiene un efecto significativo sobre el nivel de confianza en las personas inmigrantes. 
+
+Hipótesis Alternativa (H1): La edad tiene un efecto significativo en el nivel de confianza; a mayor edad, la confianza tiende a disminuir. 
+
+3) Hipótesis Nula (H0): No existen diferencias estadísticamente significativas en el nivel medio de confianza hacia los inmigrantes entre hombres y mujeres. 
+
+Hipótesis Alternativa (H1): Existe una diferencia significativa en el nivel de confianza en personas inmigrantes entre hombres y mujeres. 
+
+
+

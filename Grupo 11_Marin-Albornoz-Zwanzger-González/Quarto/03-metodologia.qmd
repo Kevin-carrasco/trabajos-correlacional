@@ -1,0 +1,93 @@
+---
+title: "Metodología"
+---
+
+## Datos
+
+Para esta investigación se basó en los datos proporcionados por la encuesta Estudio Longitudinal Social De Chile (ELSOC) realizada desde el Centro De Estudios Y Cohesión Social (COES). Esta busca examinar los principales antecedentes, factores, consecuencias asociadas al desarrollo de conflicto y cohesión social en Chile. Al ser de tipo longitudinal, como primera decisión metodológica, se seleccionó “la ola 2” correspondiente a los datos del año 2022, al contener variables más pertinentes para la investigación. 
+La muestra se conformó desde una selección inductiva de ciudades, manzanas, viviendas y finalmente personas, teniendo un tamaño muestral final cercano a 3000 personas.
+
+
+## Variables
+
+Desde la anterior base de datos, se seleccionó un total de cuatro variables, representando una variable dependiente y tres variables independientes.
+La variable dependiente seleccionada; “Grado de confianza en [PER/HAI/VEN]”, con el código “r16”, fraseada como “¿Podría decirme, en términos generales, cuánto confía usted en los [peruanos/haitianos/venezolanos] que viven en Chile?”, cuyas posibles respuestas se muestran como escala likert de 1 ;representa Nada de confianza, a 5; Mucha Confianza y -888; No sabe, -999; No responde. Busca captar el nivel de confianza que el entrevistado posee hacia personas inmigrantes. Esta es de tipo ordinal y categórica al tener posibles respuestas en categorías finitas y que no representan cantidades numéricas directas.
+
+Pasando a las variables independientes, se incluyó “Sexo del entrevistado”, “codigo m0_sexo”, fraseada como;“¿Cuál es su sexo?”. Esta representa una variable nominal de tipo dicotómica y a su vez categórica, al contener únicamente dos posibles respuestas mutuamente excluyentes; “1. Hombre” y “2. Mujer”.
+
+Como segunda variable independiente se incluyó a “Confidente 5: Ideología”, con el código  “R13_ideol”, fraseada; “¿Y en términos de su posición política %rostertitle% es  una persona de...?”. Esta es de tipo nominal y categórica. Contiene siete posibles respuestas; “1. Derecha”, “2.Centro derecha ","3.Centro ","4.Centro izquierda”, “5. Izquierda”, “6. Ninguno(No posee posición política)” y “-999. NS/NR”. Busca tener un acercamiento hacia la posición ideológica con la que el entrevistado se identifica mediante una pregunta directa. 
+
+Como tercera variable Independiente se incorporó “Edad entrevistado”, codificada como “m0_edad” y apareciendo en el cuestionario con el siguiente fraseo; “¿Cuál es su fecha de nacimiento?”. La anterior variable corresponde a una variable de tipo numérica continua, al no poseer categorías de posible respuesta. 
+
+```{r}
+#| label: carga-datos
+#| include: false
+
+library(tidyverse)
+load("ELSOC_Long_2016_2023.RData")
+
+elsoc_subset <- elsoc_long_2016_2023 %>% 
+  filter(ola == 2) %>%
+  mutate(across(everything(), ~ replace(.x, .x %in% c(-999, -888), NA)))
+```
+
+```{r}
+#| label: tbl-descriptivos
+#| echo: true
+#| code-fold: true
+#| message: false
+#| warning: false
+#| tbl-cap: "Tabla 1: Resumen de estadísticos descriptivos de las variables de estudio"
+
+
+pacman::p_load(psych, tidyverse, kableExtra)
+
+datos_resumen <- elsoc_subset %>%
+  select(
+    "Edad" = m0_edad,
+    "Ideología Política" = r13_ideol_01,
+    "Confianza Inmigrantes" = r16,
+    "Sexo" = m0_sexo 
+  ) %>%
+  mutate(
+  
+    across(everything(), ~as.numeric(.)) 
+  )
+
+
+stats <- describe(datos_resumen)
+
+
+stats %>%
+  as.data.frame() %>%
+  select(n, mean, sd, median, min, max, skew, kurtosis) %>%
+  kbl(
+    digits = 2,
+    col.names = c("N", "Media", "D.E.", "Mediana", 
+                  "Mín", "Máx", "Asimetría", "Curtosis")
+  ) %>%
+  kable_styling(
+    bootstrap_options = c("striped", "condensed"),
+    full_width = FALSE,
+    font_size = 12,
+    
+    latex_options = c("scale_down", "hold_position") 
+  )
+```
+
+## Métodos
+
+Para la realización del contraste de hipótesis se apoyó la Software RStudio. En primer lugar, para la preparación de datos se descargó y se filtró para trabajar desde los datos únicamente de la ola 2. Después se creó un objeto desde el código “subset()”, donde se incluyeron las cuatro variables seleccionadas para este análisis. Seguidamente, se generó la limpieza de los casos perdidos y mediante una tabla de frecuencia general se comprobó una correcta limpieza.
+
+Finalizado esto, se pasó al análisis univariado, creando los estadísticos descriptivos de cada una de las variables individualmente. Primeramente se generaron las tablas de frecuencia de las dos variables categóricas y no dicotómicas además de gráficos de barra. Luego, se dio paso a la variable continua, optando por crear un histograma de densidad que permita observar la distribución de las edades. Se determinó la media, rango e intervalo de confianza. Por último, se realizó una tabla de frecuencia y gráfico para la variable dicotómica.
+
+Posteriormente, para el análisis descriptivo bivariado se buscó comparar la distribución de la variable “Grado de confianza en [PER/HAI/VEN]” junto a “Confidente 5: Ideología”. Así, se generó una tabla de contingencia expresada en un gráfico de barras para aportar a la evaluación de la primera hipótesis.
+
+Finalmente, se realizó el análisis estadístico bivariado. Se evaluó la primera hipótesis desde se usó la prueba de Chi-Cuadrado (X2) entre las variables “Grado de confianza en [PER/HAI/VEN]” junto con “Confidente 5: Ideología” para evaluar si existe una asociación estadísticamente significativa, a mayor identificación con la derecha, menor confianza. Luego se aplicó un coeficiente V de Cramer para medir el tamaño de efecto y la intensidad de la relación.
+
+En segundo lugar, evaluando la segunda Hipótesis se calculó el coeficiente de correlación de Spearman entre las variables “Grado de confianza en [PER/HAI/VEN]” y “Edad entrevistado”. Esto para estimar si existe una asociación estadísticamente significativa donde al aumentar la edad, la confianza tiende a disminuir.
+
+Finalmente para la evaluación de la tercera hipótesis, se trato como factor la variable “Grado de confianza en [PER/HAI/VEN]” numéricamente para tratarla como escala continua y así, compararla con los grupos de la variable “Sexo del entrevistado". Después, se realizó una diferencia de medias entre ambos sexos aplicando prueba T. Finalmente, se estimó el tamaño de efecto utilizando D de Cohen, determinando la intensidad de la diferencia observada entre ambas variables. 
+
+
+

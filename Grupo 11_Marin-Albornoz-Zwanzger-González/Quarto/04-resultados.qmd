@@ -1,0 +1,309 @@
+---
+title: "Análisis"
+---
+## Análisis Descriptivo Univariado
+
+A continuación, el presente apartado realiza un análisis descriptivo de los datos con el propósito de caracterizar sus principales tendencias y distribuciones. A través de medidas de tendencia central, dispersión y representaciones gráficas, se busca ofrecer una visión general del comportamiento de las variables estudiadas al identificar patrones relevantes, posibles valores atípicos y la estructura básica del conjunto de datos. 
+
+Este análisis constituye un paso preliminar fundamental para comprender la información disponible y orientar la etapa posterior de análisis bivariado.
+
+
+En primer lugar, se encuentra la variable “Grado de confianza en [PER/HAI/VEN]” —con el código “r16”, fraseada como “¿Podría decirme, en términos generales, cuánto confía usted en los [peruanos/haitianos/venezolanos] que viven en Chile?”— de la cuál se realizó un gráfico de barras para la visualización de la distribución de sus datos. 
+
+El gráfico muestra una distribución claramente inclinada hacia niveles intermedios, siendo “Algo de confianza” la categoría predominante con alrededor del 40% de los casos. Le siguen con proporciones menores “Poca confianza” con un 23,1% y “Bastante confianza” con un 17,4%, lo que sugiere una tendencia hacia percepciones moderadas de confianza. En contraste, los extremos de la escala —“Nada de confianza” (15,4%) y especialmente “Mucha confianza” (4%)— concentran los porcentajes más bajos. En conjunto, el gráfico evidencia que la mayoría de los encuestados se sitúa en posiciones intermedias, evitando tanto la desconfianza absoluta como la confianza total.
+
+```{r}
+#| label: setup-resultados
+#| include: false 
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(sjPlot)
+library(here) 
+
+load(here("ELSOC_Long_2016_2023.RData")) 
+
+elsoc_subset <- elsoc_long_2016_2023 %>% 
+  filter(ola == 2) %>%
+  mutate(across(everything(), ~ replace(.x, .x %in% c(-999, -888), NA)))
+```
+
+
+```{r}
+#| label: fig-confianza-inmigrantes
+#| fig-cap: "Distribución de frecuencias: Confianza en inmigrantes"
+#| echo: true
+#| code-fold: true
+#| warning: false
+
+library(sjPlot)
+
+plot_frq(elsoc_subset$r16, 
+         title = "Nivel de confianza en inmigrantes",
+         geom.colors = "skyblue") 
+```
+
+
+
+Para la variable “Confidente 5: Ideología” —con el código “r13_ideol_01”, fraseada como “¿Y en términos de su posición política %rostertitle% es una persona de...?”— también se realizó un gráfico de barras para su análisis descriptivo. En el gráfico se observa que la categoría “Ninguno / No posee posición política” concentra la mayor cantidad de casos, representando cerca del 70% del total. Esto indica que la mayoría de los encuestados no se atribuye una orientación ideológica definida. 
+
+En contraste, las demás categorías presentan frecuencias considerablemente menores: alrededor de un 10% se identifica una postura de izquierda, cerca de un 9% se ubica en la derecha, y proporciones aún menores corresponden al centro (4.7%), centroizquierda (3.9%) y centroderecha (2.2%). El gráfico evidencia, en conjunto, una distribución altamente desbalanceada, marcada por el predominio de la ausencia de identificación política frente a posiciones ideológicas específicas.
+
+
+```{r}
+#| label: fig-ideologia
+#| fig-cap: "Distribución de frecuencias: Posición política"
+#| echo: true
+#| code-fold: true
+#| warning: false
+
+library(sjPlot)
+
+plot_frq(elsoc_subset$r13_ideol_01, 
+         title = "Identificación política de los encuestados",
+         type = "bar",
+         show.na = FALSE,        
+         geom.colors = "salmon", 
+         axis.title = "Posición Política")
+```
+
+
+La tercera variable “Sexo del entrevistado” — con el “codigo m0_sexo”, fraseada como “¿Cuál es su sexo?”— fue graficada de la misma forma, simplemente para hacer posible la visualización de las proporciones del sexo de los encuestados. La muestra se conforma de manera preponderante por un 61.5% de personas de sexo femenino. En su contraparte, un 38.5% de la muestra está compuesta por personas de sexo masculino.
+
+```{r}
+#| label: fig-sexo
+#| fig-cap: "Distribución de la muestra según sexo"
+#| echo: true
+#| code-fold: true
+#| warning: false
+
+library(sjPlot)
+
+plot_frq(elsoc_subset$m0_sexo, 
+         title = "Composición de la muestra por sexo",
+         type = "bar",
+         show.na = FALSE,            
+         geom.colors = "mediumpurple", 
+         axis.title = "Sexo del encuestado")
+```
+
+Finalmente, para la visualización de la distribución de los datos de la variable “Edad entrevistado” —codificada como “m0_edad” y apareciendo en el cuestionario con el siguiente fraseo: “¿Cuál es su fecha de nacimiento?”— se generó un histograma, dada la naturaleza de esta. “Edad” presenta una media de 47.6 años y una desviación estándar de 15.3, con valores que oscilan entre los 18 y los 89 años. La mediana es de 48 y el coeficiente de asimetría es prácticamente cero, lo que indica una distribución simétrica sin sesgos importantes hacia edades jóvenes o avanzadas. Esto puede confirmarse al observar el gráfico, pues la mayor concentración de individuos se encuentra entre los 30 y los 60 años, mientras que los extremos muestran una frecuencia menor. 
+
+Al estimar el intervalo de confianza al 95% considerando un error estándar de 0.31, se puede afirmar que la edad promedio de la población se encuentra entre los 47.0 y 48.2 años.
+
+
+```{r}
+#| label: fig-distribucion-edad
+#| fig-cap: "Distribución de la edad de los encuestados"
+#| echo: true
+#| code-fold: true
+#| warning: false
+#| message: false
+
+library(ggplot2)
+library(Publish) 
+
+ggplot(elsoc_subset, aes(x = m0_edad)) +
+  geom_histogram(bins = 30, 
+                 fill = "cornflowerblue", 
+                 color = "white",         
+                 alpha = 0.8) +           
+  labs(title = "Distribución de la edad en la muestra",
+       x = "Edad", 
+       y = "Frecuencia") +
+  theme_minimal() 
+
+Publish::ci.mean(elsoc_subset$m0_edad)
+```
+
+
+## Análisis Descriptivo Bivariado
+
+En el siguiente análisis, la tendencia más identificable es la transversalidad de la moderación. A simple vista, todos los grupos ideológicos se comportan de manera similar respecto a la confianza: la opción "Algo de confianza" es la más frecuente en todas las categorías (superando el 35% en cada una). Esto sugiere que la ideología no genera una polarización extrema en este tema, sino que existe un "suelo común".
+
+Sin embargo, al contrastar los polos, Derecha e Izquierda presentan niveles de desconfianza total ("Nada") prácticamente idénticos (13.8% y 14.1% respectivamente), pero se diferencian en la intensidad positiva: la Izquierda muestra una mayor proporción de confianza alta ("Bastante": 21.4%) en comparación con la Derecha (16.8%). 
+
+Finalmente, el grupo sin posición política ("Ninguno") tiende levemente hacia la duda, registrando el porcentaje más alto en la opción de nula confianza (15.7%).
+
+
+```{r}
+#| label: tabla-bivariada-ideologia
+#| echo: false            
+#| warning: false
+#| message: false
+#| tbl-cap: "Tabla de Contingencia: Confianza según Ideología (%)"
+
+library(kableExtra)
+library(dplyr)
+
+tabla <- table(elsoc_subset$r16, elsoc_subset$r13_ideol_01)
+
+
+tabla_pct <- prop.table(tabla, 2) * 100
+
+
+kbl(tabla_pct, digits = 1) %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover"),
+    full_width = FALSE,
+    font_size = 10, 
+    latex_options = c("scale_down", "hold_position") 
+  )
+```
+
+
+
+## Análisis Estadístico Bivariado
+
+
+
+El presente apartado tiene como objetivo realizar un análisis estadístico bivariado. Es decir, evaluar las relaciones entre variables relevantes para las hipótesis planteadas, empleando coeficientes de correlación, medidas de asociación para variables categóricas, pruebas de hipótesis y estadísticos de tamaño del efecto, siempre en función del nivel de medición correspondiente. 
+
+Este análisis permite examinar la dirección, la intensidad y la significancia estadística de las correlaciones entre ellas, aportando evidencia empírica para responder a las preguntas de investigación.
+
+
+
+**1.Hipótesis**
+
+Hipótesis Nula (H_0): No existe asociación lineal entre la posición política de los encuestados y su nivel de confianza en las personas inmigrantes. 
+
+Hipótesis Alternativa (H_1): Existe una asociación Lineal significativa entre la posición política y el nivel de confianza en inmigrantes. (Generalmente se espera una correlación negativa: a mayor identificación con la derecha, menor confianza).
+
+
+A fin de evaluar la correlación entre las variables “Grado de confianza” e “Ideología” se aplicó la prueba de Chi Cuadrado (χ²).
+
+Los resultados obtenidos (χ² = 19.522; p = 0.4882) indican que no se cuenta con evidencia suficiente para rechazar la hipótesis nula. Es decir, no se identifica una asociación entre la posición política y el nivel de confianza en inmigrantes dentro de la muestra analizada. 
+
+
+
+```{r}
+#| label: chi-cuadrado-tabla
+#| echo: false            
+#| warning: false
+#| message: false
+
+library(broom)
+library(kableExtra)
+library(dplyr)
+
+test_chi <- chisq.test(elsoc_subset$r16, elsoc_subset$r13_ideol_01)
+
+tidy(test_chi) %>%
+  select(
+    "Estadístico (X2)" = statistic, 
+    "Grados Libertad" = parameter, 
+    "Valor p" = p.value
+  ) %>%
+  kbl(digits = 3, caption = "Resultados prueba Chi-Cuadrado") %>%
+  kable_styling(
+    bootstrap_options = "striped",
+    full_width = FALSE,
+    latex_options = "hold_position" 
+  )
+```
+
+
+De manera consistente, el coeficiente V de Cramer (0.048) confirma que, aun si existiera alguna relación, esta sería de magnitud extremadamente débil y carente de relevancia práctica.
+
+```{r}
+#| label: tama-efecto-ideologia
+#| echo: true
+#| code-fold: true
+#| warning: false
+#| message: false
+
+library(rstatix) 
+
+cramer_v(elsoc_subset$r16, elsoc_subset$r13_ideol_01)
+```
+
+
+
+
+**2.Hipótesis**
+
+Hipótesis Nula (H_0): La edad de los encuestados no tiene un efecto significativo sobre el nivel de confianza en las personas inmigrantes.
+
+Hipótesis Alternativa (H_1): La edad tiene un efecto significativo en el nivel de confianza en las personas inmigrantes; específicamente, a mayor edad, el nivel de confianza tiende a disminuir.
+
+
+Para poner a prueba la hipótesis de que la edad ejerce un efecto significativo sobre el nivel de confianza, se calculó el coeficiente de correlación de rangos de Spearman, dado el carácter ordinal de la variable dependiente.
+
+
+El análisis arrojó un coeficiente de correlación rho = -0.037 con un valor p = 0.076. Dado que el valor p excede el nivel de significancia estándar (alpha = 0.05), no existe evidencia estadística suficiente para rechazar la Hipótesis Nula (H_0). Por lo que la edad de los encuestados no tiene un efecto significativo sobre el nivel de confianza en las personas inmigrantes.
+
+
+
+```{r}
+#| label: correlacion-edad-confianza
+#| echo: true
+#| code-fold: true
+#| warning: false
+
+
+cor_test_edad_conf <- cor.test(elsoc_subset$m0_edad, 
+                               as.numeric(elsoc_subset$r16), 
+                               method = "spearman")
+
+print(cor_test_edad_conf)
+```
+
+
+
+
+**3.Hipótesis**
+
+Hipótesis Nula (H_0): No existen diferencias estadísticamente significativas en el nivel medio de confianza hacia los inmigrantes entre hombres y mujeres.
+
+Hipótesis Alternativa (H_1): Existe  una diferencia significativa en el nivel de confianza en personas inmigrantes entre hombres y mujeres. 
+
+
+Para las brechas de género en la confianza hacia la población inmigrante, se sometió a prueba mediante una prueba t para realizar una diferencia de medias.
+
+El análisis estadístico arrojó un valor t= 1.38 y un valor p = 0.167. Dado que el valor p es superior al nivel de significancia convencional (alpha = 0.05), no existe evidencia estadística suficiente para rechazar la Hipótesis Nula (H_0).
+
+
+```{r}
+#| label: prueba-t-sexo
+#| echo: true
+#| code-fold: true
+#| warning: false
+
+elsoc_subset$r16_num <- as.numeric(elsoc_subset$r16)
+
+t_test_result <- t.test(r16_num ~ m0_sexo, 
+                        data = elsoc_subset, 
+                        var.equal = FALSE) 
+
+print(t_test_result)
+```
+
+
+
+El grupo de Hombres presenta un promedio de confianza (M = 2.75) levemente superior al del grupo Mujeres (M = 2.69). Sin embargo, al evaluar la magnitud de esta diferencia mediante la d de Cohen, se obtuvo un coeficiente de 0.0586. Este valor clasifica el tamaño del efecto indica que la diferencia observada carece de relevancia práctica. Por lo que el sexo del encuestado no influye significativamente en su nivel de confianza hacia los inmigrantes.
+
+```{r}
+#| label: efecto-sexo
+#| echo: true
+#| code-fold: true
+#| warning: false
+#| message: false
+
+library(rstatix)
+
+elsoc_subset %>% 
+  cohens_d(r16_num ~ m0_sexo, var.equal = FALSE)
+```
+
+
+
+
+
+
+
+
+
+
+
+
